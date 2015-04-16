@@ -1,0 +1,2148 @@
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-15 18:41:16 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/railties-4.1.10/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/asdasd" for 127.0.0.1 at 2015-04-15 18:41:20 -0300
+
+ActionController::RoutingError (No route matches [GET] "/asdasd"):
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.2ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.9ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (25.0ms)
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTestes (20150415214253)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "testes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150415214253"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:44:48 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `authorize!' for #<CrudController:0x00000106821d68>):
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:25:in `setup'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.4ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.3ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:46:14 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `authorize!' for #<CrudController:0x00000104f54d58>):
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:25:in `setup'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (14.1ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.4ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:46:16 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `authorize!' for #<CrudController:0x000001013ddf40>):
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:25:in `setup'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.3ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:47:01 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `authorize!' for #<CrudController:0x00000104a3bd80>):
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:25:in `setup'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (9.4ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.1ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:47:05 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `authorize!' for #<CrudController:0x000001044297f8>):
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:25:in `setup'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.1ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.0ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:48:36 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+NameError (uninitialized constant Ability):
+  cancancan (1.10.1) lib/cancan/controller_additions.rb:357:in `current_ability'
+  cancancan (1.10.1) lib/cancan/controller_additions.rb:338:in `authorize!'
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:25:in `setup'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.5ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.5ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:50:00 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NameError (uninitialized constant Ability):
+  cancancan (1.10.1) lib/cancan/controller_additions.rb:357:in `current_ability'
+  cancancan (1.10.1) lib/cancan/controller_additions.rb:338:in `authorize!'
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:25:in `setup'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.8ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:50:09 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+NameError (uninitialized constant Ability):
+  cancancan (1.10.1) lib/cancan/controller_additions.rb:357:in `current_ability'
+  cancancan (1.10.1) lib/cancan/controller_additions.rb:338:in `authorize!'
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:25:in `setup'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (9.7ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.4ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:51:20 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `current_user' for #<CrudController:0x000001055d4f70>):
+  cancancan (1.10.1) lib/cancan/controller_additions.rb:357:in `current_ability'
+  cancancan (1.10.1) lib/cancan/controller_additions.rb:338:in `authorize!'
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:25:in `setup'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.8ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:53:24 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `search' for #<Class:0x0000010721b030>):
+  activerecord (4.1.10) lib/active_record/dynamic_matchers.rb:26:in `method_missing'
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:8:in `index'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (9.1ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.1ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:55:06 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `search' for #<Class:0x00000102224158>):
+  activerecord (4.1.10) lib/active_record/dynamic_matchers.rb:26:in `method_missing'
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:8:in `index'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.2ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.7ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:55:09 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `search' for #<Class:0x00000102224158>):
+  activerecord (4.1.10) lib/active_record/dynamic_matchers.rb:26:in `method_missing'
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:8:in `index'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.3ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:56:00 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  [1m[35mTeste Load (0.4ms)[0m  SELECT DISTINCT "testes".* FROM "testes"   ORDER BY "testes"."nome" ASC
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.3ms)
+
+NoMethodError (undefined method `page' for #<ActiveRecord::Relation []>):
+  activerecord (4.1.10) lib/active_record/relation/delegation.rb:136:in `method_missing'
+  activerecord (4.1.10) lib/active_record/relation/delegation.rb:99:in `method_missing'
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:20:in `index'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.1ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.6ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:57:36 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  [1m[35mTeste Load (0.3ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"   ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.3ms)
+
+NoMethodError (undefined method `wiselinks_partial?' for #<ActionDispatch::Request:0x00000107c56c70>):
+  /Users/rodrigosol/raro/templus/templus_models/app/controllers/crud_controller.rb:23:in `index'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.3ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.6ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:58:21 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (2.0ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_records.html.erb (4.0ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb within layouts/application (7.4ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined method `[]' for nil:NilClass):
+    2: 	<%=raro_search_form(@model, 'records','records',"/crud/#{@model.name.underscore}/query") do%>
+    3: 		<%raro_group "#{@model.name}"%>
+    4: 		<%@crud_helper.search_fields.each do |att| %>
+    5: 			<%raro_field att[:attribute],att[:sf]%>
+    6: 		<%end%>
+    7: 	<%end%>
+    8: <% end %>
+  /Users/rodrigosol/raro/templus/templus_models/app/helpers/search_helper.rb:20:in `raro_field'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb:5:in `block (2 levels) in ___sers_rodrigosol_raro_templus_templus_models_app_views_crud__links_html_erb___4045581662469341044_2212905320'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb:4:in `each'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb:4:in `block in ___sers_rodrigosol_raro_templus_templus_models_app_views_crud__links_html_erb___4045581662469341044_2212905320'
+  /Users/rodrigosol/raro/templus/templus_models/app/helpers/search_helper.rb:6:in `raro_search_form'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb:2:in `___sers_rodrigosol_raro_templus_templus_models_app_views_crud__links_html_erb___4045581662469341044_2212905320'
+  actionview (4.1.10) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.1.10) lib/active_support/notifications.rb:161:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:339:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:143:in `render'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:306:in `render_partial'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:279:in `block in render'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:278:in `render'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.1.10) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_records.html.erb:3:in `___sers_rodrigosol_raro_templus_templus_models_app_views_crud__records_html_erb___2119309772816286015_2186859720'
+  actionview (4.1.10) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.1.10) lib/active_support/notifications.rb:161:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:339:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:143:in `render'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:306:in `render_partial'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:279:in `block in render'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:278:in `render'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.1.10) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb:3:in `block in ___sers_rodrigosol_raro_templus_templus_models_app_views_crud_index_html_erb___2134081489091592844_2166370560'
+  actionview (4.1.10) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.1.10) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.1.10) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.1.10) lib/action_view/helpers/capture_helper.rb:152:in `content_for'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb:1:in `___sers_rodrigosol_raro_templus_templus_models_app_views_crud_index_html_erb___2134081489091592844_2166370560'
+  actionview (4.1.10) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.1.10) lib/active_support/notifications.rb:161:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:339:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:143:in `render'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:55:in `block (2 levels) in render_template'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:54:in `block in render_template'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:62:in `render_with_layout'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:53:in `render_template'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.10) lib/action_view/rendering.rb:99:in `_render_template'
+  actionpack (4.1.10) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.1.10) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.10) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.10) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.1.10) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.1.10) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (7.5ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 18:58:54 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.2ms)
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"   ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0[0m
+  [1m[35m (0.2ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_records.html.erb (13.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_scopes.html.erb (0.5ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb (3.9ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb within layouts/application (19.0ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.8ms)
+
+ActionView::Template::Error (Missing partial layouts/_template with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby]}. Searched in:
+  * "/Users/rodrigosol/raro/templus/templus_models/test/dummy/app/views"
+  * "/Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/kaminari-0.16.3/app/views"
+  * "/Users/rodrigosol/raro/templus/templus_models/app/views"
+):
+    24: 	<% end %>
+    25: <% end %>
+    26: 
+    27: <%= render "layouts/template" %>
+  actionview (4.1.10) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.1.10) lib/action_view/lookup_context.rb:124:in `find'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:383:in `find_template'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:377:in `find_partial'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:263:in `render'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.1.10) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb:27:in `___sers_rodrigosol_raro_templus_templus_models_app_views_crud__crud_template_html_erb__1640099410647419613_2214244480'
+  actionview (4.1.10) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.1.10) lib/active_support/notifications.rb:161:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:339:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:143:in `render'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:306:in `render_partial'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:279:in `block in render'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:278:in `render'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.1.10) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb:7:in `___sers_rodrigosol_raro_templus_templus_models_app_views_crud_index_html_erb___2134081489091592844_2166370560'
+  actionview (4.1.10) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.1.10) lib/active_support/notifications.rb:161:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:339:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:143:in `render'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:55:in `block (2 levels) in render_template'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:54:in `block in render_template'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:62:in `render_with_layout'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:53:in `render_template'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.10) lib/action_view/rendering.rb:99:in `_render_template'
+  actionpack (4.1.10) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.1.10) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.10) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.10) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.1.10) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.1.10) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (7.6ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 19:00:03 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.3ms)
+  [1m[36mTeste Load (0.5ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"   ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0[0m
+  [1m[35m (0.2ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_records.html.erb (6.4ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/layouts/_template.html.erb (1.0ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb (4.4ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 177ms (Views: 174.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-04-15 19:00:03 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-04-15 19:00:03 -0300
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 19:00:30 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.3ms)
+  [1m[36mTeste Load (0.3ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"   ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0[0m
+  [1m[35m (0.4ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_records.html.erb (7.4ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb (3.7ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb within layouts/application (13.8ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.7ms)
+
+ActionView::Template::Error (Missing partial layouts/_template with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby]}. Searched in:
+  * "/Users/rodrigosol/raro/templus/templus_models/test/dummy/app/views"
+  * "/Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/kaminari-0.16.3/app/views"
+  * "/Users/rodrigosol/raro/templus/templus_models/app/views"
+):
+    24: 	<% end %>
+    25: <% end %>
+    26: 
+    27: <%= render "layouts/template" %>
+  actionview (4.1.10) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.1.10) lib/action_view/lookup_context.rb:124:in `find'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:383:in `find_template'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:377:in `find_partial'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:263:in `render'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.1.10) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb:27:in `___sers_rodrigosol_raro_templus_templus_models_app_views_crud__crud_template_html_erb__1640099410647419613_2214244480'
+  actionview (4.1.10) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.1.10) lib/active_support/notifications.rb:161:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:339:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:143:in `render'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:306:in `render_partial'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:279:in `block in render'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:278:in `render'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.1.10) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb:7:in `___sers_rodrigosol_raro_templus_templus_models_app_views_crud_index_html_erb___2134081489091592844_2166370560'
+  actionview (4.1.10) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.1.10) lib/active_support/notifications.rb:161:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:339:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:143:in `render'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:55:in `block (2 levels) in render_template'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:54:in `block in render_template'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:62:in `render_with_layout'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:53:in `render_template'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.10) lib/action_view/rendering.rb:99:in `_render_template'
+  actionpack (4.1.10) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.1.10) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.10) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.10) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.1.10) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.1.10) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (10.1ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 19:00:55 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"   ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0[0m
+  [1m[35m (0.2ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_records.html.erb (3.6ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/layouts/_template_raro_crud.html.erb (1.5ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb (6.5ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-04-15 19:00:55 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-04-15 19:00:55 -0300
+
+
+Started GET "/crud/teste/new" for 127.0.0.1 at 2015-04-15 19:01:03 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.2ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_form.html.erb (14.7ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/new.html.erb within layouts/application (81.5ms)
+Completed 500 Internal Server Error in 84ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x000001024817c0>:0x00000107f9cd08>):
+    1: <% url = "/crud/#{@model.name.underscore}/#{@record.new_record? ? 'create' : @record.id.to_s+'/create'}" %>
+    2: <%= simple_form_for @record, remote: false, html: {class: "form-horizontal"}, url: url do |f| %>
+    3: 	<%= f.error_notification %>
+    4: 	<%@crud_helper.form_fields.each do |field|%>
+    5: 		<% if !field[:sf][:edit].nil? || !field[:sf][:create].nil?%>
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_form.html.erb:2:in `___sers_rodrigosol_raro_templus_templus_models_app_views_crud__form_html_erb___4278034238104312805_2214393840'
+  actionview (4.1.10) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.1.10) lib/active_support/notifications.rb:161:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:339:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:143:in `render'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:306:in `render_partial'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:279:in `block in render'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/partial_renderer.rb:278:in `render'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.1.10) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/new.html.erb:4:in `block in ___sers_rodrigosol_raro_templus_templus_models_app_views_crud_new_html_erb___1260952449178595680_2157752280'
+  actionview (4.1.10) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.1.10) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.1.10) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.1.10) lib/action_view/helpers/capture_helper.rb:152:in `content_for'
+  /Users/rodrigosol/raro/templus/templus_models/app/views/crud/new.html.erb:1:in `___sers_rodrigosol_raro_templus_templus_models_app_views_crud_new_html_erb___1260952449178595680_2157752280'
+  actionview (4.1.10) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.1.10) lib/active_support/notifications.rb:161:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:339:in `instrument'
+  actionview (4.1.10) lib/action_view/template.rb:143:in `render'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:55:in `block (2 levels) in render_template'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:54:in `block in render_template'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:62:in `render_with_layout'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:53:in `render_template'
+  actionview (4.1.10) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.10) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.10) lib/action_view/rendering.rb:99:in `_render_template'
+  actionpack (4.1.10) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.1.10) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.10) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.10) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.1.10) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.1.10) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.10) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.10) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.10) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (10.2ms)
+
+
+Started GET "/crud/teste/new" for 127.0.0.1 at 2015-04-15 19:02:31 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.6ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_form.html.erb (74.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_scopes.html.erb (0.4ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.8ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb (3.7ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/new.html.erb within layouts/application (84.7ms)
+Completed 200 OK in 226ms (Views: 220.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-04-15 19:02:31 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-04-15 19:02:31 -0300
+
+
+Started POST "/crud/teste/create" for 127.0.0.1 at 2015-04-15 19:02:41 -0300
+Processing by CrudController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l/GWaXTKzvWyTCLrerw2zixxrJGSyLazdrfhEhyIiRQ=", "teste"=>{"nome"=>"sads"}, "commit"=>"Salvar", "model"=>"teste"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "testes" ("created_at", "nome", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2015-04-15 22:02:41.505995"], ["nome", "sads"], ["updated_at", "2015-04-15 22:02:41.505995"]]
+  [1m[35m (6.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/crud/teste
+Completed 302 Found in 23ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 19:02:41 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[36mTeste Load (0.3ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"   ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0[0m
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_record.html.erb (4.6ms)
+  [1m[35m (0.3ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_records.html.erb (14.4ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb (2.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 31ms (Views: 28.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-04-15 19:02:41 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-04-15 19:02:41 -0300
+
+
+Started GET "/crud/teste/new" for 127.0.0.1 at 2015-04-15 19:02:52 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.2ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_form.html.erb (2.8ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb (1.7ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/new.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 22ms (Views: 21.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-04-15 19:02:52 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-04-15 19:02:52 -0300
+
+
+Started POST "/crud/teste/create" for 127.0.0.1 at 2015-04-15 19:02:57 -0300
+Processing by CrudController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l/GWaXTKzvWyTCLrerw2zixxrJGSyLazdrfhEhyIiRQ=", "teste"=>{"nome"=>"teste"}, "commit"=>"Salvar", "model"=>"teste"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "testes" ("created_at", "nome", "updated_at") VALUES (?, ?, ?)  [["created_at", "2015-04-15 22:02:57.137671"], ["nome", "teste"], ["updated_at", "2015-04-15 22:02:57.137671"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/crud/teste
+Completed 302 Found in 3ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 19:02:57 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.2ms)
+  [1m[35mTeste Load (0.9ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"   ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_records.html.erb (11.5ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb (2.0ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 30ms (Views: 27.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-04-15 19:02:57 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-04-15 19:02:57 -0300
+
+
+Started GET "/crud/teste/query?model=Teste&partial=records&var=records&q%5Bnome_cont%5D=teste" for 127.0.0.1 at 2015-04-15 19:03:01 -0300
+
+AbstractController::ActionNotFound (The action 'query' could not be found for CrudController):
+  actionpack (4.1.10) lib/abstract_controller/base.rb:131:in `process'
+  actionview (4.1.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.10) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.10) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.10) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.10) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.10) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.10) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.10) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.10) lib/rails/engine.rb:514:in `call'
+  railties (4.1.10) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rodrigosol/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rodrigosol/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.10/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.6ms)
+
+
+Started GET "/crud/teste/query?model=Teste&partial=records&var=records&q%5Bnome_cont%5D=teste" for 127.0.0.1 at 2015-04-15 19:05:41 -0300
+Processing by CrudController#query as HTML
+  Parameters: {"model"=>"teste", "partial"=>"records", "var"=>"records", "q"=>{"nome_cont"=>"teste"}}
+Redirected to http://localhost:3000/crud/teste
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 19:05:41 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.2ms)
+  [1m[35mTeste Load (0.2ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"   ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_records.html.erb (11.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb (2.7ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 27ms (Views: 25.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-04-15 19:05:42 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-04-15 19:05:42 -0300
+
+
+Started GET "/crud/teste/query?model=Teste&partial=records&var=records&q%5Bnome_cont%5D=teste" for 127.0.0.1 at 2015-04-15 19:05:47 -0300
+Processing by CrudController#query as HTML
+  Parameters: {"model"=>"teste", "partial"=>"records", "var"=>"records", "q"=>{"nome_cont"=>"teste"}}
+Redirected to http://localhost:3000/crud/teste
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 19:05:47 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[35mTeste Load (0.2ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"   ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_record.html.erb (0.2ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_record.html.erb (0.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_records.html.erb (5.8ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.3ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb (2.3ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 23ms (Views: 21.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-04-15 19:05:48 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-04-15 19:05:48 -0300
+
+
+Started GET "/crud/teste/query?model=Teste&partial=records&var=records&q%5Bnome_cont%5D=teste" for 127.0.0.1 at 2015-04-15 19:05:53 -0300
+Processing by CrudController#query as HTML
+  Parameters: {"model"=>"teste", "partial"=>"records", "var"=>"records", "q"=>{"nome_cont"=>"teste"}}
+Redirected to http://localhost:3000/crud/teste
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/crud/teste" for 127.0.0.1 at 2015-04-15 19:05:53 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[35mTeste Load (0.4ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"   ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_record.html.erb (0.4ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_records.html.erb (10.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/_crud_template.html.erb (1.9ms)
+  Rendered /Users/rodrigosol/raro/templus/templus_models/app/views/crud/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 23ms (Views: 20.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.self.js?body=1" for 127.0.0.1 at 2015-04-15 19:05:53 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for 127.0.0.1 at 2015-04-15 19:05:53 -0300

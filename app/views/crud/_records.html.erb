@@ -1,0 +1,24 @@
+<%= flash_messages_for %>
+<div>
+  <%= render "links" %>
+</div>
+<div class="dataTables_wrapper form-inline">
+  <table class="table table-striped table-bordered table-hover dataTables-example dataTable">
+    <thead>
+      <tr>
+        <%@crud_helper.index_fields.each do |att|  %>
+          <th><%= sort_link @q, att[:attribute], att[:label], {},data: {push: 'partial', target: "#form"}%></th>
+        <%end%>
+	     <%if @crud_helper.view_action || @crud_helper.edit_action || @crud_helper.destroy_action || @crud_helper.actions.present?%>
+	        <td>Opções</td>
+		  <% end %>
+      </tr>
+    </thead>
+    <tbody id="records-body">
+      <% @records.each do |record| %>
+        <%= render 'record', record: record %>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @records, target: '#form'%>
+</div>

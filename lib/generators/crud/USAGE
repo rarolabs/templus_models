@@ -1,0 +1,8 @@
+Description:
+    cria um novo crud para um modelo existente
+
+Example:
+    rails generate crud Pessoa
+
+    This will create:
+        app/raro_crud/pessoa_crud.rb

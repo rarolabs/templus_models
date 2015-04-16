@@ -1,0 +1,32 @@
+<% url = "/crud/#{@model.name.underscore}/#{@record.new_record? ? 'create' : @record.id.to_s+'/create'}" %>
+<%= simple_form_for @record, remote: false, html: {class: "form-horizontal"}, url: url do |f| %>
+	<%= f.error_notification %>
+	<%@crud_helper.form_fields.each do |field|%>
+		<% if !field[:sf][:edit].nil? || !field[:sf][:create].nil?%>
+			<% if !field[:sf][:edit].nil? && !field[:sf][:edit] && !@record.new_record?%>
+			<% elsif !field[:sf][:create].nil? && !field[:sf][:create] && @record.new_record? %>
+			<% else %>
+				<% unless @model.reflect_on_association(field[:attribute]) %>
+					<%= f.input field[:attribute], field[:sf]%>
+				<% else %>
+					<%= f.association field[:attribute], field[:sf]%>
+				<% end %>
+			<% end %>
+		<% else %>
+			<% unless @model.reflect_on_association(field[:attribute]) %>
+				<% if field[:sf][:value] and field[:sf][:value].class == Proc %>
+					<%= field[:sf][:input_html] = {} %>
+					<%= field[:sf][:input_html][:value] = self.instance_eval &field[:sf][:value] %>
+				<% end %>
+				<%= f.input field[:attribute], field[:sf]%>
+			<% else %>
+				<%= f.association field[:attribute], field[:sf]%>
+			<% end %>
+		<% end %>
+	<% end %>
+	<div class="form-group">
+		<div class="col-sm-4 col-sm-offset-2">
+			<%= f.submit "Salvar", class: 'btn btn-primary' %>
+		</div>
+	</div>
+<% end %>

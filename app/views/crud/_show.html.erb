@@ -1,0 +1,38 @@
+<div class="widget-box">
+	<div class="widget-body">
+		<div class="widget-main">
+			<table class="table table-bordered table-striped">
+				<tbody>
+					<% @crud_helper.view_fields.each do |field|%>
+						<tr>
+							<% if field[:sf].present? && field[:sf][:label].present? %>
+								<th><%= field[:sf][:label].upcase.to_s %></th>
+							<% else %>
+								<th><%= field[:attribute].upcase.to_s %></th>
+							<% end %>
+							<% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type)%>
+								<% if field[:date_format].present?%>
+									<td><%= l @record.send(field[:attribute]).strftime(field[:date_format]) %></td>
+								<% else %>
+									<td><%= l @record.send(field[:attribute]) %></td>
+								<% end %>
+							<% elsif @model.reflect_on_association(field[:attribute]) &&  @model.reflect_on_association(field[:attribute]).macro != :belongs_to%>
+								<td>
+									<% @record.send(field[:attribute]).each do |rec| %>
+										<li>
+											<%= rec.to_s %>
+										</li>
+									<% end %>
+								</td>
+							<% elsif @record.send(field[:attribute]).respond_to?(:url) and @record.send(field[:attribute]).url(:thumb) %>
+								<td><%=  image_tag(@record.send(field[:attribute]).url(:thumb)) %></td>
+							<% else %>
+								<td><%= @record.send(field[:attribute]) %></td>
+							<% end %>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

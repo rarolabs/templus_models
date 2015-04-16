@@ -1,0 +1,18 @@
+<% if @crud_helper.scopes.present? %>
+	<% @crud_helper.scopes.each do |escopo| %>
+		<%= link_to "/crud/#{@model.name.underscore}?scope=#{escopo[0]}", id: "#{escopo[0]}", data: {push: true, crumb: 'wielka'} do%>
+			<div style="float: left; margin-left: 10px; min-width: 100px;">
+				<div class="widget style1 gray-bg">
+					<div class="row vertical-align text-center">
+						<h3 class="font-bold">
+							<%= escopo[1] %>
+							<span class="label label-success pull-right" style="margin-left: 10px;">
+								<%= @model.send(escopo[0]).count %>
+							</span>
+						</h3>
+					</div>
+				</div>
+			</div>
+			<%end%>
+	<% end %>
+<% end %>

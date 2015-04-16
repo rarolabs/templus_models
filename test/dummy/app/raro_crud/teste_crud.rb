@@ -10,4 +10,6 @@ class TesteCrud < RaroCrud
   campo_visualizacao :nome, label: "Nome"
   campo_busca :nome, label: "Nome"
   
+  escopos [[:raro, "Raro"], [:nao_raro, "Raro"]]
+  
 end

@@ -104,11 +104,7 @@ class CrudController < ApplicationController
     if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
       render :partial => params[:partial]
     else
-      if request[:controller] == "crud"
-        redirect_to "/#{request[:controller]}/#{params[:model]}"
-      else
-        redirect_to "/#{request[:controller]}"
-      end
+      render :index, controller: request[:controller]
     end
   end
 

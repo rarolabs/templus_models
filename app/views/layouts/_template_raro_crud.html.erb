@@ -16,15 +16,13 @@
 	</div>
 	<div class="col-lg-9">
 		<div class="pull-right">
-			<%= yield  :scopes %>
+			<% if content_for? :scopes %>
+				<%= yield  :scopes %>
+			<% end %>
 		</div>
 	</div>
 </div>
-<% if content_for? :scopes %>
-<div class="row wrapper border-bottom page-heading">
-	
-</div>
-<% end %>
+
 <div class="wrapper wrapper-content animated fadeInRight">
 	<div class="row">
 		<div class="col-lg-12">
@@ -62,3 +60,7 @@
 		</div>
 	</div>
 </div>
+<% if content_for? :modal %>
+	<%= yield  :modal %>
+<% end %>
+

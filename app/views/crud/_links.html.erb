@@ -1,8 +1,0 @@
-<% if @crud_helper.search_fields.present? %>
-	<%=raro_search_form(@model, 'records','records',"/crud/#{@model.name.underscore}/query") do%>
-		<%raro_group "#{@model.name}"%>
-		<%@crud_helper.search_fields.each do |att| %>
-			<%raro_field att[:attribute],att[:sf]%>
-		<%end%>
-	<%end%>
-<% end %>

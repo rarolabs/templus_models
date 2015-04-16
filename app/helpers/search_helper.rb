@@ -13,7 +13,7 @@ module SearchHelper
   private 
     
     def raro_submit(name)
-      "<div><input type='submit'class='btn btn-primary pull-right' value='#{name}'></div><br><br>"
+      "<div><input type='submit' class='btn btn-primary pull-right' value='#{name}' id='submit_raro_search'></div><br><br>"
     end
 
     def raro_field (name, opts = {})
@@ -166,11 +166,11 @@ module SearchHelper
         buff<<"<div class='col-sm-4'>"
         buff<<"<div class='col-sm-6'>"
         buff<<"<input id='q_#{name}' type='radio' name='q[#{name}_eq]' value='1' class='i-checks'/>"
-        buff<<"<span class='lbl'>Sim</span></label>"
+        buff<<"<span class='lbl'> Sim</span></label>"
         buff<<"</div>"
         buff<<"<div class='col-sm-6'>"
         buff<<"<input id='q_#{name}' type='radio' name='q[#{name}_eq]' value='0' class='i-checks'/>"
-        buff<<"<span class='lbl'>Não</span>"
+        buff<<"<span class='lbl'> Não</span>"
         buff<<"</div>"
         buff<<"</div>"
       end
@@ -192,9 +192,8 @@ module SearchHelper
     end
     
     def raro_before_form(model,partial,var,url,sort)
-      buffer = "<div id='search_box' class='search_box'>"+
-      "<form method='get' class=form-horizontal action='#{url}' "+
-      "onsubmit=\"$('#search_box').fadeToggle();window.scrollTo(0, 0);return true;\" data-push='partial' data-target='#form'>" +
+      buffer = "<div id='search_box'>"+
+      "<form method='get' class=form-horizontal action='#{url}' data-push='partial' data-target='#form'>" +
       "<input type='hidden' name='model' value='#{model}'>" + 
       "<input type='hidden' name='partial' value='#{partial}'>" +
       "<input type='hidden' name='var' value='#{var}'>"
@@ -210,6 +209,9 @@ module SearchHelper
     
     def raro_script
       "<script>
+      $('#submit_raro_search').click(function (){
+        $('#modal_search').modal('hide');
+      });
       </script>"
     end
   

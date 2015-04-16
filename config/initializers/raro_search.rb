@@ -1,3 +1,12 @@
+Ransack.configure do |config|
+  config.add_predicate 'in_string',
+    arel_predicate: 'in',
+    formatter: proc { |v| v.split(",") },
+    validator: proc { |v| v.present? },
+    compounds: true,
+    type: :string
+end
+
 module Kaminari
   module ActionViewExtension
     def paginate(scope, options = {}, &block)

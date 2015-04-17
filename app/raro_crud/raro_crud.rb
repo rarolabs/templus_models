@@ -246,7 +246,19 @@ class RaroCrud
   
   def self.grupo_formulario(attribute,fields)
     @@form_group[self.to_s.to_sym] ||= {}
-    @@form_group[self.to_s.to_sym][attribute] = fields
+    @@form_group[self.to_s.to_sym][attribute] ||= []
+    fields.each do |field|
+      value = {}
+      field.each do |atr|
+        if atr[0] == :campo
+          value[:attribute] = atr[1]
+        else
+          value[:sf] ||= {}
+          value[:sf][atr[0]] = atr[1]
+        end
+      end
+      @@form_group[self.to_s.to_sym][attribute].push({attribute: value[:attribute],sf: value[:sf]})
+    end
   end
 
 end

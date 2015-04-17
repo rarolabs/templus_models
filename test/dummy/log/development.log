@@ -5442,3 +5442,84 @@ ActionController::RoutingError (No route matches [GET] "/crud/teste1/4/destroy")
 
 
 Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-17 09:21:59 -0300
+
+
+Started GET "/crud/teste1/new" for ::1 at 2015-04-17 09:35:03 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (94.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.5ms)
+  [1m[35mTeste Load (0.2ms)[0m  SELECT "testes".* FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (1.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (9.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (113.8ms)
+Completed 200 OK in 328ms (Views: 314.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-17 09:35:03 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-17 09:35:03 -0300
+
+
+Started GET "/crud/teste1/new" for ::1 at 2015-04-17 09:35:07 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (3.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[36mTeste Load (0.3ms)[0m  [1mSELECT "testes".* FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (6.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 27ms (Views: 26.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-17 09:35:07 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-17 09:35:07 -0300
+
+
+Started POST "/crud/teste1/create" for ::1 at 2015-04-17 09:35:15 -0300
+Processing by CrudController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vSGYArVxkS0LbGPzc7ZZP4AVjAZc75vhvLTlMdn1TtgvwoGTXVeW6UQ+i9Q2g66f/8nDY2WqKEahqYb/RWsUzQ==", "teste1"=>{"teste_attributes"=>{"nome"=>"Teste2 Raro"}}, "commit"=>"Salvar", "model"=>"teste1"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "testes" ("nome", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["nome", "Teste2 Raro"], ["created_at", "2015-04-17 12:35:15.044051"], ["updated_at", "2015-04-17 12:35:15.044051"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "teste1s" ("teste_id", "created_at", "updated_at") VALUES (?, ?, ?)  [["teste_id", 7], ["created_at", "2015-04-17 12:35:15.049247"], ["updated_at", "2015-04-17 12:35:15.049247"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/crud/teste1
+Completed 302 Found in 16ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/crud/teste1" for ::1 at 2015-04-17 09:35:15 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste1 Load (0.2ms)[0m  SELECT  DISTINCT "teste1s".* FROM "teste1s"  ORDER BY "teste1s"."id" ASC LIMIT 25 OFFSET 0
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (2.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  [1m[36mTeste Load (0.3ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (3.9ms)
+  [1m[35mTeste Load (0.1ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 7]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.4ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "teste1s"."id") FROM "teste1s"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (26.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  [1m[35mTeste Load (0.2ms)[0m  SELECT "testes".* FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (35.2ms)
+Completed 200 OK in 47ms (Views: 44.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-17 09:35:15 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-17 09:35:15 -0300

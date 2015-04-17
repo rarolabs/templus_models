@@ -6,7 +6,7 @@ class Teste1Crud < RaroCrud
   campo_tabela :teste,  label: "Nome"
   
   grupo_formulario :teste, [
-    {attribute: :nome, sf: {label: "Nome"}}
+    {campo: :nome, label: "Nome"}
   ]
   campo_visualizacao :teste, label: "Nome"
   campo_busca :teste_id, label: "Nome"

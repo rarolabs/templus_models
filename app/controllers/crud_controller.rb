@@ -59,7 +59,9 @@ class CrudController < ApplicationController
   
   def create
     saved = false
-    
+    puts "**********************"
+    p params_permitt
+    puts "**********************"
     if params[:id]
       @record = @model.find(params[:id])
       saved = @record.update(params_permitt)
@@ -125,6 +127,13 @@ class CrudController < ApplicationController
       else
         fields << field[:attribute]
       end
+    end
+  	@crud_helper.form_groups.each do |key, groups|
+      group = {"#{key}_attributes" => []}
+  		groups.each do |field|
+        group["#{key}_attributes"] << field[:attribute]
+      end
+      fields << group
     end
     fields
   end

@@ -3,6 +3,7 @@ class RaroCrud
   @@per_page          = {}
   @@index_fields      = {}
   @@form_fields       = {}
+  @@form_group        = {}
   @@view_fields       = {}
   @@search_fields     = {}
   @@test_fields       = {}
@@ -99,6 +100,10 @@ class RaroCrud
 
   def self.form_fields
     (@@form_fields[self.to_s.to_sym]) ? @@form_fields[self.to_s.to_sym]  : []
+  end
+
+  def self.form_groups
+    (@@form_group[self.to_s.to_sym]) ? @@form_group[self.to_s.to_sym]  : []
   end
 
   def self.view_fields
@@ -237,6 +242,11 @@ class RaroCrud
   
   def self.escopos(scopes)
     @@scopes[self.to_s.to_sym] = scopes
+  end
+  
+  def self.grupo_formulario(attribute,fields)
+    @@form_group[self.to_s.to_sym] ||= {}
+    @@form_group[self.to_s.to_sym][attribute] = fields
   end
 
 end

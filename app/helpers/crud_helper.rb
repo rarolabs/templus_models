@@ -97,5 +97,28 @@ module CrudHelper
       javascript_tag "mensagem_#{tipo}('#{message}')"
     end
   end
-
+  
+  def render_field(field,f,modelo,record)
+    if !field[:sf][:edit].nil? || !field[:sf][:create].nil?
+      if !field[:sf][:edit].nil? && !field[:sf][:edit] && !record.new_record?
+      elsif !field[:sf][:create].nil? && !field[:sf][:create] && record.new_record? 
+      else 
+        unless modelo.reflect_on_association(field[:attribute]) 
+           f.input field[:attribute], field[:sf]
+        else 
+           f.association field[:attribute], field[:sf]
+        end 
+      end 
+    else 
+      unless modelo.reflect_on_association(field[:attribute]) 
+        if field[:sf][:value] and field[:sf][:value].class == Proc 
+           field[:sf][:input_html] = {} 
+           field[:sf][:input_html][:value] = self.instance_eval &field[:sf][:value] 
+        end 
+        f.input field[:attribute], field[:sf]
+      else 
+        f.association field[:attribute], field[:sf]
+      end 
+    end
+  end
 end

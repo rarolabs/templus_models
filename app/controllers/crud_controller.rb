@@ -53,7 +53,7 @@ class CrudController < ApplicationController
     else
       @titulo = @record.to_s
       @texto = params[:acao]
-      render "/papeis/#{params[:acao]}"
+      render partial: "/papeis/#{params[:acao]}"
     end
   end
   

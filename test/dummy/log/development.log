@@ -5864,3 +5864,965 @@ Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 13:03:37
 
 
 Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 13:03:37 -0300
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-20 14:25:29 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.3ms)
+  [1m[35mTeste Load (1.7ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (2.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (44.3ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (3.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (1.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (11.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (79.2ms)
+Completed 200 OK in 344ms (Views: 316.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/alert2.self.js?body=1" for ::1 at 2015-04-20 14:25:30 -0300
+
+
+Started GET "/assets/alert1.self.js?body=1" for ::1 at 2015-04-20 14:25:30 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:25:30 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:25:30 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:25:31 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (73.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (83.9ms)
+Completed 200 OK in 103ms (Views: 102.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:25:31 -0300
+
+
+Started GET "/assets/alert1.self.js?body=1" for ::1 at 2015-04-20 14:25:31 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:25:31 -0300
+
+
+Started GET "/assets/alert2.self.js?body=1" for ::1 at 2015-04-20 14:25:31 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:26:03 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (6.0ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (2.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (8.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 33ms (Views: 32.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:26:03 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:26:03 -0300
+
+
+Started GET "/assets/alert2.self.js?body=1" for ::1 at 2015-04-20 14:26:03 -0300
+
+
+Started GET "/assets/alert1.self.js?body=1" for ::1 at 2015-04-20 14:26:03 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:26:15 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (6.1ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (2.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (6.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 29ms (Views: 28.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/alert1.self.js?body=1" for ::1 at 2015-04-20 14:26:15 -0300
+
+
+Started GET "/assets/alert2.self.js?body=1" for ::1 at 2015-04-20 14:26:15 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:26:15 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:26:15 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:26:21 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (8.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 32ms (Views: 31.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:26:21 -0300
+
+
+Started GET "/assets/alert2.self.js?body=1" for ::1 at 2015-04-20 14:26:21 -0300
+
+
+Started GET "/assets/alert1.self.js?body=1" for ::1 at 2015-04-20 14:26:21 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:26:21 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:26:26 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (7.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 32ms (Views: 31.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:26:26 -0300
+
+
+Started GET "/javascripts/alert1.js,alert2.js" for ::1 at 2015-04-20 14:26:26 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/alert1.js,alert2.js"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.0ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (39.7ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (66.5ms)
+
+
+Started GET "/assets/alert2.self.js?body=1" for ::1 at 2015-04-20 14:26:26 -0300
+
+
+Started GET "/assets/alert1.self.js?body=1" for ::1 at 2015-04-20 14:26:26 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:26:26 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:27:10 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (12.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (15.1ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (Asset filtered out and will not be served: add `Rails.application.config.assets.precompile += %w( alert1.js )` to `config/initializers/assets.rb` and restart your server):
+    18: 	</div>
+    19: <% end %>
+    20: <% @crud_helper.form_scripts.each do |script| %>
+    21: <%= javascript_include_tag script %>
+    22: <% end %>
+  sprockets-rails (2.2.4) lib/sprockets/rails/helper.rb:193:in `check_errors_for'
+  sprockets-rails (2.2.4) lib/sprockets/rails/helper.rb:137:in `block in javascript_include_tag'
+  sprockets-rails (2.2.4) lib/sprockets/rails/helper.rb:136:in `map'
+  sprockets-rails (2.2.4) lib/sprockets/rails/helper.rb:136:in `javascript_include_tag'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:21:in `block in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb__629527203164894079_70191696078340'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:20:in `each'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:20:in `___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb__629527203164894079_70191696078340'
+  actionview (4.2.1) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.1) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:339:in `render_partial'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:310:in `block in render'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:309:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.2.1) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb:4:in `block in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud_new_html_erb__2829473187004049597_70191685460240'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:152:in `content_for'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb:1:in `___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud_new_html_erb__2829473187004049597_70191685460240'
+  actionview (4.2.1) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.1) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.1) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.1) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.2ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (23.0ms)
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:28:59 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (221.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (3.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (1.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (10.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (238.3ms)
+Completed 200 OK in 305ms (Views: 295.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:29:00 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:29:00 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:29:00 -0300
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:29:00 -0300
+
+
+Started GET "/javascripts/alert2.js" for ::1 at 2015-04-20 14:29:00 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/alert2.js"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.3ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (27.9ms)
+
+
+Started GET "/javascripts/alert1.js" for ::1 at 2015-04-20 14:29:00 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/alert1.js"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (20.9ms)
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:29:02 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (8.0ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 34ms (Views: 32.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/javascripts/alert2.js" for ::1 at 2015-04-20 14:29:02 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/alert2.js"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (22.4ms)
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:29:02 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:29:02 -0300
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:29:02 -0300
+
+
+Started GET "/javascripts/alert1.js" for ::1 at 2015-04-20 14:29:02 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/alert1.js"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.1ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (21.7ms)
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:29:02 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:29:27 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (17.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (27.4ms)
+Completed 200 OK in 41ms (Views: 40.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:29:27 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:29:27 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:29:27 -0300
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:29:27 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:29:42 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (9.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 48ms (Views: 47.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/javascripts/form/alert2.js" for ::1 at 2015-04-20 14:29:42 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/form/alert2.js"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (20.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:29:42 -0300
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:29:42 -0300
+
+
+Started GET "/assets/alert2.self.js?body=1" for ::1 at 2015-04-20 14:29:43 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:29:43 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:30:00 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (10.4ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (25.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (29.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (42.3ms)
+Completed 200 OK in 59ms (Views: 58.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:30:00 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:30:00 -0300
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:30:00 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:30:00 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:30:06 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (9.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (3.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (7.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (21.2ms)
+Completed 200 OK in 38ms (Views: 37.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:30:06 -0300
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:30:06 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:30:06 -0300
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:30:06 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:30:21 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (30.3ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (6.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (42.1ms)
+Completed 200 OK in 76ms (Views: 75.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:30:21 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:30:21 -0300
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:30:21 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:30:21 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:30:30 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:30:33 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (10.3ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (6.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 41ms (Views: 40.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:30:33 -0300
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:30:33 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:30:33 -0300
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:30:33 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:31:08 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (4.8ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 30ms (Views: 28.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:31:08 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:31:08 -0300
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:31:08 -0300
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:31:08 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:31:12 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (2.3ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 23ms (Views: 22.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:31:12 -0300
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:31:12 -0300
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:31:12 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:31:12 -0300
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-20 14:31:31 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste Load (0.3ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (2.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (24.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (2.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (33.3ms)
+Completed 200 OK in 47ms (Views: 44.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:31:31 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:31:31 -0300
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:31:31 -0300
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:31:31 -0300
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-20 14:31:37 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[35mTeste Load (0.4ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (14.5ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (2.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 33ms (Views: 31.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:31:37 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:31:37 -0300
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:31:37 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:31:37 -0300
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-20 14:32:14 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste Load (0.3ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."nome" ASC LIMIT 25 OFFSET 0
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (14.3ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (22.7ms)
+Completed 200 OK in 46ms (Views: 44.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:32:14 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:32:14 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:32:16 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (12.8ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 36ms (Views: 34.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:32:16 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:32:16 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-20 14:32:24 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (21.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "testes" WHERE (nome like '%raro%')
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "testes" WHERE (nome not like '%raro%')[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (1.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (30.7ms)
+Completed 200 OK in 43ms (Views: 42.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-20 14:32:24 -0300
+
+
+Started GET "/assets/form/alert2.self.js?body=1" for ::1 at 2015-04-20 14:32:24 -0300
+
+
+Started GET "/assets/form/alert1.self.js?body=1" for ::1 at 2015-04-20 14:32:24 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-20 14:32:24 -0300

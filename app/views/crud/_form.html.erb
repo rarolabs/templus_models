@@ -17,6 +17,6 @@
 		</div>
 	</div>
 <% end %>
-<script type="text/javascript">
-	<%= @crud_helper.form_script.html_safe %>
-</script>
+<% @crud_helper.form_scripts.each do |script| %>
+<%= javascript_include_tag "crud/#{script}" %>
+<% end %>

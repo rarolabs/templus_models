@@ -68,7 +68,10 @@ module CrudHelper
         permissions << permission
       end
     end
-    (permissions + raro_models).uniq.flatten
+    raro_models.each do |m|
+      permissions << m.name
+    end
+    permissions.uniq.flatten
   end
 
   def flash_messages_for

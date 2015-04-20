@@ -57,7 +57,7 @@ module CrudHelper
         models << m.constantize
       end
     end
-    models
+    models.uniq.flatten
   end
   
   def raro_permissions
@@ -68,7 +68,7 @@ module CrudHelper
         permissions << permission
       end
     end
-    permissions
+    (permissions + raro_models).uniq.flatten
   end
 
   def flash_messages_for

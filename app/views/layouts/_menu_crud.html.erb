@@ -2,7 +2,7 @@
 	<a href=""><i class="fa fa-edit"></i><span class="nav-label">Cadastros</span><span class="fa arrow"></span></a>
 	<ul class="nav nav-second-level <%= is_active_controller('crud') %>">
 		<% raro_models.each do |modelo| %>
-			<%= menu_helper_crud("#{modelo.name.underscore}", "/crud/#{modelo.name.underscore}", "#{modelo.name.downcase}_crud".camelize.constantize.title, modelo, 'edit') %>   
+			<%= menu_helper_crud("#{modelo.name.underscore}", "/crud/#{modelo.name.underscore}", "#{modelo.name.underscore}_crud".camelize.constantize.title, modelo, 'edit') %>   
 		<% end %>
 	</ul>
 </li>

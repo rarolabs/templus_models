@@ -4,6 +4,7 @@ class RaroCrud
   @@index_fields      = {}
   @@form_fields       = {}
   @@form_group        = {}
+  @@form_script       = {}
   @@view_fields       = {}
   @@search_fields     = {}
   @@test_fields       = {}
@@ -104,6 +105,10 @@ class RaroCrud
 
   def self.form_groups
     (@@form_group[self.to_s.to_sym]) ? @@form_group[self.to_s.to_sym]  : []
+  end
+
+  def self.form_script
+    (@@form_script[self.to_s.to_sym]) ? @@form_script[self.to_s.to_sym]  : ""
   end
 
   def self.view_fields
@@ -259,6 +264,10 @@ class RaroCrud
       end
       @@form_group[self.to_s.to_sym][attribute].push({attribute: value[:attribute],sf: value[:sf]})
     end
+  end
+  
+  def self.script_formulario(name,block)
+    @@form_script[self.to_s.to_sym] = block
   end
 
 end

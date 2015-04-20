@@ -7,6 +7,8 @@ class TesteCrud < RaroCrud
 
   campo_tabela :nome,  label: "Nome"
   campo_formulario :nome, label: "Nome"
+  script_formulario :console, "alert(\"Adicionando script\")"
+  
   campo_visualizacao :nome, label: "Nome"
   campo_busca :nome, label: "Nome"
   

@@ -2,6 +2,7 @@ class CrudController < ApplicationController
   before_filter :setup
 
   def index
+    authorize! :read, @model if respond_to?(:current_usuario)
     if params[:scope].present?
       @q = @model.send(params[:scope]).search(params[:q])
     else
@@ -15,7 +16,7 @@ class CrudController < ApplicationController
       end
     end
     if respond_to?(:current_usuario)
-      @records = @q.result(distinct: true).accessible_by(current_ability).page(params[:page]).per(@crud_helper.per_page)
+      @records = @q.result(distinct: true).accessible_by(current_ability, :read).page(params[:page]).per(@crud_helper.per_page)
     else
       @records = @q.result(distinct: true).page(params[:page]).per(@crud_helper.per_page)
     end
@@ -26,22 +27,25 @@ class CrudController < ApplicationController
   def setup
     @model = Module.const_get(params[:model].camelize)
     @crud_helper = Module.const_get("#{params[:model]}_crud".camelize)
-    authorize! :read, @model if respond_to?(:current_usuario)
   end
   
   def new
+    authorize! :create, @model if respond_to?(:current_usuario)
     @record = @model.new
   end
   
   def edit
+    authorize! :edit, @model if respond_to?(:current_usuario)
     @record = @model.find(params[:id])
   end
 
   def show
+    authorize! :read, @model if respond_to?(:current_usuario)
     @record = @model.find(params[:id])
   end
 
   def action
+    authorize! :create_or_update, @model if respond_to?(:current_usuario)
     @record = @model.find(params[:id])
     if @model.method_defined?(params[:acao])
       if @record.send(params[:acao])
@@ -58,6 +62,7 @@ class CrudController < ApplicationController
   end
   
   def create
+    authorize! :create, @model if respond_to?(:current_usuario)
     saved = false
     if params[:id]
       @record = @model.find(params[:id])
@@ -81,6 +86,7 @@ class CrudController < ApplicationController
   end
   
   def destroy
+    authorize! :destroy, @model if respond_to?(:current_usuario)
     @record = @model.find(params[:id])
     @record.destroy
     respond_to do |format|
@@ -91,6 +97,7 @@ class CrudController < ApplicationController
   end
   
   def query
+    authorize! :read, @model if respond_to?(:current_usuario)
     @resource = Module.const_get(params[:model].classify)
     @q = @resource.search(params[:q])
     @q.sorts = 'updated_at desc' if @q.sorts.empty?

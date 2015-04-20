@@ -266,9 +266,9 @@ class RaroCrud
     end
   end
   
-  def self.script_formulario(name,script)
+  def self.script_formulario(script)
     @@form_scripts[self.to_s.to_sym] ||= []
-    @@form_scripts[self.to_s.to_sym] << script
+    @@form_scripts[self.to_s.to_sym] << script.to_s
   end
 
 end

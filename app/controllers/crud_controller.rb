@@ -59,9 +59,6 @@ class CrudController < ApplicationController
   
   def create
     saved = false
-    puts "**********************"
-    p params_permitt
-    puts "**********************"
     if params[:id]
       @record = @model.find(params[:id])
       saved = @record.update(params_permitt)

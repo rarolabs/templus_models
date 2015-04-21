@@ -1,37 +1,33 @@
-class <%=nome%>Crud < RaroCrud
-  titulo "<%nome.pluralize%>"
+class <%=@model.name%>Crud < RaroCrud
+
+  titulo "<%=@model.name.pluralize%>"
   subtitulo "Subtitulo", :index
+  descricao "Descrição do Cadastro", :index
 
-  descricao "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", :index
-
-  link_superior "Novo <%=nome%>", id: "novo-button", icon: "plus", link: "new"
-
+  link_superior "Novo <%=@model.name%>", id: "novo-button", icon: "plus", link: "new"
+  
   ordenar_por :created_at
-  itens_por_pagina 5
-
+  itens_por_pagina 20
+  
   #Exemplo de acao customizada
   #acoes :associar, "Definir permissões", Proc.new {|p| Usuario.current.ability.can?(:create,p)}
-
+  
+  <%
+    @atributos = @model.attribute_names
+    @atributos.delete("id")
+  %>
   #Campos mostrados na index
-  <%campos.each do |campo| %>
-  campo_tabela <%=campo.to_sym%>,  label: "<%=campo.humanize%>"
-  <%end
-
+  <%@atributos.each do |atributo| %>campo_tabela :<%=atributo.to_sym%>,  label: "<%=atributo.humanize%>"<%="\n"%>  <%end%>
+  
   #Campos mostrados no formulários de cadastro
-  <%campos.each do |campo| %>
-  campo_formulario <%=campo.to_sym%>,  label: "<%=campo.humanize%>"
-  <%end
-  
+  <%@atributos.each do |atributo| %>campo_formulario :<%=atributo.to_sym%>,  label: "<%=atributo.humanize%>"<%="\n"%>  <%end%>
+
   #Campos mostrados na visualizacao
-  <%campos.each do |campo| %>
-  campo_visualizacao <%=campo.to_sym%>,  label: "<%=campo.humanize%>"
-  <%end
-  
+  <%@atributos.each do |atributo| %>campo_visualizacao :<%=atributo.to_sym%>,  label: "<%=atributo.humanize%>"<%="\n"%>  <%end%>
+
   #Campos mostrados na busca
-  <%campos.each do |campo| %>
-  campo_busca <%=campo.to_sym%>,  label: "<%=campo.humanize%>"
-  <%end
-  
+  <%@atributos.each do |atributo| %>campo_busca :<%=atributo.to_sym%>,  label: "<%=atributo.humanize%>"<%="\n"%>  <%end%>
+
   #Exemplos de customizacao
   # Datepicker
   # campo_formulario :data,  label: "Data", as: :string, input_html: {class: "datepicker"}
@@ -47,4 +43,6 @@ class <%=nome%>Crud < RaroCrud
   # campo_busca :nome, model: 'Grupo', full_name: 'grupos_nome', label: "Nome"
   # escopos
   # escopos [[:maiores_que_1000, "Maiores"], [:menores_que_1000, "Menores"], [:ativos, "Ativos"], [:nao_ativos, "Desativos"]]
+  
+
 end

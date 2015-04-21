@@ -1,42 +1,45 @@
-class TesteCrud < RaroCrud
+class VersionController < ApplicationController
+  VERSION_FILE = '../build-info/version.txt'
+  def display_version
+    path = File.join(RAILS_ROOT, VERSION_FILE)
+    render path
+  end
+end
 
-  titulo "Testes"
+class <%=nome%>Crud < RaroCrud
+  titulo "<%nome.pluralize%>"
   subtitulo "Subtitulo", :index
-  descricao "Descrição do Cadastro", :index
 
-  link_superior "Novo Teste", id: "novo-button", icon: "plus", link: "new"
-  
+  descricao "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", :index
+
+  link_superior "Novo <%=nome%>", id: "novo-button", icon: "plus", link: "new"
+
   ordenar_por :created_at
-  itens_por_pagina 20
-  
+  itens_por_pagina 5
+
   #Exemplo de acao customizada
   #acoes :associar, "Definir permissões", Proc.new {|p| Usuario.current.ability.can?(:create,p)}
-  
-  
+
   #Campos mostrados na index
-  campo_tabela :nome,  label: "Nome"
-  campo_tabela :created_at,  label: "Created at"
-  campo_tabela :updated_at,  label: "Updated at"
-  
-  
+  <%campos.each do |campo| %>
+  campo_tabela <%=campo.to_sym%>,  label: "<%=campo.humanize%>"
+  <%end
+
   #Campos mostrados no formulários de cadastro
-  campo_formulario :nome,  label: "Nome"
-  campo_formulario :created_at,  label: "Created at"
-  campo_formulario :updated_at,  label: "Updated at"
+  <%campos.each do |campo| %>
+  campo_formulario <%=campo.to_sym%>,  label: "<%=campo.humanize%>"
+  <%end
   
-
   #Campos mostrados na visualizacao
-  campo_visualizacao :nome,  label: "Nome"
-  campo_visualizacao :created_at,  label: "Created at"
-  campo_visualizacao :updated_at,  label: "Updated at"
+  <%campos.each do |campo| %>
+  campo_visualizacao <%=campo.to_sym%>,  label: "<%=campo.humanize%>"
+  <%end
   
-
   #Campos mostrados na busca
-  campo_busca :nome,  label: "Nome"
-  campo_busca :created_at,  label: "Created at"
-  campo_busca :updated_at,  label: "Updated at"
+  <%campos.each do |campo| %>
+  campo_busca <%=campo.to_sym%>,  label: "<%=campo.humanize%>"
+  <%end
   
-
   #Exemplos de customizacao
   # Datepicker
   # campo_formulario :data,  label: "Data", as: :string, input_html: {class: "datepicker"}
@@ -52,6 +55,4 @@ class TesteCrud < RaroCrud
   # campo_busca :nome, model: 'Grupo', full_name: 'grupos_nome', label: "Nome"
   # escopos
   # escopos [[:maiores_que_1000, "Maiores"], [:menores_que_1000, "Menores"], [:ativos, "Ativos"], [:nao_ativos, "Desativos"]]
-  
-
 end

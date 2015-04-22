@@ -8036,3 +8036,81 @@ Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 08:05:12 
 
 
 Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 08:05:12 -0300
+
+
+Started GET "/crud/teste1/new" for ::1 at 2015-04-22 09:15:42 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (11.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT "testes".* FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (6.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (21.7ms)
+Completed 200 OK in 74ms (Views: 63.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 09:15:42 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 09:15:42 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 09:15:42 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 09:15:46 -0300
+
+
+Started GET "/crud/teste1/new" for ::1 at 2015-04-22 09:17:21 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (4.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  [1m[35mTeste Load (0.3ms)[0m  SELECT "testes".* FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (6.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 77ms (Views: 76.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 09:17:21 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 09:17:21 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 09:17:21 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 09:17:21 -0300
+
+
+Started GET "/crud/teste1/new" for ::1 at 2015-04-22 09:17:27 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (6.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT "testes".* FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 29ms (Views: 28.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 09:17:27 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 09:17:27 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 09:17:27 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 09:17:27 -0300

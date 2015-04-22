@@ -9,4 +9,6 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+// 
+//= require jquery/jquery-2.1.1
+//= require jquery_nested_form

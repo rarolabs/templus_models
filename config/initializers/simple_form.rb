@@ -144,12 +144,30 @@ SimpleForm.setup do |config|
     b.use :html5
     b.wrapper :tag => 'div', :class => 'form-group' do |ba|
       ba.use :label, :class => 'col-sm-2 control-label'
-      ba.wrapper :tag => 'div', :class => 'col-sm-10' do |ba2|
+      ba.wrapper :tag => 'div', :class => 'col-sm-9' do |ba2|
         ba2.use :input, :class => 'form-control'
         ba2.use :error, :wrap_with => { :tag => 'span', :class => 'help-block m-b-none text-danger' }
         ba2.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block text-muted' }
       end
     end
   end
+
+  config.wrappers :with_button, class: :input, :tag => 'div', :error_class => 'has-error' do |b|
+    b.use :html5
+    b.wrapper :tag => 'div', :class => 'form-group' do |ba|
+      ba.use :label, :class => 'col-sm-2 control-label'
+      ba.wrapper :tag => 'div', :class => 'col-sm-9' do |ba2|
+        ba2.use :input, :class => 'form-control'
+        ba2.use :error, :wrap_with => { :tag => 'span', :class => 'help-block m-b-none text-danger' }
+        ba2.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block text-muted' }
+      end
+      ba.wrapper :tag => 'button', :class => "btn btn-success crud-new-record" do |ba2|
+        ba2.wrapper :tag => 'i' , :class => "fa fa-plus" do
+        end
+      end
+    end
+  end
+  
+  
 
 end

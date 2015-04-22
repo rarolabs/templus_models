@@ -63,24 +63,28 @@ class CrudController < ApplicationController
   
   def create
     authorize! :create, @model if respond_to?(:current_usuario)
-    saved = false
+    @saved = false
     if params[:id]
       @record = @model.find(params[:id])
-      saved = @record.update(params_permitt)
+      @saved = @record.update(params_permitt)
     else
       @record  =  @model.new(params_permitt)
-      saved = @record.save
+      @saved = @record.save
     end
     
     respond_to do |format|
-      if saved
+      if @saved
         flash[:success] = params[:id].present? ? "Cadastro alterado com sucesso." : "Cadastro efetuado com sucesso."
         format.html { redirect_to "/crud/#{@model.name.underscore}" }
-        format.js { render action: :index }
+        unless params[:render] == 'modal'
+          format.js { render action: :index }
+        else
+          format.js
+        end
       else
         action = (params[:id]) ? :edit : :new
         format.html { render action: action }
-        format.js { render action: action }
+        format.js
       end
     end
   end

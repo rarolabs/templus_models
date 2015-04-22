@@ -100,7 +100,12 @@ module CrudHelper
       javascript_tag "mensagem_#{tipo}('#{message}')"
     end
   end
-  
+
+  def render_plus_button(field,f,modelo,record)
+    field[:sf][:wrapper] = :with_button
+    render_field(field,f,modelo,record)
+  end
+    
   def render_field(field,f,modelo,record)
     if !field[:sf][:edit].nil? || !field[:sf][:create].nil?
       if !field[:sf][:edit].nil? && !field[:sf][:edit] && !record.new_record?

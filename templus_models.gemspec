@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "ransack", "~>1.6.3"
   s.add_dependency "kaminari", "~>0.16.2"
   s.add_dependency "simple_form", "~>3.1.0"
+  s.add_dependency "nested_form"
     
 
   s.add_development_dependency "sqlite3"

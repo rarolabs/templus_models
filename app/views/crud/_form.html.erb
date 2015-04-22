@@ -1,15 +1,26 @@
 <% url = "/crud/#{@model.name.underscore}/#{@record.new_record? ? 'create' : @record.id.to_s+'/create'}" %>
-<%= simple_form_for @record, remote: false, html: {class: "form-horizontal"}, url: url do |f| %>
+<%= simple_nested_form_for @record, remote: false, html: {class: "form-horizontal"}, url: url do |f| %>
 	<%= f.error_notification %>
-	<%@crud_helper.form_groups.each do |key, groups|%>			
-		<%= f.simple_fields_for key, key.to_s.camelize.constantize.new do |g| %>
-			<% groups.each do |field| %>
-				<%= render_field(field,g,@model,@record) %>
-			<% end %>
-		<% end %>
-	<% end %>
 	<%@crud_helper.form_fields.each do |field|%>
 		<%= render_field(field,f,@model,@record) %>
+	<% end %>
+	<%@crud_helper.form_groups.each do |key, groups|%>
+		<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
+			<%= f.simple_fields_for key, @record.send(key).build do |g| %>
+				<% groups.each do |field| %>
+					<%= render_field(field,g,@model,@record) %>
+				<% end %>
+				<%= g.link_to_remove 'remove' %>
+			<% end %>
+			<%= f.link_to_add 'Adicionar', key %>
+		<% else %>
+			<%= f.simple_fields_for key, @record.send("build_#{key}") do |g| %>
+				<% groups.each do |field| %>
+					<%= render_field(field,g,@model,@record) %>
+				<% end %>
+				<%= g.link_to_remove 'remove' %>
+			<% end %>
+		<% end %>
 	<% end %>
 	<div class="form-group">
 		<div class="col-sm-4 col-sm-offset-2">

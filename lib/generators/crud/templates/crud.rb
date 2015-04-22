@@ -15,6 +15,10 @@ class <%=@model.name%>Crud < RaroCrud
   <%
     @atributos = @model.attribute_names
     @atributos.delete("id")
+    @atributos.delete("created_at")
+    @atributos.delete("updated_at")
+    @atributos.map!{|e| e.gsub(/_id/,"")}
+    
   %>
   #Campos mostrados na index
   <%@atributos.each do |atributo| %>campo_tabela :<%=atributo.to_sym%>,  label: "<%=atributo.humanize%>"<%="\n"%>  <%end%>

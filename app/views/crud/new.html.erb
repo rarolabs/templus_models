@@ -1,5 +1,7 @@
 <% content_for :corpo do %>
-  <%= render "links" %>
+	<%unless params[:render] == 'modal'%>
+		<%= render "links" %>
+	<%end%>
   <div id="form">
     <%= render 'form' %>
   </div>

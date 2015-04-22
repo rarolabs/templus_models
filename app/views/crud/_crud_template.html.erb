@@ -1,30 +1,35 @@
-<% content_for :breadcumb do %>
-	<li class=""><%= link_to @crud_helper.title, @crud_helper.root_path %></li>
-<% end %>
-
-<% content_for :header do %>
-	<%=@crud_helper.title%>
-<% end %>
-
-<% content_for :scopes do %>
-	<%= render "/crud/scopes" %>
-<% end %>
-
-<% content_for :actions do %>
-	<% @crud_helper.top_links.each do |link| %>
-		<%=render_link(link)%>
-	<%end%>
-	<% if @crud_helper.search_fields.present? %>
-		<button id="button_search_<%=@model.name.underscore%>" class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#modal_search">
-			<i class="fa fa-search"></i>
-		</button>
+<%unless params[:render] == 'modal'%>
+	<% content_for :breadcumb do %>
+		<li class=""><%= link_to @crud_helper.title, @crud_helper.root_path %></li>
 	<% end %>
-<% end %>
+		
 
-<% content_for :modal do %>
-<% if @crud_helper.search_fields.present? %>
-	<%= render "/crud/search" %>
-<% end %>
-<% end %>
+	<% content_for :header do %>
+		<%=@crud_helper.title%>
+	<% end %>
+
+	<% content_for :scopes do %>
+		<%= render "/crud/scopes" %>
+	<% end %>
+
+
+	<% content_for :actions do %>
+		<% @crud_helper.top_links.each do |link| %>
+			<%=render_link(link)%>
+		<%end%>
+		<% if @crud_helper.search_fields.present? %>
+			<button id="button_search_<%=@model.name.underscore%>" class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#modal_search">
+				<i class="fa fa-search"></i>
+			</button>
+		<% end %>
+	<% end %>
+
+	<% content_for :modal do %>
+	<% if @crud_helper.search_fields.present? %>
+		<%= render "/crud/search" %>
+	<% end %>
+	<% end %>
+	
+<%end%>
 
 <%= render "layouts/template_raro_crud" %>

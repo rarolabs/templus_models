@@ -10,15 +10,27 @@
 				<% groups.each do |field| %>
 					<%= render_field(field,g,@model,@record) %>
 				<% end %>
-				<%= g.link_to_remove 'remove' %>
+				<div class="form-group">
+					<div class="col-sm-4 col-sm-offset-2">
+						<%= g.link_to_remove 'remove' %>
+					</div>
+				</div>
 			<% end %>
-			<%= f.link_to_add 'Adicionar', key %>
+			<div class="form-group">
+				<div class="col-sm-4 col-sm-offset-2">
+					<%= f.link_to_add 'Adicionar', key %>
+				</div>
+			</div>
 		<% else %>
 			<%= f.simple_fields_for key, @record.send("build_#{key}") do |g| %>
 				<% groups.each do |field| %>
 					<%= render_field(field,g,@model,@record) %>
 				<% end %>
-				<%= g.link_to_remove 'remove' %>
+				<div class="form-group">
+					<div class="col-sm-4 col-sm-offset-2">
+						<%= g.link_to_remove 'remove' %>
+					</div>
+				</div>
 			<% end %>
 		<% end %>
 	<% end %>

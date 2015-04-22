@@ -20,7 +20,7 @@
 <%= simple_nested_form_for @record, remote: remote_form, html: {class: "form-horizontal"}, url: url do |f| %>
 	<%= f.error_notification %>
 	<%@crud_helper.form_fields.each do |field|%>
-		<% if @model.reflect_on_association(field[:attribute]).class == ActiveRecord::Reflection::BelongsToReflection %>
+		<% if @model.reflect_on_association(field[:attribute]).class == ActiveRecord::Reflection::BelongsToReflection and is_raro_crud(field[:attribute]) %>
 				<%= render_plus_button(field,f,@model,@record) %>
 		<%else%>
 				<%= render_field(field,f,@model,@record) %>

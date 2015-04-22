@@ -8,6 +8,15 @@ module CrudHelper
       params[:action] == action_name ? "active" : nil
   end
   
+  def is_raro_crud(attribute)
+    if(Rails.env == "production")
+      @@cruds = Dir[Rails.root.join("app","raro_crud","*.rb")].map{|f| f.split(/\//).last.gsub(/_crud\.rb/,'')} unless @@cruds
+    else
+      @@cruds = Dir[Rails.root.join("app","raro_crud","*.rb")].map{|f| f.split(/\//).last.gsub(/_crud\.rb/,'')}
+    end
+    return @@cruds.include?(attribute.to_s)
+  end
+  
   def menu_helper_crud(modelo, url, nome, classe,icon='')
     if can?(:read, classe)
       buffer = ""

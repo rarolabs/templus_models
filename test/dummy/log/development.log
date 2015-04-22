@@ -8036,3 +8036,1906 @@ Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 08:05:12 
 
 
 Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 08:05:12 -0300
+
+
+Started GET "/crud/teste1/new" for ::1 at 2015-04-22 09:15:42 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (11.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT "testes".* FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (6.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (21.7ms)
+Completed 200 OK in 74ms (Views: 63.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 09:15:42 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 09:15:42 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 09:15:42 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 09:15:46 -0300
+
+
+Started GET "/crud/teste1/new" for ::1 at 2015-04-22 09:17:21 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (4.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  [1m[35mTeste Load (0.3ms)[0m  SELECT "testes".* FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (6.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 77ms (Views: 76.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 09:17:21 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 09:17:21 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 09:17:21 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 09:17:21 -0300
+
+
+Started GET "/crud/teste1/new" for ::1 at 2015-04-22 09:17:27 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (6.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT "testes".* FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 29ms (Views: 28.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 09:17:27 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 09:17:27 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 09:17:27 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 09:17:27 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTeste1s (20150416220930)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  DROP TABLE "teste1s"
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150416220930"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTeste1s (20150416220930)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "teste1s" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "descricao" varchar, "teste_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_teste1s_on_teste_id" ON "teste1s" ("teste_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150416220930"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_teste1s_on_teste_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_teste1s_on_teste_id' AND type='index'
+[0m
+
+
+Started GET "/" for ::1 at 2015-04-22 10:04:38 -0300
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/railties-4.2.1/lib/rails/templates/rails/welcome/index.html.erb (2.6ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-22 10:04:41 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[36mTeste Load (0.6ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (5.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  [1m[35m (0.3ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (53.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (7.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (66.2ms)
+Completed 200 OK in 114ms (Views: 91.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:04:41 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:04:41 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:04:41 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:04:41 -0300
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-22 10:04:42 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[36mTeste Load (0.4ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  [1m[35m (0.4ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (22.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (31.6ms)
+Completed 200 OK in 54ms (Views: 52.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:04:42 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:04:42 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:04:42 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:04:42 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-22 10:04:44 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (18.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (22.2ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (Invalid association. Make sure that accepts_nested_attributes_for is used for :teste1 association.):
+    18: 			<% end %>
+    19: 			<div class="form-group">
+    20: 				<div class="col-sm-12">
+    21: 					<%= f.link_to_add 'Adicionar', key %>
+    22: 				</div>
+    23: 			</div>
+    24: 		<% else %>
+  nested_form (0.3.2) lib/nested_form/builder_mixin.rb:24:in `link_to_add'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:21:in `block (2 levels) in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173433292200'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:7:in `each'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:7:in `block in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173433292200'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  nested_form (0.3.2) lib/nested_form/view_helper.rb:16:in `block in simple_nested_form_for'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:444:in `form_for'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:26:in `block in simple_form_for'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:45:in `with_simple_form_field_error_proc'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:25:in `simple_form_for'
+  nested_form (0.3.2) lib/nested_form/view_helper.rb:15:in `simple_nested_form_for'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:2:in `___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173433292200'
+  actionview (4.2.1) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.1) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:339:in `render_partial'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:310:in `block in render'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:309:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.2.1) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb:4:in `block in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud_new_html_erb___1560400372475747724_70173443507880'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:152:in `content_for'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb:1:in `___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud_new_html_erb___1560400372475747724_70173443507880'
+  actionview (4.2.1) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.1) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.1) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.1) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.0ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (30.0ms)
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-22 10:05:00 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (29.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (6.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (40.5ms)
+Completed 200 OK in 67ms (Views: 55.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:05:01 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:05:01 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:05:01 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:05:01 -0300
+
+
+Started POST "/crud/teste/create" for ::1 at 2015-04-22 10:05:22 -0300
+Processing by CrudController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WELRcUTY293GU32qhGDHU2lIipvUgxD6RszTKuiJfFZGkG9pY33Uez9BiRWWNLpqhBBKooV+CD8KwWAgj1qcQA==", "teste"=>{"nome"=>"Teste Nested", "teste1_attributes"=>{"1429707903098"=>{"descricao"=>"Descricao1", "_destroy"=>"false"}, "1429707905741"=>{"descricao"=>"Descricao2", "_destroy"=>"false"}}}, "commit"=>"Salvar", "model"=>"teste"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "testes" ("nome", "created_at", "updated_at") VALUES (?, ?, ?)  [["nome", "Teste Nested"], ["created_at", "2015-04-22 13:05:22.156970"], ["updated_at", "2015-04-22 13:05:22.156970"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "teste1s" ("descricao", "teste_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["descricao", "Descricao1"], ["teste_id", 9], ["created_at", "2015-04-22 13:05:22.159495"], ["updated_at", "2015-04-22 13:05:22.159495"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "teste1s" ("descricao", "teste_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["descricao", "Descricao2"], ["teste_id", 9], ["created_at", "2015-04-22 13:05:22.160971"], ["updated_at", "2015-04-22 13:05:22.160971"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:4000/crud/teste
+Completed 302 Found in 13ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-22 10:05:22 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste Load (0.3ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (21.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (29.4ms)
+Completed 200 OK in 49ms (Views: 47.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:05:22 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:05:22 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:05:22 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:05:22 -0300
+
+
+Started GET "/crud/teste/9/edit" for ::1 at 2015-04-22 10:05:24 -0300
+Processing by CrudController#edit as HTML
+  Parameters: {"model"=>"teste", "id"=>"9"}
+  [1m[35mTeste Load (0.2ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[36mTeste1 Load (0.2ms)[0m  [1mSELECT "teste1s".* FROM "teste1s" WHERE "teste1s"."teste_id" = ?[0m  [["teste_id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (14.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/edit.html.erb within layouts/application (21.7ms)
+Completed 200 OK in 46ms (Views: 38.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:05:24 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:05:24 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:05:25 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:05:25 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-22 10:07:36 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (5.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 30ms (Views: 29.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:07:36 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:07:36 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:07:36 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:07:36 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-22 10:11:28 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (19.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (21.0ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined method `new_record?' for #<#<Class:0x007fa511cb0c10>:0x007fa511cb0120>):
+     5: 		<%= render_field(field,f,@model,@record) %>
+     6: 	<% end %>
+     7: 	<%@crud_helper.form_groups.each do |key, groups|%>
+     8: 		<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) && new_record? %>
+     9: 			<%= @record.send(key).build %>
+    10: 		<% end %>
+    11: 		<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:8:in `block (2 levels) in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173429719620'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:7:in `each'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:7:in `block in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173429719620'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  nested_form (0.3.2) lib/nested_form/view_helper.rb:16:in `block in simple_nested_form_for'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:444:in `form_for'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:26:in `block in simple_form_for'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:45:in `with_simple_form_field_error_proc'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:25:in `simple_form_for'
+  nested_form (0.3.2) lib/nested_form/view_helper.rb:15:in `simple_nested_form_for'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:2:in `___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173429719620'
+  actionview (4.2.1) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.1) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:339:in `render_partial'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:310:in `block in render'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:309:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.2.1) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb:4:in `block in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud_new_html_erb___1560400372475747724_70173443507880'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:152:in `content_for'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb:1:in `___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud_new_html_erb___1560400372475747724_70173443507880'
+  actionview (4.2.1) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.1) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.1) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.1) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.9ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (26.7ms)
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-22 10:11:36 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (24.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (33.6ms)
+Completed 200 OK in 50ms (Views: 49.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:11:36 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:11:36 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:11:36 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:11:36 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-22 10:11:43 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (9.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 33ms (Views: 32.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:11:43 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:11:43 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:11:43 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:11:43 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-22 10:12:04 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (9.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (12.2ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `has_attribute?' for #<Teste1::ActiveRecord_Associations_CollectionProxy:0x007fa50d173d10>):
+    10: 		<% end %>
+    11: 		<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
+    12: 			<%= f.simple_fields_for @record.send(key) do |g| %>
+    13: 				<%= render_nested_field(groups,g,@model,@record) %>
+    14: 				<div class="form-group">
+    15: 					<div class="col-sm-10 col-sm-offset-2">
+    16: 						<%= g.link_to_remove 'remove' %>
+  activerecord (4.2.1) lib/active_record/relation/delegation.rb:136:in `method_missing'
+  activerecord (4.2.1) lib/active_record/relation/delegation.rb:99:in `method_missing'
+  simple_form (3.1.0) lib/simple_form/form_builder.rb:546:in `find_attribute_column'
+  simple_form (3.1.0) lib/simple_form/form_builder.rb:496:in `find_input'
+  simple_form (3.1.0) lib/simple_form/form_builder.rb:112:in `input'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/helpers/crud_helper.rb:121:in `render_field'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/helpers/crud_helper.rb:130:in `block in render_nested_field'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/helpers/crud_helper.rb:129:in `each'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/helpers/crud_helper.rb:129:in `render_nested_field'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:13:in `block (3 levels) in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173444380000'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:714:in `fields_for'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:1598:in `fields_for'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/builder.rb:27:in `simple_fields_for'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:12:in `block (2 levels) in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173444380000'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:7:in `each'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:7:in `block in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173444380000'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  nested_form (0.3.2) lib/nested_form/view_helper.rb:16:in `block in simple_nested_form_for'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:444:in `form_for'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:26:in `block in simple_form_for'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:45:in `with_simple_form_field_error_proc'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:25:in `simple_form_for'
+  nested_form (0.3.2) lib/nested_form/view_helper.rb:15:in `simple_nested_form_for'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:2:in `___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173444380000'
+  actionview (4.2.1) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.1) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:339:in `render_partial'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:310:in `block in render'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:309:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.2.1) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb:4:in `block in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud_new_html_erb___1560400372475747724_70173443507880'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:152:in `content_for'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb:1:in `___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud_new_html_erb___1560400372475747724_70173443507880'
+  actionview (4.2.1) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.1) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.1) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.1) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (19.3ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (41.0ms)
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-22 10:12:16 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (10.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (13.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (30.2ms)
+Completed 200 OK in 49ms (Views: 48.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:12:16 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:12:16 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:12:16 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:12:16 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-22 10:12:51 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (25.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (27.3ms)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 0.7ms)
+
+ActionView::Template::Error (undefined local variable or method `modelo' for #<#<Class:0x007fa512951b90>:0x007fa512951078>):
+    11: 		<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
+    12: 			<%= f.simple_fields_for key do |g| %>
+    13: 				<% groups.each do |field| %>
+    14: 					<%= render_field(field,g,modelo,record) %>
+    15: 				<% end %>
+    16: 				<div class="form-group">
+    17: 					<div class="col-sm-10 col-sm-offset-2">
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:14:in `block (4 levels) in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173429574360'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:13:in `each'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:13:in `block (3 levels) in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173429574360'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:1924:in `block in fields_for_nested_model'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:714:in `fields_for'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:1923:in `fields_for_nested_model'
+  nested_form (0.3.2) lib/nested_form/builder_mixin.rb:98:in `fields_for_nested_model'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:1909:in `block in fields_for_with_nested_attributes'
+  activerecord (4.2.1) lib/active_record/relation/delegation.rb:46:in `each'
+  activerecord (4.2.1) lib/active_record/relation/delegation.rb:46:in `each'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:1907:in `fields_for_with_nested_attributes'
+  nested_form (0.3.2) lib/nested_form/builder_mixin.rb:87:in `fields_for_with_nested_attributes'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:1581:in `fields_for'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/builder.rb:27:in `simple_fields_for'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:12:in `block (2 levels) in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173429574360'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:7:in `each'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:7:in `block in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173429574360'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  nested_form (0.3.2) lib/nested_form/view_helper.rb:16:in `block in simple_nested_form_for'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/form_helper.rb:444:in `form_for'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:26:in `block in simple_form_for'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:45:in `with_simple_form_field_error_proc'
+  simple_form (3.1.0) lib/simple_form/action_view_extensions/form_helper.rb:25:in `simple_form_for'
+  nested_form (0.3.2) lib/nested_form/view_helper.rb:15:in `simple_nested_form_for'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb:2:in `___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud__form_html_erb___2919186449210214621_70173429574360'
+  actionview (4.2.1) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.1) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:339:in `render_partial'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:310:in `block in render'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/partial_renderer.rb:309:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.2.1) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb:4:in `block in ___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud_new_html_erb___1560400372475747724_70173443507880'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.1) lib/action_view/helpers/capture_helper.rb:152:in `content_for'
+  /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb:1:in `___sers_leonardo__rojetos_aro_engines_templus_models_app_views_crud_new_html_erb___1560400372475747724_70173443507880'
+  actionview (4.2.1) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.1) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.1) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.1) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.1) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/leonardo/.rvm/rubies/ruby-2.1.4/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.5ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.3ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.6ms)
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-22 10:13:02 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (14.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 34ms (Views: 34.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:13:02 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:13:02 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:13:02 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:13:02 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-22 10:14:01 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (10.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 33ms (Views: 32.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:14:01 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:14:01 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:14:01 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:14:01 -0300
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-22 10:14:03 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste Load (0.3ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (22.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (27.7ms)
+Completed 200 OK in 48ms (Views: 46.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:14:03 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:14:03 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:14:03 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:14:03 -0300
+
+
+Started GET "/crud/teste/9/edit" for ::1 at 2015-04-22 10:14:05 -0300
+Processing by CrudController#edit as HTML
+  Parameters: {"model"=>"teste", "id"=>"9"}
+  [1m[35mTeste Load (0.3ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[36mTeste1 Load (0.3ms)[0m  [1mSELECT "teste1s".* FROM "teste1s" WHERE "teste1s"."teste_id" = ?[0m  [["teste_id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (13.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/edit.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 44ms (Views: 41.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:14:05 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:14:05 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:14:05 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:14:05 -0300
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-22 10:14:07 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[35mTeste Load (0.3ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.8ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (21.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 45ms (Views: 42.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:14:07 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:14:07 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:14:07 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:14:07 -0300
+
+
+Started GET "/crud/teste1" for ::1 at 2015-04-22 10:14:12 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.2ms)
+  [1m[35mTeste1 Load (0.2ms)[0m  SELECT  DISTINCT "teste1s".* FROM "teste1s"  ORDER BY "teste1s"."id" ASC LIMIT 25 OFFSET 0
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (3.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "teste1s"."id") FROM "teste1s"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (13.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[35mTeste Load (0.2ms)[0m  SELECT "testes".* FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 37ms (Views: 34.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:14:13 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:14:13 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:14:13 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:14:13 -0300
+
+
+Started GET "/crud/teste1/1" for ::1 at 2015-04-22 10:14:17 -0300
+Processing by CrudController#show as HTML
+  Parameters: {"model"=>"teste1", "id"=>"1"}
+  [1m[36mTeste1 Load (0.2ms)[0m  [1mSELECT  "teste1s".* FROM "teste1s" WHERE "teste1s"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[35mTeste Load (0.1ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_show.html.erb (1.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT "testes".* FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/show.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 36ms (Views: 34.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:14:17 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:14:17 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:14:17 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:14:17 -0300
+
+
+Started GET "/crud/teste1" for ::1 at 2015-04-22 10:14:23 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste1 Load (0.2ms)[0m  SELECT  DISTINCT "teste1s".* FROM "teste1s"  ORDER BY "teste1s"."id" ASC LIMIT 25 OFFSET 0
+  [1m[36mTeste Load (0.1ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.4ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "teste1s"."id") FROM "teste1s"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (10.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[35mTeste Load (0.1ms)[0m  SELECT "testes".* FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:14:23 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:14:23 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:14:23 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:14:23 -0300
+
+
+Started GET "/crud/teste1/1/edit" for ::1 at 2015-04-22 10:14:25 -0300
+Processing by CrudController#edit as HTML
+  Parameters: {"model"=>"teste1", "id"=>"1"}
+  [1m[36mTeste1 Load (0.1ms)[0m  [1mSELECT  "teste1s".* FROM "teste1s" WHERE "teste1s"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[35mTeste Load (0.2ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (6.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT "testes".* FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/edit.html.erb within layouts/application (26.6ms)
+Completed 200 OK in 49ms (Views: 48.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:14:25 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:14:25 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:14:25 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:14:25 -0300
+
+
+Started GET "/crud/teste1/new" for ::1 at 2015-04-22 10:14:28 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (5.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[35mTeste Load (0.4ms)[0m  SELECT "testes".* FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 33ms (Views: 32.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:14:28 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:14:28 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:14:28 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:14:28 -0300
+
+
+Started GET "/crud/teste1/1/edit" for ::1 at 2015-04-22 10:14:35 -0300
+Processing by CrudController#edit as HTML
+  Parameters: {"model"=>"teste1", "id"=>"1"}
+  [1m[36mTeste1 Load (0.1ms)[0m  [1mSELECT  "teste1s".* FROM "teste1s" WHERE "teste1s"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste Load (0.1ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (4.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT "testes".* FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/edit.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 28ms (Views: 27.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:14:35 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:14:35 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:14:35 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:14:35 -0300
+
+
+Started GET "/crud/teste1/new" for ::1 at 2015-04-22 10:15:07 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (6.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[35mTeste Load (0.2ms)[0m  SELECT "testes".* FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 31ms (Views: 30.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:15:07 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:15:07 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:15:07 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:15:07 -0300
+
+
+Started GET "/crud/teste1" for ::1 at 2015-04-22 10:15:11 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[36mTeste1 Load (0.2ms)[0m  [1mSELECT  DISTINCT "teste1s".* FROM "teste1s"  ORDER BY "teste1s"."id" ASC LIMIT 25 OFFSET 0[0m
+  [1m[35mTeste Load (0.1ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.4ms)
+  [1m[35m (0.2ms)[0m  SELECT DISTINCT COUNT(DISTINCT "teste1s"."id") FROM "teste1s"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (15.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT "testes".* FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (22.5ms)
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:15:11 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:15:11 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:15:11 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:15:11 -0300
+
+
+Started GET "/crud/teste1/2/edit" for ::1 at 2015-04-22 10:15:14 -0300
+Processing by CrudController#edit as HTML
+  Parameters: {"model"=>"teste1", "id"=>"2"}
+  [1m[35mTeste1 Load (0.2ms)[0m  SELECT  "teste1s".* FROM "teste1s" WHERE "teste1s"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[36mTeste Load (0.1ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (4.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[35mTeste Load (0.2ms)[0m  SELECT "testes".* FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/edit.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 31ms (Views: 29.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:15:14 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:15:14 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:15:14 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:15:14 -0300
+
+
+Started PATCH "/crud/teste1/2/create" for ::1 at 2015-04-22 10:15:17 -0300
+Processing by CrudController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AvR96VQiIwsrEkwbrtfzrTa10NhGWEepkrP8bQeF98ocJsPxc4csrdIAuKS8g46U2+0Q4RelX2zevk9nYFYX3A==", "teste1"=>{"teste_attributes"=>{"nome"=>"Teste Nested2", "id"=>"9"}}, "commit"=>"Salvar", "model"=>"teste1", "id"=>"2"}
+  [1m[36mTeste1 Load (0.2ms)[0m  [1mSELECT  "teste1s".* FROM "teste1s" WHERE "teste1s"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTeste Load (0.1ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mSQL (0.3ms)[0m  UPDATE "testes" SET "nome" = ?, "updated_at" = ? WHERE "testes"."id" = ?  [["nome", "Teste Nested2"], ["updated_at", "2015-04-22 13:15:17.639047"], ["id", 9]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:4000/crud/teste1
+Completed 302 Found in 9ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/crud/teste1" for ::1 at 2015-04-22 10:15:17 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste1"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste1 Load (0.2ms)[0m  SELECT  DISTINCT "teste1s".* FROM "teste1s"  ORDER BY "teste1s"."id" ASC LIMIT 25 OFFSET 0
+  [1m[36mTeste Load (0.1ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "teste1s"."id") FROM "teste1s"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (8.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  [1m[35mTeste Load (0.2ms)[0m  SELECT "testes".* FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 32ms (Views: 30.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:15:17 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:15:17 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:15:17 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:15:17 -0300
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-22 10:15:23 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[36mTeste Load (0.3ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  [1m[35m (0.3ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (33.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 55ms (Views: 52.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:15:23 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:15:23 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:15:23 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:15:23 -0300
+
+
+Started GET "/crud/teste/9/edit" for ::1 at 2015-04-22 10:15:25 -0300
+Processing by CrudController#edit as HTML
+  Parameters: {"model"=>"teste", "id"=>"9"}
+  [1m[36mTeste Load (0.1ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste1 Load (0.1ms)[0m  SELECT "teste1s".* FROM "teste1s" WHERE "teste1s"."teste_id" = ?  [["teste_id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (13.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/edit.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 38ms (Views: 36.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:15:25 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:15:25 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:15:25 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:15:25 -0300
+
+
+Started PATCH "/crud/teste/9/create" for ::1 at 2015-04-22 10:15:28 -0300
+Processing by CrudController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MbaQkrFQ4wT7pItf1y3HSz5ihqj8JXHkP4adm/N/k30vZC6KlvXsogK2f+DFebpy0zpGka3YaSFziy6RlKxzaw==", "teste"=>{"nome"=>"Teste Nested2", "teste1_attributes"=>{"0"=>{"descricao"=>"Descricao1", "_destroy"=>"false", "id"=>"1"}, "1"=>{"descricao"=>"Descricao2", "_destroy"=>"1", "id"=>"2"}}}, "commit"=>"Salvar", "model"=>"teste", "id"=>"9"}
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTeste1 Load (0.3ms)[0m  [1mSELECT "teste1s".* FROM "teste1s" WHERE "teste1s"."teste_id" = ? AND "teste1s"."id" IN (1, 2)[0m  [["teste_id", 9]]
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:4000/crud/teste
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-22 10:15:28 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[36mTeste Load (0.5ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.8ms)
+  [1m[35m (0.3ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (22.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (27.7ms)
+Completed 200 OK in 44ms (Views: 42.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:15:28 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:15:28 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:15:28 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:15:28 -0300
+
+
+Started GET "/crud/teste/9/edit" for ::1 at 2015-04-22 10:15:30 -0300
+Processing by CrudController#edit as HTML
+  Parameters: {"model"=>"teste", "id"=>"9"}
+  [1m[36mTeste Load (0.3ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste1 Load (0.2ms)[0m  SELECT "teste1s".* FROM "teste1s" WHERE "teste1s"."teste_id" = ?  [["teste_id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (14.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/edit.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 39ms (Views: 37.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:15:30 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:15:30 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:15:30 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:15:30 -0300
+
+
+Started PATCH "/crud/teste/9/create" for ::1 at 2015-04-22 10:17:05 -0300
+Processing by CrudController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PC8E4SkRA00cO1rD5YmeWDNt9nm0iBuRPhuThvw6Kyki/br5DrQM6+Uprnz33eNh3jU2QOV1A1RyFiCMm+nLPw==", "teste"=>{"nome"=>"Teste Nested2", "teste1_attributes"=>{"0"=>{"descricao"=>"Descricao1", "_destroy"=>"false", "id"=>"1"}, "1"=>{"descricao"=>"Descricao2", "_destroy"=>"1", "id"=>"2"}}}, "commit"=>"Salvar", "model"=>"teste", "id"=>"9"}
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTeste1 Load (0.2ms)[0m  [1mSELECT "teste1s".* FROM "teste1s" WHERE "teste1s"."teste_id" = ? AND "teste1s"."id" IN (1, 2)[0m  [["teste_id", 9]]
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "teste1s" WHERE "teste1s"."id" = ?  [["id", 2]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:4000/crud/teste
+Completed 302 Found in 24ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-22 10:17:05 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste Load (0.3ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (22.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (7.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (33.1ms)
+Completed 200 OK in 63ms (Views: 61.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:17:05 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:17:05 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:17:05 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:17:05 -0300
+
+
+Started GET "/crud/teste/9/edit" for ::1 at 2015-04-22 10:17:10 -0300
+Processing by CrudController#edit as HTML
+  Parameters: {"model"=>"teste", "id"=>"9"}
+  [1m[35mTeste Load (0.2ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[36mTeste1 Load (0.2ms)[0m  [1mSELECT "teste1s".* FROM "teste1s" WHERE "teste1s"."teste_id" = ?[0m  [["teste_id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (11.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.4ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/edit.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:17:10 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:17:10 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:17:10 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:17:10 -0300
+
+
+Started PATCH "/crud/teste/9/create" for ::1 at 2015-04-22 10:17:22 -0300
+Processing by CrudController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XqM/KbS3H7nea26NenSXR7yijdsHj52Dbd+4fNDCY21AcYExkxIQHyd5mjJoIOp+UfpN4lZyhUYh0gt2txGDew==", "teste"=>{"nome"=>"Teste Nested2", "teste1_attributes"=>{"0"=>{"descricao"=>"Descricao1", "_destroy"=>"false", "id"=>"1"}, "1429708632012"=>{"descricao"=>"Descricao2", "_destroy"=>"false"}, "1429708637457"=>{"descricao"=>"Descricao3", "_destroy"=>"false"}}}, "commit"=>"Salvar", "model"=>"teste", "id"=>"9"}
+  [1m[35mTeste Load (0.2ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTeste1 Load (0.2ms)[0m  SELECT "teste1s".* FROM "teste1s" WHERE "teste1s"."teste_id" = ? AND "teste1s"."id" = 1  [["teste_id", 9]]
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "teste1s" ("descricao", "teste_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["descricao", "Descricao2"], ["teste_id", 9], ["created_at", "2015-04-22 13:17:22.457072"], ["updated_at", "2015-04-22 13:17:22.457072"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "teste1s" ("descricao", "teste_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["descricao", "Descricao3"], ["teste_id", 9], ["created_at", "2015-04-22 13:17:22.459347"], ["updated_at", "2015-04-22 13:17:22.459347"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:4000/crud/teste
+Completed 302 Found in 14ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-22 10:17:22 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[35mTeste Load (0.3ms)[0m  SELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (24.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (31.7ms)
+Completed 200 OK in 49ms (Views: 46.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:17:22 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:17:22 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:17:22 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:17:22 -0300
+
+
+Started GET "/crud/teste/9/edit" for ::1 at 2015-04-22 10:17:24 -0300
+Processing by CrudController#edit as HTML
+  Parameters: {"model"=>"teste", "id"=>"9"}
+  [1m[35mTeste Load (0.2ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[36mTeste1 Load (0.1ms)[0m  [1mSELECT "teste1s".* FROM "teste1s" WHERE "teste1s"."teste_id" = ?[0m  [["teste_id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (16.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/edit.html.erb within layouts/application (23.6ms)
+Completed 200 OK in 42ms (Views: 41.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:17:24 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:17:24 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:17:24 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:17:24 -0300
+
+
+Started PATCH "/crud/teste/9/create" for ::1 at 2015-04-22 10:17:30 -0300
+Processing by CrudController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bP3u7q5BZ20j8HacwCzrvfVNs1xYzKQsX+ZcDLfVqqFyL1D2ieRoy9rigiPSeJaEGBVzZQkxvOkT6+8G0AZKtw==", "teste"=>{"nome"=>"Teste Nested2", "teste1_attributes"=>{"0"=>{"descricao"=>"Descricao4", "_destroy"=>"false", "id"=>"1"}, "1"=>{"descricao"=>"Descricao5", "_destroy"=>"false", "id"=>"3"}, "2"=>{"descricao"=>"Descricao3", "_destroy"=>"1", "id"=>"4"}}}, "commit"=>"Salvar", "model"=>"teste", "id"=>"9"}
+  [1m[35mTeste Load (0.2ms)[0m  SELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1  [["id", 9]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTeste1 Load (0.3ms)[0m  SELECT "teste1s".* FROM "teste1s" WHERE "teste1s"."teste_id" = ? AND "teste1s"."id" IN (1, 3, 4)  [["teste_id", 9]]
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "teste1s" WHERE "teste1s"."id" = ?[0m  [["id", 4]]
+  [1m[35mSQL (1.2ms)[0m  UPDATE "teste1s" SET "descricao" = ?, "updated_at" = ? WHERE "teste1s"."id" = ?  [["descricao", "Descricao4"], ["updated_at", "2015-04-22 13:17:30.424365"], ["id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "teste1s" SET "descricao" = ?, "updated_at" = ? WHERE "teste1s"."id" = ?[0m  [["descricao", "Descricao5"], ["updated_at", "2015-04-22 13:17:30.427618"], ["id", 3]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:4000/crud/teste
+Completed 302 Found in 13ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-22 10:17:30 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.0ms)
+  [1m[36mTeste Load (0.3ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  [1m[35m (0.4ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (25.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (5.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (33.7ms)
+Completed 200 OK in 49ms (Views: 47.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:17:30 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:17:30 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:17:30 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:17:30 -0300
+
+
+Started GET "/crud/teste/9/edit" for ::1 at 2015-04-22 10:17:31 -0300
+Processing by CrudController#edit as HTML
+  Parameters: {"model"=>"teste", "id"=>"9"}
+  [1m[36mTeste Load (0.2ms)[0m  [1mSELECT  "testes".* FROM "testes" WHERE "testes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[35mTeste1 Load (0.1ms)[0m  SELECT "teste1s".* FROM "teste1s" WHERE "teste1s"."teste_id" = ?  [["teste_id", 9]]
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (12.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/edit.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 39ms (Views: 38.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-22 10:17:31 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-22 10:17:31 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-22 10:17:31 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-22 10:17:31 -0300

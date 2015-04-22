@@ -133,7 +133,7 @@ class CrudController < ApplicationController
       end
     end
   	@crud_helper.form_groups.each do |key, groups|
-      group = {"#{key}_attributes" => []}
+      group = {"#{key}_attributes" => [:id, :_destroy]}
   		groups.each do |field|
         group["#{key}_attributes"] << field[:attribute]
       end

@@ -21,8 +21,9 @@ class TesteCrud < RaroCrud
   
   #Campos mostrados no formulários de cadastro
   campo_formulario :nome,  label: "Nome"
-  campo_formulario :created_at,  label: "Created at"
-  campo_formulario :updated_at,  label: "Updated at"
+  grupo_formulario :teste1, [
+    {campo: :descricao, label: "Descrição"}
+  ]
   
 
   #Campos mostrados na visualizacao

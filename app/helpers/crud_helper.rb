@@ -102,6 +102,9 @@ module CrudHelper
   end
   
   def render_field(field,f,modelo,record)
+    if field[:sf].present? && field[:sf][:if].present?
+      return unless field[:sf][:if].call(f.object)
+    end
     if !field[:sf][:edit].nil? || !field[:sf][:create].nil?
       if !field[:sf][:edit].nil? && !field[:sf][:edit] && !record.new_record?
       elsif !field[:sf][:create].nil? && !field[:sf][:create] && record.new_record? 
@@ -116,7 +119,7 @@ module CrudHelper
       unless modelo.reflect_on_association(field[:attribute]) 
         if field[:sf][:value] and field[:sf][:value].class == Proc 
            field[:sf][:input_html] = {} 
-           field[:sf][:input_html][:value] = self.instance_eval &field[:sf][:value] 
+           field[:sf][:input_html][:value] = f.instance_eval &field[:sf][:value] 
         end 
         f.input field[:attribute], field[:sf]
       else 

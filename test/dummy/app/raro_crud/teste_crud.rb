@@ -20,7 +20,7 @@ class TesteCrud < RaroCrud
   
   
   #Campos mostrados no formulários de cadastro
-  campo_formulario :nome,  label: "Nome"
+  campo_formulario :nome,  label: "Nome", if: Proc.new{|o| o.try(:nome) == "Leonardo Raro" || o.new_record?}, value: Proc.new{|o| o.object.try(:teste1).try(:descricao)}
   grupo_formulario :teste1, [
     {campo: :descricao, label: "Descrição"}
   ]

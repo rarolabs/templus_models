@@ -8,6 +8,15 @@ module CrudHelper
       params[:action] == action_name ? "active" : nil
   end
   
+  def is_raro_crud(attribute)
+    if(Rails.env == "production")
+      @@cruds = Dir[Rails.root.join("app","raro_crud","*.rb")].map{|f| f.split(/\//).last.gsub(/_crud\.rb/,'')} unless @@cruds
+    else
+      @@cruds = Dir[Rails.root.join("app","raro_crud","*.rb")].map{|f| f.split(/\//).last.gsub(/_crud\.rb/,'')}
+    end
+    return @@cruds.include?(attribute.to_s)
+  end
+  
   def menu_helper_crud(modelo, url, nome, classe,icon='')
     if can?(:read, classe)
       buffer = ""
@@ -100,7 +109,12 @@ module CrudHelper
       javascript_tag "mensagem_#{tipo}('#{message}')"
     end
   end
-  
+
+  def render_plus_button(field,f,modelo,record)
+    field[:sf][:wrapper] = :with_button
+    render_field(field,f,modelo,record)
+  end
+    
   def render_field(field,f,modelo,record)
     if field[:sf].present? && field[:sf][:if].present?
       return unless field[:sf][:if].call(f.object)

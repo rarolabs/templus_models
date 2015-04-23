@@ -1,27 +1,28 @@
-<div class="row wrapper border-bottom white-bg page-heading">
-	<div class="col-lg-3">
-		<h2>
-			<% if content_for? :header %>
-				<%= yield  :header %>
-			<% end %>
-		</h2>
-		<ol class="breadcrumb">
-			<li>
-				<a href="/">Home</a>
-			</li>
-			<% if content_for? :breadcumb %>
-			<%= yield  :breadcumb %>
-			<% end %>
-		</ol>
-	</div>
-	<div class="col-lg-9">
-		<div class="pull-right">
-			<% if content_for? :scopes %>
-				<%= yield  :scopes %>
-			<% end %>
+<%unless params[:render] == 'modal'%>
+	<div class="row wrapper border-bottom white-bg page-heading">
+		<div class="col-lg-3">
+			<h2>
+				<% if content_for? :header %>
+					<%= yield  :header %>
+				<% end %>
+			</h2>
+			<ol class="breadcrumb">
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<% if content_for? :breadcumb %>
+				<%= yield  :breadcumb %>
+				<% end %>
+			</ol>
+		</div>
+		<div class="col-lg-9">
+			<div class="pull-right">
+				<% if content_for? :scopes %>
+					<%= yield  :scopes %>
+				<% end %>
+			</div>
 		</div>
 	</div>
-</div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
 	<div class="row">
@@ -52,9 +53,14 @@
 					</div>
 				</div>
 				<div class="ibox-content">
+<%end%>
+			
 					<% if content_for? :corpo %>
 						<%= yield  :corpo %>
 					<% end %>
+<%unless params[:render] == 'modal'%>		
+
+					
 				</div>
 			</div>
 		</div>
@@ -64,3 +70,4 @@
 	<%= yield  :modal %>
 <% end %>
 
+<%end%>					

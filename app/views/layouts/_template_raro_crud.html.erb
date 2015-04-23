@@ -29,19 +29,19 @@
 		<div class="col-lg-12">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
-					<% if is_action_edit? %>
+					<% if is_action_edit? && @model.present?%>
 						<h5>Editar 
 							<small> você pode editar todos os seus dados. <%=@model.name.humanize %></small>
 						</h5>
-					<% elsif is_action_create? %>
+					<% elsif is_action_create? && @model.present? %>
 						<h5>Cadastrar
 							<small> você pode cadastrar todos os seus dados. <%=@model.name.humanize %></small>
 						</h5>
-					<% elsif is_action_show? %>
+					<% elsif is_action_show? && @crud_helper.present? %>
 						<h5><%= @crud_helper.subtitle(:show) %>
 							<small><%= @crud_helper.description(:show) %></small>
 						</h5>
-					<% else %>
+					<% elsif @crud_helper.present? %>
 						<h5><%= @crud_helper.subtitle(:index) %>
 							<small><%= @crud_helper.description(:index) %></small>
 						</h5>

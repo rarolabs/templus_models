@@ -11600,3 +11600,140 @@ Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-23 10
 
 
 Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-23 10:35:07 -0300
+
+
+Started GET "/" for ::1 at 2015-04-23 12:59:58 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/railties-4.2.1/lib/rails/templates/rails/welcome/index.html.erb (1.0ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-23 13:00:01 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[36mTeste Load (0.4ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (3.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.6ms)
+  [1m[35m (0.3ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (40.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (2.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (11.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (57.5ms)
+Completed 200 OK in 116ms (Views: 93.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-23 13:00:01 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-23 13:00:01 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-23 13:00:01 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-23 13:00:01 -0300
+
+
+Started GET "/crud/teste/query?model=Teste&partial=records&var=records&q%5Bnome_cont%5D=leonardo&date-range_created_at=&q%5Bcreated_at_gteq%5D=&q%5Bcreated_at_lteq%5D=&date-range_updated_at=&q%5Bupdated_at_gteq%5D=&q%5Bupdated_at_lteq%5D=" for ::1 at 2015-04-23 13:00:13 -0300
+Processing by CrudController#query as HTML
+  Parameters: {"model"=>"teste", "partial"=>"records", "var"=>"records", "q"=>{"nome_cont"=>"leonardo", "created_at_gteq"=>"", "created_at_lteq"=>"", "updated_at_gteq"=>"", "updated_at_lteq"=>""}, "date-range_created_at"=>"", "date-range_updated_at"=>""}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.2ms)
+  [1m[36mTeste Load (0.3ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes" WHERE ("testes"."nome" LIKE '%leonardo%')  ORDER BY "testes"."updated_at" DESC LIMIT 25 OFFSET 0[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.0ms)
+  [1m[35m (0.3ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes" WHERE ("testes"."nome" LIKE '%leonardo%')
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (11.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (3.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (17.3ms)
+Completed 200 OK in 43ms (Views: 37.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-23 13:00:13 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-23 13:00:13 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-23 13:00:13 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-23 13:00:13 -0300
+
+
+Started GET "/crud/teste/new" for ::1 at 2015-04-23 13:00:17 -0300
+Processing by CrudController#new as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_form.html.erb (72.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (0.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (4.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/new.html.erb within layouts/application (83.4ms)
+Completed 200 OK in 109ms (Views: 107.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-23 13:00:17 -0300
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-23 13:00:17 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-23 13:00:17 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-23 13:00:17 -0300
+
+
+Started GET "/" for ::1 at 2015-04-23 18:21:20 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/leonardo/.rvm/gems/ruby-2.1.4/gems/railties-4.2.1/lib/rails/templates/rails/welcome/index.html.erb (0.5ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/crud/teste" for ::1 at 2015-04-23 18:21:23 -0300
+Processing by CrudController#index as HTML
+  Parameters: {"model"=>"teste"}
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_links.html.erb (0.1ms)
+  [1m[36mTeste Load (0.7ms)[0m  [1mSELECT  DISTINCT "testes".* FROM "testes"  ORDER BY "testes"."created_at" ASC LIMIT 20 OFFSET 0[0m
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (4.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.0ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.9ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (2.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.3ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (0.7ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.2ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_record.html.erb (1.4ms)
+  [1m[35m (0.3ms)[0m  SELECT DISTINCT COUNT(DISTINCT "testes"."id") FROM "testes"
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_records.html.erb (48.8ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_scopes.html.erb (0.1ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_search.html.erb (1.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/layouts/_template_raro_crud.html.erb (0.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/_crud_template.html.erb (9.5ms)
+  Rendered /Users/leonardo/ProjetosRaro/engines/templus_models/app/views/crud/index.html.erb within layouts/application (62.9ms)
+Completed 200 OK in 112ms (Views: 102.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-04-23 18:21:23 -0300
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-04-23 18:21:23 -0300
+
+
+Started GET "/assets/jquery/jquery-2.1.1.self.js?body=1" for ::1 at 2015-04-23 18:21:23 -0300
+
+
+Started GET "/assets/jquery_nested_form.self.js?body=1" for ::1 at 2015-04-23 18:21:23 -0300

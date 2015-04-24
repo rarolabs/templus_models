@@ -34,6 +34,9 @@
 				<% @record.send("build_#{key}") %>
 		<% end %>
 		<%= f.simple_fields_for key do |g| %>
+			<div class="col-sm-12">
+				<h3 class="col-sm-2"><%= key.to_s.singularize.titleize %></h3>
+			</div>
 			<% groups.each do |field| %>
 				<%= render_field(field,g,@model,@record) %>
 			<% end %>

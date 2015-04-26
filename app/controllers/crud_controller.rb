@@ -132,7 +132,7 @@ class CrudController < ApplicationController
         else
           fields << {"#{field[:attribute].to_s.singularize}_ids".to_sym => []}
         end
-      else
+      elsif (@model.columns_hash[field[:attribute].to_s] || (@model.respond_to?(:params_permitt) && @model.params_permitt.include?(field[:attribute].to_sym)))
         fields << field[:attribute]
       end
     end

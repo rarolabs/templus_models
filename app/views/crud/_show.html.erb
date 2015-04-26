@@ -20,14 +20,26 @@
 								<td>
 									<% @record.send(field[:attribute]).each do |rec| %>
 										<li>
-											<%= rec.to_s %>
+											<% if field[:sf][:label_method].present? %>
+												<%= rec.send(field[:sf][:label_method]) %>
+											<% else %>
+												<%= rec.to_s %>
+											<% end %>
 										</li>
 									<% end %>
 								</td>
 							<% elsif @record.send(field[:attribute]).respond_to?(:url) and @record.send(field[:attribute]).url(:thumb) %>
 								<td><%=  image_tag(@record.send(field[:attribute]).url(:thumb)) %></td>
+							<% elsif ["false","true"].include? @record.send(field[:attribute]).to_s %>
+									<td><%=  @record.send(field[:attribute]) ? "Sim" : "Não" %></td>  
 							<% else %>
-								<td><%= @record.send(field[:attribute]) %></td>
+								<td>
+									<% if field[:sf][:label_method].present? %>
+										<%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
+									<% else %>
+										<%= @record.send(field[:attribute]) %>
+									<% end %>
+								</td>
 							<% end %>
 						</tr>
 					<% end %>

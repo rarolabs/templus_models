@@ -129,12 +129,15 @@ module CrudHelper
            f.association field[:attribute], field[:sf]
         end 
       end 
-    else 
-      unless modelo.reflect_on_association(field[:attribute]) 
-        if field[:sf][:value] and field[:sf][:value].class == Proc 
-           field[:sf][:input_html] = {} 
-           field[:sf][:input_html][:value] = f.instance_eval &field[:sf][:value] 
-        end 
+    else
+      if field[:sf][:value] and field[:sf][:value].class == Proc
+         field[:sf][:input_html] = {} 
+         field[:sf][:input_html][:value] = f.instance_eval &field[:sf][:value] 
+      end
+      if field[:sf][:collection_if] and field[:sf][:collection_if].class == Proc
+         field[:sf][:collection] = f.instance_eval &field[:sf][:collection_if]
+      end
+      unless modelo.reflect_on_association(field[:attribute])
         f.input field[:attribute], field[:sf]
       else 
         f.association field[:attribute], field[:sf]

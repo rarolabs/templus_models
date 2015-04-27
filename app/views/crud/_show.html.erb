@@ -20,7 +20,7 @@
 								<td>
 									<% @record.send(field[:attribute]).each do |rec| %>
 										<li>
-											<% if field[:sf][:label_method].present? %>
+											<% if field[:sf].present? && field[:sf][:label_method].present? %>
 												<% if rec.send(field[:sf][:label_method]).respond_to?(:url) %>
 													<%= render_field_file(rec.send(field[:sf][:label_method])) %>
 												<% else %>
@@ -44,7 +44,7 @@
 									<td><%=  @record.send(field[:attribute]) ? "Sim" : "Não" %></td>
 							<% else %>
 								<td>
-									<% if field[:sf][:label_method].present? && @record.send(field[:attribute]).present?%>
+									<% if field[:sf].present? && field[:sf][:label_method].present? && @record.send(field[:attribute]).present?%>
 										<%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
 									<% else %>
 										<%= @record.send(field[:attribute]) %>

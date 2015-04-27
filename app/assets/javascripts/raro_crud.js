@@ -45,10 +45,11 @@ function atualiza_campos_crud(){
 	});
 	
 	$(document).on('click', '[data-toggle="modal"]', function (e) {
-    $('.modal-backdrop').appendTo("body");
-  });
+		$('.modal-backdrop').appendTo("body");
+	});
 	
-
+	$('.modal').appendTo("body");
+	
 	$('.crud-new-record').click(function(){
 		var select = $(this).siblings().last().find('select')
 		var id = select.attr('id')
@@ -61,7 +62,8 @@ function atualiza_campos_crud(){
 
 function new_record(id,name){
 	var model_name = name.split("[")[1].split("_id]")[0];
-
+	
+	$('#modal_new_record').attr("class","modal inmodal")
 	$('#modal_new_record').addClass(model_name);
 
 	var model_target = "#modal_new_record." + model_name;
@@ -69,28 +71,25 @@ function new_record(id,name){
 	
 	var url = "/crud/" + model_name + "/new.js?render=modal";
 	var jqxhr = $.ajax(url)
-  .done(function(result) {
+	.done(function(result) {
 		$(model_target).attr('data-source',id);
 		$(model_target).attr('data-saved','false');
 		$(model_target).on('hidden.bs.modal', function (e) {
 			if($(model_target).attr('data-saved') == 'true'){
 				var entity_desc = $(model_target).attr('data-entity-name')
 				var entity_id   = $(model_target).attr('data-entity-id')
-				
 				$('#' + id).append($('<option>', {
 				    value: entity_id,
 						 text: entity_desc,
 					selected: 'selected'
 				}));
-						$(model_target).attr('data-saved','false');
-						$(model_target).attr('data-entity-name','')
-						$(model_target).attr('data-entity-id','')
-
+				$(model_target).attr('data-saved','false');
+				$(model_target).attr('data-entity-name','')
+				$(model_target).attr('data-entity-id','')
 			}
 		})
 		$(model_target + ' .modal-body').html(result);
 		$(model_target).modal('show');
-		$('.modal-backdrop').appendTo("body");
-		
-  })
+		$('.modal-backdrop').appendTo("body");	
+	});
 }

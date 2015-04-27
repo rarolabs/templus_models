@@ -43,7 +43,7 @@
 			<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
 				<div class="form-group">
 					<div class="col-sm-10 col-sm-offset-2">
-						<%= g.link_to_remove 'remove' %>
+						<%= g.link_to_remove "Remove #{key.to_s.singularize}" %>
 					</div>
 				</div>
 			<% end %>
@@ -51,7 +51,7 @@
 		<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
 			<div class="form-group">
 				<div class="col-sm-12">
-					<%= f.link_to_add 'Adicionar', key %>
+					<%= f.link_to_add "Adicionar #{key.to_s.singularize}", key %>
 				</div>
 			</div>
 		<% end %>

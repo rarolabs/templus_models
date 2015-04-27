@@ -12,29 +12,39 @@
 							<% end %>
 							<% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type)%>
 								<% if field[:date_format].present?%>
-									<td><%= l @record.send(field[:attribute]).strftime(field[:date_format]) %></td>
+									<td><%= l @record.send(field[:attribute]).strftime(field[:date_format]) if @record.send(field[:attribute]).present?%></td>
 								<% else %>
-									<td><%= l @record.send(field[:attribute]) %></td>
+									<td><%= l @record.send(field[:attribute]) if @record.send(field[:attribute]).present?%></td>
 								<% end %>
 							<% elsif @model.reflect_on_association(field[:attribute]) &&  @model.reflect_on_association(field[:attribute]).macro != :belongs_to%>
 								<td>
 									<% @record.send(field[:attribute]).each do |rec| %>
 										<li>
 											<% if field[:sf][:label_method].present? %>
-												<%= rec.send(field[:sf][:label_method]) %>
+												<% if rec.send(field[:sf][:label_method]).respond_to?(:url) %>
+													<%= render_field_file(rec.send(field[:sf][:label_method])) %>
+												<% else %>
+													<%= rec.send(field[:sf][:label_method]) %>
+												<% end %>
 											<% else %>
-												<%= rec.to_s %>
+												<% if rec.to_s.respond_to?(:url) %>
+													<%= render_field_file(rec.to_s) %>
+												<% else %>
+													<%= rec.to_s %>
+												<% end %>
 											<% end %>
 										</li>
 									<% end %>
 								</td>
-							<% elsif @record.send(field[:attribute]).respond_to?(:url) and @record.send(field[:attribute]).url(:thumb) %>
-								<td><%=  image_tag(@record.send(field[:attribute]).url(:thumb)) %></td>
+							<% elsif @record.send(field[:attribute]).respond_to?(:url) %>
+								<td>
+									<%= render_field_file(@record.send(field[:attribute])) %>
+								</td>
 							<% elsif ["false","true"].include? @record.send(field[:attribute]).to_s %>
-									<td><%=  @record.send(field[:attribute]) ? "Sim" : "Não" %></td>  
+									<td><%=  @record.send(field[:attribute]) ? "Sim" : "Não" %></td>
 							<% else %>
 								<td>
-									<% if field[:sf][:label_method].present? %>
+									<% if field[:sf][:label_method].present? && @record.send(field[:attribute]).present?%>
 										<%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
 									<% else %>
 										<%= @record.send(field[:attribute]) %>

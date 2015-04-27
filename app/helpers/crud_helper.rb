@@ -144,4 +144,26 @@ module CrudHelper
       end 
     end
   end
+  
+  def imagem?(file)
+    file.present? && file.content_type.start_with?('image')
+  end
+
+  def video?(file)
+    file.present? && file.content_type.start_with?('video')
+  end  
+  
+  def documento?(file)
+    !(video?(file) || imagem?(file))
+  end
+  
+  def render_field_file(field)
+		if imagem?(field) && field.url(:thumb)
+			image_tag(field.url(:thumb))
+		elsif video?(field)
+			link_to field, field.url, target: "_blank"
+		else
+			link_to field, field.url, target: "_blank"
+		end
+  end
 end

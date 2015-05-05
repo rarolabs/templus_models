@@ -17,11 +17,11 @@ module CrudHelper
     return @@cruds.include?(attribute.to_s)
   end
   
-  def menu_helper_crud(modelo, url, nome, classe,icon='')
+  def menu_helper_crud(modelo, url, nome, classe, icon='')
     if can?(:read, classe)
       buffer = ""
       buffer << "<li class='childreen #{controller.controller_name == 'crud' and params[:model] == modelo ? 'active' : '' }'>"
-      buffer << link_to("<i class='icon-#{icon}'></i><span>#{nome}</span>".html_safe, url, data: {push: true, crumb: 'wielka'})
+      buffer << link_to("<i class='#{icon}'></i><span>#{nome}</span>".html_safe, url, data: {push: true, crumb: 'wielka'})
       buffer << "</li>"
       buffer.html_safe
     end

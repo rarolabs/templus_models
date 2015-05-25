@@ -92,11 +92,18 @@ class CrudController < ApplicationController
   def destroy
     authorize! :destroy, @model if respond_to?(:current_usuario)
     @record = @model.find(params[:id])
-    @record.destroy
-    respond_to do |format|
-      flash[:success] = "Cadastro removido com sucesso."
-      format.html { redirect_to "/crud/#{@model.name.underscore}" }
-      format.js { render action: :index }
+    if @record.destroy
+      respond_to do |format|
+        flash[:success] = "Cadastro removido com sucesso."
+        format.html { redirect_to "/crud/#{@model.name.underscore}" }
+        format.js { render action: :index }
+      end
+    else
+      respond_to do |format|
+        flash[:error] = @record.errors.full_messages.join(", ")
+        format.html { redirect_to "/crud/#{@model.name.underscore}" }
+        format.js { render action: :index }
+      end
     end
   end
   

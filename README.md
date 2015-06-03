@@ -70,3 +70,24 @@ class EmpresaCrud < RaroCrud
   ...
 end
 ```
+
+## Campos do tipo data
+Para vincular o *datepicker* no campo do tipo Date
+
+```rb
+campo_formulario :data_nascimento, label: "Data de nascimento", as: :string, input_html: {class: "datepicker"}
+```
+
+## Campos do tipo boolean
+Para vincular o *iCheck* no campo do tipo boolena
+
+```rb
+campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {class: "i-checks"}
+```
+
+## Aplicando mascara
+Para aplicar uma mascara em um campo
+
+```rb
+campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {"data-mask" => "(99) 9999-9999"}
+```

@@ -67,5 +67,6 @@ class EmpresaCrud < RaroCrud
   link_superior "Novo Empresa", id: "novo-button", icon: "plus", link: "new"
   
   adicionar_endereco
+  ...
 end
 ```

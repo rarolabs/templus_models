@@ -144,9 +144,19 @@ class CrudController < ApplicationController
       end
     end
   	@crud_helper.form_groups.each do |key, groups|
-      group = {"#{key}_attributes" => [:id, :_destroy]}
-  		groups.each do |field|
-        group["#{key}_attributes"] << field[:attribute]
+      chave = "#{key}_attributes"
+      group = {chave => [:id, :_destroy]}
+      groups.each do |field|
+        modelo = key.to_s.camelcase.constantize
+        if modelo.reflect_on_association(field[:attribute])
+          if modelo.reflect_on_association(field[:attribute]).macro == :belongs_to
+            group[chave] << "#{field[:attribute]}_id".to_sym
+          else
+            group[chave] << {"#{field[:attribute].to_s.singularize}_ids".to_sym => []}
+          end
+        elsif (modelo.columns_hash[field[:attribute].to_s] || (modelo.respond_to?(:params_permitt) && modelo.params_permitt.include?(field[:attribute].to_sym)))
+          group[chave] << field[:attribute]
+        end
       end
       fields << group
     end

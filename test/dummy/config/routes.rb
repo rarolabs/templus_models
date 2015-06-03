@@ -53,4 +53,12 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  namespace :api do
+    resources :cidades, only: [] do
+      collection do
+        get 'busca'
+      end
+    end
+  end
 end

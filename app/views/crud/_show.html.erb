@@ -16,7 +16,7 @@
 								<% else %>
 									<td><%= l @record.send(field[:attribute]) if @record.send(field[:attribute]).present?%></td>
 								<% end %>
-							<% elsif @model.reflect_on_association(field[:attribute]) &&  @model.reflect_on_association(field[:attribute]).macro != :belongs_to%>
+							<% elsif @model.reflect_on_association(field[:attribute]) &&  @model.reflect_on_association(field[:attribute]).macro != :belongs_to && @model.reflect_on_association(field[:attribute]).macro != :has_one%>
 								<td>
 									<% @record.send(field[:attribute]).each do |rec| %>
 										<li>

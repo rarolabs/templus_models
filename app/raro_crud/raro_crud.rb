@@ -267,6 +267,33 @@ class RaroCrud
     end
   end
   
+  def self.adicionar_endereco
+    @@form_group[self.to_s.to_sym] ||= {}
+    @@form_group[self.to_s.to_sym][:endereco] ||= []
+    [
+     {campo: :cep,  label: "CEP"},
+     {campo: :logradouro,  label: "Endereço"},
+     {campo: :numero,  label: "Número"},
+     {campo: :complemento,  label: "Complemento"},
+     {campo: :bairro,  label: "Bairro"},
+     {campo: :estado,  label: "Estado", collection: Estado.order(:sigla).pluck(:sigla)},
+     {campo: :cidade_id,  label: "Cidade", collection_if: Proc.new{|f| f.try(:object).try(:new_record?) ? [] : (f.try(:object).try(:estado).try(:cidades) || [])}}
+    ].each do |field|
+      value = {}
+      field.each do |atr|
+        if atr[0] == :campo
+          value[:attribute] = atr[1]
+        else
+          value[:sf] ||= {}
+          value[:sf][atr[0]] = atr[1]
+        end
+      end
+      @@form_group[self.to_s.to_sym][:endereco].push({attribute: value[:attribute],sf: value[:sf]})
+    end
+    @@form_scripts[self.to_s.to_sym] ||= []
+    @@form_scripts[self.to_s.to_sym] << "cidade_estado"
+  end
+  
   def self.script_formulario(script)
     @@form_scripts[self.to_s.to_sym] ||= []
     @@form_scripts[self.to_s.to_sym] << script.to_s

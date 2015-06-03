@@ -53,3 +53,19 @@ class EmpresaCrud < RaroCrud
 
 end
 ```
+
+## Atributo especia de endereço
+Para vincular um formlário de cadastro de endereço utilize o método *adicionar_endereco* no arquivo:
+
+```ruby
+class EmpresaCrud < RaroCrud
+
+  titulo "Empresas"
+  subtitulo "Subtitulo", :index
+  descricao "Descrição do Cadastro", :index
+
+  link_superior "Novo Empresa", id: "novo-button", icon: "plus", link: "new"
+  
+  adicionar_endereco
+end
+```

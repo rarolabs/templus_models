@@ -1,3 +1,0 @@
-= TemplusModels
-
-O Templus Models agiliza a geração de gruds em projetos Rails

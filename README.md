@@ -91,3 +91,10 @@ Para aplicar uma mascara em um campo
 ```rb
 campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {"data-mask" => "(99) 9999-9999"}
 ```
+
+## Aplicando Dica
+Para aplicar uma dica em um campo
+
+```rb
+campo_formulario :cpf, label: "CPF", hint: "Somente números"
+```

@@ -78,6 +78,12 @@ Para vincular o *datepicker* no campo do tipo Date
 campo_formulario :data_nascimento, label: "Data de nascimento", as: :string, input_html: {class: "datepicker"}
 ```
 
+Para formatar a data na tabela, utilize o *date_format*
+
+```rb
+campo_tabela :created_at,  label: "Data", date_format: "%d/%m/%Y"
+```
+
 ## Campos do tipo boolean
 Para vincular o *iCheck* no campo do tipo boolena
 

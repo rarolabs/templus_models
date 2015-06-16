@@ -9,11 +9,11 @@ module CrudHelper
   end
   
   def is_raro_crud(attribute)
-    if(Rails.env == "production")
-      @@cruds = Dir[Rails.root.join("app","raro_crud","*.rb")].map{|f| f.split(/\//).last.gsub(/_crud\.rb/,'')} unless @@cruds
-    else
+    #if(Rails.env == "production")
+    #  @@cruds = Dir[Rails.root.join("app","raro_crud","*.rb")].map{|f| f.split(/\//).last.gsub(/_crud\.rb/,'')} unless @@cruds
+    #else
       @@cruds = Dir[Rails.root.join("app","raro_crud","*.rb")].map{|f| f.split(/\//).last.gsub(/_crud\.rb/,'')}
-    end
+    #end
     return @@cruds.include?(attribute.to_s)
   end
   

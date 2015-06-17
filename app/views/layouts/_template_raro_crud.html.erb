@@ -31,13 +31,9 @@
 				<div class="ibox-title">
 					<% unless content_for? :title %>
 						<% if is_action_edit? && @model.present?%>
-							<h5>Editar 
-								<small> você pode editar todos os seus dados. <%=@model.name.humanize %></small>
-							</h5>
+							<h5>Editar</h5>
 						<% elsif is_action_create? && @model.present? %>
-							<h5>Cadastrar
-								<small> você pode cadastrar todos os seus dados. <%=@model.name.humanize %></small>
-							</h5>
+							<h5>Cadastrar</h5>
 						<% elsif is_action_show? && @crud_helper.present? %>
 							<h5><%= @crud_helper.subtitle(:show) %>
 								<small><%= @crud_helper.description(:show) %></small>

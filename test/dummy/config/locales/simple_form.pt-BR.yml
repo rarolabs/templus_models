@@ -1,0 +1,77 @@
+pt-BR:
+  simple_form:
+    "yes": 'Sim'
+    "no": 'Não'
+    required:
+      text: 'obrigatório'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Foram encontrados alguns erros, por favor confira:"
+    # Labels and hints examples
+    labels:
+      user:
+        nome: "Nome"
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmar senha"
+        current_password: "Senha atual"
+        remember_me: "Lembre-me"
+        last_sign_in_at: "Último acesso em"
+      empresa:
+        nome: "Nome da empresa"
+        telefone: "Telefone"
+        cnpj: "CNPJ"
+        cidade: "Cidade"
+        responsavel: "Responsável"
+        cep: "Cep"
+        estado: "Estado"
+        type: "Perfil da Empresa"
+        endereco_details: "Endereço"
+      demanda:
+        duracao: "Duração (em minutos)"
+        endereco: "Endereço"
+        endereco_detalhes: "Endereço de Origem"
+        valor: "Valor Fixo"
+        tipo_veiculo: "Tipo do veículo"
+        peso: "Peso"
+        altura: "Altura"
+        largura: "Largura"
+        profundidade: "Profundidade"
+        gr: "Gr"
+        data_coleta: "Data da coleta"
+        peso: "Peso (Kg)"
+        state: "State"
+        contratante: "Contratante"
+        contratado: "Contratado"
+        tipo_carga: "Tipo da Carga"
+        gerenciador_risco: "Gerenciadora de Risco"
+        tipo_lance: "Tipo de lance"
+        identificador: "Identificador da demanda (Ex.: DEM999)"
+      veiculo:
+        placa: "Placa"
+        tipo_veiculo_id: "Tipo do veículo"
+        tecnologia_id: "Tecnologia"
+        cod_tecnologia: "Código da tecnologia"
+        status: "Status do veículo"
+        motorista_id: "Motorista"
+        exibir_dados: "Exibir informações de contato"
+        forma_contato: "Forma de contato"
+      motorista:
+        nome: "Nome"
+        cpf: "CPF"
+        rg: "RG"
+        numero_carteira_motorista: Nº da Carteira de Motorista
+        veiculos: "Veículos"
+    #   password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail para efetuar o sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   username: 'User name to sign in.'
+    #   password: 'No special characters, please.'
+    

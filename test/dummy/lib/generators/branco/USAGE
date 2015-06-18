@@ -1,0 +1,10 @@
+Description:
+    Gera uma view em branco
+
+Example:
+    rails generate branco telefone ligar
+
+    This will create:
+        app/views/telefones/_template.html.erb
+				app/views/telefones/ligar.html.erb
+				app/views/telefones/_ligar.html.erb

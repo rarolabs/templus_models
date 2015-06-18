@@ -1,0 +1,45 @@
+@import "base/variables";
+.remove_nested_fields, .add_nested_fields {
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: inherit;
+  font: inherit;
+  margin-top: 0px;
+  border-radius: $btn-border-radius;
+  color: white;
+  float: right !important;
+}
+.remove_nested_fields {
+  background-color: $red;
+  border-color: $red;
+}
+
+.add_nested_fields {
+  background-color: $blue;
+  border-color: $blue;
+}
+.add_nested_fields:hover, .add_nested_fields:focus, .add_nested_fields:active, .add_nested_fields.active {
+  background-color: darken($blue, 3%);
+  border-color: darken($blue, 3%);
+  color: white;
+}
+
+.remove_nested_fields:hover, .remove_nested_fields:focus, .remove_nested_fields:active, .remove_nested_fields.active {
+  background-color: darken($red, 3%);
+  border-color: darken($red, 3%);
+  color: white;
+}

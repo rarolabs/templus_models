@@ -4,4 +4,8 @@ class Cidade < ActiveRecord::Base
   def to_s
     nome
   end
+  
+  def cidade_estado
+    "#{nome} - #{estado}"
+  end
 end

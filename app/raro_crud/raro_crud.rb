@@ -137,7 +137,11 @@ class RaroCrud
   
   
   private
-
+  
+  def self.modelo
+    self.to_s.underscore.gsub("_crud", "")
+  end
+  
   def self.titulo str
     @@title[self.to_s.to_sym] = str
   end
@@ -199,11 +203,23 @@ class RaroCrud
   
   def self.campo_formulario nome, opts
     @@form_fields[self.to_s.to_sym] = [] unless @@form_fields[self.to_s.to_sym]
+    if opts.present? && opts[:autocomplete].present?
+      opts[:as] = :autocomplete
+      label_method = opts[:autocomplete][:label_method] || opts[:autocomplete][:campo]
+      opts[:url] = "/crud/#{opts[:autocomplete][:classe]}/autocomplete?campo=#{opts[:autocomplete][:campo]}&tipo=start&label=#{label_method}"
+      name = "#{opts[:autocomplete][:campo]}_#{opts[:autocomplete][:classe]}"
+      opts[:input_html] = {name: name, id: name}
+      opts[:id_element] = "##{self.modelo}_#{nome}_id"
+    end
+    
     @@form_fields[self.to_s.to_sym].push(
       {
         attribute: nome
       }.merge({sf: opts})
     )
+    if opts.present? && opts[:autocomplete].present?
+      campo_formulario(nome, {as: :hidden})
+    end
   end    
 
   def self.campo_visualizacao nome, opts = nil

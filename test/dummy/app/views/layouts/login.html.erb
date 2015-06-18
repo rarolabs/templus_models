@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%=Templus.nome_aplicacao%> | <%=Templus.nome_empresa%> </title>
+	<!-- Include style per-controller - vendor plugins -->
+	<%= stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css.scss") %>
+	<!-- Main css styles -->
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<!-- Main javascript files -->
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+
+</head>
+<body>
+	<div class="middle-box text-center loginscreen  animated fadeInDown">
+		<div>
+			<div>
+				<h1 class="logo-name">IN+</h1>
+			</div>
+			<h3>Bem vindo ao <%=Templus.nome_aplicacao%></h3>
+			<p>
+				<%=Templus.paragrafo_login%>
+			</p>
+			
+			<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+			<div class="form-group">
+				<%= f.input_field :email, :required => false, class:"form-control", :placeholder => "Email" %>
+			</div>
+			<div class="form-group">
+				<%= f.input_field :password, :required => false, class:"form-control", :placeholder => "Senha" %>
+			</div>
+			<%= f.button :submit, "Login", class: 'btn btn-primary block full-width m-b' %>
+			<!-- <a href="#"><small>Forgot password?</small></a>
+				<p class="text-muted text-center"><small>Do not have an account?</small></p>
+				<a class="btn btn-sm btn-white btn-block" href="<%#= url_for :controller => 'pages', :action => 'register' %>">Create an account</a> -->
+				<% end %>
+				<p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2015</small> </p>
+			</div>
+		</div>
+	</div>
+	<!-- End wrapper-->
+
+	<!-- Include javascript per-controller - vendor plugins -->
+	<%= javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js") %>
+
+	<%= yield :javascript %>
+
+</body>
+</html>
+

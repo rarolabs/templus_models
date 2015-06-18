@@ -1,0 +1,72 @@
+<div class="widget-box">
+	<div class="widget-body">
+		<div class="widget-main">
+			<%= form_tag permissoes_path, method: :post, class: "form-horizontal" do |f| %>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Descrição</th>
+						<th width="5%">Visualizar</th>
+						<th width="5%">Criar</th>
+						<th width="5%">Editar</th>
+						<th width="5%">Excluir</th>
+						<th width="5%">Todos</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% raro_permissions.each_with_index do |menu, i| %>
+					<% val = nil %>
+					<%# if @permissions.present? %>
+					<%# val = @permissions.select {|c| c.klass.to_s == menu.klass.to_s }[0] %>
+					<%# end %>
+					<tr>
+						<td><%= menu.titleize %></td>
+						<td>
+							<div class="checkbox i-checks text-center checkbox-permission">
+								<input id="view_<%= i %>" name="papel[permissoes_attributes][<%= i %>][can_read]" type="checkbox" <%= (val.present? && val.can_read) ? 'checked' : '' %>>
+							</div>
+						</td>
+						<td>
+							<div class="checkbox i-checks text-center checkbox-permission">
+								<input id="create_<%= i %>" name="papel[permissoes_attributes][<%= i %>][can_create]" type="checkbox" <%= (val.present? && val.can_create) ? 'checked' : '' %>>
+							</div>
+						</td>
+						<td>
+							<div class="checkbox i-checks text-center checkbox-permission">
+								<input id="edit_<%= i %>" name="papel[permissoes_attributes][<%= i %>][can_update]" type="checkbox" <%= (val.present? && val.can_update) ? 'checked' : '' %>>
+							</div>
+						</td>
+						<td>
+							<div class="checkbox i-checks text-center checkbox-permission">
+								<input id="destroy_<%= i %>" name="papel[permissoes_attributes][<%= i %>][can_destroy]" type="checkbox" <%= (val.present? && val.can_destroy) ? 'checked' : '' %>>
+							</div>
+						</td>
+						<td>
+							<div class="checkbox i-checks text-center checkbox-permission">
+								<input id="all_<%= i %>" name="papel[permissoes_attributes][<%= i %>][can_manage]" type="checkbox" <%= (val.present? && val.can_manage) ? 'checked' : '' %>>
+							</div>
+						</td>
+						<%= hidden_field_tag "papel[permissoes_attributes][#{i}][klass]", menu %>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<%= hidden_field_tag :papel_id, @record.id %>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<div class="col-sm-offset-2">
+						<%= submit_tag("Salvar", class: "btn btn-primary pull-right") %>
+					</div>
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<% content_for :javascript do %>
+<script type="text/javascript">
+	$(function() {
+		permission();
+	});
+</script>
+<% end %>

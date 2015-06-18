@@ -1,0 +1,12 @@
+<%= simple_form_for @usuario, :url => url_for(:action => 'update', :controller => 'usuarios'), html: {class: "form-horizontal"}  do |f| %>
+	<%= f.error_notification %>
+	<%= f.input :nome %>
+	<%= f.input :email %>
+	<%= f.input :password, label: "Senha" %>
+	<%= f.input :password_confirmation, label: "Confirmação de Senha" %>
+	<div class="form-group">
+		<div class="col-sm-4 col-sm-offset-2">
+			<%= f.submit "Salvar", class: 'btn btn-primary' %>
+		</div>
+	</div>		
+<% end %>

@@ -1,6 +1,6 @@
 $(document).ready(function (){
 	$("select[id$='_estado']").on('change', function() {
-		$.getJSON('/api/cidades/busca?estado=' + $(this).val(), {
+		$.getJSON('/api/cidades/busca?estado_id=' + $(this).val(), {
 			format: 'json'
 		}, function(data) {
 			var i, options;

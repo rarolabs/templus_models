@@ -1,0 +1,36 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-3">
+		<h2>
+			<% if content_for? :header %>
+				<%= yield  :header %>
+			<% end %>
+		</h2>
+		<ol class="breadcrumb">
+			<li>
+				<a href="/">Home</a>
+			</li>
+			<% if content_for? :breadcumb %>
+			<%= yield  :breadcumb %>
+			<% end %>
+		</ol>
+	</div>
+	<div class="col-lg-9">
+		<div class="pull-right">
+			<%= yield  :scopes %>
+		</div>
+	</div>
+</div>
+<% if content_for? :scopes %>
+<div class="row wrapper border-bottom page-heading">
+	
+</div>
+<% end %>
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<% if content_for? :corpo %>
+				<%= yield  :corpo %>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,1 @@
+//= require video/responsible-video.js

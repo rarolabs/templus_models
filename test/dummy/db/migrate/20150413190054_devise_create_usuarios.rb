@@ -33,6 +33,7 @@ class DeviseCreateUsuarios < ActiveRecord::Migration
       ## Permissions
       t.references :papel, index: true
       t.boolean :root, default: false
+      t.integer :referencia_id
       
       ## Informações adicionais
       t.string :nome

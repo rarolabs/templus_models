@@ -44,6 +44,29 @@ ActiveRecord::Schema.define(version: 20150422191007) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "papeis", force: :cascade do |t|
+    t.string   "nome"
+    t.string   "chave"
+    t.string   "descricao"
+    t.integer  "referencia_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "permissoes", force: :cascade do |t|
+    t.boolean  "can_read"
+    t.boolean  "can_create"
+    t.boolean  "can_update"
+    t.boolean  "can_destroy"
+    t.boolean  "can_manage"
+    t.string   "klass"
+    t.integer  "papel_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "permissoes", ["papel_id"], name: "index_permissoes_on_papel_id"
+
   create_table "teste1s", force: :cascade do |t|
     t.string   "descricao"
     t.integer  "teste_id"

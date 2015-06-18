@@ -1,0 +1,16 @@
+I"‚(function() {
+  window.executa_atualizacoes = function() {
+    atualiza_campos_crud();
+    return permission();
+  };
+
+  $(function() {
+    var wiselinks;
+    wiselinks = new Wiselinks($('#page-wrapper-main'));
+    return $(document).off('page:done').on('page:done', function(event, $target, status, url, data) {
+      return window.executa_atualizacoes();
+    });
+  });
+
+}).call(this);
+:ET

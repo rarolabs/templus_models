@@ -43,7 +43,7 @@
 			<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
 				<div class="form-group">
 					<div class="col-sm-10 col-sm-offset-2">
-						<%= g.link_to_remove "Remove #{key.to_s.singularize}" %>
+						<%= g.link_to_remove "Remover #{key.to_s.singularize}" %>
 					</div>
 				</div>
 			<% end %>
@@ -59,7 +59,7 @@
 	<div class="form-group">
 		<div class="col-sm-4 col-sm-offset-2">
 			<%= f.submit "Salvar", class: 'btn btn-primary'  %>
-			<%= link_to "Voltar", "/crud/#{@model.name.underscore}" ,class: 'btn' %>
+			<%= link_to "Voltar", "/crud/#{@model.name.underscore}" ,class: 'btn btn-default' %>
 		</div>
 	</div>
 <% end %>

@@ -1,5 +1,5 @@
 class CrudController < ApplicationController
-  before_filter :setup
+  before_filter :setup, except: :autocomplete
 
   def index
     authorize! :read, @model if respond_to?(:current_usuario)
@@ -123,6 +123,22 @@ class CrudController < ApplicationController
     else
       render :index, controller: request[:controller]
     end
+  end
+  
+  def autocomplete
+    @model = Module.const_get(params[:model].camelize)
+    authorize! :read, @model if respond_to?(:current_usuario)
+    parametros = {}
+    parametros["#{params[:campo]}_#{params[:tipo]}"] = params[:term]
+    @q = @model.search(parametros)
+    @q.sorts = 'updated_at desc' if @q.sorts.empty?
+    if respond_to?(:current_usuario)
+      results = @q.result(distinct: true).accessible_by(current_ability).page(params[:page])
+    else
+      results = @q.result(distinct: true).page(params[:page])
+    end
+    method_label = params[:label]
+    render json: results.map {|result| {id: result.id, label: result.send(method_label), value: result.send(method_label)} }
   end
 
   private

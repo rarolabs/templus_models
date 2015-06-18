@@ -1,0 +1,43 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require font-awesome
+ *= require animate/animate.css
+ *= require toastr
+ *= require iCheck/custom.css
+ *= require datapicker/datepicker.css
+ *= require datapicker/daterangepicker.css
+ *= require dataTables/dataTables.bootstrap.css
+ *= require dataTables/dataTables.responsive.css
+ *= require dataTables/dataTables.tableTools.min.css
+ *= require fullcalendar/fullcalendar.css
+ *= require summernote/summernote-bs3.css
+ *= require chosen/chosen.css
+ *= require summernote
+ *= require style
+ *= require crud
+ *= require nested_form
+ */
+
+.actions {
+	margin-top: -8px;
+}
+
+.search_box {
+	border:5px solid #f8ac59;
+	padding:20px 100px;
+	display:none;
+}
+
+.checkbox-permission {
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}

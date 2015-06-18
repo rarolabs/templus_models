@@ -1,11 +1,18 @@
 class Usuario < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :papel
   validates_presence_of :nome, :email
-  has_one :endereco, :class_name => "Endereco", :foreign_key => "usuario_id"
-  accepts_nested_attributes_for :endereco, :allow_destroy => true
 
   def to_s
     nome
+  end
+
+  def self.params_permitt
+    [:password, :password_confirmation]
   end
 
   def ability

@@ -54,6 +54,12 @@ class EmpresaCrud < RaroCrud
 end
 ```
 
+##Alterar forma de visualização do campo
+
+```rb
+campo_visualizacao :tipo, label: "Tipo", label_method: :descricao_do_tipo
+```
+
 ## Atributo especia de endereço
 Para vincular um formlário de cadastro de endereço utilize o método *adicionar_endereco* no arquivo:
 

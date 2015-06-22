@@ -54,6 +54,12 @@ class EmpresaCrud < RaroCrud
 end
 ```
 
+##Alterar forma de visualização do campo
+
+```rb
+campo_visualizacao :tipo, label: "Tipo", label_method: :descricao_do_tipo
+```
+
 ## Atributo especia de endereço
 Para vincular um formlário de cadastro de endereço utilize o método *adicionar_endereco* no arquivo:
 
@@ -104,3 +110,18 @@ Para aplicar uma dica em um campo
 ```rb
 campo_formulario :cpf, label: "CPF", hint: "Somente números"
 ```
+
+## Adicionando javascrit
+Para adicionar um *javascript* em um formulário do RaroCrud, basta criar um arquivo *.js* dentro da seguinte pasta
+
+```
+assets/javascripts/crud/
+```
+
+
+Depois adicione em seu arquivo ModelCrud o javascript
+
+```rb
+script_formulario :cidade_estado
+```
+

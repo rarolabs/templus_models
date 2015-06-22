@@ -1,10 +1,10 @@
 <% content_for :corpo do %>
 	<%unless params[:render] == 'modal'%>
-		<%= render "links" %>
+		<%= render "/crud/links" %>
 	<%end%>
   <div id="form">
-    <%= render 'form' %>
+    <%= render '/crud/form' %>
   </div>
 <% end %>
 
-<%= render "crud_template" %>
+<%= render "/crud/crud_template" %>

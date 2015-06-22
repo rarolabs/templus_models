@@ -1,6 +1,6 @@
 <%= flash_messages_for %>
 <div>
-  <%= render "links" %>
+  <%= render "/crud/links" %>
 </div>
 <div class="dataTables_wrapper form-inline">
   <table class="table table-striped table-bordered table-hover dataTables-example dataTable">
@@ -16,7 +16,7 @@
     </thead>
     <tbody id="records-body">
       <% @records.each do |record| %>
-        <%= render 'record', record: record %>
+        <%= render '/crud/record', record: record %>
       <% end %>
     </tbody>
   </table>

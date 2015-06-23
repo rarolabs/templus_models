@@ -80,7 +80,6 @@ end
 Depois adicione no seu modelo o metodo
 
 ```rb
-has_one :endereco, :dependent => :destroy
 accepts_nested_attributes_for :endereco, :allow_destroy => true
 ```
 

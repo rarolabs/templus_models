@@ -61,7 +61,7 @@ campo_visualizacao :tipo, label: "Tipo", label_method: :descricao_do_tipo
 ```
 
 ## Atributo especia de endereço
-Para vincular um formlário de cadastro de endereço utilize o método *adicionar_endereco* no arquivo:
+Para vincular um formulário de cadastro de endereço utilize o método *adicionar_endereco* no arquivo:
 
 ```ruby
 class EmpresaCrud < RaroCrud
@@ -75,6 +75,13 @@ class EmpresaCrud < RaroCrud
   adicionar_endereco
   ...
 end
+```
+
+Depois adicione no seu modelo o metodo
+
+```rb
+has_one :endereco, :dependent => :destroy
+accepts_nested_attributes_for :endereco, :allow_destroy => true
 ```
 
 ## Campos do tipo data

@@ -7,7 +7,13 @@
     <thead>
       <tr>
         <%@crud_helper.index_fields.each do |att|  %>
-          <th><%= sort_link @q, att[:attribute], att[:label], {},data: {push: 'partial', target: "#form"}%></th>
+          <th>
+				 <% if att[:sort_field].present? %>
+					<%= sort_link @q, att[:sort_field], att[:label], {},data: {push: 'partial', target: "#form"}%>
+				 <% else %>
+					<%= sort_link @q, att[:attribute], att[:label], {},data: {push: 'partial', target: "#form"}%>
+				 <% end %>
+			 </th>
         <%end%>
 	     <%if @crud_helper.view_action || @crud_helper.edit_action || @crud_helper.destroy_action || @crud_helper.actions.present?%>
 	        <td>Opções</td>

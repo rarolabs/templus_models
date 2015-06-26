@@ -142,3 +142,18 @@ Para adicionar um *scope* a uma index do RaroCrud
 ```rb
 escopos [[:maiores_que_1000, "Maiores"], [:menores_que_1000, "Menores"]]
 ```
+
+## Adicionando ações
+Para adicionar uma nova ação
+
+```rb
+acoes :pagar!, "Pagar"
+````
+
+Caso deseja inserir uma condição, basta adicionar um *proc* ao comando
+
+```rb
+acoes :pagar!, "Pagar", Proc.new {|p| Usuario.current.ability.can?(:create, p)}
+````
+
+

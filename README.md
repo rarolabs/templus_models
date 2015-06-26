@@ -136,3 +136,9 @@ Depois adicione em seu arquivo ModelCrud o javascript
 script_formulario :cidade_estado
 ```
 
+## Adicionando escopos
+Para adicionar um *scope* a uma index do RaroCrud
+
+```rb
+escopos [[:maiores_que_1000, "Maiores"], [:menores_que_1000, "Menores"]]
+```

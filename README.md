@@ -96,6 +96,12 @@ Para formatar a data na tabela, utilize o *date_format*
 campo_tabela :created_at,  label: "Data", date_format: "%d/%m/%Y"
 ```
 
+Para ordernar a tabela por outro campo
+
+```rb
+campo_tabela :tipo_veiculo,  label: "Tipo de Veiculo", sort_field: :tipo_veiculo_descricao
+```
+
 ## Campos do tipo boolean
 Para vincular o *iCheck* no campo do tipo boolena
 
@@ -124,10 +130,30 @@ Para adicionar um *javascript* em um formulário do RaroCrud, basta criar um arq
 assets/javascripts/crud/
 ```
 
-
 Depois adicione em seu arquivo ModelCrud o javascript
 
 ```rb
 script_formulario :cidade_estado
 ```
+
+## Adicionando escopos
+Para adicionar um *scope* a uma index do RaroCrud
+
+```rb
+escopos [[:maiores_que_1000, "Maiores"], [:menores_que_1000, "Menores"]]
+```
+
+## Adicionando ações
+Para adicionar uma nova ação
+
+```rb
+acoes :pagar!, "Pagar"
+````
+
+Caso deseja inserir uma condição, basta adicionar um *proc* ao comando
+
+```rb
+acoes :pagar!, "Pagar", Proc.new {|p| Usuario.current.ability.can?(:create, p)}
+````
+
 

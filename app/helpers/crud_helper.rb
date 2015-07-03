@@ -131,7 +131,7 @@ module CrudHelper
       end 
     else
       if field[:sf][:value] and field[:sf][:value].class == Proc
-         field[:sf][:input_html] = {} 
+         field[:sf][:input_html] ||= {} 
          field[:sf][:input_html][:value] = f.instance_eval &field[:sf][:value] 
       end
       if field[:sf][:collection_if] and field[:sf][:collection_if].class == Proc

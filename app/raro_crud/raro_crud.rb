@@ -293,7 +293,7 @@ class RaroCrud
      {campo: :complemento,  label: "Complemento"},
      {campo: :bairro,  label: "Bairro"},
      {campo: :estado,  label: "Estado", collection: Estado.order(:sigla).pluck(:sigla)},
-     {campo: :cidade_id,  label: "Cidade", collection_if: Proc.new{|f| f.try(:object).try(:new_record?) ? [] : (f.try(:object).try(:estado).try(:cidades) || [])}}
+     {campo: :cidade_id,  label: "Cidade", collection_if: Proc.new{|f| f.try(:object).try(:estado).try(:present?) ? (f.try(:object).try(:estado).try(:cidades) || []) : []}}
     ].each do |field|
       value = {}
       field.each do |atr|

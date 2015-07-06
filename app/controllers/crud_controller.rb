@@ -163,7 +163,7 @@ class CrudController < ApplicationController
       chave = "#{key}_attributes"
       group = {chave => [:id, :_destroy]}
       groups.each do |field|
-        modelo = key.to_s.singularize.camelcase.constantize
+        modelo = @model.reflect_on_association(key.to_s).class_name.constantize
         if modelo.reflect_on_association(field[:attribute])
           if modelo.reflect_on_association(field[:attribute]).macro == :belongs_to
             group[chave] << "#{field[:attribute]}_id".to_sym

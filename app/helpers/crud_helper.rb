@@ -38,6 +38,10 @@ module CrudHelper
   def is_action_show?
     params[:action] == "show"
   end
+
+  def is_action_new?
+    params[:action] == "new"
+  end
   
   
   def render_link(link)
@@ -81,33 +85,6 @@ module CrudHelper
       permissions << m.name
     end
     permissions.uniq.flatten
-  end
-
-  def flash_messages_for
-    tipo = ""
-    case
-      when flash[:notice]
-        message = flash.discard(:notice)
-        tipo = 'notice'
-      when flash[:alert]
-        message = flash.discard(:alert)
-        tipo = 'alert'
-      when flash[:success]
-        message = flash.discard(:success)
-        tipo = 'success'
-      when flash[:error]
-        message = flash.discard(:error)
-        tipo = 'error'
-      when flash[:info]
-        message = flash.discard(:info)
-        tipo = 'info'
-      end
-      
-    flash.clear
-    
-    if message.present?
-      javascript_tag "mensagem_#{tipo}('#{message}')"
-    end
   end
 
   def render_plus_button(field,f,modelo,record)
@@ -165,5 +142,9 @@ module CrudHelper
 		else
 			link_to field, field.url, target: "_blank"
 		end
+  end
+  
+  def render_crud(&block)
+    render "/crud/shared", block: block
   end
 end

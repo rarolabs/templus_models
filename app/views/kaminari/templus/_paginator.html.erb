@@ -1,0 +1,36 @@
+<%= paginator.render do -%>
+	<div class="row">
+		<div class="col-xs-6">
+			<div class="pagination pull-left">
+				<% if @options[:current_page].number < 2 %>
+					<% inicio = 1 %>
+				<% else %>
+					<% inicio = ((@options[:current_page].number - 1) * @options[:per_page]) + 1 %>
+				<% end %>
+				<% if @options[:current_page].last? %>
+					<% fim = @options[:total_count] %>
+				<% else %>
+					<% fim = @options[:current_page].number * @options[:per_page] %>
+				<% end %>
+				Exibindo <%= inicio %> - <%= fim %> de um total de <%= @options[:total_count] %>
+			</div> 
+		</div>
+		<div class="col-xs-6">
+			<div class="dataTables_paginate paging_simple_numbers">
+				<ul class="pagination">
+					<%= first_page_tag unless current_page.first? %>
+					<%= prev_page_tag unless current_page.first? %>
+					<% each_page do |page| -%>
+						<% if page.left_outer? || page.right_outer? || page.inside_window? -%>
+							<%= page_tag page %>
+						<% elsif !page.was_truncated? -%>
+							<%= gap_tag %>
+						<% end -%>
+					<% end -%>
+					<%= next_page_tag unless current_page.last? %>
+					<%= last_page_tag unless current_page.last? %>
+				</ul>
+			</div>
+		</div>
+	</div>
+<% end -%>

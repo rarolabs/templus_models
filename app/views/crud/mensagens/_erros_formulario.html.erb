@@ -1,0 +1,18 @@
+<div class='alert alert-danger alert-dismissable' id='accordion'>
+	<button aria-hidden='true' data-dismiss='alert' class='close' type='button'>×</button>
+	<div>
+		Foram encontrados alguns erros. 
+		<a data-toggle='collapse' data-parent='#accordion' href='#collapseOne' style='color: #a94442'>
+			<b><u>Veja mais</u></b>
+		</a>
+	</div>
+	<div id='collapseOne' class='panel-collapse collapse'>
+		<ul>
+			<% mensagens.each do |mensagem| %>
+			<li>
+				<%= mensagem %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+</div>

@@ -1,3 +1,4 @@
+<%= render_crud do %>
 <div class="widget-box">
 	<div class="widget-body">
 		<div class="widget-main">
@@ -19,21 +20,21 @@
 							<% elsif @model.reflect_on_association(field[:attribute]) &&  @model.reflect_on_association(field[:attribute]).macro != :belongs_to && @model.reflect_on_association(field[:attribute]).macro != :has_one%>
 								<td>
 									<% @record.send(field[:attribute]).each do |rec| %>
-										<li>
-											<% if field[:sf].present? && field[:sf][:label_method].present? %>
-												<% if rec.send(field[:sf][:label_method]).respond_to?(:url) %>
-													<%= render_field_file(rec.send(field[:sf][:label_method])) %>
-												<% else %>
-													<%= rec.send(field[:sf][:label_method]) %>
-												<% end %>
-											<% else %>
-												<% if rec.to_s.respond_to?(:url) %>
-													<%= render_field_file(rec.to_s) %>
-												<% else %>
-													<%= rec.to_s %>
-												<% end %>
-											<% end %>
-										</li>
+									<li>
+										<% if field[:sf].present? && field[:sf][:label_method].present? %>
+										<% if rec.send(field[:sf][:label_method]).respond_to?(:url) %>
+										<%= render_field_file(rec.send(field[:sf][:label_method])) %>
+										<% else %>
+										<%= rec.send(field[:sf][:label_method]) %>
+										<% end %>
+										<% else %>
+										<% if rec.to_s.respond_to?(:url) %>
+										<%= render_field_file(rec.to_s) %>
+										<% else %>
+										<%= rec.to_s %>
+										<% end %>
+										<% end %>
+									</li>
 									<% end %>
 								</td>
 							<% elsif @record.send(field[:attribute]).respond_to?(:url) %>
@@ -41,13 +42,13 @@
 									<%= render_field_file(@record.send(field[:attribute])) %>
 								</td>
 							<% elsif ["false","true"].include? @record.send(field[:attribute]).to_s %>
-									<td><%=  @record.send(field[:attribute]) ? "Sim" : "Não" %></td>
+								<td><%=  @record.send(field[:attribute]) ? "Sim" : "Não" %></td>
 							<% else %>
 								<td>
 									<% if field[:sf].present? && field[:sf][:label_method].present? && @record.send(field[:attribute]).present?%>
-										<%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
+									<%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
 									<% else %>
-										<%= @record.send(field[:attribute]) %>
+									<%= @record.send(field[:attribute]) %>
 									<% end %>
 								</td>
 							<% end %>
@@ -58,3 +59,6 @@
 		</div>
 	</div>
 </div>
+<hr>
+<%= link_to "Voltar", "/crud/#{@model.name.underscore}" ,class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+<% end %>

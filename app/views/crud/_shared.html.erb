@@ -1,0 +1,51 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<% if is_action_edit? && @model.present?%>
+						<h5>
+							Editar
+							<small style="margin-left: 2px;"><%= @record.to_s %> - #<%= @record.id %></small>
+						</h5>
+					<% elsif is_action_create? && @model.present? %>
+						<h5>Cadastrar</h5>
+					<% elsif is_action_show? && @crud_helper.present? %>
+						<h5>
+							<%= @record.to_s %>
+							<small style="margin-left: 2px;">#<%= @record.id %></small>
+						</h5>
+					<% elsif @crud_helper.present? %>
+						<h5>
+							<%= @crud_helper.subtitle(:index) %>
+							<small><%= @crud_helper.description(:index) %></small>
+						</h5>
+					<% end %>
+					<% if is_action_show? %>
+					<% elsif is_action_edit? %>
+					<% elsif is_action_create? %>
+					<% elsif is_action_new? %>
+					<% else %>
+						<div class="pull-right actions">
+							<% @crud_helper.top_links.each do |link| %>
+								<% if link[:can].present? %>
+									<%=render_link(link) if self.instance_eval &link[:can]%>
+								<% else %>
+									<%=render_link(link)%>
+								<% end %>
+							<%end%>
+							<% if @crud_helper.search_fields.present? %>
+								<button id="button_search_<%=@model.name.underscore%>" class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#modal_search">
+									<i class="fa fa-search"></i>
+								</button>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+				<div class="ibox-content">
+					<% block.call %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

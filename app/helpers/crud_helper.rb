@@ -17,6 +17,14 @@ module CrudHelper
     return @@cruds.include?(attribute.to_s)
   end
   
+  def lista_menus_crud(raro_models)
+    menus = []
+    raro_models.each do |modelo|
+      menus << ['crud', "#{modelo.name.underscore}"]
+    end
+    menus
+  end
+  
   def menu_helper_crud(modelo, url, nome, classe, icon='')
     if can?(:read, classe)
       buffer = ""
@@ -41,6 +49,14 @@ module CrudHelper
 
   def is_action_new?
     params[:action] == "new"
+  end
+
+  def is_action_index?
+    params[:action] == "index"
+  end
+
+  def is_action_query?
+    params[:action] == "query"
   end
   
   
@@ -146,5 +162,9 @@ module CrudHelper
   
   def render_crud(&block)
     render "/crud/shared", block: block
+  end
+  
+  def render_default_actions_crud
+    render "default_actions_crud"
   end
 end

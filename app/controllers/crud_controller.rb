@@ -57,7 +57,7 @@ class CrudController < ApplicationController
     else
       @titulo = @record.to_s
       @texto = params[:acao]
-      render partial: "/#{@model.name.underscore.pluralize}/#{params[:acao]}"
+      render partial: "/#{@model.name.underscore.pluralize}/#{params[:acao]}" if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
     end
   end
   

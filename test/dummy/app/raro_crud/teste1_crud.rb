@@ -3,12 +3,17 @@ class Teste1Crud < RaroCrud
   titulo "Teste1"
   link_superior "Novo Teste1", id: "novo-button", icon: "plus", link: "new"
 
+  acoes :associar, "Definir permissões", Proc.new {|p| Usuario.current.ability.can?(:create,p)}
+
+  campo_tabela :descricao, label: "Descrição"
   campo_tabela :teste,  label: "Nome", sort_field: :teste_nome
   
   grupo_formulario :teste, [
     {campo: :nome, label: "Nome"}
   ]
-  campo_visualizacao :teste, label: "Nome"
-  campo_busca :teste_id, label: "Nome"
+  campo_visualizacao :descricao, label: "Descrição"
+  campo_visualizacao :teste, label: "Teste"
   
+  campo_busca :descricao, label: "Descrição"
+  campo_busca :nome, label: "Teste", model: "Teste", full_name: "teste_nome", dont_assoc: true
 end

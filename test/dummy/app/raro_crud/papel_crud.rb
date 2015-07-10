@@ -16,6 +16,7 @@ class PapelCrud < RaroCrud
 
   campo_visualizacao :nome,  label: "Nome"
   campo_visualizacao :descricao,  label: "Descrição"
+  campo_visualizacao :permissoes,  label: "Permissões"
 
   campo_busca :nome,  label: "Nome"
   campo_busca :descricao,  label: "Descrição"

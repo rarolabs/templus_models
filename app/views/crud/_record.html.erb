@@ -29,23 +29,40 @@
 		<% end %>
 	<%end%>
 	<td>
-		<%if @crud_helper.view_action%>
-			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>"
-				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Visualizar</a>
-		<%end%>
-		<%if @crud_helper.edit_action%>
-			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/edit"
-				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Editar</a>
-		<%end%>
-		<%if @crud_helper.destroy_action%>
-			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/destroy"
-				class="btn btn-danger btn-xs" data-push="partial" data-target="#form" data-method="delete">Excluir</a>
-		<%end%>
 		<%@crud_helper.actions.each do |a|%>
 			<% if ((a[2].present? && a[2].call(record)) || !a[2].present?) %>
 				<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/acao/<%=a[0]%>"
 						class="btn btn-primary btn-xs" data-push="partial" data-target="#form"><%=a[1]%></a>
-			<%end %>
-		<%end %>
+			<% end %>
+		<% end %>
+		<%@crud_helper.actions_links.each do |name, options|%>
+			<% if options[:url].present? %>
+				<% if options[:wiselink].present? && options[:wiselink] %>
+					<a href="<%= options[:url] %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
+						<%=name%>
+					</a>
+				<% else %>
+					<a href="<%= options[:url] %>" class="btn btn-success btn-xs">
+						<%=name%>
+					</a>
+				<% end %>
+			<% elsif options[:associacao].present? %>
+				<a href="/crud/<%= options[:associacao].to_s.singularize %>/query?model=<%= options[:associacao].to_s.singularize.camelcase.constantize %>&partial=records&var=records&q[<%= @model.name.underscore %>_id_eq]=<%= record.id %>" class="btn btn-success btn-xs">
+					<%=name%>
+				</a>
+			<% end %>
+		<% end %>
+		<%if @crud_helper.view_action%>
+			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>"
+				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Visualizar</a>
+		<% end %>
+		<%if @crud_helper.edit_action%>
+			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/edit"
+				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Editar</a>
+		<% end %>
+		<%if @crud_helper.destroy_action%>
+			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/destroy"
+				class="btn btn-danger btn-xs" data-push="partial" data-target="#form" data-method="delete">Excluir</a>
+		<% end %>
 	</td>  
 <% end %>

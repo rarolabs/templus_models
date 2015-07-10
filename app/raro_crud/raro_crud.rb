@@ -13,6 +13,7 @@ class RaroCrud
   @@subtitle_index    = {}
   @@description_index = {}
   @@actions           = {}
+  @@links             = {}
   @@edit_action       = {}
   @@destroy_action    = {}
   @@view_action       = {}
@@ -93,6 +94,10 @@ class RaroCrud
 
   def self.actions
     (@@actions[self.to_s.to_sym]) ? @@actions[self.to_s.to_sym] : []
+  end
+
+  def self.actions_links
+    (@@links[self.to_s.to_sym]) ? @@links[self.to_s.to_sym] : []
   end
 
   def self.options_link
@@ -255,6 +260,11 @@ class RaroCrud
   def self.acoes(method,desc,proc = nil)
     @@actions[self.to_s.to_sym] = [] unless @@actions[self.to_s.to_sym]
     @@actions[self.to_s.to_sym].push([method,desc,proc])
+  end
+  
+  def self.links(name,options)
+    @@links[self.to_s.to_sym] = [] unless @@links[self.to_s.to_sym]
+    @@links[self.to_s.to_sym].push([name,options])
   end
   
   def self.opcoes(link,desc,proc = nil)

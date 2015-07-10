@@ -6,17 +6,16 @@ class TesteCrud < RaroCrud
   ordenar_por :created_at
   itens_por_pagina 20
   
-  #Exemplo de acao customizada
-  #acoes :associar, "Definir permissões", Proc.new {|p| Usuario.current.ability.can?(:create,p)}
+  links "Permissão", url: "/crud/papel"
+  links "Permissão Wiselink", url: "/crud/papel", wiselink: true
+  links "Testes1", associacao: :teste1
   
-  
-  #Campos mostrados na index
+
   campo_tabela :nome,  label: "Nome"
-  campo_tabela :created_at,  label: "Created at"
+  campo_tabela :created_at,  label: "Created at", date_format: "%d/%m/%Y"
   campo_tabela :updated_at,  label: "Updated at"
   
-  
-  #Campos mostrados no formulários de cadastro
+
   campo_formulario :nome,  label: "Nome"
   campo_formulario :nome,  label: "Nome", if: Proc.new{|o| o.try(:nome) == "Leonardo Raro" || o.new_record?}, value: Proc.new{|o| o.object.try(:teste1).try(:descricao)}
   grupo_formulario :teste1, [
@@ -28,6 +27,7 @@ class TesteCrud < RaroCrud
   campo_visualizacao :nome,  label: "Nome"
   campo_visualizacao :created_at,  label: "Created at"
   campo_visualizacao :updated_at,  label: "Updated at"
+  campo_visualizacao :teste1,  label: "Teste1"
   
 
   #Campos mostrados na busca

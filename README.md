@@ -156,4 +156,25 @@ Caso deseja inserir uma condição, basta adicionar um *proc* ao comando
 acoes :pagar!, "Pagar", Proc.new {|p| Usuario.current.ability.can?(:create, p)}
 ````
 
+Caso necessite de um ação que redireciona para uma view, basta adicionar uma *partial*
+
+```rb
+class PapelCrud < RaroCrud
+acoes :associar, "Definir permissões", Proc.new {|p| Usuario.current.ability.can?(:create,p)}
+end
+```
+Local e conteudo da *partial*
+
+```
+papeis/_associar.html.erb
+
+<%= render_crud do %>
+#Conteudo HTML
+<% end %>
+```
+OBS: Caso você não necessite do template do RaroCrud, adicione somente o Conteudo HTML
+
+
+
+
 

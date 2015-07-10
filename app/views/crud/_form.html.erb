@@ -30,10 +30,12 @@
 		<% end %>
 		<%@crud_helper.form_groups.each do |key, groups|%>
 			<% modelo = @model.reflect_on_association(key.to_s).class_name.constantize %>
-			<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) && @record.new_record? && !@record.send(key).present? %>
-				<% @record.send(key).build %>
-			<% elsif @record.present? && !@record.send(key).present?%>
+			<% if @record.present? && !@record.send(key).present? %>
+				<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
+					<% @record.send(key).build %>
+				<% else %>
 					<% @record.send("build_#{key}") %>
+				<% end %>
 			<% end %>
 			<%= f.simple_fields_for key do |g| %>
 				<div class="col-sm-12">

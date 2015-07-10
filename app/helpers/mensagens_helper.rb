@@ -9,7 +9,7 @@ module MensagensHelper
   def flash_messages
     message, tipo = extrair_mensagem
     if message.present? && tipo.present?
-      render "/crud/mensagens/avisos", tipo: tipo, mensagem: menssagem
+      render "/crud/mensagens/avisos", tipo: tipo, mensagem:  message
     end
   end
   

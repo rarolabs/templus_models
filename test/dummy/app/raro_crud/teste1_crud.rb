@@ -8,9 +8,11 @@ class Teste1Crud < RaroCrud
   campo_tabela :descricao, label: "Descrição"
   campo_tabela :teste,  label: "Nome", sort_field: :teste_nome
   
+  campo_formulario :descricao, label: "Descrição"
   grupo_formulario :teste, [
     {campo: :nome, label: "Nome"}
   ]
+  
   campo_visualizacao :descricao, label: "Descrição"
   campo_visualizacao :teste, label: "Teste"
   

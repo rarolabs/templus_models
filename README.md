@@ -186,5 +186,22 @@ campo_formulario :papel, label: "Papel", label_method: :descricao, add_registro:
   campo_formulario :perfil, label: "Perfil", label_method: :descricao, if: Proc.new {|obj| Usuario.current.root? }
 ```
 
+## Manipulando *actions* padrão do RaroCrud
+
+Para remover um *action* da tabela do RaroCrud
+
+```rb
+sem_visualizacao
+sem_edicao
+sem_exclusao
+````
+
+Para remover um *action* de acordo com uma condição
+
+```rb
+edicao Proc.new {|obj| !obj.root? }
+exclusao Proc.new {|obj| !obj.root? }
+visualizacao Proc.new {|obj| obj.root? }
+```
 
 

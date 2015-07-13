@@ -21,6 +21,9 @@ function new_record(id,name){
 					text: entity_desc,
 					selected: 'selected'
 				}));
+				if($('#' + id).hasClass("chosen")){
+					$('#' + id).trigger("chosen:updated");
+				}
 				$(model_target).attr('data-saved','false');
 				$(model_target).attr('data-entity-name','')
 				$(model_target).attr('data-entity-id','')

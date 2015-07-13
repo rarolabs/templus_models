@@ -4,7 +4,8 @@ class Usuario < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  belongs_to :papel
+  # belongs_to :papel
+  belongs_to :perfil, :class_name => "Papel", :foreign_key => "papel_id"
   validates_presence_of :nome, :email
 
   def to_s

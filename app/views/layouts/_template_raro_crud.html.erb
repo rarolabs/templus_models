@@ -23,11 +23,10 @@
 			</div>
 		</div>
 	</div>
-
-	<% if content_for? :corpo %>
-		<%= yield :corpo %>
-	<% end %>
-	<% if content_for? :modal %>
-		<%= yield  :modal %>
-	<% end %>
+<% end %>
+<% if content_for? :corpo %>
+	<%= yield :corpo %>
+<% end %>
+<% if content_for? :modal %>
+	<%= yield  :modal %>
 <% end %>

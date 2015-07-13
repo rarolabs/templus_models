@@ -52,15 +52,15 @@
 				</a>
 			<% end %>
 		<% end %>
-		<%if @crud_helper.view_action%>
+		<%if @crud_helper.view_action && shold_view?(@crud_helper, record)%>
 			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>"
 				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Visualizar</a>
 		<% end %>
-		<%if @crud_helper.edit_action%>
+		<%if @crud_helper.edit_action && shold_edit?(@crud_helper, record) %>
 			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/edit"
 				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Editar</a>
 		<% end %>
-		<%if @crud_helper.destroy_action%>
+		<%if @crud_helper.destroy_action && shold_destroy?(@crud_helper, record)%>
 			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/destroy"
 				class="btn btn-danger btn-xs" data-push="partial" data-target="#form" data-method="delete">Excluir</a>
 		<% end %>

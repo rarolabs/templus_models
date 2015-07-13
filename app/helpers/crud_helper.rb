@@ -8,13 +8,13 @@ module CrudHelper
       params[:action] == action_name ? "active" : nil
   end
   
-  def is_raro_crud(attribute)
+  def is_raro_crud(classe)
     #if(Rails.env == "production")
     #  @@cruds = Dir[Rails.root.join("app","raro_crud","*.rb")].map{|f| f.split(/\//).last.gsub(/_crud\.rb/,'')} unless @@cruds
     #else
       @@cruds = Dir[Rails.root.join("app","raro_crud","*.rb")].map{|f| f.split(/\//).last.gsub(/_crud\.rb/,'')}
     #end
-    return @@cruds.include?(attribute.to_s)
+    return @@cruds.include?(classe.underscore.to_s)
   end
   
   def lista_menus_crud(raro_models)
@@ -109,6 +109,7 @@ module CrudHelper
   end
     
   def render_field(field,f,modelo,record)
+    field[:sf][:wrapper] ||= :default
     if field[:sf].present? && field[:sf][:if].present?
       return unless field[:sf][:if].call(f.object)
     end
@@ -166,5 +167,19 @@ module CrudHelper
   
   def render_default_actions_crud
     render "default_actions_crud"
+  end
+  
+  #Permissions
+  def shold_view?(crud_helper,record)
+    return true if crud_helper.condition_view_action.nil?
+    crud_helper.condition_view_action.call(record)
+  end
+  def shold_edit?(crud_helper,record)
+    return true if crud_helper.condition_edit_action.nil?
+    crud_helper.condition_edit_action.call(record)
+  end
+  def shold_destroy?(crud_helper,record)
+    return true if crud_helper.condition_destroy_action.nil?
+    crud_helper.condition_destroy_action.call(record)
   end
 end

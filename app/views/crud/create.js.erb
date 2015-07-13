@@ -4,7 +4,7 @@
 	<%if @saved %>
 		var modal_target = "#modal_new_record." + '<%=@model.name.underscore%>';
 		$(modal_target).attr('data-saved','true')
-	  $(modal_target).attr('data-entity-name','<%=@record.to_s%>')
+	   $(modal_target).attr('data-entity-name','<%=@record.to_s%>')
 		$(modal_target).attr('data-entity-id','<%=@record.id%>')
 		$(modal_target).modal('hide')
 	<%else%>

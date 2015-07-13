@@ -1,26 +1,29 @@
 class RaroCrud
-  @@order_field       = {}
-  @@per_page          = {}
-  @@index_fields      = {}
-  @@form_fields       = {}
-  @@form_group        = {}
-  @@form_scripts      = {}
-  @@view_fields       = {}
-  @@search_fields     = {}
-  @@test_fields       = {}
-  @@top_links         = {} 
-  @@title             = {}
-  @@subtitle_index    = {}
-  @@description_index = {}
-  @@actions           = {}
-  @@links             = {}
-  @@edit_action       = {}
-  @@destroy_action    = {}
-  @@view_action       = {}
-  @@options_link      = {}
-  @@scopes            = {}
-  @@menus             = []
-  @@index_path        = nil
+  @@order_field               = {}
+  @@per_page                  = {}
+  @@index_fields              = {}
+  @@form_fields               = {}
+  @@form_group                = {}
+  @@form_scripts              = {}
+  @@view_fields               = {}
+  @@search_fields             = {}
+  @@test_fields               = {}
+  @@top_links                 = {} 
+  @@title                     = {}
+  @@subtitle_index            = {}
+  @@description_index         = {}
+  @@actions                   = {}
+  @@links                     = {}
+  @@edit_action               = {}
+  @@condition_edit_action     = {}
+  @@destroy_action            = {}
+  @@condition_destroy_action  = {}
+  @@view_action               = {}
+  @@condition_view_action     = {}
+  @@options_link              = {}
+  @@scopes                    = {}
+  @@menus                     = []
+  @@index_path                = nil
 
   def self.edit_action
     if @@edit_action[self.to_s.to_sym] == false
@@ -30,12 +33,20 @@ class RaroCrud
     end
   end
   
+  def self.condition_edit_action
+    (@@condition_edit_action[self.to_s.to_sym]) ? @@condition_edit_action[self.to_s.to_sym] : nil
+  end
+  
   def self.destroy_action
     if @@destroy_action[self.to_s.to_sym] == false
       return false
     else
       return true
     end
+  end
+  
+  def self.condition_destroy_action
+    (@@condition_destroy_action[self.to_s.to_sym]) ? @@condition_destroy_action[self.to_s.to_sym] : nil
   end
 
   def self.view_action
@@ -44,6 +55,10 @@ class RaroCrud
     else
       return true
     end
+  end
+  
+  def self.condition_view_action
+    (@@condition_view_action[self.to_s.to_sym]) ? @@condition_view_action[self.to_s.to_sym] : nil
   end
 
   def self.root_path
@@ -248,13 +263,25 @@ class RaroCrud
   def self.sem_visualizacao
     @@view_action[self.to_s.to_sym] = false
   end
+  
+  def self.visualizacao(condicao)
+    @@condition_view_action[self.to_s.to_sym] = condicao
+  end
 
   def self.sem_edicao
     @@edit_action[self.to_s.to_sym] = false
   end
+  
+  def self.edicao(condicao)
+    @@condition_edit_action[self.to_s.to_sym] = condicao
+  end
 
   def self.sem_exclusao
     @@destroy_action[self.to_s.to_sym] = false
+  end
+  
+  def self.exclusao(condicao)
+    @@condition_destroy_action[self.to_s.to_sym] = condicao
   end
   
   def self.acoes(method,desc,proc = nil)

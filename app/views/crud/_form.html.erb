@@ -21,12 +21,11 @@
 	<%= simple_nested_form_for @record, remote: remote_form, html: {class: "form-horizontal"}, url: url do |f| %>
 		<%= flash_messages_error(@record.errors) %>
 		<%@crud_helper.form_fields.each do |field|%>
-			<% if @model.reflect_on_association(field[:attribute]).class == ActiveRecord::Reflection::BelongsToReflection and is_raro_crud(field[:attribute]) %>
+			<% if @model.reflect_on_association(field[:attribute]).class == ActiveRecord::Reflection::BelongsToReflection && is_raro_crud(@model.reflect_on_association(field[:attribute]).class_name) && field[:sf][:add_registro].nil?%>
 					<%= render_plus_button(field,f,@model,@record) %>
 			<%else%>
 					<%= render_field(field,f,@model,@record) %>
 			<%end%>
-		
 		<% end %>
 		<%@crud_helper.form_groups.each do |key, groups|%>
 			<% modelo = @model.reflect_on_association(key.to_s).class_name.constantize %>

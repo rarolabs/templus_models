@@ -61,7 +61,12 @@ module CrudHelper
   
   
   def render_link(link)
-    "<a href='#{link[:link]}' class='#{link[:class]}' #{data(link)}>#{gen_icon(link[:icon])} #{link[:text]}</a>".html_safe
+    if link[:partial].present?
+      render link[:partial]
+    else
+      url = link[:url] || link[:link]
+      link_to "#{gen_icon(link[:icon])} #{link[:text]}".html_safe, url, class: link[:class], data: data(link)
+    end
   end
 
   def gen_icon(i)
@@ -73,9 +78,9 @@ module CrudHelper
   end
 
   def data(link)
-    buffer = ""
-    link[:data].each_key{|k| buffer << " data-#{k}='#{link[:data][k]}' "} if link[:data]
-    return buffer
+    data = {}
+    link[:data].each_key{|k| data[k] = link[:data][k]} if link[:data]
+    return data
   end
 
   def raro_models

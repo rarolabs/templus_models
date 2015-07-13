@@ -190,7 +190,9 @@ class RaroCrud
             icon: "fa fa-#{opts[:icon]}",
             class: 'btn btn-small btn-primary btn-rounded',
             link: "#{self.root_path}/#{opts[:link]}",
-            can: opts[:can]
+            url: opts[:url],
+            can: opts[:can],
+            partial: opts[:partial]
           }
     )
   end 

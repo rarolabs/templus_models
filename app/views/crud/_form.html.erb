@@ -10,7 +10,6 @@
 			</div>
 		</div>
 	</div>
-
 	<%unless params[:render] == 'modal'%>
 		<% url = "/crud/#{@model.name.underscore}/#{@record.new_record? ? 'create' : @record.id.to_s+'/create'}" %>
 		<% remote_form = false%>
@@ -62,7 +61,9 @@
 		<div class="form-group">
 			<div class="col-sm-4 col-sm-offset-2">
 				<%= f.submit "Salvar", class: 'btn btn-primary'  %>
-				<%= link_to "Voltar", "/crud/#{@model.name.underscore}", class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+				<%unless params[:render] == 'modal'%>
+					<%= link_to "Voltar", "/crud/#{@model.name.underscore}", class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+				<% end %>
 			</div>
 		</div>
 	<% end %>

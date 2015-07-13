@@ -2,6 +2,8 @@ class UsuarioCrud < RaroCrud
   titulo "Usuários"
 
   link_superior "Novo Usuário", id: "novo-button", icon: "plus", link: "new"
+  link_superior "Inicio", id: "novo-button", icon: "", url: :busca_api_cidades
+  link_superior "Novo", partial: "/usuarios/actions"
 
   ordenar_por :nome
   edicao Proc.new {|obj| !obj.root? }

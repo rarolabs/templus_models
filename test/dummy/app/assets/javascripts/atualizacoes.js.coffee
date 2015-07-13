@@ -8,12 +8,13 @@ $ ->
   #   "plugins": ["html_data"]
   #   "core" : { "initially_open" : [ "root" ] }
 
-  # $(document).off('page:loading').on(
-  #     'page:loading'
-  #     (event, $target, render, url) ->
-  #         NProgress.start()
-  #         bloqueia()
-  # )
+  $(document).off('page:loading').on(
+      'page:loading'
+      (event, $target, render, url) ->
+          $("#modal_search").remove()
+          $("#modal_new_record").remove()
+          # bloqueia()
+  )
   #
   # $(document).off('page:redirected').on(
   #     'page:redirected'

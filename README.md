@@ -174,6 +174,12 @@ papeis/_associar.html.erb
 ```
 OBS: Caso você não necessite do template do RaroCrud, adicione somente o Conteudo HTML
 
+## Retirando a opção de adicionar novo registro em relações *belongs_to*
+
+```rb
+campo_formulario :papel, label: "Papel", label_method: :descricao, add_registro: false
+```
+
 
 
 

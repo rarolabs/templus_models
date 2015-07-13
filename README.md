@@ -180,7 +180,11 @@ OBS: Caso você não necessite do template do RaroCrud, adicione somente o Conte
 campo_formulario :papel, label: "Papel", label_method: :descricao, add_registro: false
 ```
 
+## Adicionar condição para mostrar um campo no formulário
 
+```rb
+  campo_formulario :perfil, label: "Perfil", label_method: :descricao, if: Proc.new {|obj| Usuario.current.root? }
+```
 
 
 

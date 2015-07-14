@@ -1,7 +1,7 @@
 class TesteCrud < RaroCrud
   titulo "Testes"
   
-  link_superior "Novo Teste", id: "novo-button", icon: "plus", link: "new"
+  link_superior "Novo Teste", id: "novo-button", icon: "plus", link: "new", can: Proc.new {|obj| Usuario.current.ability.can?(:create, obj)}
   
   ordenar_por :created_at
   itens_por_pagina 20

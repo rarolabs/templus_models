@@ -12,6 +12,7 @@ class Ability
 
     if usuario.root?
       can :manage, :all
+      # can :read, Teste
     else
       #Permissão global
       can :manage, Dashboard

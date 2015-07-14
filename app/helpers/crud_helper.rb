@@ -176,14 +176,19 @@ module CrudHelper
   
   #Permissions
   def shold_view?(crud_helper,record)
+    return false unless can?(:read, record)
     return true if crud_helper.condition_view_action.nil?
     crud_helper.condition_view_action.call(record)
   end
+
   def shold_edit?(crud_helper,record)
+    return false unless can?(:update, record)
     return true if crud_helper.condition_edit_action.nil?
     crud_helper.condition_edit_action.call(record)
   end
+
   def shold_destroy?(crud_helper,record)
+    return false unless can?(:destroy, record)
     return true if crud_helper.condition_destroy_action.nil?
     crud_helper.condition_destroy_action.call(record)
   end

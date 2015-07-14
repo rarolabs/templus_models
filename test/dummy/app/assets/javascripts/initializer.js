@@ -45,7 +45,8 @@ function atualiza_campos_crud(){
 		var select = $(this).siblings().last().find('select')
 		var id = select.attr('id')
 		var name = select.attr('name')
-		new_record(id,name)
+		var modelname = select.data('model-name')
+		new_record(id,name,modelname)
 		return false;
 	});
 	

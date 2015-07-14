@@ -10,7 +10,7 @@
 		<ul>
 			<% mensagens.each do |mensagem| %>
 			<li>
-				<%= mensagem %>
+				<%= mensagem.html_safe %>
 			</li>
 			<% end %>
 		</ul>

@@ -1,10 +1,8 @@
 class <%=@model.name%>Crud < RaroCrud
 
   titulo "<%=@model.name.pluralize%>"
-  subtitulo "Subtitulo", :index
-  descricao "Descrição do Cadastro", :index
 
-  link_superior "Novo <%=@model.name%>", id: "novo-button", icon: "plus", link: "new"
+  link_superior "Novo <%=@model.name%>", id: "novo-button", icon: "plus", link: "new", can: Proc.new {|obj| Usuario.current.ability.can?(:create, obj)}
   
   ordenar_por :created_at
   itens_por_pagina 20

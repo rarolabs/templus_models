@@ -204,4 +204,34 @@ exclusao Proc.new {|obj| !obj.root? }
 visualizacao Proc.new {|obj| obj.root? }
 ```
 
+## Manipulando links superiores
+
+Adicionando um link
+```rb
+link_superior "Novo Teste", id: "novo-button", icon: "plus", link: "new"
+```
+Esse link será */crud/teste/new*
+
+Adicionando uma url
+```rb
+link_superior "Inicio", id: "novo-button", icon: "", url: :busca_api_cidades
+ou
+link_superior "Inicio", id: "novo-button", icon: "", url: "/api/busca/cidades"
+```
+Nesse caso será um redirecionamento
+
+Adicionando uma partial
+```rb
+link_superior "Novo", partial: "/usuarios/actions"
+```
+
+Aplicando permissão ao link
+```rb
+link_superior "Novo Teste", id: "novo-button", icon: "plus", link: "new", can: Proc.new {|obj| Usuario.current.ability.can?(:create, obj)}
+```
+
+
+
+
+
 

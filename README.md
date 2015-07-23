@@ -227,7 +227,7 @@ link_superior "Novo", partial: "/usuarios/actions"
 
 Aplicando permissão ao link
 ```rb
-link_superior "Novo Teste", id: "novo-button", icon: "plus", link: "new", can: Proc.new {|obj| Usuario.current.ability.can?(:create, obj)}
+link_superior "Novo Teste", id: "novo-button", icon: "plus", link: "new", can: Proc.new {|obj| Usuario.current.ability.can?(:create, Teste)}
 ```
 
 

@@ -11,6 +11,11 @@
 				<%=raro_search_form(@model, 'records','records',"/crud/#{@model.name.underscore}/query") do%>
 					<%raro_group "#{@model.name}"%>
 					<%@crud_helper.search_fields.each do |att| %>
+						<% if att[:sf].present? && !att[:sf][:visible_if].nil?%>
+							<% if ((field[:sf][:visible_if].class == Proc && !att[:sf][:visible_if].call(att)) || (att[:sf][:visible_if].class != Proc && !att[:sf][:visible_if])) %>
+								<% next %>
+							<% end %>
+						<% end %>
 						<%raro_field att[:attribute],att[:sf]%>
 					<%end%>
 				<%end%>

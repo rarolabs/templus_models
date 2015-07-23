@@ -118,11 +118,15 @@ module CrudHelper
     if field[:sf].present? && field[:sf][:if].present?
       return unless field[:sf][:if].call(f.object)
     end
+    if field[:sf].present? && field[:sf][:date_format].present? && f.object.send(field[:attribute]).present? && Date <= modelo.columns_hash[field[:attribute].to_s].type.to_s.camelcase.constantize
+      field[:sf][:input_html] ||= {}
+      field[:sf][:input_html][:value] = f.object.send(field[:attribute]).strftime(field[:sf][:date_format])
+    end
     if !field[:sf][:edit].nil? || !field[:sf][:create].nil?
       if !field[:sf][:edit].nil? && !field[:sf][:edit] && !record.new_record?
       elsif !field[:sf][:create].nil? && !field[:sf][:create] && record.new_record? 
       else 
-        unless modelo.reflect_on_association(field[:attribute]) 
+        unless modelo.reflect_on_association(field[:attribute])
            f.input field[:attribute], field[:sf]
         else 
            f.association field[:attribute], field[:sf]

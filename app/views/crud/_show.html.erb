@@ -6,6 +6,11 @@
 				<tbody>
 					<% @crud_helper.view_fields.each do |field|%>
 						<tr>
+							<% if field[:sf].present? && !field[:sf][:visible_if].nil?%>
+								<% if ((field[:sf][:visible_if].class == Proc && !field[:sf][:visible_if].call(field)) || (field[:sf][:visible_if].class != Proc && !field[:sf][:visible_if])) %>
+									<% next %>
+								<% end %>
+							<% end %>
 							<% if field[:sf].present? && field[:sf][:label].present? %>
 								<th><%= field[:sf][:label].upcase.to_s %></th>
 							<% else %>
@@ -22,16 +27,16 @@
 									<% @record.send(field[:attribute]).each do |rec| %>
 									<li>
 										<% if field[:sf].present? && field[:sf][:label_method].present? %>
-										<% if rec.send(field[:sf][:label_method]).respond_to?(:url) %>
-										<%= render_field_file(rec.send(field[:sf][:label_method])) %>
+											<% if rec.send(field[:sf][:label_method]).respond_to?(:url) %>
+												<%= render_field_file(rec.send(field[:sf][:label_method])) %>
+											<% else %>
+												<%= rec.send(field[:sf][:label_method]) %>
+											<% end %>
 										<% else %>
-										<%= rec.send(field[:sf][:label_method]) %>
-										<% end %>
+											<% if rec.to_s.respond_to?(:url) %>
+												<%= render_field_file(rec.to_s) %>
 										<% else %>
-										<% if rec.to_s.respond_to?(:url) %>
-										<%= render_field_file(rec.to_s) %>
-										<% else %>
-										<%= rec.to_s %>
+											<%= rec.to_s %>
 										<% end %>
 										<% end %>
 									</li>

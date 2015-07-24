@@ -12,7 +12,7 @@
 					<%raro_group "#{@model.name}"%>
 					<%@crud_helper.search_fields.each do |att| %>
 						<% if att[:sf].present? && !att[:sf][:visible_if].nil?%>
-							<% if ((field[:sf][:visible_if].class == Proc && !att[:sf][:visible_if].call(att)) || (att[:sf][:visible_if].class != Proc && !att[:sf][:visible_if])) %>
+							<% if ((att[:sf][:visible_if].class == Proc && !att[:sf][:visible_if].call(att)) || (att[:sf][:visible_if].class != Proc && !att[:sf][:visible_if])) %>
 								<% next %>
 							<% end %>
 						<% end %>

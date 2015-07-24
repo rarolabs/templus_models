@@ -15,7 +15,7 @@ class Ability
       # can :read, Teste
     else
       #Permissão global
-      can :manage, Dashboard
+      # can :manage, Dashboard
 
       # #Permissão fixa
       # case usuario.papel.chave
@@ -23,8 +23,8 @@ class Ability
       # end
 
       #Permissão dinamica
-      if usuario.papel
-        usuario.papel.permissoes.each do |permissao|
+      if usuario.perfil
+        usuario.perfil.permissoes.each do |permissao|
           # if usuario.reference_id.present? && permissao.klass.constantize.attribute_method?(:reference_id)
             can permissao.abilities, permissao.klass.constantize, reference_id: usuario.reference_id
           # else

@@ -8,7 +8,7 @@ class UsuarioCrud < RaroCrud
   ordenar_por :nome
   edicao Proc.new {|obj| !obj.root? }
   exclusao Proc.new {|obj| !obj.root? }
-  visualizacao Proc.new {|obj| obj.root? }
+  visualizacao Proc.new {|obj| !obj.root? }
 
   campo_tabela :nome,  label: "Nome"
   campo_tabela :email, label: "email"
@@ -21,10 +21,10 @@ class UsuarioCrud < RaroCrud
 
   campo_visualizacao :nome,  label: "Nome"
   campo_visualizacao :email, label: "email"
-  campo_visualizacao :perfil, label: "Papel"
+  campo_visualizacao :perfil, label: "Papel", visible_if: Proc.new {Usuario.current.root? }
 
   campo_busca :nome,  label: "Nome"
   campo_busca :email, label: "email"
-  campo_busca :papel_id,  label: "Papel"
+  campo_busca :papel_id,  label: "Papel", visible_if: Proc.new {Usuario.current.root? }
 
 end

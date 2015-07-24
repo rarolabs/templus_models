@@ -1,5 +1,10 @@
 <%= content_tag :tr, id: "record-#{record.id}" do %>
 	<%@crud_helper.index_fields.each do |att| %>
+		<% if !att[:visible_if].nil?%>
+			<% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
+				<% next %>
+			<% end %>
+		<% end %>
 		<% if record.send(att[:attribute]).present? or record.send(att[:attribute]).to_s == "false"%>
 			<% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
 					<% if att[:date_format].present?%>

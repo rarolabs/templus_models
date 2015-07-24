@@ -151,11 +151,11 @@ class CrudController < ApplicationController
     @crud_helper.form_fields.each do |field|
       if @model.reflect_on_association(field[:attribute])
         if @model.reflect_on_association(field[:attribute]).macro == :belongs_to
-          fields << "#{field[:attribute]}_id".to_sym
+          fields << @model.reflect_on_association(field[:attribute]).foreign_key
         else
           fields << {"#{field[:attribute].to_s.singularize}_ids".to_sym => []}
         end
-      elsif (@model.columns_hash[field[:attribute].to_s] || (@model.respond_to?(:params_permitt) && @model.params_permitt.include?(field[:attribute].to_sym)))
+      elsif @model.columns_hash[field[:attribute].to_s]
         fields << field[:attribute]
       end
     end
@@ -175,6 +175,11 @@ class CrudController < ApplicationController
         end
       end
       fields << group
+    end
+    if @model.respond_to?(:params_permitt)
+      @model.params_permitt.each do |field|
+        fields << field
+      end
     end
     fields
   end

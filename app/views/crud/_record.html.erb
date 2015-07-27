@@ -12,7 +12,7 @@
 					<% else %>
 						<td><%= l record.send(att[:attribute]) %></td>
 					<% end %>
-			<% elsif @model.reflect_on_association(att[:attribute]) &&  @model.reflect_on_association(att[:attribute]).macro != :belongs_to%>
+			<% elsif @model.reflect_on_association(att[:attribute]) && @model.reflect_on_association(att[:attribute]).macro != :belongs_to && @model.reflect_on_association(att[:attribute]).macro != :has_one%>
 				<td>
 					<% record.send(att[:attribute]).each do |rec| %>
 						<li>

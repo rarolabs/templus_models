@@ -1,5 +1,6 @@
 function new_record(id,name,model_name){
-	model_name = name.split("[")[1].split("_id]")[0];
+	model_name = name.split("[")
+	model_name = model_name[model_name.length - 1].split("_id]")[0];
 	
 	$('#modal_new_record').attr("class","modal inmodal")
 	$('#modal_new_record').addClass(model_name);

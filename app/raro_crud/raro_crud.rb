@@ -233,7 +233,14 @@ class RaroCrud
       opts[:input_html] = {name: name, id: name}
       opts[:id_element] = "##{self.modelo}_#{nome}_id"
     end
-    
+    if opts.present? && opts[:grupo].present?
+      opts[:fields] = []
+      opts[:grupo].each do |campo|
+        attribute = campo[:campo]
+        campo.delete(:campo)
+        opts[:fields].push({attribute: attribute,sf: campo})
+      end
+    end
     @@form_fields[self.to_s.to_sym].push(
       {
         attribute: nome
@@ -305,9 +312,13 @@ class RaroCrud
     @@scopes[self.to_s.to_sym] = scopes
   end
   
-  def self.grupo_formulario(attribute,fields)
+  def self.grupo_formulario(attribute,name,fields=nil)
+    if fields.nil?
+      fields = name
+      name = attribute.to_s.singularize.titleize
+    end
     @@form_group[self.to_s.to_sym] ||= {}
-    @@form_group[self.to_s.to_sym][attribute] ||= []
+    @@form_group[self.to_s.to_sym][attribute] = {label: name, fields: []}
     fields.each do |field|
       value = {}
       field.each do |atr|
@@ -318,7 +329,7 @@ class RaroCrud
           value[:sf][atr[0]] = atr[1]
         end
       end
-      @@form_group[self.to_s.to_sym][attribute].push({attribute: value[:attribute],sf: value[:sf]})
+      @@form_group[self.to_s.to_sym][attribute][:fields].push({attribute: value[:attribute],sf: value[:sf]})
     end
   end
   

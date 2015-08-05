@@ -1,0 +1,30 @@
+<% modelo = @model.reflect_on_association(key.to_s).class_name.constantize %>
+<% if @record.present? && !@record.send(key).present? %>
+	<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
+		<% @record.send(key).build %>
+	<% else %>
+		<% @record.send("build_#{key}") %>
+	<% end %>
+<% end %>
+<%= f.simple_fields_for key do |g| %>
+	<div class="col-sm-12">
+		<h3 class="col-sm-2"><%= groups[:label] %></h3>
+	</div>
+	<% groups[:fields].each do |field| %>
+		<%= render_field(field,g,modelo,@record) %>
+	<% end %>
+	<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
+		<div class="form-group">
+			<div class="col-sm-10 col-sm-offset-2">
+				<%= g.link_to_remove "Remover #{groups[:label].downcase}" %>
+			</div>
+		</div>
+	<% end %>
+<% end %>
+<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
+	<div class="form-group">
+		<div class="col-sm-12">
+			<%= f.link_to_add "Adicionar #{groups[:label].downcase}", key %>
+		</div>
+	</div>
+<% end %>

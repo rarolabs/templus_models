@@ -20,43 +20,18 @@
 	<%= simple_nested_form_for @record, remote: remote_form, html: {class: "form-horizontal"}, url: url do |f| %>
 		<%= flash_messages_error(@record.errors) %>
 		<%@crud_helper.form_fields.each do |field|%>
-			<% if @model.reflect_on_association(field[:attribute]).class == ActiveRecord::Reflection::BelongsToReflection && is_raro_crud(@model.reflect_on_association(field[:attribute]).class_name) && field[:sf][:add_registro].nil?%>
-					<%= render_plus_button(field,f,@model,@record) %>
-			<%else%>
-					<%= render_field(field,f,@model,@record) %>
-			<%end%>
+			<% if field[:sf].present? && field[:sf][:grupo].present? %>
+				<%= render "/crud/form_group", f: f, key: field[:attribute], groups: field[:sf] %>
+			<% else %>
+				<% if @model.reflect_on_association(field[:attribute]).class == ActiveRecord::Reflection::BelongsToReflection && is_raro_crud(@model.reflect_on_association(field[:attribute]).class_name) && field[:sf][:add_registro].nil?%>
+						<%= render_plus_button(field,f,@model,@record) %>
+				<%else%>
+						<%= render_field(field,f,@model,@record) %>
+				<%end%>
+			<% end %>
 		<% end %>
 		<%@crud_helper.form_groups.each do |key, groups|%>
-			<% modelo = @model.reflect_on_association(key.to_s).class_name.constantize %>
-			<% if @record.present? && !@record.send(key).present? %>
-				<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
-					<% @record.send(key).build %>
-				<% else %>
-					<% @record.send("build_#{key}") %>
-				<% end %>
-			<% end %>
-			<%= f.simple_fields_for key do |g| %>
-				<div class="col-sm-12">
-					<h3 class="col-sm-2"><%= key.to_s.singularize.titleize %></h3>
-				</div>
-				<% groups.each do |field| %>
-					<%= render_field(field,g,modelo,@record) %>
-				<% end %>
-				<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
-					<div class="form-group">
-						<div class="col-sm-10 col-sm-offset-2">
-							<%= g.link_to_remove "Remover #{key.to_s.singularize}" %>
-						</div>
-					</div>
-				<% end %>
-			<% end %>
-			<% if [:has_many,:has_and_belongs_to_many].include?(@model.reflect_on_association(key).macro) %>
-				<div class="form-group">
-					<div class="col-sm-12">
-						<%= f.link_to_add "Adicionar #{key.to_s.singularize}", key %>
-					</div>
-				</div>
-			<% end %>
+			<%= render "/crud/form_group", f: f, key: key, groups: groups %>
 		<% end %>
 		<div class="form-group">
 			<div class="col-sm-4 col-sm-offset-2">

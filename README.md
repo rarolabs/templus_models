@@ -230,6 +230,12 @@ Aplicando permissão ao link
 link_superior "Novo Teste", id: "novo-button", icon: "plus", link: "new", can: Proc.new {|obj| Usuario.current.ability.can?(:create, Teste)}
 ```
 
+## Adicionando aucomplete
+Para adicionar *autocomplete* em um campo de formulário
+
+campo_formulario :cidade, label: "Cidade", autocomplete: {classe: :cidade, campo: :nome, label_method: :cidade_estado}
+
+
 
 
 

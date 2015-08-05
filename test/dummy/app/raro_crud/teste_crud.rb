@@ -18,6 +18,10 @@ class TesteCrud < RaroCrud
 
   campo_formulario :nome,  label: "Nome"
   campo_formulario :nome,  label: "Nome", if: Proc.new{|o| o.try(:nome) == "Leonardo Raro" || o.new_record?}, value: Proc.new{|o| o.object.try(:teste1).try(:descricao)}
+  campo_formulario :teste1, label: "Formulário Teste Grupo", grupo: [
+                                                                      {campo: :descricao, label: "Descrição"},
+                                                                      {campo: :descricao, label: "Descrição2"}
+                                                                    ]
   grupo_formulario :teste1, [
     {campo: :descricao, label: "Descrição"}
   ]

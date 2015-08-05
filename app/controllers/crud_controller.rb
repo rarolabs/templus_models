@@ -162,7 +162,7 @@ class CrudController < ApplicationController
   	@crud_helper.form_groups.each do |key, groups|
       chave = "#{key}_attributes"
       group = {chave => [:id, :_destroy]}
-      groups.each do |field|
+      groups[:fields].each do |field|
         modelo = @model.reflect_on_association(key.to_s).class_name.constantize
         if modelo.reflect_on_association(field[:attribute])
           if modelo.reflect_on_association(field[:attribute]).macro == :belongs_to

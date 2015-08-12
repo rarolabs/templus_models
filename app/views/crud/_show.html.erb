@@ -12,9 +12,9 @@
 								<% end %>
 							<% end %>
 							<% if field[:sf].present? && field[:sf][:label].present? %>
-								<th><%= field[:sf][:label].upcase.to_s %></th>
+								<th><%= field[:sf][:label].mb_chars.upcase.to_s %></th>
 							<% else %>
-								<th><%= field[:attribute].upcase.to_s %></th>
+								<th><%= field[:attribute].mb_chars.upcase.to_s %></th>
 							<% end %>
 							<% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type)%>
 								<% if field[:date_format].present?%>

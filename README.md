@@ -174,6 +174,22 @@ papeis/_associar.html.erb
 ```
 OBS: Caso você não necessite do template do RaroCrud, adicione somente o Conteudo HTML
 
+## Adicionando links para cada registro
+
+```rb
+links "Permissão", url: "/crud/papel"
+```
+
+Link com wiselink
+```rb
+links "Permissão Wiselink", url: "/crud/papel", wiselink: true
+```
+
+Link para associações
+```rb
+links "Testes1", associacao: :teste1
+```
+
 ## Retirando a opção de adicionar novo registro em relações *belongs_to*
 
 ```rb

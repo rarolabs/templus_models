@@ -1,0 +1,127 @@
+I"-(function() {
+  var Page;
+
+  Page = (function() {
+    function Page($target1, options) {
+      var self;
+      this.$target = $target1;
+      this.options = options;
+      self = this;
+      this.template_id = new Date().getTime();
+      this.request_manager = new _Wiselinks.RequestManager(this.options);
+      this.$target = self._wrap(this.$target);
+      self._try_target(this.$target);
+      if (History.emulated.pushState && this.options.html4 === true) {
+        if (window.location.href.indexOf('#.') === -1 && this.options.html4_normalize_path === true && window.location.pathname !== this.options.html4_root_path) {
+          window.location.href = window.location.protocol + "//" + window.location.host + this.options.html4_root_path + "#." + window.location.pathname;
+        }
+      }
+      History.Adapter.bind(window, "statechange", function(event, data) {
+        var state;
+        state = History.getState();
+        if (self._template_id_changed(state)) {
+          return self._call(self._reset_state(state));
+        } else {
+          return self._call(state);
+        }
+      });
+      $(document).on('click', 'a[data-push], a[data-replace]', function(event) {
+        var link;
+        if ((link = new _Wiselinks.Link(self, $(this))).allows_process(event)) {
+          event.preventDefault();
+          link.process();
+          return false;
+        }
+      });
+      $(document).on('submit', 'form[data-push], form[data-replace]', function(event) {
+        var form;
+        if ((form = new _Wiselinks.Form(self, $(this)))) {
+          event.preventDefault();
+          form.process();
+          return false;
+        }
+      });
+    }
+
+    Page.prototype.load = function(url, target, render) {
+      var $target, selector;
+      if (render == null) {
+        render = 'template';
+      }
+      if (render !== 'partial') {
+        this.template_id = new Date().getTime();
+      }
+      selector = target != null ? ($target = this._wrap(target), this._try_target($target), $target.selector) : void 0;
+      return History.pushState({
+        timestamp: new Date().getTime(),
+        template_id: this.template_id,
+        render: render,
+        target: selector,
+        referer: window.location.href
+      }, document.title, url);
+    };
+
+    Page.prototype.reload = function() {
+      return History.replaceState({
+        timestamp: new Date().getTime(),
+        template_id: this.template_id,
+        render: 'template',
+        referer: window.location.href
+      }, document.title, History.getState().url);
+    };
+
+    Page.prototype._call = function(state) {
+      var $target;
+      $target = state.data.target != null ? $(state.data.target) : this.$target;
+      return this.request_manager.call($target, state);
+    };
+
+    Page.prototype._template_id_changed = function(state) {
+      return (state.data.template_id == null) || state.data.template_id !== this.template_id;
+    };
+
+    Page.prototype._make_state = function(url, target, render, referer) {
+      if (render == null) {
+        render = 'template';
+      }
+      return {
+        url: url,
+        data: {
+          target: target,
+          render: render,
+          referer: referer
+        }
+      };
+    };
+
+    Page.prototype._reset_state = function(state) {
+      if (state.data == null) {
+        state.data = {};
+      }
+      state.data.target = null;
+      state.data.render = 'template';
+      return state;
+    };
+
+    Page.prototype._try_target = function($target) {
+      if ($target.length === 0 && this.options.target_missing === 'exception') {
+        throw new Error("[Wiselinks] Target missing: `" + $target.selector + "`");
+      }
+    };
+
+    Page.prototype._wrap = function(object) {
+      return $(object);
+    };
+
+    return Page;
+
+  })();
+
+  if (window._Wiselinks === void 0) {
+    window._Wiselinks = {};
+  }
+
+  window._Wiselinks.Page = Page;
+
+}).call(this);
+:ET

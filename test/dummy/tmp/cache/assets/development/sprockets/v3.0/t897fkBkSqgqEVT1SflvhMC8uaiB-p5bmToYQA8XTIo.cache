@@ -1,0 +1,118 @@
+I"h(function() {
+  var RequestManager;
+
+  RequestManager = (function() {
+    function RequestManager(options) {
+      this.options = options != null ? options : {};
+    }
+
+    RequestManager.prototype.call = function($target, state) {
+      var self;
+      self = this;
+      if (this.redirected != null) {
+        this.redirected = null;
+        return;
+      }
+      self._loading($target, state);
+      return $.ajax({
+        url: state.url,
+        headers: {
+          'X-Wiselinks': state.data.render,
+          'X-Wiselinks-Referer': state.data.referer
+        },
+        dataType: "html"
+      }).done(function(data, status, xhr) {
+        return self._html_loaded($target, data, status, xhr);
+      }).fail(function(xhr, status, error) {
+        return self._fail($target, status, state, error, xhr.status);
+      }).always(function(data_or_xhr, status, xhr_or_error) {
+        return self._always($target, status, state);
+      });
+    };
+
+    RequestManager.prototype._normalize = function(url) {
+      if (url == null) {
+        return;
+      }
+      url = url.replace(/\/+$/, '');
+      return url;
+    };
+
+    RequestManager.prototype._assets_changed = function(assets_digest) {
+      return (this.options.assets_digest != null) && this.options.assets_digest !== assets_digest;
+    };
+
+    RequestManager.prototype._redirect_to = function(url, $target, state, xhr) {
+      if (xhr && xhr.readyState < 4) {
+        xhr.onreadystatechange = $.noop;
+        xhr.abort();
+      }
+      this.redirected = true;
+      $(document).trigger('page:redirected', [$target, state.data.render, url]);
+      return History.replaceState(state.data, document.title, url);
+    };
+
+    RequestManager.prototype._loading = function($target, state) {
+      return $(document).trigger('page:loading', [$target, state.data.render, decodeURI(state.url)]);
+    };
+
+    RequestManager.prototype._done = function($target, status, state, data) {
+      return $(document).trigger('page:done', [$target, status, decodeURI(state.url), data]);
+    };
+
+    RequestManager.prototype._html_loaded = function($target, data, status, xhr) {
+      var assets_digest, response, state, url;
+      response = new window._Wiselinks.Response(data, xhr, $target);
+      url = this._normalize(response.url());
+      assets_digest = response.assets_digest();
+      if (this._assets_changed(assets_digest)) {
+        return window.location.reload(true);
+      } else {
+        state = History.getState();
+        if ((url != null) && (url !== this._normalize(state.url))) {
+          this._redirect_to(url, $target, state, xhr);
+        }
+        return $target.html(response.content()).promise().done((function(_this) {
+          return function() {
+            _this._title(response.title());
+            _this._description(response.description());
+            return _this._done($target, status, state, response.content());
+          };
+        })(this));
+      }
+    };
+
+    RequestManager.prototype._fail = function($target, status, state, error, code) {
+      return $(document).trigger('page:fail', [$target, status, decodeURI(state.url), error, code]);
+    };
+
+    RequestManager.prototype._always = function($target, status, state) {
+      return $(document).trigger('page:always', [$target, status, decodeURI(state.url)]);
+    };
+
+    RequestManager.prototype._title = function(value) {
+      if (value != null) {
+        $(document).trigger('page:title', decodeURI(value));
+        return document.title = decodeURI(value);
+      }
+    };
+
+    RequestManager.prototype._description = function(value) {
+      if (value != null) {
+        $(document).trigger('page:description', decodeURI(value));
+        return $('meta[name="description"]').attr('content', decodeURI(value));
+      }
+    };
+
+    return RequestManager;
+
+  })();
+
+  if (window._Wiselinks === void 0) {
+    window._Wiselinks = {};
+  }
+
+  window._Wiselinks.RequestManager = RequestManager;
+
+}).call(this);
+:ET

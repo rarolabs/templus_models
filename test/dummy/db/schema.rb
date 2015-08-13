@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422191007) do
+ActiveRecord::Schema.define(version: 20150813125926) do
 
   create_table "cidades", force: :cascade do |t|
     t.string   "nome"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20150422191007) do
   end
 
   add_index "cidades", ["estado_id"], name: "index_cidades_on_estado_id"
+
+  create_table "contatos", force: :cascade do |t|
+    t.string   "nome"
+    t.string   "email"
+    t.integer  "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "contatos", ["usuario_id"], name: "index_contatos_on_usuario_id"
 
   create_table "enderecos", force: :cascade do |t|
     t.string   "cep"
@@ -67,6 +77,15 @@ ActiveRecord::Schema.define(version: 20150422191007) do
 
   add_index "permissoes", ["papel_id"], name: "index_permissoes_on_papel_id"
 
+  create_table "telefones", force: :cascade do |t|
+    t.string   "numero"
+    t.integer  "contato_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "telefones", ["contato_id"], name: "index_telefones_on_contato_id"
+
   create_table "teste1s", force: :cascade do |t|
     t.string   "descricao"
     t.integer  "teste_id"
@@ -77,7 +96,7 @@ ActiveRecord::Schema.define(version: 20150422191007) do
   add_index "teste1s", ["teste_id"], name: "index_teste1s_on_teste_id"
 
   create_table "testes", force: :cascade do |t|
-    t.string   "nome",       limit: 255
+    t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -97,6 +116,7 @@ ActiveRecord::Schema.define(version: 20150422191007) do
     t.datetime "locked_at"
     t.integer  "papel_id"
     t.boolean  "root",                   default: false
+    t.integer  "referencia_id"
     t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -18,6 +18,9 @@ class UsuarioCrud < RaroCrud
   campo_formulario :password, label: "Senha", default_test: "12345678", edit: false
   campo_formulario :password_confirmation, label: "Confirmação Senha", default_test: "12345678", edit: false
   campo_formulario :perfil, label: "Perfil", label_method: :descricao, input_html: {class: "chosen" ,   "data-placeholder" => "Escolha o perfil..."}, if: Proc.new {|obj| Usuario.current.root? }
+  campo_formulario :contatos, label: "Contatos", grupo: [{campo: :nome, label: "Nome"},
+                                                         {campo: :email, label: "Email"},
+                                                         {campo: :telefones, label: "Telefones do contato", grupo: [{campo: :numero, label: "Número"}]}]
 
   campo_visualizacao :nome,  label: "Nome"
   campo_visualizacao :email, label: "email"

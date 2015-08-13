@@ -235,11 +235,13 @@ class RaroCrud
     end
     if opts.present? && opts[:grupo].present?
       opts[:fields] = []
-      opts[:grupo].each do |campo|
-        attribute = campo[:campo]
-        campo.delete(:campo)
-        opts[:fields].push({attribute: attribute,sf: campo})
+      opts[:grupo].each do |field|
+        attribute = field[:campo]
+        field.delete(:campo)
+        add_group_formulario(field) if field[:grupo].present?
+        opts[:fields].push({attribute: attribute,sf: field})
       end
+      opts[:grupo] = true if opts[:grupo].present?
     end
     @@form_fields[self.to_s.to_sym].push(
       {
@@ -249,8 +251,21 @@ class RaroCrud
     if opts.present? && opts[:autocomplete].present?
       campo_formulario(nome, {as: :hidden})
     end
-  end    
+  end
+  
+  private 
+  def self.add_group_formulario(field)
+    field[:fields] = []
+    field[:grupo].each do |f|
+      attribute = f[:campo]
+      f.delete(:campo)
+      add_group_formulario(f) if f[:grupo].present?
+      field[:fields].push({attribute: attribute, sf: f})
+    end
+    field[:grupo] = true
+  end
 
+  public
   def self.campo_visualizacao nome, opts = nil
     @@view_fields[self.to_s.to_sym] = [] unless @@view_fields[self.to_s.to_sym]
     @@view_fields[self.to_s.to_sym].push(

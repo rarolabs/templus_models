@@ -165,7 +165,7 @@ class CrudController < ApplicationController
     end
     #TODO - Deprecated
   	@crud_helper.form_groups.each do |key, groups|
-      permitt_group(fields, key, groups[:fields],@model)
+      fields << permitt_group(fields, key, groups[:fields],@model)
     end
     #Fim - Deprecated
     if @model.respond_to?(:params_permitt)

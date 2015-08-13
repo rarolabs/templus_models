@@ -1,0 +1,23 @@
+I"�(function() {
+  window.mensagem_success = function(str) {
+    return toastr.success(str, 'Sucesso!');
+  };
+
+  window.mensagem_error = function(str) {
+    return toastr.error(str, 'Erro!');
+  };
+
+  window.mensagem_notice = function(str) {
+    return toastr.warning(str, 'Atenção!');
+  };
+
+  window.mensagem_alert = function(str) {
+    return toastr.warning(str, 'Atenção!');
+  };
+
+  window.mensagem_info = function(str) {
+    return toastr.info(str, 'Informação!');
+  };
+
+}).call(this);
+:ET

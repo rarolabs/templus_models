@@ -149,21 +149,42 @@ class CrudController < ApplicationController
   def fields_model
     fields = []
     @crud_helper.form_fields.each do |field|
-      if @model.reflect_on_association(field[:attribute])
-        if @model.reflect_on_association(field[:attribute]).macro == :belongs_to
-          fields << @model.reflect_on_association(field[:attribute]).foreign_key
-        else
-          fields << {"#{field[:attribute].to_s.singularize}_ids".to_sym => []}
+      if field[:sf].present? && field[:sf][:grupo].present?
+        fields << permitt_group(fields, field[:attribute], field[:sf][:fields],@model)
+      else
+        if @model.reflect_on_association(field[:attribute])
+          if @model.reflect_on_association(field[:attribute]).macro == :belongs_to
+            fields << @model.reflect_on_association(field[:attribute]).foreign_key
+          else
+            fields << {"#{field[:attribute].to_s.singularize}_ids".to_sym => []}
+          end
+        elsif @model.columns_hash[field[:attribute].to_s]
+          fields << field[:attribute]
         end
-      elsif @model.columns_hash[field[:attribute].to_s]
-        fields << field[:attribute]
       end
     end
+    #TODO - Deprecated
   	@crud_helper.form_groups.each do |key, groups|
-      chave = "#{key}_attributes"
-      group = {chave => [:id, :_destroy]}
-      groups.each do |field|
-        modelo = @model.reflect_on_association(key.to_s).class_name.constantize
+      permitt_group(fields, key, groups)
+    end
+    #Fim - Deprecated
+    if @model.respond_to?(:params_permitt)
+      @model.params_permitt.each do |field|
+        fields << field
+      end
+    end
+    fields
+  end
+  
+  def permitt_group(fields, key, groups,mod)
+    chave = "#{key}_attributes"
+    group = {chave => [:id, :_destroy]}
+    fields_permitt = []
+    groups.each do |field|
+      if field[:sf].present? && field[:sf][:grupo].present?
+        group[chave] << permitt_group(fields, field[:attribute], field[:sf][:fields], key.to_s.camelcase.singularize.constantize)
+      else
+        modelo = mod.reflect_on_association(key.to_s).class_name.constantize
         if modelo.reflect_on_association(field[:attribute])
           if modelo.reflect_on_association(field[:attribute]).macro == :belongs_to
             group[chave] << "#{field[:attribute]}_id".to_sym
@@ -173,14 +194,8 @@ class CrudController < ApplicationController
         elsif (modelo.columns_hash[field[:attribute].to_s] || (modelo.respond_to?(:params_permitt) && modelo.params_permitt.include?(field[:attribute].to_sym)))
           group[chave] << field[:attribute]
         end
-      end
-      fields << group
+       end
     end
-    if @model.respond_to?(:params_permitt)
-      @model.params_permitt.each do |field|
-        fields << field
-      end
-    end
-    fields
+    group
   end
 end

@@ -7,6 +7,11 @@ class Usuario < ActiveRecord::Base
   # belongs_to :papel
   belongs_to :perfil, :class_name => "Papel", :foreign_key => "papel_id"
   validates_presence_of :nome, :email
+  has_many :contatos
+  
+  accepts_nested_attributes_for :contatos, :allow_destroy => true
+  
+  
 
   def to_s
     nome

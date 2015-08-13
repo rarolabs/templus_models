@@ -23,7 +23,7 @@ class TesteCrud < RaroCrud
                                                                       {campo: :descricao, label: "Descrição2"}
                                                                     ]
   grupo_formulario :teste1, [
-    {campo: :descricao, label: "Descrição"}
+    {campo: :descricao, label: "Descrição"},
   ]
   
 

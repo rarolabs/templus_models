@@ -6,6 +6,7 @@ class Usuario < ActiveRecord::Base
 
   # belongs_to :papel
   belongs_to :perfil, :class_name => "Papel", :foreign_key => "papel_id"
+  belongs_to :novo_papel, :class_name => "Papel", :foreign_key => "novo_papel_id"
   validates_presence_of :nome, :email
   has_many :contatos
   

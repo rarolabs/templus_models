@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813125926) do
+ActiveRecord::Schema.define(version: 20150813200710) do
 
   create_table "cidades", force: :cascade do |t|
     t.string   "nome"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20150813125926) do
     t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "novo_papel_id"
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true

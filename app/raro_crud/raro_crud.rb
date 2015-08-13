@@ -349,8 +349,9 @@ class RaroCrud
   end
   
   def self.adicionar_endereco
-    @@form_group[self.to_s.to_sym] ||= {}
-    @@form_group[self.to_s.to_sym][:endereco] ||= []
+    @@form_fields[self.to_s.to_sym] = [] unless @@form_fields[self.to_s.to_sym]
+    opts = {}
+    opts[:fields] = []
     [
      {campo: :cep,  label: "CEP"},
      {campo: :logradouro,  label: "Endereço"},
@@ -360,17 +361,16 @@ class RaroCrud
      {campo: :estado,  label: "Estado", collection: Estado.order(:sigla).pluck(:sigla)},
      {campo: :cidade_id,  label: "Cidade", collection_if: Proc.new{|f| f.try(:object).try(:estado).try(:present?) ? (f.try(:object).try(:estado).try(:cidades) || []) : []}}
     ].each do |field|
-      value = {}
-      field.each do |atr|
-        if atr[0] == :campo
-          value[:attribute] = atr[1]
-        else
-          value[:sf] ||= {}
-          value[:sf][atr[0]] = atr[1]
-        end
-      end
-      @@form_group[self.to_s.to_sym][:endereco].push({attribute: value[:attribute],sf: value[:sf]})
+      attribute = field[:campo]
+      field.delete(:campo)
+      opts[:fields].push({attribute: attribute,sf: field})
     end
+    opts[:grupo] = true
+    @@form_fields[self.to_s.to_sym].push(
+      {
+        attribute: :endereco
+      }.merge({sf: opts})
+    )
     @@form_scripts[self.to_s.to_sym] ||= []
     @@form_scripts[self.to_s.to_sym] << "cidade_estado"
   end

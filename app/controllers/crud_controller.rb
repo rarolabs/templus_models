@@ -31,6 +31,14 @@ class CrudController < ApplicationController
   
   def new
     authorize! :create, @model if respond_to?(:current_usuario)
+    if params[:render] == "modal"
+      if @model.reflect_on_association(params[:attribute].to_s).present?
+        @model = @model.reflect_on_association(params[:attribute].to_s).class_name.constantize
+      else
+        @model = params[:attribute].to_s.camelcase.constantize
+      end
+    end
+    @crud_helper = Module.const_get("#{@model}Crud".camelize)
     @record = @model.new
   end
   

@@ -236,6 +236,23 @@ Para adicionar *autocomplete* em um campo de formulário
 campo_formulario :cidade, label: "Cidade", autocomplete: {classe: :cidade, campo: :nome, label_method: :cidade_estado}
 
 
+## Formulário Aninhado
+Para adicionar formulários aninhados utilize o método _grupo_formulario_:
+
+```rb
+
+  grupo_formulario :subtopicos, [
+    {campo: :descricao, label: "Descrição"}
+  ]
+  
+```
+
+Não se esqueça de permitir os campos dos filhos no modelo do pai com _accepts_nested_attributes_for_
+
+```rb
+  accepts_nested_attributes_for :subtopicos, :allow_destroy => true
+```
+
 
 
 

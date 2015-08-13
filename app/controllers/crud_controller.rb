@@ -165,7 +165,7 @@ class CrudController < ApplicationController
     end
     #TODO - Deprecated
   	@crud_helper.form_groups.each do |key, groups|
-      permitt_group(fields, key, groups)
+      permitt_group(fields, key, groups,@model)
     end
     #Fim - Deprecated
     if @model.respond_to?(:params_permitt)
@@ -179,7 +179,6 @@ class CrudController < ApplicationController
   def permitt_group(fields, key, groups,mod)
     chave = "#{key}_attributes"
     group = {chave => [:id, :_destroy]}
-    fields_permitt = []
     groups.each do |field|
       if field[:sf].present? && field[:sf][:grupo].present?
         group[chave] << permitt_group(fields, field[:attribute], field[:sf][:fields], key.to_s.camelcase.singularize.constantize)

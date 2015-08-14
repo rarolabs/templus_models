@@ -59,7 +59,7 @@
 					<%=name%>
 				</a>
 			<% elsif options[:partial].present? %>
-				<%= render options[:partial] %>
+				<%= render options[:partial], record: record %>
 			<% end %>
 		<% end %>
 		<%if @crud_helper.view_action && shold_view?(@crud_helper, record)%>

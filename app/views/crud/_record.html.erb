@@ -58,6 +58,8 @@
 				<a href="/crud/<%= options[:associacao].to_s.singularize %>/query?model=<%= options[:associacao].to_s.singularize.camelcase.constantize %>&partial=records&var=records&q[<%= @model.name.underscore %>_id_eq]=<%= record.id %>" class="btn btn-success btn-xs">
 					<%=name%>
 				</a>
+			<% elsif options[:partial].present? %>
+				<%= render options[:partial] %>
 			<% end %>
 		<% end %>
 		<%if @crud_helper.view_action && shold_view?(@crud_helper, record)%>

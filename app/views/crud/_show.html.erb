@@ -7,7 +7,7 @@
 					<% @crud_helper.view_fields.each do |field|%>
 						<tr>
 							<% if field[:sf].present? && !field[:sf][:visible_if].nil?%>
-								<% if ((field[:sf][:visible_if].class == Proc && !field[:sf][:visible_if].call(field)) || (field[:sf][:visible_if].class != Proc && !field[:sf][:visible_if])) %>
+								<% if ((field[:sf][:visible_if].class == Proc && !field[:sf][:visible_if].call(@record)) || (field[:sf][:visible_if].class != Proc && !field[:sf][:visible_if])) %>
 									<% next %>
 								<% end %>
 							<% end %>

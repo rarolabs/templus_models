@@ -7,7 +7,11 @@
 						<h3 class="font-bold">
 							<%= escopo[1] %>
 							<span class="label label-success pull-right" style="margin-left: 10px;">
-								<%= @model.send(escopo[0]).count %>
+								<% if current_usuario.present? %>
+									<%= @model.send(escopo[0]).accessible_by(current_ability, :read).count %>
+								<% else %>
+									<%= @model.send(escopo[0]).count %>
+								<% end %>
 							</span>
 						</h3>
 					</div>

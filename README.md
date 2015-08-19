@@ -143,6 +143,12 @@ Para adicionar um *scope* a uma index do RaroCrud
 escopos [[:maiores_que_1000, "Maiores"], [:menores_que_1000, "Menores"]]
 ```
 
+Para adicionar um *partial* para o *scope* em uma index do RaroCrud
+
+```rb
+escopos "/cancelamentos/escopos"
+```
+
 ## Adicionando ações
 Para adicionar uma nova ação
 

@@ -1,5 +1,5 @@
 <% if @crud_helper.scopes.present? %>
-	<% @crud_helper.scopes.class == Array %>
+	<% if @crud_helper.scopes.class == Array %>
 		<% @crud_helper.scopes.each do |escopo| %>
 			<%= link_to "/crud/#{@model.name.underscore}?scope=#{escopo[0]}", id: "#{escopo[0]}", data: {push: true, crumb: 'wielka'} do%>
 				<div style="float: left; margin-left: 10px; min-width: 100px;">

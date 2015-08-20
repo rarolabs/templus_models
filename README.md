@@ -116,9 +116,11 @@ Para aplicar uma mascara em um campo
 campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {"data-mask" => "(99) 9999-9999"}
 ```
 
-Para mascara de telefone com 8 e 9 digitos
+Para mascara de telefone com 8 e 9 digitos (com e sem DDD)
 ```rb
 campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {class: "mask-telefone"}
+ou
+campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {class: "mask-telefone-ddd"}
 ```
 
 

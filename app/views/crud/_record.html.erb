@@ -72,7 +72,7 @@
 		<% end %>
 		<%if @crud_helper.destroy_action && shold_destroy?(@crud_helper, record)%>
 			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/destroy"
-				class="btn btn-danger btn-xs" data-push="partial" data-target="#form" data-method="delete">Excluir</a>
+				class="btn btn-danger btn-xs" data-push="partial" data-target="#form" data-method="delete" data-confirm="Você têm certeza?">Excluir</a>
 		<% end %>
 	</td>  
 <% end %>

@@ -43,18 +43,18 @@ class CrudController < ApplicationController
   end
   
   def edit
-    authorize! :edit, @model if respond_to?(:current_usuario)
     @record = @model.find(params[:id])
+    authorize! :edit, @record if respond_to?(:current_usuario)
   end
 
   def show
-    authorize! :read, @model if respond_to?(:current_usuario)
     @record = @model.find(params[:id])
+    authorize! :read, @record if respond_to?(:current_usuario)
   end
 
   def action
-    authorize! :create_or_update, @model if respond_to?(:current_usuario)
     @record = @model.find(params[:id])
+    authorize! :create_or_update, @record if respond_to?(:current_usuario)
     if @model.method_defined?(params[:acao])
       if @record.send(params[:acao])
         flash.now[:success] = "Ação #{params[:acao]} efetuada com sucesso."
@@ -72,12 +72,12 @@ class CrudController < ApplicationController
   def create
     @saved = false
     if params[:id]
-      authorize! :update, @model if respond_to?(:current_usuario)
       @record = @model.find(params[:id])
+      authorize! :update, @record if respond_to?(:current_usuario)
       @saved = @record.update(params_permitt)
     else
-      authorize! :create, @model if respond_to?(:current_usuario)
       @record  =  @model.new(params_permitt)
+      authorize! :create, @record if respond_to?(:current_usuario)
       @saved = @record.save
     end
     
@@ -99,8 +99,8 @@ class CrudController < ApplicationController
   end
   
   def destroy
-    authorize! :destroy, @model if respond_to?(:current_usuario)
     @record = @model.find(params[:id])
+    authorize! :destroy, @record if respond_to?(:current_usuario)
     if @record.destroy
       respond_to do |format|
         flash[:success] = "Cadastro removido com sucesso."

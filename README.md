@@ -116,6 +116,14 @@ Para aplicar uma mascara em um campo
 campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {"data-mask" => "(99) 9999-9999"}
 ```
 
+Para mascara de telefone com 8 e 9 digitos (com e sem DDD)
+```rb
+campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {class: "mask-telefone"}
+ou
+campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {class: "mask-telefone-ddd"}
+```
+
+
 ## Aplicando Dica
 Para aplicar uma dica em um campo
 
@@ -141,6 +149,12 @@ Para adicionar um *scope* a uma index do RaroCrud
 
 ```rb
 escopos [[:maiores_que_1000, "Maiores"], [:menores_que_1000, "Menores"]]
+```
+
+Para adicionar um *partial* para o *scope* em uma index do RaroCrud
+
+```rb
+escopos "/cancelamentos/escopos"
 ```
 
 ## Adicionando ações
@@ -252,15 +266,14 @@ Para adicionar *autocomplete* em um campo de formulário
 campo_formulario :cidade, label: "Cidade", autocomplete: {classe: :cidade, campo: :nome, label_method: :cidade_estado}
 
 
-## Formulário Aninhado
-Para adicionar formulários aninhados utilize o método _grupo_formulario_:
+## Formulário Alinhado
+Para adicionar formulários alinhados utilize o método _grupo_formulario_:
 
 ```rb
-
-  grupo_formulario :subtopicos, [
-    {campo: :descricao, label: "Descrição"}
-  ]
-  
+  campo_formulario :dado_boleto, label: "Dados para emissão de boleto", 
+                   grupo: [{campo: :banco, label: "Banco", add_registro: false},
+                           {campo: :conta, label: "Conta"},
+                           {campo: :observacao, label: "Instruções bancárias"}]
 ```
 
 Não se esqueça de permitir os campos dos filhos no modelo do pai com _accepts_nested_attributes_for_

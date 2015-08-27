@@ -63,16 +63,16 @@
 			<% end %>
 		<% end %>
 		<%if @crud_helper.view_action && shold_view?(@crud_helper, record)%>
-			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>"
+			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>?page=<%=params[:page]%>"
 				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Visualizar</a>
 		<% end %>
 		<%if @crud_helper.edit_action && shold_edit?(@crud_helper, record) %>
-			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/edit"
+			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/edit?page=<%=params[:page]%>"
 				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Editar</a>
 		<% end %>
 		<%if @crud_helper.destroy_action && shold_destroy?(@crud_helper, record)%>
 			<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/destroy"
-				class="btn btn-danger btn-xs" data-push="partial" data-target="#form" data-method="delete">Excluir</a>
+				class="btn btn-danger btn-xs" data-push="partial" data-target="#form" data-method="delete" data-confirm="Você têm certeza?">Excluir</a>
 		<% end %>
 	</td>  
 <% end %>

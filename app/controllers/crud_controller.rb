@@ -84,9 +84,9 @@ class CrudController < ApplicationController
     respond_to do |format|
       if @saved
         flash[:success] = params[:id].present? ? "Cadastro alterado com sucesso." : "Cadastro efetuado com sucesso."
-        format.html { redirect_to "/crud/#{@model.name.underscore}" }
+        format.html { redirect_to "/crud/#{@model.name.underscore}?page=#{params[:page]}" }
         unless params[:render] == 'modal'
-          format.js { render action: :index }
+          format.js { render action: :index}
         else
           format.js
         end

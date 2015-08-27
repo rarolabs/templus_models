@@ -11,7 +11,7 @@
 		</div>
 	</div>
 	<%unless params[:render] == 'modal'%>
-		<% url = "/crud/#{@model.name.underscore}/#{@record.new_record? ? 'create' : @record.id.to_s+'/create'}" %>
+		<% url = "/crud/#{@model.name.underscore}/#{@record.new_record? ? 'create' : @record.id.to_s+'/create'}?page=#{params[:page]}" %>
 		<% remote_form = false%>
 	<%else%>
 		<% url = "/crud/#{@model.name.underscore}/#{@record.new_record? ? 'create?render=modal' : @record.id.to_s+'/create?render=modal'}" %>
@@ -37,7 +37,7 @@
 			<div class="col-sm-4 col-sm-offset-2">
 				<%= f.submit "Salvar", class: 'btn btn-primary'  %>
 				<%unless params[:render] == 'modal'%>
-					<%= link_to "Voltar", "/crud/#{@model.name.underscore}", class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+					<%= link_to "Voltar", "/crud/#{@model.name.underscore}?page=#{params[:page]}", class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
 				<% end %>
 			</div>
 		</div>

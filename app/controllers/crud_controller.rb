@@ -30,7 +30,7 @@ class CrudController < ApplicationController
   end
   
   def new
-    authorize! :create, @model if respond_to?(:current_usuario)
+    authorize! :new, @model if respond_to?(:current_usuario)
     if params[:render] == "modal"
       if @model.reflect_on_association(params[:attribute].to_s).present?
         @model = @model.reflect_on_association(params[:attribute].to_s).class_name.constantize
@@ -70,12 +70,13 @@ class CrudController < ApplicationController
   end
   
   def create
-    authorize! :create, @model if respond_to?(:current_usuario)
     @saved = false
     if params[:id]
+      authorize! :update, @model if respond_to?(:current_usuario)
       @record = @model.find(params[:id])
       @saved = @record.update(params_permitt)
     else
+      authorize! :create, @model if respond_to?(:current_usuario)
       @record  =  @model.new(params_permitt)
       @saved = @record.save
     end

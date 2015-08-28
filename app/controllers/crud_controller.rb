@@ -77,7 +77,7 @@ class CrudController < ApplicationController
       @saved = @record.update(params_permitt)
     else
       @record  =  @model.new(params_permitt)
-      authorize! :create, @record if respond_to?(:current_usuario)
+      authorize! :create, @model if respond_to?(:current_usuario)
       @saved = @record.save
     end
     

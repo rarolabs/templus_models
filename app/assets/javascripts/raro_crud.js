@@ -33,6 +33,9 @@ function new_record(id,name,model_name){
 		})
 		$(model_target + ' .modal-body').html(result);
 		$(model_target).modal('show');
-		$('.modal-backdrop').appendTo("body");	
+		$('.modal-backdrop').appendTo("body");
+		if(window.hasOwnProperty("atualiza_campos_crud")){
+			atualiza_campos_crud();
+		}
 	});
 }

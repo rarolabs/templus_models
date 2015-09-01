@@ -161,7 +161,7 @@ SimpleForm.setup do |config|
         ba2.use :error, :wrap_with => { :tag => 'span', :class => 'help-block m-b-none text-danger' }
         ba2.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block text-muted' }
       end
-      ba.wrapper :tag => 'button', :class => "btn btn-success crud-new-record" do |ba2|
+      ba.wrapper :tag => 'a', :class => "btn btn-success crud-new-record" do |ba2|
         ba2.wrapper :tag => 'i' , :class => "fa fa-plus" do
         end
       end

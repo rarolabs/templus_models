@@ -10,5 +10,8 @@ window.mensagem_notice = (str) ->
 window.mensagem_alert = (str) ->
 	toastr.warning(str, 'Atenção!');
 
+window.mensagem_warning = (str) ->
+	toastr.warning(str, 'Atenção!');
+
 window.mensagem_info = (str) ->
 	toastr.info(str, 'Informação!');

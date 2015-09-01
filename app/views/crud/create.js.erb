@@ -9,5 +9,8 @@
 		$(modal_target).modal('hide')
 	<%else%>
 		$("#modal_new_record.<%=@model.name.underscore%> .modal-body").html("<%=j render('edit')%>")
+		if(window.hasOwnProperty("atualiza_campos_crud")){
+			atualiza_campos_crud();
+		}
 	<%end%>
 <%end%>

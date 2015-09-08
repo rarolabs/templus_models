@@ -20,6 +20,9 @@
 	<%= simple_nested_form_for @record, remote: remote_form, html: {class: "form-horizontal"}, url: url do |f| %>
 		<%= flash_messages_error(@record.errors) %>
 		<%@crud_helper.form_fields.each do |field|%>
+			<% if field[:sf].present? && field[:sf][:if].present? %>
+				<% next unless field[:sf][:if].call(f.object) %>
+			<% end %>
 			<% if field[:sf].present? && field[:sf][:grupo].present? %>
 				<%= render "/crud/form_group", f: f, key: field[:attribute], groups: field[:sf] %>
 			<% else %>

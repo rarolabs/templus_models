@@ -26,11 +26,10 @@ class CrudController < ApplicationController
 
   def setup
     @model = Module.const_get(params[:model].camelize)
-    @crud_helper = Module.const_get("#{params[:model]}_crud".camelize)
+    @crud_helper = Module.const_get("#{params[:model]}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
   end
   
   def new
-    authorize! :new, @model if respond_to?(:current_usuario)
     if params[:render] == "modal"
       if @model.reflect_on_association(params[:attribute].to_s).present?
         @model = @model.reflect_on_association(params[:attribute].to_s).class_name.constantize
@@ -38,6 +37,7 @@ class CrudController < ApplicationController
         @model = params[:attribute].to_s.camelcase.constantize
       end
     end
+    authorize! :new, @model if respond_to?(:current_usuario)
     @crud_helper = Module.const_get("#{@model}Crud".camelize)
     @record = @model.new
   end

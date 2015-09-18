@@ -42,9 +42,9 @@
 									</li>
 									<% end %>
 								</td>
-							<% elsif @record.send(att[:attribute]).class == Array %>
+							<% elsif @record.send(field[:attribute]).class == Array %>
 								<td>
-									<% @record.send(att[:attribute]).each do |rec| %>
+									<% @record.send(field[:attribute]).each do |rec| %>
 										<li>
 											<%= rec.to_s %>
 										</li>

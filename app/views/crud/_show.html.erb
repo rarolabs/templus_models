@@ -42,6 +42,15 @@
 									</li>
 									<% end %>
 								</td>
+							<% elsif @record.send(att[:attribute]).class == Array %>
+								<td>
+									<% @record.send(att[:attribute]).each do |rec| %>
+										<li>
+											<%= rec.to_s %>
+										</li>
+									<% end %>
+								</td>
+							<% end %>
 							<% elsif @record.send(field[:attribute]).respond_to?(:url) %>
 								<td>
 									<%= render_field_file(@record.send(field[:attribute])) %>

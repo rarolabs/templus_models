@@ -28,7 +28,6 @@
 						</li>
 					<% end %>
 				</td>
-			<% end %>
 			<% elsif record.send(att[:attribute]).respond_to?(:url) and record.send(att[:attribute]).url(:thumb) %>
 				<td><%=  image_tag(record.send(att[:attribute]).url(:thumb)) %></td> 
 			<% else %>

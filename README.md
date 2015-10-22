@@ -204,6 +204,11 @@ Link para associações
 links "Testes1", associacao: :teste1
 ```
 
+Link com partial
+```rb
+links "acoes", partial: "/atendimentos/acoes"
+```
+
 ## Retirando a opção de adicionar novo registro em relações *belongs_to*
 
 ```rb

@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
   s.add_dependency "simple_form", "~>3.1.0"
   s.add_dependency "nested_form"
   s.add_dependency "rails-jquery-autocomplete"
-    
 
   s.add_development_dependency "sqlite3"
 end

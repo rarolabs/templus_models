@@ -63,7 +63,7 @@
 					</a>
 				<% end %>
 			<% elsif options[:associacao].present? %>
-				<a href="/crud/<%= options[:associacao].to_s.singularize %>/query?model=<%= options[:associacao].to_s.singularize.camelcase.constantize %>&partial=records&var=records&q[<%= @model.name.underscore %>_id_eq]=<%= record.id %>" class="btn btn-success btn-xs">
+				<a href="/crud/<%= @model.name.underscore %>/<%= record.id %>/<%= options[:associacao].to_s %>" class="btn btn-success btn-xs">
 					<%=name%>
 				</a>
 			<% elsif options[:partial].present? %>

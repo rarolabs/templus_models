@@ -8,7 +8,7 @@
 				<small class="font-bold"></small>
 			</div>
 			<div class="modal-body">
-				<%=raro_search_form(@model, 'records','records',"/crud/#{@model.name.underscore}/query") do%>
+				<%=raro_search_form(@model, 'records','records',"#{@url}/query") do%>
 					<%raro_group "#{@model.name}"%>
 					<%@crud_helper.search_fields.each do |att| %>
 						<% if att[:sf].present? && !att[:sf][:visible_if].nil?%>

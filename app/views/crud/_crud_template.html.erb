@@ -1,5 +1,8 @@
 <%unless params[:render] == 'modal'%>
 	<% content_for :breadcumb do %>
+		<% if @crud_associacao.present? %>
+		<li class=""><%= link_to @crud_associacao.title, @crud_associacao.root_path %></li>
+		<% end %>
 		<li class=""><%= link_to @crud_helper.title, @crud_helper.root_path %></li>
 	<% end %>
 		

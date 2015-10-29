@@ -1,6 +1,23 @@
 class CrudController < ApplicationController
   before_filter :setup, except: :autocomplete
-
+  
+  private
+  def setup
+    if params[:associacao]
+      @crud_associacao = Module.const_get("#{params[:model].to_s.singularize}_crud".camelize)
+      @model = Module.const_get(params[:model].camelize).find(params[:id]).send(params[:associacao])
+      @crud_helper = Module.const_get("#{params[:associacao].to_s.singularize}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
+      @url = "/crud/#{params[:model]}/#{params[:id]}/#{params[:associacao]}"
+      @id = params[:associacao_id] if params[:associacao_id]
+    else
+      @model = Module.const_get(params[:model].camelize)
+      @crud_helper = Module.const_get("#{params[:model]}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
+      @url = "/crud/#{params[:model]}"
+      @id = params[:id] if params[:id]
+    end
+  end
+  
+  public
   def index
     authorize! :read, @model if respond_to?(:current_usuario)
     if params[:scope].present?
@@ -23,11 +40,6 @@ class CrudController < ApplicationController
     @titulo = @model.name.pluralize
     render partial: 'records' if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
   end
-
-  def setup
-    @model = Module.const_get(params[:model].camelize)
-    @crud_helper = Module.const_get("#{params[:model]}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
-  end
   
   def new
     if params[:render] == "modal"
@@ -36,24 +48,24 @@ class CrudController < ApplicationController
       else
         @model = params[:attribute].to_s.camelcase.constantize
       end
+      @crud_helper = Module.const_get("#{@model}Crud".camelize)
     end
     authorize! :new, @model if respond_to?(:current_usuario)
-    @crud_helper = Module.const_get("#{@model}Crud".camelize)
     @record = @model.new
   end
   
   def edit
-    @record = @model.find(params[:id])
+    @record = @model.find(@id)
     authorize! :edit, @record if respond_to?(:current_usuario)
   end
 
   def show
-    @record = @model.find(params[:id])
+    @record = @model.find(@id)
     authorize! :read, @record if respond_to?(:current_usuario)
   end
 
   def action
-    @record = @model.find(params[:id])
+    @record = @model.find(@id)
     authorize! :create_or_update, @record if respond_to?(:current_usuario)
     if @model.method_defined?(params[:acao])
       if @record.send(params[:acao])
@@ -71,8 +83,8 @@ class CrudController < ApplicationController
   
   def create
     @saved = false
-    if params[:id]
-      @record = @model.find(params[:id])
+    if @id
+      @record = @model.find(@id)
       authorize! :update, @record if respond_to?(:current_usuario)
       @saved = @record.update(params_permitt)
     else
@@ -84,7 +96,7 @@ class CrudController < ApplicationController
     respond_to do |format|
       if @saved
         flash[:success] = params[:id].present? ? "Cadastro alterado com sucesso." : "Cadastro efetuado com sucesso."
-        format.html { redirect_to "/crud/#{@model.name.underscore}?page=#{params[:page]}" }
+        format.html { redirect_to "#{@url}?page=#{params[:page]}" }
         unless params[:render] == 'modal'
           format.js { render action: :index}
         else
@@ -99,18 +111,18 @@ class CrudController < ApplicationController
   end
   
   def destroy
-    @record = @model.find(params[:id])
+    @record = @model.find(@id)
     authorize! :destroy, @record if respond_to?(:current_usuario)
     if @record.destroy
       respond_to do |format|
         flash[:success] = "Cadastro removido com sucesso."
-        format.html { redirect_to "/crud/#{@model.name.underscore}" }
+        format.html { redirect_to @url }
         format.js { render action: :index }
       end
     else
       respond_to do |format|
         flash[:error] = @record.errors.full_messages.join(", ")
-        format.html { redirect_to "/crud/#{@model.name.underscore}" }
+        format.html { redirect_to @url }
         format.js { render action: :index }
       end
     end
@@ -118,7 +130,7 @@ class CrudController < ApplicationController
   
   def query
     authorize! :read, @model if respond_to?(:current_usuario)
-    @resource = Module.const_get(params[:model].classify)
+    @resource = @model
     @q = @resource.search(params[:q])
     @q.sorts = 'updated_at desc' if @q.sorts.empty?
     if respond_to?(:current_usuario)

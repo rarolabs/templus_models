@@ -11,10 +11,10 @@
 		</div>
 	</div>
 	<%unless params[:render] == 'modal'%>
-		<% url = "/crud/#{@model.name.underscore}/#{@record.new_record? ? 'create' : @record.id.to_s+'/create'}?page=#{params[:page]}" %>
+		<% url = "#{@url}/#{@record.new_record? ? 'create' : @record.id.to_s+'/create'}?page=#{params[:page]}" %>
 		<% remote_form = false%>
 	<%else%>
-		<% url = "/crud/#{@model.name.underscore}/#{@record.new_record? ? 'create?render=modal' : @record.id.to_s+'/create?render=modal'}" %>
+		<% url = "#{@url}/#{@record.new_record? ? 'create?render=modal' : @record.id.to_s+'/create?render=modal'}" %>
 		<% remote_form = true%>
 	<%end%>
 	<%= simple_nested_form_for @record, remote: remote_form, html: {class: "form-horizontal"}, url: url do |f| %>
@@ -40,7 +40,7 @@
 			<div class="col-sm-4 col-sm-offset-2">
 				<%= f.submit "Salvar", class: 'btn btn-primary'  %>
 				<%unless params[:render] == 'modal'%>
-					<%= link_to "Voltar", "/crud/#{@model.name.underscore}?page=#{params[:page]}", class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+					<%= link_to "Voltar", "#{@url}?page=#{params[:page]}", class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
 				<% end %>
 			</div>
 		</div>

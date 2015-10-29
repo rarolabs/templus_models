@@ -60,12 +60,13 @@ module CrudHelper
   end
   
   
-  def render_link(link)
+  def render_link(link,url)
     if link[:partial].present?
       render link[:partial]
+    elsif link[:link]
+      link_to "#{gen_icon(link[:icon])} #{link[:text]}".html_safe, "#{url}/#{link[:link]}", class: link[:class], data: data(link)
     else
-      url = link[:url] || link[:link]
-      link_to "#{gen_icon(link[:icon])} #{link[:text]}".html_safe, url, class: link[:class], data: data(link)
+      link_to "#{gen_icon(link[:icon])} #{link[:text]}".html_safe, link[:url], class: link[:class], data: data(link)
     end
   end
 

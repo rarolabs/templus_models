@@ -48,6 +48,7 @@ class CrudController < ApplicationController
       else
         @model = params[:attribute].to_s.camelcase.constantize
       end
+      @url = "/crud/#{@model.name.underscore}"
       @crud_helper = Module.const_get("#{@model}Crud".camelize)
     end
     authorize! :new, @model if respond_to?(:current_usuario)

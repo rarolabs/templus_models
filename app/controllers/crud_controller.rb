@@ -6,7 +6,8 @@ class CrudController < ApplicationController
     if params[:associacao]
       @crud_associacao = Module.const_get("#{params[:model].to_s.singularize}_crud".camelize)
       @model = Module.const_get(params[:model].camelize).find(params[:id]).send(params[:associacao])
-      @crud_helper = Module.const_get("#{params[:associacao].to_s.singularize}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
+      c_helper = Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao]).class_name
+      @crud_helper = Module.const_get("#{c_helper}Crud") unless params[:render] == "modal" and params[:action] == "new"
       @url = "/crud/#{params[:model]}/#{params[:id]}/#{params[:associacao]}"
       @id = params[:associacao_id] if params[:associacao_id]
     else

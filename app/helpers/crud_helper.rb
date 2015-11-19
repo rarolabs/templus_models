@@ -128,7 +128,11 @@ module CrudHelper
       elsif !field[:sf][:create].nil? && !field[:sf][:create] && record.new_record? 
       else 
         unless modelo.reflect_on_association(field[:attribute])
-           f.input field[:attribute], field[:sf]
+          if modelo.new.send(field[:attribute]).class.to_s =~ /Uploader/ and f.object.send(field[:attribute]).present?
+            f.input field[:attribute], field[:sf].merge(hint: "Arquivo Atual: #{f.object.send(field[:attribute]).file.filename}")
+          else
+            f.input field[:attribute], field[:sf]
+          end
         else 
            f.association field[:attribute], field[:sf]
         end 
@@ -142,7 +146,11 @@ module CrudHelper
          field[:sf][:collection] = f.instance_eval &field[:sf][:collection_if]
       end
       unless modelo.reflect_on_association(field[:attribute])
-        f.input field[:attribute], field[:sf]
+        if modelo.new.send(field[:attribute]).class.to_s =~ /Uploader/ and f.object.send(field[:attribute]).present?
+          f.input field[:attribute], field[:sf].merge(hint: "Arquivo Atual: #{f.object.send(field[:attribute]).file.filename}")
+        else
+          f.input field[:attribute], field[:sf]
+        end
       else 
         f.association field[:attribute], field[:sf]
       end 

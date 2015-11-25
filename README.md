@@ -287,6 +287,15 @@ Não se esqueça de permitir os campos dos filhos no modelo do pai com _accepts_
   accepts_nested_attributes_for :subtopicos, :allow_destroy => true
 ```
 
+Caso deseja um label diferente para os botões Adicionar e Remover do grupo, basta adicionar o campo *sublabel*
+
+```rb
+  campo_formulario :dado_boleto, label: "Dados para emissão de boleto", sublabel: "Boleto" 
+                   grupo: [{campo: :banco, label: "Banco", add_registro: false},
+                           {campo: :conta, label: "Conta"},
+                           {campo: :observacao, label: "Instruções bancárias"}]
+```
+
 
 
 

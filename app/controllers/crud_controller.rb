@@ -204,7 +204,7 @@ class CrudController < ApplicationController
     group = {chave => [:id, :_destroy]}
     groups.each do |field|
       if field[:sf].present? && field[:sf][:grupo].present?
-        group[chave] << permitt_group(fields, field[:attribute], field[:sf][:fields], key.to_s.camelcase.singularize.constantize)
+        group[chave] << permitt_group(fields, field[:attribute], field[:sf][:fields], mod.reflect_on_association(key.to_s).class_name.constantize)
       else
         modelo = mod.reflect_on_association(key.to_s).class_name.constantize
         if modelo.reflect_on_association(field[:attribute])

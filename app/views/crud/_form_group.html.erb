@@ -24,7 +24,7 @@
 	<% if [:has_many,:has_and_belongs_to_many].include?(f.object.class.reflect_on_association(key).macro) %>
 		<div class="form-group">
 			<div class="col-sm-10 col-sm-offset-2">
-				<%= g.link_to_remove "Remover #{groups[:label].downcase}" %>
+				<%= g.link_to_remove "Remover #{groups[:sublabel] || groups[:label].downcase}" %>
 			</div>
 		</div>
 	<% end %>
@@ -32,7 +32,7 @@
 <% if [:has_many,:has_and_belongs_to_many].include?(f.object.class.reflect_on_association(key).macro) %>
 	<div class="form-group">
 		<div class="col-sm-12">
-			<%= f.link_to_add "Adicionar #{groups[:label].downcase}", key %>
+			<%= f.link_to_add "Adicionar #{groups[:sublabel] || groups[:label].downcase}", key %>
 		</div>
 	</div>
 <% end %>

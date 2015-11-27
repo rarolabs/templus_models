@@ -14,7 +14,7 @@
 		<% if field[:sf].present? && field[:sf][:grupo].present? %>
 			<%= render "/crud/form_group", f: g, key: field[:attribute], groups: field[:sf] %>
 		<% else %>
-			<% if modelo.reflect_on_association(field[:attribute]).class == ActiveRecord::Reflection::BelongsToReflection && is_raro_crud(modelo.reflect_on_association(field[:attribute]).class_name) && field[:sf][:add_registro].nil?%>
+			<% if modelo.reflect_on_association(field[:attribute]).macro == :belongs_to && is_raro_crud(modelo.reflect_on_association(field[:attribute]).class_name) && field[:sf][:add_registro].nil?%>
 					<%= render_plus_button(field,g,modelo,f.object) %>
 			<%else%>
 					<%= render_field(field,g,modelo,f.object) %>

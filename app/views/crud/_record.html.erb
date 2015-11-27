@@ -50,15 +50,16 @@
 		<% end %>
 		<%@crud_helper.actions_links.each do |name, options|%>
 			<% if options[:url].present? %>
+				<% url = options[:url] %>
 				<% if options[:id] %>
-					<% options[:url] += options[:url].include?("?") ? "&id=#{record.id}" : "?id=#{record.id}" %>
+					<% url += options[:url].include?("?") ? "&id=#{record.id}" : "?id=#{record.id}" %>
 				<% end %>
 				<% if options[:wiselink].present? && options[:wiselink] %>
-					<a href="<%= options[:url] %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
+					<a href="<%= url %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
 						<%=name%>
 					</a>
 				<% else %>
-					<a href="<%= options[:url] %>" class="btn btn-success btn-xs">
+					<a href="<%= url %>" class="btn btn-success btn-xs">
 						<%=name%>
 					</a>
 				<% end %>

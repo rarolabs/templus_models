@@ -34,9 +34,9 @@ class CrudController < ApplicationController
       end
     end
     if respond_to?(:current_usuario)
-      @records = @q.result(distinct: true).accessible_by(current_ability, :read).page(params[:page]).per(@crud_helper.per_page)
+      @records = @q.result.accessible_by(current_ability, :read).page(params[:page]).per(@crud_helper.per_page)
     else
-      @records = @q.result(distinct: true).page(params[:page]).per(@crud_helper.per_page)
+      @records = @q.result.page(params[:page]).per(@crud_helper.per_page)
     end
     @titulo = @model.name.pluralize
     render partial: 'records' if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
@@ -136,9 +136,9 @@ class CrudController < ApplicationController
     @q = @resource.search(params[:q])
     @q.sorts = 'updated_at desc' if @q.sorts.empty?
     if respond_to?(:current_usuario)
-      results = @q.result(distinct: true).accessible_by(current_ability).page(params[:page])
+      results = @q.result.accessible_by(current_ability).page(params[:page])
     else
-      results = @q.result(distinct: true).page(params[:page])
+      results = @q.result.page(params[:page])
     end
     instance_variable_set("@#{params[:var]}", results)
     if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
@@ -156,9 +156,9 @@ class CrudController < ApplicationController
     @q = @model.search(parametros)
     @q.sorts = 'updated_at desc' if @q.sorts.empty?
     if respond_to?(:current_usuario)
-      results = @q.result(distinct: true).accessible_by(current_ability).page(params[:page])
+      results = @q.result.accessible_by(current_ability).page(params[:page])
     else
-      results = @q.result(distinct: true).page(params[:page])
+      results = @q.result.page(params[:page])
     end
     method_label = params[:label]
     render json: results.map {|result| {id: result.id, label: result.send(method_label), value: result.send(method_label)} }

@@ -17,8 +17,10 @@
 		</div>
 		<div class="col-lg-9">
 			<div class="pull-right">
-				<% if content_for? :scopes %>
-					<%= yield  :scopes %>
+				<% unless @crud_helper.layout[1].present? and @crud_helper.layout[1].call() and @crud_helper.layout[0] == "escopo_lateral" %>
+					<% if content_for? :scopes %>
+						<%= yield  :scopes %>
+					<% end %>
 				<% end %>
 			</div>
 		</div>

@@ -23,6 +23,7 @@ class RaroCrud
   @@options_link              = {}
   @@scopes                    = {}
   @@menus                     = []
+  @@layout                    = {}
   @@index_path                = nil
 
   def self.edit_action
@@ -31,6 +32,15 @@ class RaroCrud
     else
       return true
     end
+  end
+  
+  def self.layout
+    (@@layout[self.to_s.to_sym]) ? @@layout[self.to_s.to_sym] : []
+  end
+  
+  def self.set_layout(desc,proc = nil)
+    @@layout[self.to_s.to_sym] = [] unless @@layout[self.to_s.to_sym]
+    @@layout[self.to_s.to_sym] = [desc,proc]
   end
   
   def self.condition_edit_action

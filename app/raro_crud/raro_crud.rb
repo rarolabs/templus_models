@@ -199,7 +199,7 @@ class RaroCrud
             data: {push: 'partial', target: '#form'},
             icon: "fa fa-#{opts[:icon]}",
             class: 'btn btn-small btn-primary btn-rounded',
-            link: "#{opts[:link]}",
+            link: opts[:link],
             url: opts[:url],
             can: opts[:can],
             partial: opts[:partial]

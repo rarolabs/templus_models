@@ -44,8 +44,7 @@
 	<td>
 		<%@crud_helper.actions.each do |a|%>
 			<% if ((a[2].present? && a[2].call(record)) || !a[2].present?) %>
-				<a href="/crud/<%=@model.name.underscore%>/<%=record.id%>/acao/<%=a[0]%>"
-						class="btn btn-primary btn-xs" data-push="partial" data-target="#form"><%=a[1]%></a>
+				<%= link_to a[1], action_crud_path(model: @model.name.underscore, id: record.id, acao: a[0]), class: "btn btn-primary btn-xs", data: {push: "partial", target: "#form"}%>
 			<% end %>
 		<% end %>
 		<%@crud_helper.actions_links.each do |name, options|%>
@@ -64,9 +63,7 @@
 					</a>
 				<% end %>
 			<% elsif options[:associacao].present? %>
-				<a href="/crud/<%= @model.name.underscore %>/<%= record.id %>/<%= options[:associacao].to_s %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
-					<%=name%>
-				</a>
+				<%= link_to name, crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: "partial", target: "#form"} %>
 			<% elsif options[:partial].present? %>
 				<%= render options[:partial], record: record %>
 			<% end %>

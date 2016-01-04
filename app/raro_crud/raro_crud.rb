@@ -72,7 +72,7 @@ class RaroCrud
   end
 
   def self.root_path
-    "/crud/#{self.to_s.gsub('Crud', '').underscore}"
+    Rails.application.routes.url_helpers.crud_models_path(model: self.to_s.gsub('Crud', '').underscore)
   end
 
   def self.index_path str
@@ -238,7 +238,7 @@ class RaroCrud
     if opts.present? && opts[:autocomplete].present?
       opts[:as] = :autocomplete
       label_method = opts[:autocomplete][:label_method] || opts[:autocomplete][:campo]
-      opts[:url] = "/crud/#{opts[:autocomplete][:classe]}/autocomplete?campo=#{opts[:autocomplete][:campo]}&tipo=start&label=#{label_method}"
+      opts[:url] = autocomplete_crud_path(model: opts[:autocomplete][:classe], campo: opts[:autocomplete][:campo], tipo: "start", label: label_method)
       name = "#{opts[:autocomplete][:campo]}_#{opts[:autocomplete][:classe]}"
       opts[:input_html] = {name: name, id: name}
       opts[:id_element] = "##{self.modelo}_#{nome}_id"

@@ -8,12 +8,12 @@ class CrudController < ApplicationController
       @model = Module.const_get(params[:model].camelize).find(params[:id]).send(params[:associacao])
       c_helper = Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao]).class_name
       @crud_helper = Module.const_get("#{c_helper}Crud") unless params[:render] == "modal" and params[:action] == "new"
-      @url = "/crud/#{params[:model]}/#{params[:id]}/#{params[:associacao]}"
+      @url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao])
       @id = params[:associacao_id] if params[:associacao_id]
     else
       @model = Module.const_get(params[:model].camelize)
       @crud_helper = Module.const_get("#{params[:model]}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
-      @url = "/crud/#{params[:model]}"
+      @url = crud_models_path(model: params[:model])
       @id = params[:id] if params[:id]
     end
   end
@@ -49,7 +49,7 @@ class CrudController < ApplicationController
       else
         @model = params[:attribute].to_s.camelcase.constantize
       end
-      @url = "/crud/#{@model.name.underscore}"
+      @url = crud_models_path(model: @model.name.underscore)
       @crud_helper = Module.const_get("#{@model}Crud".camelize)
     end
     authorize! :new, @model if respond_to?(:current_usuario)

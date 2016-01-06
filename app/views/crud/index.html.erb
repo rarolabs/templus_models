@@ -1,6 +1,12 @@
 <% content_for :corpo do %>
 	<div id="form" >
-		<%= render '/crud/records' %>
+		<% if @crud_helper.layout[1].present? and @crud_helper.layout[1].call() and @crud_helper.layout[0] == "escopo_lateral" %>
+			<div class="row">
+				<%= render '/crud/records' %>
+			</div>
+		<% else %>
+			<%= render '/crud/records' %>
+		<% end %>
 	</div>
 <% end %>
 

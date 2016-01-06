@@ -1,8 +1,8 @@
 <% if @crud_helper.layout[1].present? and @crud_helper.layout[1].call() and @crud_helper.layout[0] == "escopo_lateral" %>
 	<% if @crud_helper.scopes.present? %>
 		<div class="col-lg-3" style="padding-right:0;">
-    	<div class="ibox float-e-margins" style="padding-top:40px">
-      	<div class="ibox-content">
+			<div class="ibox float-e-margins" style="padding-top:40px">
+				<div class="ibox-content">
 					<div class="file-manager">
 						<%= render '/crud/scopes' %>
 					</div>

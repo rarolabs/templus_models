@@ -1,6 +1,6 @@
 <%= paginator.render do -%>
 	<div class="row">
-		<div class="col-xs-6">
+		<div class="col-xs-4">
 			<div class="pagination pull-left">
 				<% if @options[:current_page].number < 2 %>
 					<% inicio = 1 %>
@@ -15,7 +15,7 @@
 				Exibindo <%= inicio %> - <%= fim %> de um total de <%= @options[:total_count] %>
 			</div> 
 		</div>
-		<div class="col-xs-6">
+		<div class="col-xs-8">
 			<div class="dataTables_paginate paging_simple_numbers">
 				<ul class="pagination">
 					<%= first_page_tag unless current_page.first? %>

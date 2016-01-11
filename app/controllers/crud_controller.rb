@@ -8,10 +8,12 @@ class CrudController < ApplicationController
       @model = Module.const_get(params[:model].camelize).find(params[:id]).send(params[:associacao])
       c_helper = Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao]).class_name
       @crud_helper = Module.const_get("#{c_helper}Crud") unless params[:render] == "modal" and params[:action] == "new"
+      @model_permission = c_helper.constantize
       @url = "/crud/#{params[:model]}/#{params[:id]}/#{params[:associacao]}"
       @id = params[:associacao_id] if params[:associacao_id]
     else
       @model = Module.const_get(params[:model].camelize)
+      @model_permission = @model
       @crud_helper = Module.const_get("#{params[:model]}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
       @url = "/crud/#{params[:model]}"
       @id = params[:id] if params[:id]
@@ -20,7 +22,7 @@ class CrudController < ApplicationController
   
   public
   def index
-    authorize! :read, @model if respond_to?(:current_usuario)
+    authorize! :read, @model_permission if respond_to?(:current_usuario)
     if params[:scope].present?
       @q = @model.send(params[:scope]).search(params[:q])
     else
@@ -49,10 +51,11 @@ class CrudController < ApplicationController
       else
         @model = params[:attribute].to_s.camelcase.constantize
       end
+      @model_permission = @model
       @url = "/crud/#{@model.name.underscore}"
       @crud_helper = Module.const_get("#{@model}Crud".camelize)
     end
-    authorize! :new, @model if respond_to?(:current_usuario)
+    authorize! :new, @model_permission if respond_to?(:current_usuario)
     @record = @model.new
   end
   
@@ -91,7 +94,7 @@ class CrudController < ApplicationController
       @saved = @record.update(params_permitt)
     else
       @record  =  @model.new(params_permitt)
-      authorize! :create, @model if respond_to?(:current_usuario)
+      authorize! :create, @model_permission if respond_to?(:current_usuario)
       @saved = @record.save
     end
     
@@ -131,7 +134,7 @@ class CrudController < ApplicationController
   end
   
   def query
-    authorize! :read, @model if respond_to?(:current_usuario)
+    authorize! :read, @model_permission if respond_to?(:current_usuario)
     @resource = @model
     @q = @resource.search(params[:q])
     @q.sorts = 'updated_at desc' if @q.sorts.empty?

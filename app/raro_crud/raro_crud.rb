@@ -72,7 +72,7 @@ class RaroCrud
   end
 
   def self.root_path
-    Rails.application.routes.url_helpers.crud_models_path(model: self.to_s.gsub('Crud', '').underscore)
+    self.to_s.gsub('Crud', '').underscore
   end
 
   def self.index_path str

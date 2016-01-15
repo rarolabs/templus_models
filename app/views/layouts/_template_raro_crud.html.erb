@@ -8,7 +8,9 @@
 			</h2>
 			<ol class="breadcrumb">
 				<li>
-					<a href="/">Home</a>
+					<%= link_to root_path do %>
+						Página inicial
+					<% end %>
 				</li>
 				<% if content_for? :breadcumb %>
 					<%= yield  :breadcumb %>

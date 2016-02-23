@@ -5,6 +5,13 @@ Ransack.configure do |config|
     validator: proc { |v| v.present? },
     compounds: true,
     type: :string
+
+  config.add_predicate 'monthyear_eq',
+    arel_predicate: 'eq',
+    formatter: proc { |v| Date.parse("01/#{v}") },
+    validator: proc { |v| v.present? },
+    compounds: true,
+    type: :string
 end
 
 module Kaminari

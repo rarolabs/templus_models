@@ -1,5 +1,5 @@
 module SearchHelper
-  
+
   def raro_search_form(model,partial,collection_name,url,sort = nil)
       @buffer = raro_before_form(model,partial,collection_name,url,sort)
       @model = model
@@ -10,8 +10,8 @@ module SearchHelper
       @buffer.html_safe
   end
 
-  private 
-    
+  private
+
     def raro_submit(name)
       "<div><input type='submit' class='btn btn-primary pull-right' value='#{name}' id='submit_raro_search'></div><br><br>"
     end
@@ -28,29 +28,29 @@ module SearchHelper
       label = opts[:label] if opts[:label]
 
       @buffer << "<div class=\"form-group\">"
-      @buffer << raro_label(label,opts) 
+      @buffer << raro_label(label,opts)
       @buffer << "<div class='col-sm-10'>"
       @buffer << raro_input(name, prototype.type, opts)
       @buffer << "</div>"
       @buffer << "</div>"
     end
-    
+
     def raro_field_custom(name, type, opts={})
       label = name
       label = opts[:label] if opts[:label]
       @buffer << "<div class=\"control-group\">"
-      @buffer << raro_label(label,opts) 
+      @buffer << raro_label(label,opts)
       @buffer << "<div class='controls'>"
       @buffer << raro_input(name, type, opts)
       @buffer << "</div>"
       @buffer << "</div>"
     end
-    
+
     def raro_input(name, type,opts)
       if opts[:as] && type != :datetime && type != :date
         return raro_input_as(name,type,opts)
       end
-      
+
       case type
         when :integer
           if name =~ /\_id$/ and not opts[:dont_assoc]
@@ -72,7 +72,7 @@ module SearchHelper
           return raro_text_field(name, opts)
       end
     end
-    
+
     def raro_input_as(name,type,opts)
       case opts[:as]
       when :select
@@ -81,9 +81,11 @@ module SearchHelper
         return raro_hidden_field(name,opts[:value],opts)
       when :string
         raro_text_field(name, opts)
+      when :monthyear
+        raro_monthyear(name, opts)
       end
     end
-      
+
     def raro_belongs_to(name,opts)
       collection = []
       model_name = name.to_s.gsub(/\_id$/,'')
@@ -93,7 +95,7 @@ module SearchHelper
       end
       return raro_select("q[#{model_name}_id_eq]",opts,collection)
     end
-    
+
     def raro_select(name,opts,collection)
       unless opts[:model]
         name = "q[#{name}_eq]"
@@ -105,7 +107,7 @@ module SearchHelper
         buf << "<select name=#{name} class='form-control'>"
       end
       buf <<"<option value ='' selected>Escolha...</option>"
-      collection.each do |e| 
+      collection.each do |e|
         buf << "<option value=#{e[0]}>#{e[1]}</option>"
       end
       buf << "</select>"
@@ -120,7 +122,7 @@ module SearchHelper
       "<label class='col-sm-2 control-label'>#{name}</label>"
       end
     end
-    
+
     def raro_text_field(name, opts)
       buffer = ""
       buffer += "<div class='col-sm-4'>"
@@ -128,6 +130,14 @@ module SearchHelper
       buffer += "</div>"
       buffer += "<div class='col-sm-8'>"
       buffer += "<input id='q_#{name}' type='text' name='q[#{name}_cont]' class='form-control #{opts[:class]}'/>"
+      buffer += "</div>"
+      buffer
+    end
+
+    def raro_monthyear(name, opts)
+      buffer = ""
+      buffer += "<div class='col-sm-12'>"
+      buffer += "<input id='q_#{name}' type='text' name='q[#{name}_monthyear_eq]' class='form-control monthyearpicker #{opts[:class]}'/>"
       buffer += "</div>"
       buffer
     end
@@ -150,7 +160,7 @@ module SearchHelper
       buffer += "</div>"
       buffer
     end
-    
+
     def raro_radio(name, opts)
       buff = ""
       if opts[:collection].present?
@@ -176,12 +186,12 @@ module SearchHelper
       end
       buff
     end
-    
+
     def raro_date_range(name)
       "<div class='col-sm-6'>
       <div class=\"input-group date\">
       <span class=\"input-group-addon\"><i class=\"fa fa-calendar\"></i></span>
-      <input class=\"raro_date_range form-control\" type=\"text\" 
+      <input class=\"raro_date_range form-control\" type=\"text\"
              name=\"date-range_#{name}\"
              id='q_#{name}_range'
              data-start-target=\"#q_#{name}_start\"
@@ -190,7 +200,7 @@ module SearchHelper
       <input type='hidden' value='' id='q_#{name}_end' name='q[#{name}_lteq]'>
       </div></div>"
     end
-    
+
     def raro_before_form(model,partial,var,url,sort)
       buffer = "<div id='search_box'>"+
       "<form method='get' class=form-horizontal action='#{url}' data-push='partial' data-target='#form'>" +
@@ -201,11 +211,11 @@ module SearchHelper
        end
        buffer
     end
-    
+
     def raro_after_form
        "</form></div>"
     end
-    
+
     def raro_script
       "<script>
       $('#submit_raro_search').click(function (){
@@ -213,7 +223,7 @@ module SearchHelper
       });
       </script>"
     end
-  
+
     def raro_comparison_operators(target)
       "<select class='form-control m-b' onchange='window.search_predicate(this)' data-target='#q_#{target}'>
        <option value=eq selected>Igual</option>
@@ -233,7 +243,7 @@ module SearchHelper
       <option value=end>Termina</option>
       </select>"
     end
-    
+
     def raro_group(text)
       @buffer << "<div class=\"col-sm-12 label label-primary\" style=\"margin-bottom:10px; font-size:14px;\"><b>#{text}</b></div>"
     end

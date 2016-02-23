@@ -9,7 +9,7 @@
 			</div>
 			<div class="modal-body">
 				<%=raro_search_form(@model, 'records','records',"#{@url}/query") do%>
-					<%raro_group "#{@model.name}"%>
+					<%raro_group "#{@crud_helper.title}"%>
 					<%@crud_helper.search_fields.each do |att| %>
 						<% if att[:sf].present? && !att[:sf][:visible_if].nil?%>
 							<% if ((att[:sf][:visible_if].class == Proc && !att[:sf][:visible_if].call(att)) || (att[:sf][:visible_if].class != Proc && !att[:sf][:visible_if])) %>

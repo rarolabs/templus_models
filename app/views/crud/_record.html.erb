@@ -64,7 +64,7 @@
 					</a>
 				<% end %>
 			<% elsif options[:associacao].present? %>
-				<a href="/crud/<%= @model.name.underscore %>/<%= record.id %>/<%= options[:associacao].to_s %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
+				<a href="/crud/<%= @model.name.underscore %>/<%= record.id %>/<%= options[:associacao].to_s %>" class="btn btn-success btn-xs">
 					<%=name%>
 				</a>
 			<% elsif options[:partial].present? %>

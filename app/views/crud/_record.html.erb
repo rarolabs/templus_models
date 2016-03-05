@@ -8,9 +8,9 @@
 		<% if record.send(att[:attribute]).present? or record.send(att[:attribute]).to_s == "false"%>
 			<% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
 					<% if att[:date_format].present?%>
-						<td><%=  record.send(att[:attribute]).strftime(att[:date_format]) %></td>
+						<td><%= record.send(att[:attribute]).strftime(I18n.t("date.formats.#{att[:date_format]}")) %></td>
 					<% else %>
-						<td><%= l record.send(att[:attribute]) %></td>
+						<td><%= record.send(att[:attribute]).strftime(I18n.t("date.formats.default")) %></td>
 					<% end %>
 			<% elsif @model.reflect_on_association(att[:attribute]) && @model.reflect_on_association(att[:attribute]).macro != :belongs_to && @model.reflect_on_association(att[:attribute]).macro != :has_one%>
 				<td>
@@ -70,15 +70,15 @@
 		<% end %>
 		<%if @crud_helper.view_action && shold_view?(@crud_helper, record)%>
 			<a href="<%= @url %>/<%=record.id%>?page=<%=params[:page]%>"
-				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Visualizar</a>
+				class="btn btn-primary btn-xs" data-push="partial" data-target="#form"><%= I18n.t("view") %></a>
 		<% end %>
 		<%if @crud_helper.edit_action && shold_edit?(@crud_helper, record) %>
 			<a href="<%= @url %>/<%=record.id%>/edit?page=<%=params[:page]%>"
-				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Editar</a>
+				class="btn btn-primary btn-xs" data-push="partial" data-target="#form"><%= I18n.t("edit") %></a>
 		<% end %>
 		<%if @crud_helper.destroy_action && shold_destroy?(@crud_helper, record)%>
 			<a href="<%= @url %>/<%=record.id%>/destroy"
-				class="btn btn-danger btn-xs" data-method="delete" data-confirm="Você têm certeza?">Excluir</a>
+				class="btn btn-danger btn-xs" data-method="delete" data-confirm="<%= I18n.t('mensagem_confirm_destroy') %>"><%= I18n.t("destroy") %></a>
 		<% end %>
 	</td>  
 <% end %>

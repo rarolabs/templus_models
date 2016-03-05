@@ -6,11 +6,11 @@
 				<div class="ibox-title">
 					<% if is_action_edit? && @model.present?%>
 						<h5>
-							Editar
+							<%= I18n.t("edit") %>
 							<small style="margin-left: 2px;"><%= @record.to_s %> - #<%= @record.id %></small>
 						</h5>
 					<% elsif is_action_create? && @model.present? %>
-						<h5>Cadastrar</h5>
+						<h5><%= I18n.t("new") %></h5>
 					<% elsif @record.present? && !@record.new_record? %>
 						<h5>
 							<%= @record.to_s %>

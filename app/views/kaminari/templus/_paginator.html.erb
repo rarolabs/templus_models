@@ -12,7 +12,7 @@
 				<% else %>
 					<% fim = @options[:current_page].number * @options[:per_page] %>
 				<% end %>
-				Exibindo <%= inicio %> - <%= fim %> de um total de <%= @options[:total_count] %>
+				<%= I18n.t("views.pagination.text", inicio: inicio, fim: fim, total: @options[:total_count]) %>
 			</div> 
 		</div>
 		<div class="col-xs-8">

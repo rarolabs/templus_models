@@ -21,21 +21,21 @@
 				<thead>
 					<tr>
 						<%@crud_helper.index_fields.each do |att|  %>
-						<% if !att[:visible_if].nil?%>
-							<% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
-								<% next %>
+							<% if !att[:visible_if].nil?%>
+								<% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
+									<% next %>
+								<% end %>
 							<% end %>
-						<% end %>
-						<th>
-							<% if att[:sort_field].present? %>
-								<%= sort_link @q, att[:sort_field], att[:label], {},data: {push: 'partial', target: "#form"}%>
-							<% else %>
-								<%= sort_link @q, att[:attribute], att[:label], {},data: {push: 'partial', target: "#form"}%>
-							<% end %>
-						</th>
+							<th>
+								<% if att[:sort_field].present? %>
+									<%= sort_link @q, att[:sort_field], I18n.t("simple_form.labels.#{@model.class_name.underscore}.#{att[:attribute]}"), {},data: {push: 'partial', target: "#form"}%>
+								<% else %>
+									<%= sort_link @q, att[:attribute], I18n.t("simple_form.labels.#{@model.class_name.underscore}.#{att[:attribute]}"), {},data: {push: 'partial', target: "#form"}%>
+								<% end %>
+							</th>
 						<%end%>
 						<%if @crud_helper.view_action || @crud_helper.edit_action || @crud_helper.destroy_action || @crud_helper.actions.present?%>
-							<td>Opções</td>
+							<td><%= I18n.t("simple_form.index.options") %></td>
 						<% end %>
 					</tr>
 				</thead>

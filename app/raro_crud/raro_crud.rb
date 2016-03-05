@@ -8,8 +8,7 @@ class RaroCrud
   @@view_fields               = {}
   @@search_fields             = {}
   @@test_fields               = {}
-  @@top_links                 = {} 
-  @@title                     = {}
+  @@top_links                 = {}
   @@subtitle_index            = {}
   @@description_index         = {}
   @@actions                   = {}
@@ -25,7 +24,15 @@ class RaroCrud
   @@menus                     = []
   @@layout                    = {}
   @@index_path                = nil
+  
+  def modelo
+    self.to_s.gsub("Crud", "").constantize
+  end
 
+  def self.title
+    I18n.t("rarocrud.#{self.modelo.underscore}.title")
+  end
+  
   def self.edit_action
     if @@edit_action[self.to_s.to_sym] == false
       return false
@@ -81,10 +88,6 @@ class RaroCrud
   
   def self.get_index_path
     @@index_path
-  end
-
-  def self.title
-    @@title[self.to_s.to_sym]
   end
 
   def self.subtitle(type)
@@ -171,10 +174,6 @@ class RaroCrud
   def self.modelo
     self.to_s.underscore.gsub("_crud", "")
   end
-  
-  def self.titulo str
-    @@title[self.to_s.to_sym] = str
-  end
 
   def self.subtitulo(str,type)
     case type
@@ -190,11 +189,12 @@ class RaroCrud
     end
   end
 
-  def self.link_superior nome, opts
+  def self.link_superior opts={}
       @@top_links[self.to_s.to_sym] = [] unless @@top_links[self.to_s.to_sym]
       @@top_links[self.to_s.to_sym].push(
           {
-            text: nome,
+            text: opts[:nome],
+            modelo: self.modelo,
             id:   opts[:id],
             data: {push: 'partial', target: '#form'},
             icon: "fa fa-#{opts[:icon]}",
@@ -207,7 +207,7 @@ class RaroCrud
     )
   end 
   
-  def self.campo_tabela nome, opts
+  def self.campo_tabela nome, opts={}
     @@index_fields[self.to_s.to_sym] = [] unless @@index_fields[self.to_s.to_sym]
     @@index_fields[self.to_s.to_sym].push(
       {
@@ -224,7 +224,7 @@ class RaroCrud
     @@per_page[self.to_s.to_sym] = qtd
   end
   
-  def self.campo_teste nome, opts
+  def self.campo_teste nome, opts = {}
     @@test_fields[self.to_s.to_sym] = [] unless @@test_fields[self.to_s.to_sym]
     @@test_fields[self.to_s.to_sym].push(
       {
@@ -233,7 +233,7 @@ class RaroCrud
     )
   end   
   
-  def self.campo_formulario nome, opts
+  def self.campo_formulario nome, opts={}
     @@form_fields[self.to_s.to_sym] = [] unless @@form_fields[self.to_s.to_sym]
     if opts.present? && opts[:autocomplete].present?
       opts[:as] = :autocomplete
@@ -276,7 +276,7 @@ class RaroCrud
   end
 
   public
-  def self.campo_visualizacao nome, opts = nil
+  def self.campo_visualizacao nome, opts = {}
     @@view_fields[self.to_s.to_sym] = [] unless @@view_fields[self.to_s.to_sym]
     @@view_fields[self.to_s.to_sym].push(
       {
@@ -285,7 +285,7 @@ class RaroCrud
     )
   end    
 
-  def self.campo_busca nome, opts = nil
+  def self.campo_busca nome, opts = {}
     @@search_fields[self.to_s.to_sym] = [] unless @@search_fields[self.to_s.to_sym]
     @@search_fields[self.to_s.to_sym].push(
       {
@@ -337,13 +337,9 @@ class RaroCrud
     @@scopes[self.to_s.to_sym] = scopes
   end
   
-  def self.grupo_formulario(attribute,name,fields=nil)
-    if fields.nil?
-      fields = name
-      name = attribute.to_s.singularize.titleize
-    end
+  def self.grupo_formulario(attribute,fields=[])
     @@form_group[self.to_s.to_sym] ||= {}
-    @@form_group[self.to_s.to_sym][attribute] = {label: name, fields: []}
+    @@form_group[self.to_s.to_sym][attribute] = {fields: []}
     fields.each do |field|
       value = {}
       field.each do |atr|
@@ -363,13 +359,13 @@ class RaroCrud
     opts = {}
     opts[:fields] = []
     [
-     {campo: :cep,  label: "CEP"},
-     {campo: :logradouro,  label: "Endereço"},
-     {campo: :numero,  label: "Número"},
-     {campo: :complemento,  label: "Complemento"},
-     {campo: :bairro,  label: "Bairro"},
-     {campo: :estado,  label: "Estado", collection: Estado.order(:sigla).pluck(:sigla)},
-     {campo: :cidade_id,  label: "Cidade", collection_if: Proc.new{|f| f.try(:object).try(:estado).try(:present?) ? (f.try(:object).try(:estado).try(:cidades) || []) : []}}
+     {campo: :cep, input_html: {class: "mask-cep"}},
+     {campo: :logradouro},
+     {campo: :numero},
+     {campo: :complemento},
+     {campo: :bairro},
+     {campo: :estado, collection: Estado.order(:sigla).pluck(:sigla)},
+     {campo: :cidade_id, collection_if: Proc.new{|f| f.try(:object).try(:estado).try(:present?) ? (f.try(:object).try(:estado).try(:cidades) || []) : []}}
     ].each do |field|
       attribute = field[:campo]
       field.delete(:campo)

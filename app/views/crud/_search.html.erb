@@ -2,9 +2,9 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content animated bounceInRight">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><%= I18n.t("close") %></span></button>
 				<i class="fa fa-search modal-icon"></i>
-				<h4 class="modal-title">Pesquisa</h4>
+				<h4 class="modal-title"><%= I18n.t("search") %></h4>
 				<small class="font-bold"></small>
 			</div>
 			<div class="modal-body">
@@ -16,7 +16,7 @@
 								<% next %>
 							<% end %>
 						<% end %>
-						<%raro_field att[:attribute],att[:sf]%>
+						<%raro_field att[:attribute], att[:sf]%>
 					<%end%>
 				<%end%>
 			</div>

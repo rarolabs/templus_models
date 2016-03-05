@@ -71,9 +71,9 @@ class CrudController < ApplicationController
     authorize! :create_or_update, @record if respond_to?(:current_usuario)
     if @model.method_defined?(params[:acao])
       if @record.send(params[:acao])
-        flash.now[:success] = "Ação #{params[:acao]} efetuada com sucesso."
+        flash.now[:success] = I18n.t("mensagem_action", acao: params[:acao])
       else
-        flash.now[:error] = "Erro ao tentar executar a ação #{params[:acao]}."
+        flash.now[:error] = I18n.t("mensagem_erro_action", acao: params[:acao])
       end
       index
     else
@@ -97,7 +97,7 @@ class CrudController < ApplicationController
     
     respond_to do |format|
       if @saved
-        flash[:success] = params[:id].present? ? "Cadastro alterado com sucesso." : "Cadastro efetuado com sucesso."
+        flash[:success] = params[:id].present? ? I18n.t("updated", model: I18n.t('model.cargo')) : I18n.t("created", model: I18n.t('model.cargo'))
         format.html { redirect_to "#{@url}?page=#{params[:page]}" }
         unless params[:render] == 'modal'
           format.js { render action: :index}
@@ -117,7 +117,7 @@ class CrudController < ApplicationController
     authorize! :destroy, @record if respond_to?(:current_usuario)
     if @record.destroy
       respond_to do |format|
-        flash[:success] = "Cadastro removido com sucesso."
+        flash[:success] = I18n.t("destroyed", model: I18n.t('model.cargo'))
         format.html { redirect_to @url }
         format.js { render action: :index }
       end

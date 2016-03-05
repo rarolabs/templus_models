@@ -28,7 +28,7 @@ module MenuHelper
   def menu_crud_helper(nome, classe, icon='', parent=false)
     if can?(:read, classe)
       modelo = classe.name.underscore
-      url = "/crud/#{modelo}"
+      url = crud_models(model: modelo)
       buffer = ""
       buffer << "<li class='menu #{is_active_crud(modelo)}'>"
       if parent

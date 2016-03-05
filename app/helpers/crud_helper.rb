@@ -61,12 +61,13 @@ module CrudHelper
   
   
   def render_link(link,url)
+    nome_modelo = I18n.t("model.#{link[:modelo].underscore}")
     if link[:partial].present?
       render link[:partial]
     elsif link[:link].present?
-      link_to "#{gen_icon(link[:icon])} #{link[:text]}".html_safe, "#{url}/#{link[:link]}", class: link[:class], data: data(link)
+      link_to "#{gen_icon(link[:icon])} #{I18n.t(link[:text], model: nome_modelo)}".html_safe, "#{url}/#{link[:link]}", class: link[:class], data: data(link)
     else
-      link_to "#{gen_icon(link[:icon])} #{link[:text]}".html_safe, link[:url], class: link[:class], data: data(link)
+      link_to "#{gen_icon(link[:icon])} #{I18n.t(link[:text], model: nome_modelo)}".html_safe, link[:url], class: link[:class], data: data(link)
     end
   end
 
@@ -119,6 +120,7 @@ module CrudHelper
     if field[:sf].present? && field[:sf][:if].present?
       return unless field[:sf][:if].call(f.object)
     end
+    field[:sf][:hint] = false if field[:sf].present? && !field[:sf][:hint].present?
     if field[:sf].present? && field[:sf][:date_format].present? && f.object.send(field[:attribute]).present? && Date <= modelo.columns_hash[field[:attribute].to_s].type.to_s.camelcase.constantize
       field[:sf][:input_html] ||= {}
       field[:sf][:input_html][:value] = f.object.send(field[:attribute]).strftime(field[:sf][:date_format])

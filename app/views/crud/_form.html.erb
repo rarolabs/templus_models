@@ -4,9 +4,9 @@
 			<div class="modal-content animated bounceInRight">
 				<div class="modal-body">
 				</div>
-		    <div class="modal-footer">
-		        <button type="button" class="btn btn-white" data-dismiss="modal">Cancelar</button>
-		    </div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-white" data-dismiss="modal"><%= I18n.t("cancel") %></button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -38,9 +38,9 @@
 		<% end %>
 		<div class="form-group">
 			<div class="col-sm-4 col-sm-offset-2">
-				<%= f.submit "Salvar", class: 'btn btn-primary'  %>
+				<%= f.submit I18n.t("save"), class: 'btn btn-primary'  %>
 				<%unless params[:render] == 'modal'%>
-					<%= link_to "Voltar", "#{@url}?page=#{params[:page]}", class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+					<%= link_to I18n.t("undo"), "#{@url}?page=#{params[:page]}", class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
 				<% end %>
 			</div>
 		</div>

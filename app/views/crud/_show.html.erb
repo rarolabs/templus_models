@@ -14,7 +14,7 @@
 							<% if field[:sf].present? && field[:sf][:label].present? %>
 								<th><%= field[:sf][:label].to_s.mb_chars.upcase.to_s %></th>
 							<% else %>
-								<th><%= field[:attribute].to_s.mb_chars.upcase.to_s %></th>
+								<th><%= I18n.t("simple_form.labels.#{@model.class_name.underscore}.#{field[:attribute]}") %></th>
 							<% end %>
 							<% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type)%>
 								<% if field[:date_format].present?%>
@@ -73,5 +73,5 @@
 	</div>
 </div>
 <hr>
-<%= link_to "Voltar", "#{@url}" ,class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+<%= link_to I18n.t("undo"), "#{@url}" ,class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
 <% end %>

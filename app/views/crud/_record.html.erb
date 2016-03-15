@@ -52,14 +52,16 @@
 				<% url = options[:url] %>
 				<% if options[:id] %>
 					<% url += options[:url].include?("?") ? "&id=#{record.id}" : "?id=#{record.id}" %>
+				<% else url.include?(":id") %>
+					<% url = url.gsub(":id", "#{record.id}") %>
 				<% end %>
 				<% if options[:wiselink].present? && options[:wiselink] %>
 					<a href="<%= url %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
-						<%=name%>
+						<%=I18n.t(name)%>
 					</a>
 				<% else %>
 					<a href="<%= url %>" class="btn btn-success btn-xs">
-						<%=name%>
+						<%=I18n.t(name)%>
 					</a>
 				<% end %>
 			<% elsif options[:associacao].present? %>

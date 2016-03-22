@@ -97,7 +97,7 @@ class CrudController < ApplicationController
     
     respond_to do |format|
       if @saved
-        flash[:success] = params[:id].present? ? I18n.t("updated", model: I18n.t('model.cargo')) : I18n.t("created", model: I18n.t('model.cargo'))
+        flash[:success] = params[:id].present? ? I18n.t("updated", model: I18n.t("model.#{@model.name.underscore}")) : I18n.t("created", model: I18n.t("model.#{@model.name.underscore}"))
         format.html { redirect_to "#{@url}?page=#{params[:page]}" }
         unless params[:render] == 'modal'
           format.js { render action: :index}
@@ -117,7 +117,7 @@ class CrudController < ApplicationController
     authorize! :destroy, @record if respond_to?(:current_usuario)
     if @record.destroy
       respond_to do |format|
-        flash[:success] = I18n.t("destroyed", model: I18n.t('model.cargo'))
+        flash[:success] = I18n.t("destroyed", model: I18n.t("model.#{@model.name.underscore}"))
         format.html { redirect_to @url }
         format.js { render action: :index }
       end

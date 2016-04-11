@@ -26,7 +26,7 @@ module SearchHelper
         modelo = Module.const_get(opts[:model])
         name = opts[:full_name]
       end
-      label = I18n.t("simple_form.labels.#{modelo.class_name.underscore}.#{name}")
+      label = I18n.t("simple_form.labels.#{modelo.name.underscore}.#{name}")
       label = opts[:label] if opts[:label]
 
       @buffer << "<div class=\"form-group\">"

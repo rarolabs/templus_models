@@ -29,12 +29,12 @@
 					<% end %>
 				</td>
 			<% elsif record.send(att[:attribute]).respond_to?(:url) and record.send(att[:attribute]).url(:thumb) %>
-				<td><%=  image_tag(record.send(att[:attribute]).url(:thumb)) %></td> 
+				<td><%=  image_tag(record.send(att[:attribute]).url(:thumb)) %></td>
 			<% else %>
 				<% if record.send(att[:attribute]).to_s == "false" or record.send(att[:attribute]).to_s == "true" %>
-					<td><%=  record.send(att[:attribute]) ? "Sim" : "Não" %></td>  
+					<td><%=  record.send(att[:attribute]) ? "Sim" : "Não" %></td>
 				<% else %>
-					<td><%=  record.send(att[:attribute]).to_s %></td>  
+					<td><%=  record.send(att[:attribute]).to_s %></td>
 				<% end %>
 			<% end %>
 		<% else %>
@@ -72,17 +72,17 @@
 				<% end %>
 			<% end %>
 		<% end %>
-		<%if @crud_helper.view_action && shold_view?(@crud_helper, record)%>
+		<%if @crud_helper.view_action && should_view?(@crud_helper, record)%>
 			<a href="<%= @url %>/<%=record.id%>?page=<%=params[:page]%>"
 				class="btn btn-primary btn-xs" data-push="partial" data-target="#form"><%= I18n.t("view") %></a>
 		<% end %>
-		<%if @crud_helper.edit_action && shold_edit?(@crud_helper, record) %>
+		<%if @crud_helper.edit_action && should_edit?(@crud_helper, record) %>
 			<a href="<%= @url %>/<%=record.id%>/edit?page=<%=params[:page]%>"
 				class="btn btn-primary btn-xs" data-push="partial" data-target="#form"><%= I18n.t("edit") %></a>
 		<% end %>
-		<%if @crud_helper.destroy_action && shold_destroy?(@crud_helper, record)%>
+		<%if @crud_helper.destroy_action && should_destroy?(@crud_helper, record)%>
 			<a href="<%= @url %>/<%=record.id%>/destroy"
 				class="btn btn-danger btn-xs" data-method="delete" data-confirm="<%= I18n.t('mensagem_confirm_destroy') %>"><%= I18n.t("destroy") %></a>
 		<% end %>
-	</td>  
+	</td>
 <% end %>

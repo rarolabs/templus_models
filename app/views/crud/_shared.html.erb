@@ -37,6 +37,15 @@
 								</button>
 							<% end %>
 						</div>
+					<% elsif is_action_show? %>
+						<% if (@crud_helper.present? && @crud_helper.destroy_action) && should_destroy?(@crud_helper, @record) %>
+							<a href="<%= @url %>/<%= @record.id %>/destroy"
+								class="btn btn-danger btn-xs pull-right m-l-xs" data-method="delete" data-confirm="<%= I18n.t('mensagem_confirm_destroy') %>"><%= I18n.t("destroy") %></a>
+						<% end %>
+						<% if (@crud_helper.present? && @crud_helper.edit_action) && should_edit?(@crud_helper, @record) %>
+							<a href="<%= @url %>/<%= @record.id %>/edit?page=<%= params[:page] %>"
+								class="btn btn-primary btn-xs pull-right m-l-xs" data-push="partial" data-target="#form"><%= I18n.t("edit") %></a>
+						<% end %>
 					<% end %>
 				</div>
 				<div class="ibox-content">

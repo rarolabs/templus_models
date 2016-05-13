@@ -4,7 +4,9 @@
 		<div class="col-lg-12">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
-					<% if is_action_edit? && @model.present?%>
+					<% if content_for?(:ibox_title) %>
+						<%= yield :ibox_title %>
+					<% elsif is_action_edit? && @model.present?%>
 						<h5>
 							<%= I18n.t("edit") %>
 							<small style="margin-left: 2px;"><%= @record.to_s %> - #<%= @record.id %></small>

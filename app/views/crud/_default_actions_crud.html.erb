@@ -1,2 +1,2 @@
 <%= submit_tag("Salvar", class: "btn btn-primary") %>
-<%= link_to "Voltar", crud_models_path(model: @model.name.underscore), class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+<%= link_to "Voltar", @url, class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>

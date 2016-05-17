@@ -8,7 +8,12 @@
 				<small class="font-bold"></small>
 			</div>
 			<div class="modal-body">
-				<%=raro_search_form(@model, 'records','records',"#{@url}/query") do%>
+				<% if @crud_associacao.present? %>
+					<% url = query_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao]) %>
+				<% else %>
+					<% url = query_crud_path(model: @model.name.underscore) %>
+				<% end %>
+				<%=raro_search_form(@model, 'records','records', url) do%>
 					<%raro_group "#{@crud_helper.title}"%>
 					<%@crud_helper.search_fields.each do |att| %>
 						<% if att[:sf].present? && !att[:sf][:visible_if].nil?%>

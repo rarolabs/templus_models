@@ -11,7 +11,19 @@
 		</div>
 	</div>
 	<%unless params[:render] == 'modal'%>
-		<% url = "#{@url}/#{@record.new_record? ? 'create' : @record.id.to_s+'/create'}?page=#{params[:page]}" %>
+		<% if @record.new_record? %>
+			<% if @crud_associacao.present? %>
+				<% url = create_crud_associacao_path(model: params[:model], id: params[:id], associacao: @model.name.underscore, page: params[:page], q: params[:q]) %>
+			<% else %>
+				<% url = create_crud_path(model: @model.name.underscore, page: params[:page], q: params[:q]) %>
+			<% end %>
+		<% else %>
+			<% if @crud_associacao.present? %>
+				<% url = update_crud_associacao_path(model: params[:model], id: params[:id], associacao: @model.name.underscore, associacao_id: @record.id, page: params[:page], q: params[:q]) %>
+			<% else %>
+				<% url = update_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q]) %>
+			<% end %>
+		<% end %>
 		<% remote_form = false%>
 	<%else%>
 		<% url = "#{@url}/#{@record.new_record? ? 'create?render=modal' : @record.id.to_s+'/create?render=modal'}" %>
@@ -40,7 +52,7 @@
 			<div class="col-sm-4 col-sm-offset-2">
 				<%= f.submit "Salvar", class: 'btn btn-primary'  %>
 				<%unless params[:render] == 'modal'%>
-					<%= link_to "Voltar", "#{@url}?page=#{params[:page]}", class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+					<%= link_to "Voltar", @url, class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
 				<% end %>
 			</div>
 		</div>

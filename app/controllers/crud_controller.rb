@@ -1,6 +1,6 @@
 class CrudController < ApplicationController
   before_filter :setup, except: :autocomplete
-  
+
   private
   def setup
     if params[:associacao]
@@ -8,16 +8,16 @@ class CrudController < ApplicationController
       @model = Module.const_get(params[:model].camelize).find(params[:id]).send(params[:associacao])
       c_helper = Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao]).class_name
       @crud_helper = Module.const_get("#{c_helper}Crud") unless params[:render] == "modal" and params[:action] == "new"
-      @url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao])
+      @url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao], page: params[:page], q: params[:q])
       @id = params[:associacao_id] if params[:associacao_id]
     else
       @model = Module.const_get(params[:model].camelize)
       @crud_helper = Module.const_get("#{params[:model]}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
-      @url = crud_models_path(model: params[:model])
+      @url = crud_models_path(model: params[:model], page: params[:page], q: params[:q])
       @id = params[:id] if params[:id]
     end
   end
-  
+
   public
   def index
     authorize! :read, @model if respond_to?(:current_usuario)
@@ -41,7 +41,7 @@ class CrudController < ApplicationController
     @titulo = @model.name.pluralize
     render partial: 'records' if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
   end
-  
+
   def new
     if params[:render] == "modal"
       if @model.reflect_on_association(params[:attribute].to_s).present?
@@ -55,7 +55,7 @@ class CrudController < ApplicationController
     authorize! :new, @model if respond_to?(:current_usuario)
     @record = @model.new
   end
-  
+
   def edit
     @record = @model.find(@id)
     authorize! :edit, @record if respond_to?(:current_usuario)
@@ -82,7 +82,7 @@ class CrudController < ApplicationController
       render partial: "/#{@model.name.underscore.pluralize}/#{params[:acao]}" if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
     end
   end
-  
+
   def create
     @saved = false
     if @id
@@ -94,11 +94,11 @@ class CrudController < ApplicationController
       authorize! :create, @model if respond_to?(:current_usuario)
       @saved = @record.save
     end
-    
+
     respond_to do |format|
       if @saved
         flash[:success] = params[:id].present? ? "Cadastro alterado com sucesso." : "Cadastro efetuado com sucesso."
-        format.html { redirect_to "#{@url}?page=#{params[:page]}" }
+        format.html { redirect_to @url }
         unless params[:render] == 'modal'
           format.js { render action: :index}
         else
@@ -111,7 +111,7 @@ class CrudController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     @record = @model.find(@id)
     authorize! :destroy, @record if respond_to?(:current_usuario)
@@ -129,7 +129,7 @@ class CrudController < ApplicationController
       end
     end
   end
-  
+
   def query
     authorize! :read, @model if respond_to?(:current_usuario)
     @resource = @model
@@ -147,7 +147,7 @@ class CrudController < ApplicationController
       render :index, controller: request[:controller]
     end
   end
-  
+
   def autocomplete
     @model = Module.const_get(params[:model].camelize)
     authorize! :read, @model if respond_to?(:current_usuario)
@@ -165,10 +165,10 @@ class CrudController < ApplicationController
   end
 
   private
-  def params_permitt 
+  def params_permitt
     params.require(@model.name.underscore.to_sym).permit(fields_model)
   end
-  
+
   def fields_model
     fields = []
     @crud_helper.form_fields.each do |field|
@@ -198,7 +198,7 @@ class CrudController < ApplicationController
     end
     fields
   end
-  
+
   def permitt_group(fields, key, groups,mod)
     chave = "#{key}_attributes"
     group = {chave => [:id, :_destroy]}

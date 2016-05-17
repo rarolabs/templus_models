@@ -29,12 +29,12 @@
 					<% end %>
 				</td>
 			<% elsif record.send(att[:attribute]).respond_to?(:url) and record.send(att[:attribute]).url(:thumb) %>
-				<td><%=  image_tag(record.send(att[:attribute]).url(:thumb)) %></td> 
+				<td><%=  image_tag(record.send(att[:attribute]).url(:thumb)) %></td>
 			<% else %>
 				<% if record.send(att[:attribute]).to_s == "false" or record.send(att[:attribute]).to_s == "true" %>
-					<td><%=  record.send(att[:attribute]) ? "Sim" : "Não" %></td>  
+					<td><%=  record.send(att[:attribute]) ? "Sim" : "Não" %></td>
 				<% else %>
-					<td><%=  record.send(att[:attribute]).to_s %></td>  
+					<td><%=  record.send(att[:attribute]).to_s %></td>
 				<% end %>
 			<% end %>
 		<% else %>
@@ -69,16 +69,25 @@
 			<% end %>
 		<% end %>
 		<%if @crud_helper.view_action && shold_view?(@crud_helper, record)%>
-			<a href="<%= @url %>/<%=record.id%>?page=<%=params[:page]%>"
-				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Visualizar</a>
+			<% if @crud_associacao.present? %>
+				<%= link_to "Visualizar", crud_associacao_model_path(model: params[:model], id: params[:id], associacao: @model.name.underscore, associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+			<% else %>
+				<%= link_to "Visualizar", crud_model_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+			<% end %>
 		<% end %>
 		<%if @crud_helper.edit_action && shold_edit?(@crud_helper, record) %>
-			<a href="<%= @url %>/<%=record.id%>/edit?page=<%=params[:page]%>"
-				class="btn btn-primary btn-xs" data-push="partial" data-target="#form">Editar</a>
+			<% if @crud_associacao.present? %>
+				<%= link_to "Editar", edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: @model.name.underscore, associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+			<% else %>
+				<%= link_to "Editar", edit_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+			<% end %>
 		<% end %>
 		<%if @crud_helper.destroy_action && shold_destroy?(@crud_helper, record)%>
-			<a href="<%= @url %>/<%=record.id%>/destroy"
-				class="btn btn-danger btn-xs" data-method="delete" data-confirm="Você têm certeza?">Excluir</a>
+			<% if @crud_associacao.present? %>
+				<%= link_to "Excluir", destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: @model.name.underscore, associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: 'Você tem certeza?'} %>
+			<% else %>
+				<%= link_to "Excluir", destroy_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: 'Você tem certeza?'} %>
+			<% end %>
 		<% end %>
-	</td>  
+	</td>
 <% end %>

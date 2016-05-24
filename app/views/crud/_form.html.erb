@@ -26,7 +26,7 @@
 		<% end %>
 		<% remote_form = false%>
 	<%else%>
-		<% url = "#{@url}/#{@record.new_record? ? 'create?render=modal' : @record.id.to_s+'/create?render=modal'}" %>
+		<% url = "#{@url_str}/#{@record.new_record? ? 'create?render=modal' : @record.id.to_s+'/create?render=modal'}" %>
 		<% remote_form = true%>
 	<%end%>
 	<%= simple_nested_form_for @record, remote: remote_form, html: {class: "form-horizontal"}, url: url do |f| %>

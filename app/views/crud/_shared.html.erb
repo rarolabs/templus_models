@@ -37,6 +37,21 @@
 								</button>
 							<% end %>
 						</div>
+					<% elsif is_action_show? %>
+						<% if (@crud_helper.present? && @crud_helper.destroy_action) && should_destroy?(@crud_helper, @record) %>
+							<% if @crud_associacao.present? %>
+								<%= link_to "Excluir", destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs pull-right m-l-xs', data: {method: 'delete', confirm: 'Você tem certeza?'} %>
+							<% else %>
+								<%= link_to "Excluir", destroy_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs pull-right m-l-xs', data: {method: 'delete', confirm: 'Você tem certeza?'} %>
+							<% end %>
+						<% end %>
+						<% if (@crud_helper.present? && @crud_helper.edit_action) && should_edit?(@crud_helper, @record) %>
+							<% if @crud_associacao.present? %>
+								<%= link_to "Editar", edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs pull-right m-l-xs', data: {push: 'partial', target: '#form'} %>
+							<% else %>
+								<%= link_to "Editar", edit_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs pull-right m-l-xs', data: {push: 'partial', target: '#form'} %>
+							<% end %>
+						<% end %>
 					<% end %>
 				</div>
 				<div class="ibox-content">

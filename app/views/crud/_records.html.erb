@@ -11,7 +11,7 @@
 		</div>
 	<% end %>
 <% end %>
-<div class="col-lg-<%= @crud_helper.layout[1].present? and @crud_helper.layout[1].call() and @crud_helper.layout[0] == "escopo_lateral" and @crud_helper.scopes.present? ? 9 : 12 %>" style="padding-left:0;">
+<div class="col-lg-<%= @crud_helper.layout[1].present? && @crud_helper.layout[1].call() && @crud_helper.layout[0] == 'escopo_lateral' && @crud_helper.scopes.present? ? 9 : 12 %>" style="padding-left:0;">
 	<%= render_crud do %>
 		<div>
 			<%= render "/crud/links" %>

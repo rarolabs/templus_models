@@ -17,15 +17,15 @@ class Templus
   def self.logo
     @@logo
   end
-  
+
   def self.logo_rodape
     @@logo_rodape
   end
-  
+
   def self.logo_landpage
     @@logo_landpage
   end
-  
+
   def self.paragrafo_login
     @@paragrafo_login
   end

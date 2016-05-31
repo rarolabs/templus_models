@@ -221,7 +221,7 @@ class CrudController < ApplicationController
         elsif (modelo.columns_hash[field[:attribute].to_s] || (modelo.respond_to?(:params_permitt) && modelo.params_permitt.include?(field[:attribute].to_sym)))
           group[chave] << field[:attribute]
         end
-       end
+      end
     end
     group
   end

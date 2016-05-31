@@ -44,7 +44,7 @@
 	<td>
 		<%@crud_helper.actions.each do |a|%>
 			<% if ((a[2].present? && a[2].call(record)) || !a[2].present?) %>
-				<%= link_to a[1], action_crud_path(model: @model.name.underscore, id: record.id, acao: a[0]), class: "btn btn-primary btn-xs", data: {push: "partial", target: "#form"}%>
+				<%= link_to a[1], action_crud_path(model: @model.name.underscore, id: record.id, acao: a[0], page: params[:page], q: params[:q]), class: "btn btn-primary btn-xs", data: {push: "partial", target: "#form"}%>
 			<% end %>
 		<% end %>
 		<%@crud_helper.actions_links.each do |name, options|%>

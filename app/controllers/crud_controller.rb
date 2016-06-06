@@ -75,7 +75,7 @@ class CrudController < ApplicationController
       else
         flash.now[:error] = I18n.t("mensagem_erro_action", acao: params[:acao])
       end
-      index
+      redirect_to "#{@url}?page=#{params[:page]}"
     else
       @titulo = @record.to_s
       @texto = params[:acao]

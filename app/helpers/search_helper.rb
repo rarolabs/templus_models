@@ -242,7 +242,7 @@ module SearchHelper
       <option value=eq>#{I18n.t('equal')}</option>
       <option value=not_cont>#{I18n.t('not_contains')}</option>
       <option value=start>#{I18n.t('begins')}</option>
-      <option value=end>#{I18n.t('ends')}Termina</option>
+      <option value=end>#{I18n.t('ends')}</option>
       </select>"
     end
 

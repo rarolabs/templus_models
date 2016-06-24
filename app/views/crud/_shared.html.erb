@@ -26,9 +26,9 @@
 						<div class="pull-right actions">
 							<% @crud_helper.top_links.each do |link| %>
 								<% if link[:can].present? %>
-									<%=render_link(link,@url_str) if self.instance_eval &link[:can]%>
+									<%=render_link(link,@clean_url) if self.instance_eval &link[:can]%>
 								<% else %>
-									<%=render_link(link,@url_str)%>
+									<%=render_link(link,@clean_url)%>
 								<% end %>
 							<%end%>
 							<% if @crud_helper.search_fields.present? %>

@@ -9,7 +9,7 @@ class CrudController < ApplicationController
       c_helper = Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao]).class_name
       @crud_helper = Module.const_get("#{c_helper}Crud") unless params[:render] == "modal" and params[:action] == "new"
       @url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao], page: params[:page], q: params[:q])
-      @clean_url = crud_associacao_models(model: params[:model], id: params[:id], associacao: params[:associacao])
+      @clean_url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao])
       @model_permission = c_helper.constantize
       @id = params[:associacao_id] if params[:associacao_id]
     else
@@ -54,6 +54,7 @@ class CrudController < ApplicationController
         @model = params[:attribute].to_s.camelcase.constantize
       end
       @url = crud_models_path(model: @model.name.underscore)
+      @clean_url = @url
       @model_permission = @model
       @crud_helper = Module.const_get("#{@model}Crud".camelize)
     end

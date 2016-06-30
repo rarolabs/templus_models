@@ -238,7 +238,7 @@ class RaroCrud
     if opts.present? && opts[:autocomplete].present?
       opts[:as] = :autocomplete
       label_method = opts[:autocomplete][:label_method] || opts[:autocomplete][:campo]
-      opts[:url] = autocomplete_crud_path(model: opts[:autocomplete][:classe], campo: opts[:autocomplete][:campo], tipo: "start", label: label_method)
+      opts[:url] = Rails.application.routes.url_helpers.autocomplete_crud_path(model: opts[:autocomplete][:classe], campo: opts[:autocomplete][:campo], tipo: "start", label: label_method)
       name = "#{opts[:autocomplete][:campo]}_#{opts[:autocomplete][:classe]}"
       opts[:input_html] = {name: name, id: name}
       opts[:id_element] = "##{self.modelo}_#{nome}_id"

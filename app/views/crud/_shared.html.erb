@@ -24,6 +24,11 @@
 					<% end %>
 					<% if (@crud_helper.present? && (is_action_index? || is_action_query?))%>
 						<div class="pull-right actions">
+							<%if @crud_helper.listing_action && should_listing?(@crud_helper, @model)%>
+								<%= link_to listing_crud_path(model: @model.name.underscore, q: params[:q], format: :xls), class: "btn btn-success btn-rounded" do %>
+									<i class="fa fa-download"></i> Listagem
+								<% end %>
+							<% end %>
 							<% @crud_helper.top_links.each do |link| %>
 								<% if link[:can].present? %>
 									<%=render_link(link,@clean_url) if self.instance_eval &link[:can]%>

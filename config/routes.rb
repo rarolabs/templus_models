@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/crud/:model/query' => "crud#query", as: :query_crud
   get '/crud/:model/autocomplete' => "crud#autocomplete", as: :autocomplete_crud
   post '/crud/:model/create' => "crud#create", as: :create_crud
+  get '/crud/:model/listing' => "crud#listing", as: :listing_crud
   patch '/crud/:model/:id/create' => "crud#create", as: :update_crud
   get '/crud/:model/:id/acao/:acao' => "crud#action", as: :action_crud
   get '/crud/:model/:id' => "crud#show", as: :crud_model

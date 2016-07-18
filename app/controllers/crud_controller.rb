@@ -169,6 +169,20 @@ class CrudController < ApplicationController
     method_label = params[:label]
     render json: results.map {|result| {id: result.id, label: result.send(method_label), value: result.send(method_label)} }
   end
+  
+  def listing
+    authorize! :read, @model if respond_to?(:current_usuario)
+    @q = @model.search(params[:q])
+    if respond_to?(:current_usuario)
+      @records = @q.result.accessible_by(current_ability)
+    else
+      @records = @q.result
+    end
+    respond_to do |format|
+      format.xls {headers["Content-Disposition"] = "attachment; filename=Listagem de #{@crud_helper.title} #{DateTime.now.strftime('%Y%m%d')}.xls"}
+      format.html
+    end
+  end
 
   private
   def params_permitt

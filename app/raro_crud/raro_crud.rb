@@ -6,6 +6,7 @@ class RaroCrud
   @@form_group                = {}
   @@form_scripts              = {}
   @@view_fields               = {}
+  @@listing_fields            = {}
   @@search_fields             = {}
   @@test_fields               = {}
   @@top_links                 = {} 
@@ -20,6 +21,8 @@ class RaroCrud
   @@condition_destroy_action  = {}
   @@view_action               = {}
   @@condition_view_action     = {}
+  @@listing_action            = {}
+  @@condition_listing_action  = {}
   @@options_link              = {}
   @@scopes                    = {}
   @@menus                     = []
@@ -69,6 +72,18 @@ class RaroCrud
   
   def self.condition_view_action
     (@@condition_view_action[self.to_s.to_sym]) ? @@condition_view_action[self.to_s.to_sym] : nil
+  end
+  
+  def self.listing_action
+    if @@listing_action[self.to_s.to_sym] == true
+      return true
+    else
+      return false
+    end
+  end
+  
+  def self.condition_listing_action
+    (@@condition_listing_action[self.to_s.to_sym]) ? @@condition_listing_action[self.to_s.to_sym] : nil
   end
 
   def self.root_path
@@ -143,6 +158,10 @@ class RaroCrud
 
   def self.view_fields
     (@@view_fields[self.to_s.to_sym]) ? @@view_fields[self.to_s.to_sym]  : []
+  end
+
+  def self.listing_fields
+    (@@listing_fields[self.to_s.to_sym]) ? @@listing_fields[self.to_s.to_sym]  : []
   end
 
   def self.search_fields
@@ -283,7 +302,7 @@ class RaroCrud
         attribute: nome
       }.merge({sf: opts})
     )
-  end    
+  end
 
   def self.campo_busca nome, opts = nil
     @@search_fields[self.to_s.to_sym] = [] unless @@search_fields[self.to_s.to_sym]
@@ -292,7 +311,16 @@ class RaroCrud
         attribute: nome
       }.merge({sf: opts})
     )
-  end    
+  end
+  
+  def self.campo_listagem nome, opts = nil
+    @@listing_fields[self.to_s.to_sym] = [] unless @@listing_fields[self.to_s.to_sym]
+    @@listing_fields[self.to_s.to_sym].push(
+      {
+        attribute: nome
+      }.merge({sf: opts})
+    )
+  end
   
   def self.sem_visualizacao
     @@view_action[self.to_s.to_sym] = false
@@ -316,6 +344,14 @@ class RaroCrud
   
   def self.exclusao(condicao)
     @@condition_destroy_action[self.to_s.to_sym] = condicao
+  end
+  
+  def self.adicionar_listagem
+    @@listing_action[self.to_s.to_sym] = true
+  end
+  
+  def self.listagem(condicao)
+    @@condition_listing_action[self.to_s.to_sym] = condicao
   end
   
   def self.acoes(method,desc,proc = nil)

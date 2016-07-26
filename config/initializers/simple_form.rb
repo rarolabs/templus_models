@@ -156,18 +156,17 @@ SimpleForm.setup do |config|
     b.use :html5
     b.wrapper :tag => 'div', :class => 'form-group' do |ba|
       ba.use :label, :class => 'col-sm-2 control-label'
-      ba.wrapper :tag => 'div', :class => 'col-sm-9' do |ba2|
+      ba.wrapper :tag => 'div', :class => 'col-sm-11 col-xs-11' do |ba2|
         ba2.use :input, :class => 'form-control'
         ba2.use :error, :wrap_with => { :tag => 'span', :class => 'help-block m-b-none text-danger' }
         ba2.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block text-muted' }
       end
-      ba.wrapper :tag => 'a', :class => "btn btn-success crud-new-record" do |ba2|
-        ba2.wrapper :tag => 'i' , :class => "fa fa-plus" do
+      ba.wrapper :tag => 'div', :class => 'col-sm-1 col-xs-1 no-padding' do |ba3|
+        ba3.wrapper :tag => 'a', :class => "btn btn-success crud-new-record" do |ba4|
+          ba4.wrapper :tag => 'i' , :class => "fa fa-plus" do
+          end
         end
       end
     end
   end
-  
-  
-
 end

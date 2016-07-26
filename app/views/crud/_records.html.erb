@@ -61,7 +61,7 @@
 		  theadtxt[x].push(current.innerHTML);
 		}
 	} 
-	for (var v = 0, tbody; tbody = tablebody[v]; h++) {
+	for (var v = 0, tbody; tbody = tablebody[v]; v++) {
 		for (var x = 0, row; row = tbody.rows[x]; x++) {
 		  for (var j = 0, col; col = row.cells[j]; j++) {
             col.insertAdjacentHTML('afterbegin', '<div class="col-xs-3 no-padding">' + theadtxt[v][j] + '</div>');

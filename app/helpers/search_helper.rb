@@ -247,6 +247,6 @@ module SearchHelper
     end
 
     def raro_group(text)
-      @buffer << "<div class=\"col-sm-12 label label-primary\" style=\"margin-bottom:10px; font-size:14px;\"><b>#{text}</b></div>"
+      @buffer << "<div class=\"col-sm-12 label label-primary\" style=\"margin-bottom:10px; font-size:14px;display: inline-block;\"><b>#{text}</b></div>"
     end
 end

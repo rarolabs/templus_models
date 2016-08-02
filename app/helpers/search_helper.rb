@@ -85,6 +85,8 @@ module SearchHelper
         return raro_hidden_field(name,opts[:value],opts)
       when :string
         raro_text_field(name, opts)
+      when :range
+        raro_range(name)
       end
     end
 
@@ -201,6 +203,17 @@ module SearchHelper
       <input type='hidden' value='' id='q_#{name}_start' name='q[#{name}_gteq]'>
       <input type='hidden' value='' id='q_#{name}_end' name='q[#{name}_lteq]'>
       </div></div>"
+    end
+
+    def raro_range(name)
+      buffer = ""
+      buffer += "<div class='col-sm-4'>"
+      buffer += "<input type='text' name='q[#{name}_gteq]' class='form-control'/>"
+      buffer += "</div>"
+      buffer += "<div class='col-sm-4 range-separator'>"
+      buffer += "<input type='text' name='q[#{name}_lteq]' class='form-control'/>"
+      buffer += "</div>"
+      buffer
     end
 
     def raro_before_form(model,partial,var,url,sort)

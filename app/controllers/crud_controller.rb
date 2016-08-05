@@ -169,7 +169,7 @@ class CrudController < ApplicationController
     method_label = params[:label]
     render json: results.map {|result| {id: result.id, label: result.send(method_label), value: result.send(method_label)} }
   end
-  
+
   def listing
     authorize! :read, @model if respond_to?(:current_usuario)
     @q = @model.search(params[:q])
@@ -178,8 +178,19 @@ class CrudController < ApplicationController
     else
       @records = @q.result
     end
+    report_name = "Listagem de #{@crud_helper.title} #{DateTime.now.strftime('%Y%m%d')}"
     respond_to do |format|
-      format.xls {headers["Content-Disposition"] = "attachment; filename=Listagem de #{@crud_helper.title} #{DateTime.now.strftime('%Y%m%d')}.xls"}
+      format.xls {headers["Content-Disposition"] = "attachment; filename=#{report_name}.xls"}
+      format.pdf do
+        pdf = WickedPdf.new.pdf_from_string(
+          render_to_string('crud/listing.pdf.erb'),
+          encoding: 'UTF-8',
+          page_size: 'A4',
+          show_as_html: params[:debug],
+          margin: { top: 20, bottom: 20 }
+        )
+        send_data(pdf, filename: "#{report_name}.pdf", type: "application/pdf", disposition: "inline")
+      end
       format.html
     end
   end

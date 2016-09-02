@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/crud/:model/:id/:associacao/query' => "crud#query", as: :query_crud_associacao
   get '/crud/:model/:id/:associacao/autocomplete' => "crud#autocomplete", as: :autocomplete_crud_associacao
   post '/crud/:model/:id/:associacao/create' => "crud#create", as: :create_crud_associacao
+  get '/crud/:model/:id/:associacao/listing' => "crud#listing", as: :listing_crud_associacao
   patch '/crud/:model/:id/:associacao/:associacao_id/create' => "crud#create", as: :update_crud_associacao
   get '/crud/:model/:id/:associacao/:associacao_id/acao/:acao' => "crud#action", as: :action_crud_associacao
   get '/crud/:model/:id/:associacao/:associacao_id' => "crud#show", as: :crud_associacao_model

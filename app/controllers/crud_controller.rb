@@ -171,7 +171,7 @@ class CrudController < ApplicationController
   end
 
   def listing
-    authorize! :read, @model if respond_to?(:current_usuario)
+    authorize! :read, @model_permission if respond_to?(:current_usuario)
     @q = @model.search(params[:q])
     if respond_to?(:current_usuario)
       @records = @q.result.accessible_by(current_ability)

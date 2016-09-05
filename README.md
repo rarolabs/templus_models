@@ -20,7 +20,7 @@ class EmpresaCrud < RaroCrud
   descricao "Descrição do Cadastro", :index
 
   link_superior "Novo Empresa", id: "novo-button", icon: "plus", link: "new"
-  
+
   ordenar_por :created_at
   itens_por_pagina 20
 
@@ -29,27 +29,30 @@ class EmpresaCrud < RaroCrud
   campo_tabela :contato,  label: "Contato"
   campo_tabela :telefone,  label: "Telefone"
   campo_tabela :endereco,  label: "Endereco"
-  
-  
+
   #Campos mostrados no formulários de cadastro
   campo_formulario :nome,  label: "Nome"
   campo_formulario :contato,  label: "Contato"
   campo_formulario :telefone,  label: "Telefone"
   campo_formulario :endereco,  label: "Endereco"
-  
 
   #Campos mostrados na visualizacao
   campo_visualizacao :nome,  label: "Nome"
   campo_visualizacao :contato,  label: "Contato"
   campo_visualizacao :telefone,  label: "Telefone"
   campo_visualizacao :endereco,  label: "Endereco"
-  
 
   #Campos mostrados na busca
   campo_busca :nome,  label: "Nome"
   campo_busca :contato,  label: "Contato"
   campo_busca :telefone,  label: "Telefone"
   campo_busca :endereco,  label: "Endereco"
+
+  #Campos mostrados no relatório
+  campo_listagem :nome, label: "Nome"
+  campo_listagem :contato, label: "Contato"
+  campo_listagem :telefone, label: "Telefone"
+  campo_listagem :endereco, label: "Endereco"
 
 end
 ```
@@ -60,7 +63,7 @@ end
 campo_visualizacao :tipo, label: "Tipo", label_method: :descricao_do_tipo
 ```
 
-## Atributo especia de endereço
+## Atributo especial de endereço
 Para vincular um formulário de cadastro de endereço utilize o método *adicionar_endereco* no arquivo:
 
 ```ruby
@@ -71,13 +74,13 @@ class EmpresaCrud < RaroCrud
   descricao "Descrição do Cadastro", :index
 
   link_superior "Novo Empresa", id: "novo-button", icon: "plus", link: "new"
-  
+
   adicionar_endereco
   ...
 end
 ```
 
-Depois adicione no seu modelo o metodo
+Depois adicione no seu modelo o método
 
 ```rb
 accepts_nested_attributes_for :endereco, :allow_destroy => true
@@ -218,7 +221,7 @@ campo_formulario :papel, label: "Papel", label_method: :descricao, add_registro:
 ## Adicionar condição para mostrar um campo no formulário
 
 ```rb
-  campo_formulario :perfil, label: "Perfil", label_method: :descricao, if: Proc.new {|obj| Usuario.current.root? }
+  campo_formulario :perfil, label: "Perfil", if: Proc.new {|obj| Usuario.current.root? }
 ```
 
 ## Manipulando *actions* padrão do RaroCrud
@@ -275,7 +278,7 @@ campo_formulario :cidade, label: "Cidade", autocomplete: {classe: :cidade, campo
 Para adicionar formulários alinhados utilize o método _grupo_formulario_:
 
 ```rb
-  campo_formulario :dado_boleto, label: "Dados para emissão de boleto", 
+  campo_formulario :dado_boleto, label: "Dados para emissão de boleto",
                    grupo: [{campo: :banco, label: "Banco", add_registro: false},
                            {campo: :conta, label: "Conta"},
                            {campo: :observacao, label: "Instruções bancárias"}]
@@ -290,14 +293,8 @@ Não se esqueça de permitir os campos dos filhos no modelo do pai com _accepts_
 Caso deseja um label diferente para os botões Adicionar e Remover do grupo, basta adicionar o campo *sublabel*
 
 ```rb
-  campo_formulario :dado_boleto, label: "Dados para emissão de boleto", sublabel: "Boleto" 
+  campo_formulario :dado_boleto, label: "Dados para emissão de boleto", sublabel: "Boleto"
                    grupo: [{campo: :banco, label: "Banco", add_registro: false},
                            {campo: :conta, label: "Conta"},
                            {campo: :observacao, label: "Instruções bancárias"}]
 ```
-
-
-
-
-
-

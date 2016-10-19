@@ -80,6 +80,9 @@ module SearchHelper
     def raro_input_as(name,type,opts)
       case opts[:as]
       when :select
+        if opts[:collection_if] and opts[:collection_if].class == Proc
+          opts[:collection] = ActionView::Helpers::FormBuilder.instance_eval &opts[:collection_if]
+        end
         raro_select(name,opts,opts[:collection])
       when :hidden
         return raro_hidden_field(name,opts[:value],opts)

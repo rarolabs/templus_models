@@ -1,6 +1,6 @@
 <div class="profile-element">
   <div class="header">
-    <h1>Listagem de <%= @crud_helper.title %></h1>
+    <h1><%= @crud_helper.title %></h1>
   </div>
 </div>
 <div class="widget-box" id="relatorio">
@@ -18,7 +18,7 @@
       				<% if att[:sf].present? && att[:sf][:label].present? %>
       					<th><%= att[:sf][:label].to_s.mb_chars.upcase.to_s %></th>
       				<% else %>
-      					<th><%= att[:attribute].to_s.mb_chars.upcase.to_s %></th>
+      					<th><%= I18n.t("simple_form.labels.#{@model.name.underscore}.#{att[:attribute]}") %></th>
       				<% end %>
       			<% end %>
           </tr>

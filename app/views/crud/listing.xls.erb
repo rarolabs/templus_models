@@ -4,7 +4,7 @@ xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns:x="urn:schemas-microsoft-com:office:excel"
 xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
 xmlns:html="http://www.w3.org/TR/REC-html40">
-<Worksheet ss:Name="Listagem de <%= @crud_helper.title %>">
+<Worksheet ss:Name="<%= @crud_helper.title %>">
 	<Table>
 		<Row>
 			<% @crud_helper.listing_fields.each do |att|%>
@@ -16,7 +16,7 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
 				<% if att[:sf].present? && att[:sf][:label].present? %>
 					<Cell><Data ss:Type="String"><%= att[:sf][:label].to_s.mb_chars.upcase.to_s %></Data></Cell>
 				<% else %>
-					<Cell><Data ss:Type="String"><%= att[:attribute].to_s.mb_chars.upcase.to_s %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= I18n.t("simple_form.labels.#{@model.name.underscore}.#{att[:attribute]}") %></Data></Cell>
 				<% end %>
 			<% end %>
 		</Row>

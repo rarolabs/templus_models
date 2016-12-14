@@ -309,7 +309,7 @@ class RaroCrud
     )
   end
 
-  def self.campo_listagem nome, opts = nil
+  def self.campo_listagem nome, opts = {}
     @@listing_fields[self.to_s.to_sym] = [] unless @@listing_fields[self.to_s.to_sym]
     @@listing_fields[self.to_s.to_sym].push(
       {

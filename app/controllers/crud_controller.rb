@@ -178,7 +178,7 @@ class CrudController < ApplicationController
     else
       @records = @q.result
     end
-    report_name = "Listagem de #{@crud_helper.title} #{DateTime.now.strftime('%Y%m%d')}"
+    report_name = "#{@crud_helper.title} #{DateTime.now.strftime('%Y%m%d')}"
     respond_to do |format|
       format.xls {headers["Content-Disposition"] = "attachment; filename=#{report_name}.xls"}
       format.pdf do

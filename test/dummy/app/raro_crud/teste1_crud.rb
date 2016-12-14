@@ -1,7 +1,7 @@
 class Teste1Crud < RaroCrud
   
   titulo "Teste1"
-  link_superior "Novo Teste1", id: "novo-button", icon: "plus", link: "new"
+  link_superior nome: "Novo Teste1", id: "novo-button", icon: "plus", link: "new"
 
   acoes :associar, "Definir permissões", Proc.new {|p| Usuario.current.ability.can?(:create,p)}
 

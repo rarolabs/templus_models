@@ -1,6 +1,6 @@
 class CrudController < ApplicationController
   before_filter :setup, except: :autocomplete
-  
+
   private
   def setup
     if params[:associacao]
@@ -8,19 +8,23 @@ class CrudController < ApplicationController
       @model = Module.const_get(params[:model].camelize).find(params[:id]).send(params[:associacao])
       c_helper = Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao]).class_name
       @crud_helper = Module.const_get("#{c_helper}Crud") unless params[:render] == "modal" and params[:action] == "new"
-      @url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao])
+      @url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao], page: params[:page], q: params[:q])
+      @clean_url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao])
+      @model_permission = c_helper.constantize
       @id = params[:associacao_id] if params[:associacao_id]
     else
       @model = Module.const_get(params[:model].camelize)
+      @model_permission = @model
       @crud_helper = Module.const_get("#{params[:model]}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
-      @url = crud_models_path(model: params[:model])
+      @url = crud_models_path(model: params[:model], page: params[:page], q: params[:q])
+      @clean_url = crud_models_path(model: params[:model])
       @id = params[:id] if params[:id]
     end
   end
-  
+
   public
   def index
-    authorize! :read, @model if respond_to?(:current_usuario)
+    authorize! :read, @model_permission if respond_to?(:current_usuario)
     if params[:scope].present?
       @q = @model.send(params[:scope]).search(params[:q])
     else
@@ -41,7 +45,7 @@ class CrudController < ApplicationController
     @titulo = @model.name.pluralize
     render partial: 'records' if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
   end
-  
+
   def new
     if params[:render] == "modal"
       if @model.reflect_on_association(params[:attribute].to_s).present?
@@ -50,12 +54,14 @@ class CrudController < ApplicationController
         @model = params[:attribute].to_s.camelcase.constantize
       end
       @url = crud_models_path(model: @model.name.underscore)
+      @clean_url = @url
+      @model_permission = @model
       @crud_helper = Module.const_get("#{@model}Crud".camelize)
     end
-    authorize! :new, @model if respond_to?(:current_usuario)
+    authorize! :new, @model_permission if respond_to?(:current_usuario)
     @record = @model.new
   end
-  
+
   def edit
     @record = @model.find(@id)
     authorize! :edit, @record if respond_to?(:current_usuario)
@@ -82,7 +88,7 @@ class CrudController < ApplicationController
       render partial: "/#{@model.name.underscore.pluralize}/#{params[:acao]}" if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
     end
   end
-  
+
   def create
     @saved = false
     if @id
@@ -91,10 +97,10 @@ class CrudController < ApplicationController
       @saved = @record.update(params_permitt)
     else
       @record  =  @model.new(params_permitt)
-      authorize! :create, @model if respond_to?(:current_usuario)
+      authorize! :create, @model_permission if respond_to?(:current_usuario)
       @saved = @record.save
     end
-    
+
     respond_to do |format|
       if @saved
         flash[:success] = params[:id].present? ? I18n.t("updated", model: I18n.t("model.#{@model.name.underscore}")) : I18n.t("created", model: I18n.t("model.#{@model.name.underscore}"))
@@ -111,7 +117,7 @@ class CrudController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     @record = @model.find(@id)
     authorize! :destroy, @record if respond_to?(:current_usuario)
@@ -129,9 +135,9 @@ class CrudController < ApplicationController
       end
     end
   end
-  
+
   def query
-    authorize! :read, @model if respond_to?(:current_usuario)
+    authorize! :read, @model_permission if respond_to?(:current_usuario)
     @resource = @model
     @q = @resource.search(params[:q])
     @q.sorts = 'updated_at desc' if @q.sorts.empty?
@@ -147,7 +153,7 @@ class CrudController < ApplicationController
       render :index, controller: request[:controller]
     end
   end
-  
+
   def autocomplete
     @model = Module.const_get(params[:model].camelize)
     authorize! :read, @model if respond_to?(:current_usuario)
@@ -164,11 +170,36 @@ class CrudController < ApplicationController
     render json: results.map {|result| {id: result.id, label: result.send(method_label), value: result.send(method_label)} }
   end
 
+  def listing
+    authorize! :read, @model_permission if respond_to?(:current_usuario)
+    @q = @model.search(params[:q])
+    if respond_to?(:current_usuario)
+      @records = @q.result.accessible_by(current_ability)
+    else
+      @records = @q.result
+    end
+    report_name = "Listagem de #{@crud_helper.title} #{DateTime.now.strftime('%Y%m%d')}"
+    respond_to do |format|
+      format.xls {headers["Content-Disposition"] = "attachment; filename=#{report_name}.xls"}
+      format.pdf do
+        pdf = WickedPdf.new.pdf_from_string(
+          render_to_string('crud/listing.pdf.erb'),
+          encoding: 'UTF-8',
+          page_size: 'A4',
+          show_as_html: params[:debug],
+          margin: { top: 20, bottom: 20 }
+        )
+        send_data(pdf, filename: "#{report_name}.pdf", type: "application/pdf", disposition: "inline")
+      end
+      format.html
+    end
+  end
+
   private
-  def params_permitt 
+  def params_permitt
     params.require(@model.name.underscore.to_sym).permit(fields_model)
   end
-  
+
   def fields_model
     fields = []
     @crud_helper.form_fields.each do |field|
@@ -198,7 +229,7 @@ class CrudController < ApplicationController
     end
     fields
   end
-  
+
   def permitt_group(fields, key, groups,mod)
     chave = "#{key}_attributes"
     group = {chave => [:id, :_destroy]}
@@ -216,7 +247,7 @@ class CrudController < ApplicationController
         elsif (modelo.columns_hash[field[:attribute].to_s] || (modelo.respond_to?(:params_permitt) && modelo.params_permitt.include?(field[:attribute].to_sym)))
           group[chave] << field[:attribute]
         end
-       end
+      end
     end
     group
   end

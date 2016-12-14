@@ -1,21 +1,21 @@
 module MenuHelper
   def is_active(controller_name, action_name)
-    (params[:controller] == controller_name && params[:action] == action_name) ? "active" : ""
-  end  
+    return (params[:controller].singularize == controller_name.singularize && params[:action] == action_name) ? "active" : ""
+  end
 
   def is_active_crud(modelo)
-    (controller.controller_name == 'crud' && params[:model] == modelo) ? "active" : ""
-  end  
-  
+    (controller.controller_name == 'crud' && params[:model] == modelo) ? "active" : nil
+  end
+
   def is_active_parent(controllers)
     controllers.each do |name|
-      if (params[:controller] == name[0] && (params[:action] == name[1] || params[:model] == name[1])) 
+      if (params[:controller].singularize == name[0] && (params[:action] == name[1] || params[:model] == name[1]))
         return "active"
       end
     end
     return ""
   end
-  
+
   def is_can?(tipo, modelos)
     modelos.each do |m|
       if can?(tipo, m)
@@ -24,13 +24,13 @@ module MenuHelper
     end
     return false
   end
-  
-  def menu_crud_helper(nome, classe, icon='', parent=false)
+
+  def menu_crud_helper(nome, classe, icon='', parent=false, controllers = {})
     if can?(:read, classe)
       modelo = classe.name.underscore
-      url = crud_models(model: modelo)
+      url = crud_models_path(model: modelo)
       buffer = ""
-      buffer << "<li class='menu #{is_active_crud(modelo)}'>"
+      buffer << "<li class='menu #{is_active_crud(modelo) || is_active_parent(controllers)}'>"
       if parent
         buffer << link_to("<i class='#{icon}'></i> <span>#{nome}</span>".html_safe, url, data: {push: true, crumb: 'wielka'})
       else
@@ -40,11 +40,11 @@ module MenuHelper
       buffer.html_safe
     end
   end
-  
+
   def menu_helper(classe, controller, action, url, nome, icone='', parent=false)
-   if can?(:read, classe)
+    if can?(:read, classe)
       buffer = ""
-  		buffer << "<li class='menu #{is_active(controller, action)}'>"
+      buffer << "<li class='menu #{is_active(controller, action)}'>"
       if parent
         buffer << link_to("<i class='#{icone}'></i> <span>#{nome}</span>".html_safe, url, data: {push: true, crumb: 'wielka'})
       else
@@ -52,9 +52,9 @@ module MenuHelper
       end
       buffer << "</li>"
       buffer.html_safe
-   end
+    end
   end
-  
+
   def menu_parent(modelos, controllers, nome, icone='', parent=false, &block)
     if is_can?(:read, modelos)
       buffer = ""

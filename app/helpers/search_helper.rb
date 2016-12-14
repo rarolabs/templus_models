@@ -90,6 +90,8 @@ module SearchHelper
         raro_text_field(name, opts)
       when :range
         raro_range(name)
+      when :monthyear
+        raro_monthyear(name, opts)
       end
     end
 
@@ -143,8 +145,8 @@ module SearchHelper
 
     def raro_monthyear(name, opts)
       buffer = ""
-      buffer += "<div class='col-sm-8'>"
-      buffer += "<input id='q_#{name}' type='text' name='q[#{name}_cont]' class='form-control #{opts[:class]}'/>"
+      buffer += "<div class='col-sm-12'>"
+      buffer += "<input id='q_#{name}' type='text' name='q[#{name}_monthyear_eq]' class='form-control monthyearpicker #{opts[:class]}'/>"
       buffer += "</div>"
       buffer
     end

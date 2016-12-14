@@ -4,7 +4,7 @@ class EnderecoCrud < RaroCrud
   subtitulo "Subtitulo", :index
   descricao "Descrição do Cadastro", :index
 
-  link_superior "Novo Endereco", id: "novo-button", icon: "plus", link: "new"
+  link_superior nome: "Novo Endereco", id: "novo-button", icon: "plus", link: "new"
   
   ordenar_por :created_at
   itens_por_pagina 20

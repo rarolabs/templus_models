@@ -90,16 +90,25 @@
 				<% end %>
 			<% end %>
 			<%if @crud_helper.view_action && should_view?(@crud_helper, record)%>
-				<a href="<%= @url %>/<%=record.id%>?page=<%=params[:page]%>"
-					class="btn btn-primary btn-xs" data-push="partial" data-target="#form"><%= I18n.t("view") %></a>
+				<% if @crud_associacao.present? %>
+					<%= link_to I18n.t("view"), crud_associacao_model_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+				<% else %>
+					<%= link_to I18n.t("view"), crud_model_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+				<% end %>
 			<% end %>
 			<%if @crud_helper.edit_action && should_edit?(@crud_helper, record) %>
-				<a href="<%= @url %>/<%=record.id%>/edit?page=<%=params[:page]%>"
-					class="btn btn-primary btn-xs" data-push="partial" data-target="#form"><%= I18n.t("edit") %></a>
+				<% if @crud_associacao.present? %>
+					<%= link_to I18n.t("edit"), edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+				<% else %>
+					<%= link_to I18n.t("edit"), edit_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+				<% end %>
 			<% end %>
 			<%if @crud_helper.destroy_action && should_destroy?(@crud_helper, record)%>
-				<a href="<%= @url %>/<%=record.id%>/destroy"
-					class="btn btn-danger btn-xs" data-method="delete" data-confirm="<%= I18n.t('mensagem_confirm_destroy') %>"><%= I18n.t("destroy") %></a>
+				<% if @crud_associacao.present? %>
+					<%= link_to I18n.t("destroy"), destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
+				<% else %>
+					<%= link_to I18n.t("destroy"), destroy_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
+				<% end %>
 			<% end %>
 		</div>
 	</td>

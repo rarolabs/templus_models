@@ -6,9 +6,11 @@ class RaroCrud
   @@form_group                = {}
   @@form_scripts              = {}
   @@view_fields               = {}
+  @@listing_fields            = {}
   @@search_fields             = {}
   @@test_fields               = {}
   @@top_links                 = {}
+  @@title                     = {}
   @@subtitle_index            = {}
   @@description_index         = {}
   @@actions                   = {}
@@ -19,6 +21,7 @@ class RaroCrud
   @@condition_destroy_action  = {}
   @@view_action               = {}
   @@condition_view_action     = {}
+  @@condition_listing_action  = {}
   @@options_link              = {}
   @@scopes                    = {}
   @@menus                     = []
@@ -76,6 +79,10 @@ class RaroCrud
 
   def self.condition_view_action
     (@@condition_view_action[self.to_s.to_sym]) ? @@condition_view_action[self.to_s.to_sym] : nil
+  end
+
+  def self.condition_listing_action
+    (@@condition_listing_action[self.to_s.to_sym]) ? @@condition_listing_action[self.to_s.to_sym] : nil
   end
 
   def self.root_path
@@ -148,6 +155,10 @@ class RaroCrud
     (@@view_fields[self.to_s.to_sym]) ? @@view_fields[self.to_s.to_sym]  : []
   end
 
+  def self.listing_fields
+    (@@listing_fields[self.to_s.to_sym]) ? @@listing_fields[self.to_s.to_sym]  : []
+  end
+
   def self.search_fields
     (@@search_fields[self.to_s.to_sym]) ? @@search_fields[self.to_s.to_sym]  : []
   end
@@ -173,6 +184,10 @@ class RaroCrud
 
   def self.modelo
     self.to_s.underscore.gsub("_crud", "")
+  end
+
+  def self.titulo str
+    @@title[self.to_s.to_sym] = str
   end
 
   def self.subtitulo(str,type)
@@ -294,6 +309,15 @@ class RaroCrud
     )
   end
 
+  def self.campo_listagem nome, opts = nil
+    @@listing_fields[self.to_s.to_sym] = [] unless @@listing_fields[self.to_s.to_sym]
+    @@listing_fields[self.to_s.to_sym].push(
+      {
+        attribute: nome
+      }.merge({sf: opts})
+    )
+  end
+
   def self.sem_visualizacao
     @@view_action[self.to_s.to_sym] = false
   end
@@ -318,6 +342,10 @@ class RaroCrud
     @@condition_destroy_action[self.to_s.to_sym] = condicao
   end
 
+  def self.listagem(condicao)
+    @@condition_listing_action[self.to_s.to_sym] = condicao
+  end
+
   def self.acoes(method,desc,proc = nil)
     @@actions[self.to_s.to_sym] = [] unless @@actions[self.to_s.to_sym]
     @@actions[self.to_s.to_sym].push([method,desc,proc])
@@ -337,7 +365,11 @@ class RaroCrud
     @@scopes[self.to_s.to_sym] = scopes
   end
 
-  def self.grupo_formulario(attribute,fields=[])
+  def self.grupo_formulario(attribute,name,fields=nil)
+    if fields.nil?
+      fields = name
+      name = attribute.to_s.singularize.titleize
+    end
     @@form_group[self.to_s.to_sym] ||= {}
     @@form_group[self.to_s.to_sym][attribute] = {fields: []}
     fields.each do |field|

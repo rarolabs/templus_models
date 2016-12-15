@@ -7,6 +7,7 @@ class RaroCrud
   @@form_scripts              = {}
   @@view_fields               = {}
   @@listing_fields            = {}
+  @@printing_fields           = {}
   @@search_fields             = {}
   @@test_fields               = {}
   @@top_links                 = {}
@@ -24,6 +25,7 @@ class RaroCrud
   @@condition_listing_action  = {}
   @@condition_listing_excel   = {}
   @@condition_listing_pdf     = {}
+  @@condition_printing_action  = {}
   @@options_link              = {}
   @@scopes                    = {}
   @@menus                     = []
@@ -93,6 +95,10 @@ class RaroCrud
 
   def self.condition_listing_pdf
     (@@condition_listing_pdf[self.to_s.to_sym]) ? @@condition_listing_pdf[self.to_s.to_sym] : nil
+  end
+
+  def self.condition_printing_action
+    (@@condition_printing_action[self.to_s.to_sym]) ? @@condition_printing_action[self.to_s.to_sym] : nil
   end
 
   def self.root_path
@@ -167,6 +173,10 @@ class RaroCrud
 
   def self.listing_fields
     (@@listing_fields[self.to_s.to_sym]) ? @@listing_fields[self.to_s.to_sym]  : []
+  end
+
+  def self.printing_fields
+    (@@printing_fields[self.to_s.to_sym]) ? @@printing_fields[self.to_s.to_sym]  : []
   end
 
   def self.search_fields
@@ -328,6 +338,15 @@ class RaroCrud
     )
   end
 
+  def self.campo_impressao nome, opts = {}
+    @@printing_fields[self.to_s.to_sym] = [] unless @@printing_fields[self.to_s.to_sym]
+    @@printing_fields[self.to_s.to_sym].push(
+      {
+        attribute: nome
+      }.merge({sf: opts})
+    )
+  end
+
   def self.sem_visualizacao
     @@view_action[self.to_s.to_sym] = false
   end
@@ -362,6 +381,10 @@ class RaroCrud
 
   def self.listagem_pdf(condicao = nil)
     @@condition_listing_pdf[self.to_s.to_sym] = condicao
+  end
+
+  def self.impressao(condicao)
+    @@condition_printing_action[self.to_s.to_sym] = condicao
   end
 
   def self.acoes(method,desc,proc = nil)

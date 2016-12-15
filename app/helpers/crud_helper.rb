@@ -225,4 +225,10 @@ module CrudHelper
     return true if crud_helper.condition_listing_pdf.nil?
     crud_helper.condition_listing_pdf.call(model)
   end
+
+  def should_printing?(crud_helper,record)
+    return false unless can?(:read, record)
+    return true if crud_helper.condition_printing_action.nil?
+    crud_helper.condition_printing_action.call(record)
+  end
 end

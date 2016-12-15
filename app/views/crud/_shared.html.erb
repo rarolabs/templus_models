@@ -73,6 +73,17 @@
 								<%= link_to I18n.t("edit"), edit_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs pull-right m-l-xs', data: {push: 'partial', target: '#form'} %>
 							<% end %>
 						<% end %>
+						<% if @crud_helper.printing_fields.present? && should_printing?(@crud_helper, @record) %>
+							<% if @crud_associacao.present? %>
+								<%= link_to printing_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: @record.id, page: params[:page], q: params[:q], format: :pdf), class: "btn btn-success btn-xs pull-right m-l-xs", target: "_blank" do %>
+										<%= I18n.t("devise.printing").html_safe %>
+								<% end %>
+							<% else %>
+								<%= link_to printing_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q], format: :pdf), class: "btn btn-success btn-xs pull-right m-l-xs", target: "_blank" do %>
+									<%= I18n.t("devise.printing").html_safe %>
+								<% end %>
+							<% end %>	
+						<% end %>
 					<% end %>
 				</div>
 				<div class="ibox-content">

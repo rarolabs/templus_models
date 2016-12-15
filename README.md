@@ -240,6 +240,11 @@ Para remover um *action* de acordo com uma condição
 edicao Proc.new {|obj| !obj.root? }
 exclusao Proc.new {|obj| !obj.root? }
 visualizacao Proc.new {|obj| obj.root? }
+
+# relatórios
+listagem Proc.new {|obj| !obj.root? }
+listagem_pdf Proc.new {|obj| !obj.root? }
+listagem_excel Proc.new {|obj| !obj.root? }
 ```
 
 ## Manipulando links superiores

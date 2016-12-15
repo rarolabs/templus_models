@@ -22,6 +22,8 @@ class RaroCrud
   @@view_action               = {}
   @@condition_view_action     = {}
   @@condition_listing_action  = {}
+  @@condition_listing_excel   = {}
+  @@condition_listing_pdf     = {}
   @@options_link              = {}
   @@scopes                    = {}
   @@menus                     = []
@@ -83,6 +85,14 @@ class RaroCrud
 
   def self.condition_listing_action
     (@@condition_listing_action[self.to_s.to_sym]) ? @@condition_listing_action[self.to_s.to_sym] : nil
+  end
+
+  def self.condition_listing_excel
+    (@@condition_listing_excel[self.to_s.to_sym]) ? @@condition_listing_excel[self.to_s.to_sym] : nil
+  end
+
+  def self.condition_listing_pdf
+    (@@condition_listing_pdf[self.to_s.to_sym]) ? @@condition_listing_pdf[self.to_s.to_sym] : nil
   end
 
   def self.root_path
@@ -344,6 +354,14 @@ class RaroCrud
 
   def self.listagem(condicao)
     @@condition_listing_action[self.to_s.to_sym] = condicao
+  end
+
+  def self.listagem_excel(condicao = nil)
+    @@condition_listing_excel[self.to_s.to_sym] = condicao
+  end
+
+  def self.listagem_pdf(condicao = nil)
+    @@condition_listing_pdf[self.to_s.to_sym] = condicao
   end
 
   def self.acoes(method,desc,proc = nil)

@@ -173,7 +173,11 @@ module CrudHelper
 
   def render_field_file(field)
 		if imagem?(field) && field.url(:thumb)
-			image_tag(field.url(:thumb))
+      if is_active_action("printing")
+        wicked_pdf_image_tag(field.url(:thumb))
+      else
+        image_tag(field.url(:thumb))
+      end
 		elsif video?(field)
 			link_to field, field.url, target: "_blank"
 		else

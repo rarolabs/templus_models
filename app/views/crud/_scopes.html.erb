@@ -6,7 +6,7 @@
 					<div class="widget style1 gray-bg" style="padding: 15px 10px !important;">
 						<div class="row vertical-align text-center" style="margin:0!important;">
 							<h3 class="font-bold" style="width:100%;">
-								<%= escopo[1] %>
+								<%= I18n.t(escopo[1]) %>
 								<span class="label label-success pull-right" style="margin-left: 10px;">
 									<% if current_usuario.present? %>
 										<%= @model.send(escopo[0]).accessible_by(current_ability, :read).count %>

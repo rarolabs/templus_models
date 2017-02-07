@@ -1,24 +1,49 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-# Declare your gem's dependencies in templus_models.gemspec.
-# Bundler will treat runtime dependencies like base dependencies, and
-# development dependencies will be added by default to the :development group.
-gemspec
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
+  'https://github.com/#{repo_name}.git'
+end
 
-# Declare any dependencies that are still in development here instead of in
-# your gemspec. These might include edge Rails or gems from your path or
-# Git. Remember to move these dependencies to your gemspec before releasing
-# your gem to rubygems.org.
+gem 'rails', '~> 5.0.1'
+
+gem 'rack-attack', '~> 5.0.1'
+
+group :development, :test do
+  gem 'byebug', platform: :mri
+  gem 'rspec-rails', '>= 3.5.2'
+  gem 'factory_girl_rails'
+  gem 'better_errors'
+  gem 'ffaker'
+  gem 'pry'
+  gem 'awesome_print'
+end
+
+group :development do
+  gem 'listen', '~> 3.0.5'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'hirb', '~> 0.7.3'
+end
+
+group :test do
+  gem 'database_cleaner', '~> 1.5.3'
+  gem 'shoulda-matchers', '~> 3.1.1'
+  gem 'simplecov', '~> 0.12.0'
+end
 
 # To use debugger
 # gem 'debugger'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2'
+gem 'wiselinks'
 gem 'jquery-rails'
+gem 'jbuilder', '~> 2.5'
 gem 'therubyracer', platforms: :ruby
-gem 'bootstrap-sass', '3.3.0.0'
-gem 'font-awesome-rails', '4.3.0.0'
+gem 'bootstrap-sass', '3.3.7'
+gem 'font-awesome-rails', '4.7.0'
+
 gem 'toastr-rails'
 gem 'summernote-rails'
 
@@ -26,10 +51,9 @@ gem 'summernote-rails'
 gem 'cancancan'
 gem 'devise'
 gem 'rails-observers'
-gem 'wiselinks'
 
 #worker
-gem 'sidekiq'
+# gem 'sidekiq'
 
 #rarocrud
 gem 'carrierwave'
@@ -44,4 +68,4 @@ gem 'capistrano'
 gem 'rvm-capistrano',  require: false
 
 #pdf
-gem 'wicked_pdf'
+# gem 'wicked_pdf'

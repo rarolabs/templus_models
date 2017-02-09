@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "ransack", "> 1.6.3"
   s.add_dependency "kaminari", "~> 0.16"
   s.add_dependency "simple_form", "> 3.1.0"
+  s.add_dependency "wicked_pdf"
   s.add_dependency "nested_form"
   s.add_dependency "rails-jquery-autocomplete"
 

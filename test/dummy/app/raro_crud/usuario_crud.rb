@@ -1,9 +1,9 @@
 class UsuarioCrud < RaroCrud
   titulo "Usuários"
 
-  link_superior "Novo Usuário", id: "novo-button", icon: "plus", link: "new"
-  link_superior "Inicio", id: "novo-button", icon: "", url: :busca_api_cidades
-  link_superior "Novo", partial: "/usuarios/actions"
+  link_superior nome: "Novo Usuário", id: "novo-button", icon: "plus", link: "new"
+  link_superior nome: "Inicio", id: "novo-button", icon: "", url: :busca_api_cidades
+  link_superior nome: "Novo", partial: "/usuarios/actions"
 
   ordenar_por :nome
   edicao Proc.new {|obj| !obj.root? }
@@ -30,5 +30,8 @@ class UsuarioCrud < RaroCrud
   campo_busca :nome,  label: "Nome"
   campo_busca :email, label: "email"
   campo_busca :papel_id,  label: "Papel", visible_if: Proc.new {Usuario.current.root? }
+
+  campo_listagem :nome, label: "nome"
+  campo_listagem :email, label: "email"
 
 end

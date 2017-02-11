@@ -14,8 +14,9 @@
 							<% if field[:sf].present? && field[:sf][:label].present? %>
 								<th><%= field[:sf][:label].to_s.mb_chars.upcase.to_s %></th>
 							<% else %>
-								<th><%= field[:attribute].to_s.mb_chars.upcase.to_s %></th>
+								<th><%= I18n.t("simple_form.labels.#{@model.name.underscore}.#{field[:attribute]}") %></th>
 							<% end %>
+
 							<% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type)%>
 								<% if field[:date_format].present?%>
 									<td><%= l @record.send(field[:attribute]).strftime(field[:date_format]) if @record.send(field[:attribute]).present?%></td>
@@ -35,9 +36,9 @@
 										<% else %>
 											<% if rec.to_s.respond_to?(:url) %>
 												<%= render_field_file(rec.to_s) %>
-										<% else %>
-											<%= rec.to_s %>
-										<% end %>
+											<% else %>
+												<%= rec.to_s %>
+											<% end %>
 										<% end %>
 									</li>
 									<% end %>
@@ -59,9 +60,9 @@
 							<% else %>
 								<td>
 									<% if field[:sf].present? && field[:sf][:label_method].present? && @record.send(field[:attribute]).present?%>
-									<%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
+										<%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
 									<% else %>
-									<%= @record.send(field[:attribute]) %>
+										<%= @record.send(field[:attribute]) %>
 									<% end %>
 								</td>
 							<% end %>
@@ -73,5 +74,5 @@
 	</div>
 </div>
 <hr>
-<%= link_to "Voltar", "#{@url}" ,class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+<%= link_to I18n.t("undo"), "#{@url}" ,class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
 <% end %>

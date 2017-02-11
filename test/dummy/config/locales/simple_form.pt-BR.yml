@@ -11,6 +11,8 @@ pt-BR:
     error_notification:
       default_message: "Foram encontrados alguns erros, por favor confira:"
     # Labels and hints examples
+    index:
+      options: "Opções"
     labels:
       user:
         nome: "Nome"

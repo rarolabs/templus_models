@@ -1,3 +1,3 @@
 <li>
-  <%= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, {:rel => 'next', :remote => remote, data:  {push: 'partial', target: (!local_assigns[:target].nil? and  target) ? target : '.wiselinks-partial'}} %>
+  <%= link_to_unless current_page.last?, raw(I18n.t('views.pagination.next')), url, {:rel => 'next', :remote => remote, data:  {push: 'partial', target: (!local_assigns[:target].nil? and  target) ? target : '.wiselinks-partial'}} %>
 </li>

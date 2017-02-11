@@ -4,7 +4,7 @@ module SearchHelper
       @buffer = raro_before_form(model,partial,collection_name,url,sort)
       @model = model
       yield
-      @buffer << raro_submit("Pesquisar")
+      @buffer << raro_submit(I18n.t('search'))
       @buffer << raro_after_form
       @buffer << raro_script
       @buffer.html_safe
@@ -17,14 +17,16 @@ module SearchHelper
     end
 
     def raro_field (name, opts = {})
+      modelo = opts[:model] || @model
       unless opts[:model]
         prototype = @model.columns_hash[name.to_s]
         return "" unless prototype
       else
         prototype =  Module.const_get(opts[:model]).columns_hash[name.to_s]
+        modelo = Module.const_get(opts[:model])
         name = opts[:full_name]
       end
-      label = name
+      label = I18n.t("simple_form.labels.#{modelo.name.underscore}.#{name}")
       label = opts[:label] if opts[:label]
 
       @buffer << "<div class=\"form-group\">"
@@ -68,6 +70,8 @@ module SearchHelper
           return raro_date_range(name)
         when :boolean
           return raro_radio(name, opts)
+        when :monthyear
+          return raro_monthyear(name, opts)
         else
           return raro_text_field(name, opts)
       end
@@ -76,11 +80,16 @@ module SearchHelper
     def raro_input_as(name,type,opts)
       case opts[:as]
       when :select
+        if opts[:collection_if] and opts[:collection_if].class == Proc
+          opts[:collection] = ActionView::Helpers::FormBuilder.instance_eval &opts[:collection_if]
+        end
         raro_select(name,opts,opts[:collection])
       when :hidden
         return raro_hidden_field(name,opts[:value],opts)
       when :string
         raro_text_field(name, opts)
+      when :range
+        raro_range(name)
       when :monthyear
         raro_monthyear(name, opts)
       end
@@ -106,7 +115,7 @@ module SearchHelper
       else
         buf << "<select name=#{name} class='form-control'>"
       end
-      buf <<"<option value ='' selected>Escolha...</option>"
+      buf <<"<option value ='' selected>#{I18n.t('search')}</option>"
       collection.each do |e|
         buf << "<option value=#{e[0]}>#{e[1]}</option>"
       end
@@ -201,6 +210,17 @@ module SearchHelper
       </div></div>"
     end
 
+    def raro_range(name)
+      buffer = ""
+      buffer += "<div class='col-sm-4'>"
+      buffer += "<input type='text' name='q[#{name}_gteq]' class='form-control'/>"
+      buffer += "</div>"
+      buffer += "<div class='col-sm-4 range-separator'>"
+      buffer += "<input type='text' name='q[#{name}_lteq]' class='form-control'/>"
+      buffer += "</div>"
+      buffer
+    end
+
     def raro_before_form(model,partial,var,url,sort)
       buffer = "<div id='search_box'>"+
       "<form method='get' class=form-horizontal action='#{url}' data-push='partial' data-target='#form'>" +
@@ -226,25 +246,25 @@ module SearchHelper
 
     def raro_comparison_operators(target)
       "<select class='form-control m-b' onchange='window.search_predicate(this)' data-target='#q_#{target}'>
-       <option value=eq selected>Igual</option>
-       <option value=not_eq>Diferente</option>
-       <option value=gt>Maior</option>
-       <option value=lt>Menor</option>
-       <option value=gteq>Maior ou Igual</option>
-       <option value=lteq>Menor ou Igual</option></select>"
+       <option value=eq selected>#{I18n.t('equal')}</option>
+       <option value=not_eq>#{I18n.t('different')}</option>
+       <option value=gt>#{I18n.t('great')}</option>
+       <option value=lt>#{I18n.t('less')}</option>
+       <option value=gteq>#{I18n.t('great_then')}</option>
+       <option value=lteq>#{I18n.t('less_then')}</option></select>"
     end
 
     def raro_string_operators(target)
       "<select class='form-control m-b' onchange='window.search_predicate(this)' data-target='#q_#{target}'>
-      <option value=cont>Contém</option>
-      <option value=eq>Igual</option>
-      <option value=not_cont>Não Contém</option>
-      <option value=start>Começa</option>
-      <option value=end>Termina</option>
+      <option value=cont>#{I18n.t('contains')}</option>
+      <option value=eq>#{I18n.t('equal')}</option>
+      <option value=not_cont>#{I18n.t('not_contains')}</option>
+      <option value=start>#{I18n.t('begins')}</option>
+      <option value=end>#{I18n.t('ends')}</option>
       </select>"
     end
 
     def raro_group(text)
-      @buffer << "<div class=\"col-sm-12 label label-primary\" style=\"margin-bottom:10px; font-size:14px;\"><b>#{text}</b></div>"
+      @buffer << "<div class=\"col-sm-12 label label-primary\" style=\"margin-bottom:10px; font-size:14px;display: inline-block;\"><b>#{text}</b></div>"
     end
 end

@@ -154,9 +154,9 @@ SimpleForm.setup do |config|
 
   config.wrappers :with_button, class: :input, :tag => 'div', :error_class => 'has-error' do |b|
     b.use :html5
-    b.wrapper :tag => 'div', :class => 'form-group' do |ba|
+    b.wrapper :tag => 'div', :class => 'form-group select-double' do |ba|
       ba.use :label, :class => 'col-sm-2 control-label'
-      ba.wrapper :tag => 'div', :class => 'col-sm-9' do |ba2|
+      ba.wrapper :tag => 'div', :class => 'col-sm-9 col-xs-9' do |ba2|
         ba2.use :input, :class => 'form-control'
         ba2.use :error, :wrap_with => { :tag => 'span', :class => 'help-block m-b-none text-danger' }
         ba2.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block text-muted' }
@@ -167,7 +167,4 @@ SimpleForm.setup do |config|
       end
     end
   end
-  
-  
-
 end

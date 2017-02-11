@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<div class="widget-box" id="relatorio">
+  <div class="widget-body">
+    <div class="widget-main">
+      <div class="profile-element">
+        <div class="header">
+          <h1><%= @crud_helper.title %></h1>
+        </div>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <% @crud_helper.listing_fields.each do |att|%>
+      				<% if !att[:visible_if].nil?%>
+      					<% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
+      						<% next %>
+      					<% end %>
+      				<% end %>
+      				<% if att[:sf].present? && att[:sf][:label].present? %>
+      					<th><%= att[:sf][:label].to_s.mb_chars.upcase.to_s %></th>
+      				<% else %>
+      					<th><%= I18n.t("simple_form.labels.#{@model.name.underscore}.#{att[:attribute]}") %></th>
+      				<% end %>
+      			<% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @records.each do |record| %>
+          <tr>
+            <%@crud_helper.listing_fields.each do |att| %>
+    					<% if record.send(att[:attribute]).present? or record.send(att[:attribute]).to_s == "false"%>
+    						<% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
+    								<% if att[:date_format].present?%>
+    									<td><%= record.send(att[:attribute]).strftime(att[:date_format]) %></td>
+    								<% else %>
+    									<td><%= l record.send(att[:attribute]) %></td>
+    								<% end %>
+    						<% elsif ((@model.reflect_on_association(att[:attribute]) && @model.reflect_on_association(att[:attribute]).macro != :belongs_to && @model.reflect_on_association(att[:attribute]).macro != :has_one) || record.send(att[:attribute]).class == Array)%>
+    							<td><%= record.send(att[:attribute]).map{|rec| rec.to_s}.join(",") %></td>
+    						<% else %>
+    							<% if record.send(att[:attribute]).to_s == "false" or record.send(att[:attribute]).to_s == "true" %>
+    								<td><%= record.send(att[:attribute]) ? "Sim" : "Não" %></td>
+    							<% elsif att[:sf][:label_method].present? %>
+    								<td><%= record.send(att[:attribute]).send(att[:sf][:label_method]).to_s %></td>
+    							<% else %>
+    								<td><%= record.send(att[:attribute]).to_s %></td>
+    							<% end %>
+    						<% end %>
+    					<% else %>
+    						<td></td>
+    					<% end %>
+    				<% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<style>
+  #relatorio {
+    clear: both;
+    page-break-inside: avoid;
+  }
+  .header {
+    float: left;
+  }
+  table {
+    font-size: 0.75em;
+  }
+  thead { display: table-header-group }
+  tfoot { display: table-row-group }
+  tr { page-break-inside: avoid }
+  h1 { padding-bottom: 20px; }
+</style>

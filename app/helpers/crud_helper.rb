@@ -1,5 +1,5 @@
 module CrudHelper
-  
+
   def is_active_controller(controller_name)
       params[:controller] == controller_name ? "active" : nil
   end
@@ -7,7 +7,7 @@ module CrudHelper
   def is_active_action(action_name)
       params[:action] == action_name ? "active" : nil
   end
-  
+
   def is_raro_crud(classe)
     #if(Rails.env == "production")
     #  @@cruds = Dir[Rails.root.join("app","raro_crud","*.rb")].map{|f| f.split(/\//).last.gsub(/_crud\.rb/,'')} unless @@cruds
@@ -16,7 +16,7 @@ module CrudHelper
     #end
     return @@cruds.include?(classe.underscore.to_s)
   end
-  
+
   def lista_menus_crud(raro_models)
     menus = []
     raro_models.each do |modelo|
@@ -24,7 +24,7 @@ module CrudHelper
     end
     menus
   end
-  
+
   def menu_helper_crud(modelo, url, nome, classe, icon='')
     if can?(:read, classe)
       buffer = ""
@@ -58,21 +58,22 @@ module CrudHelper
   def is_action_query?
     params[:action] == "query"
   end
-  
-  
+
+
   def render_link(link,url)
+    nome_modelo = I18n.t("model.#{link[:modelo].underscore}")
     if link[:partial].present?
       render link[:partial]
     elsif link[:link].present?
-      link_to "#{gen_icon(link[:icon])} #{link[:text]}".html_safe, "#{url}/#{link[:link]}", class: link[:class], data: data(link)
+      link_to "#{gen_icon(link[:icon])} #{I18n.t(link[:text], model: nome_modelo)}".html_safe, "#{url}/#{link[:link]}", class: link[:class], data: data(link)
     else
-      link_to "#{gen_icon(link[:icon])} #{link[:text]}".html_safe, link[:url], class: link[:class], data: data(link)
+      link_to "#{gen_icon(link[:icon])} #{I18n.t(link[:text], model: nome_modelo)}".html_safe, link[:url], class: link[:class], data: data(link)
     end
   end
 
   def gen_icon(i)
     if i
-      "<i class='#{i}'></i>" 
+      "<i class='#{i}'></i>"
     else
       ""
     end
@@ -94,7 +95,7 @@ module CrudHelper
     end
     models.uniq.flatten
   end
-  
+
   def raro_permissions
     permissions = []
     Dir["#{Rails.root.to_s}/app/controllers/*"].each do |f|
@@ -113,34 +114,35 @@ module CrudHelper
     field[:sf][:wrapper] = :with_button
     render_field(field,f,modelo,record)
   end
-    
+
   def render_field(field,f,modelo,record)
     field[:sf][:wrapper] ||= :default
     if field[:sf].present? && field[:sf][:if].present?
       return unless field[:sf][:if].call(f.object)
     end
+    field[:sf][:hint] = false if field[:sf].present? && !field[:sf][:hint].present?
     if field[:sf].present? && field[:sf][:date_format].present? && f.object.send(field[:attribute]).present? && Date <= modelo.columns_hash[field[:attribute].to_s].type.to_s.camelcase.constantize
       field[:sf][:input_html] ||= {}
       field[:sf][:input_html][:value] = f.object.send(field[:attribute]).strftime(field[:sf][:date_format])
     end
     if !field[:sf][:edit].nil? || !field[:sf][:create].nil?
       if !field[:sf][:edit].nil? && !field[:sf][:edit] && !record.new_record?
-      elsif !field[:sf][:create].nil? && !field[:sf][:create] && record.new_record? 
-      else 
+      elsif !field[:sf][:create].nil? && !field[:sf][:create] && record.new_record?
+      else
         unless modelo.reflect_on_association(field[:attribute])
           if modelo.new.send(field[:attribute]).class.to_s =~ /Uploader/ and f.object.send(field[:attribute]).present?
             f.input field[:attribute], field[:sf].merge(hint: "Arquivo Atual: #{f.object.send(field[:attribute]).file.filename}")
           else
             f.input field[:attribute], field[:sf]
           end
-        else 
+        else
            f.association field[:attribute], field[:sf]
-        end 
-      end 
+        end
+      end
     else
       if field[:sf][:value] and field[:sf][:value].class == Proc
-         field[:sf][:input_html] ||= {} 
-         field[:sf][:input_html][:value] = f.instance_eval &field[:sf][:value] 
+         field[:sf][:input_html] ||= {}
+         field[:sf][:input_html][:value] = f.instance_eval &field[:sf][:value]
       end
       if field[:sf][:collection_if] and field[:sf][:collection_if].class == Proc
          field[:sf][:collection] = f.instance_eval &field[:sf][:collection_if]
@@ -151,58 +153,86 @@ module CrudHelper
         else
           f.input field[:attribute], field[:sf]
         end
-      else 
+      else
         f.association field[:attribute], field[:sf]
-      end 
+      end
     end
   end
-  
+
   def imagem?(file)
     file.present? && file.content_type.start_with?('image')
   end
 
   def video?(file)
     file.present? && file.content_type.start_with?('video')
-  end  
-  
+  end
+
   def documento?(file)
     !(video?(file) || imagem?(file))
   end
-  
+
   def render_field_file(field)
 		if imagem?(field) && field.url(:thumb)
-			image_tag(field.url(:thumb))
+      if is_active_action("printing")
+        wicked_pdf_image_tag(field.url(:thumb))
+      else
+        image_tag(field.url(:thumb))
+      end
 		elsif video?(field)
 			link_to field, field.url, target: "_blank"
 		else
 			link_to field, field.url, target: "_blank"
 		end
   end
-  
+
   def render_crud(&block)
     render "/crud/shared", block: block
   end
-  
+
   def render_default_actions_crud
     render "default_actions_crud"
   end
-  
+
   #Permissions
-  def shold_view?(crud_helper,record)
+  def should_view?(crud_helper,record)
     return false unless can?(:read, record)
     return true if crud_helper.condition_view_action.nil?
     crud_helper.condition_view_action.call(record)
   end
 
-  def shold_edit?(crud_helper,record)
+  def should_edit?(crud_helper,record)
     return false unless can?(:update, record)
     return true if crud_helper.condition_edit_action.nil?
     crud_helper.condition_edit_action.call(record)
   end
 
-  def shold_destroy?(crud_helper,record)
+  def should_destroy?(crud_helper,record)
     return false unless can?(:destroy, record)
     return true if crud_helper.condition_destroy_action.nil?
     crud_helper.condition_destroy_action.call(record)
+  end
+  
+  def should_listing?(crud_helper,model)
+    return false unless can?(:read, model)
+    return true if crud_helper.condition_listing_action.nil?
+    crud_helper.condition_listing_action.call(model)
+  end
+
+  def should_listing_excel?(crud_helper,model)
+    return false unless can?(:read, model)
+    return true if crud_helper.condition_listing_excel.nil?
+    crud_helper.condition_listing_excel.call(model)
+  end
+
+  def should_listing_pdf?(crud_helper,model)
+    return false unless can?(:read, model)
+    return true if crud_helper.condition_listing_pdf.nil?
+    crud_helper.condition_listing_pdf.call(model)
+  end
+
+  def should_printing?(crud_helper,record)
+    return false unless can?(:read, record)
+    return true if crud_helper.condition_printing_action.nil?
+    crud_helper.condition_printing_action.call(record)
   end
 end

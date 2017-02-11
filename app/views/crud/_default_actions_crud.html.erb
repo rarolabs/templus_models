@@ -1,2 +1,2 @@
-<%= submit_tag("Salvar", class: "btn btn-primary") %>
-<%= link_to "Voltar", @url, class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+<%= submit_tag(I18n.t("save"), class: "btn btn-primary") %>
+<%= link_to I18n.t("undo"), crud_models_path(model: @model.name.underscore), class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>

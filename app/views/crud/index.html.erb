@@ -1,6 +1,23 @@
 <% content_for :corpo do %>
 	<div id="form" >
-		<%= render '/crud/records' %>
+		<% if @crud_helper.layout[1].present? and @crud_helper.layout[1].call() and @crud_helper.layout[0] == "escopo_lateral" and @crud_helper.scopes.present? %>
+			<div class="row">
+				<div class="col-lg-3" style="padding-right:0;">
+					<div class="ibox float-e-margins" style="padding-top:40px">
+						<div class="ibox-content">
+							<div class="file-manager">
+								<%= render '/crud/scopes' %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-9" style="padding-left:0;">
+					<%= render '/crud/records' %>
+				</div>
+			</div>
+		<% else %>
+			<%= render '/crud/records' %>
+		<% end %>
 	</div>
 <% end %>
 

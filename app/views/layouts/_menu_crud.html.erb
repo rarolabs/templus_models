@@ -1,4 +1,4 @@
-<%= menu_parent(raro_models, lista_menus_crud(raro_models), "Cadastros", 'fa fa-book', true) do %>
+<%= menu_parent(raro_models, lista_menus_crud(raro_models), I18n.t("views.menu.entitys"), 'fa fa-book', true) do %>
 	<% raro_models.each do |modelo| %>
 		<%= menu_crud_helper("#{modelo.name.underscore}_crud".camelize.constantize.title, modelo) %>
 	<% end %>

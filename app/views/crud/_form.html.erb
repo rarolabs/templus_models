@@ -4,17 +4,29 @@
 			<div class="modal-content animated bounceInRight">
 				<div class="modal-body">
 				</div>
-		    <div class="modal-footer">
-		        <button type="button" class="btn btn-white" data-dismiss="modal">Cancelar</button>
-		    </div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-white" data-dismiss="modal"><%= I18n.t("cancel") %></button>
+				</div>
 			</div>
 		</div>
 	</div>
 	<%unless params[:render] == 'modal'%>
-		<% url = "#{@url}/#{@record.new_record? ? 'create' : @record.id.to_s+'/create'}?page=#{params[:page]}" %>
+		<% if @record.new_record? %>
+			<% if @crud_associacao.present? %>
+				<% url = create_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], page: params[:page], q: params[:q]) %>
+			<% else %>
+				<% url = create_crud_path(model: @model.name.underscore, page: params[:page], q: params[:q]) %>
+			<% end %>
+		<% else %>
+			<% if @crud_associacao.present? %>
+				<% url = update_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: @record.id, page: params[:page], q: params[:q]) %>
+			<% else %>
+				<% url = update_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q]) %>
+			<% end %>
+		<% end %>
 		<% remote_form = false%>
 	<%else%>
-		<% url = "#{@url}/#{@record.new_record? ? 'create?render=modal' : @record.id.to_s+'/create?render=modal'}" %>
+		<% url = "#{@clean_url}/#{@record.new_record? ? 'create?render=modal' : @record.id.to_s+'/create?render=modal'}" %>
 		<% remote_form = true%>
 	<%end%>
 	<%= simple_nested_form_for @record, remote: remote_form, html: {class: "form-horizontal"}, url: url do |f| %>
@@ -38,9 +50,9 @@
 		<% end %>
 		<div class="form-group">
 			<div class="col-sm-4 col-sm-offset-2">
-				<%= f.submit "Salvar", class: 'btn btn-primary'  %>
+				<%= f.submit I18n.t("save"), class: 'btn btn-primary'  %>
 				<%unless params[:render] == 'modal'%>
-					<%= link_to "Voltar", "#{@url}?page=#{params[:page]}", class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
+					<%= link_to I18n.t("undo"), "#{@url}?page=#{params[:page]}", class: 'btn btn-default', data: {push: 'partial', target: "#form"} %>
 				<% end %>
 			</div>
 		</div>
@@ -49,4 +61,3 @@
 		<%= javascript_include_tag "crud/#{script}" %>
 	<% end %>
 <% end %>
-

@@ -1,0 +1,12 @@
+// *.js.erb
+var link_to = function(url, params) {
+	if(!!params){
+		var _params = [];
+		for(i in params) {
+			_params.push(i + '=' + params[i]);
+		}
+		return "<%= ENV['RAILS_RELATIVE_URL_ROOT']%>" + url + "?" + _params.join('&');
+	}else{
+		return "<%= ENV['RAILS_RELATIVE_URL_ROOT']%>" + url;
+	}
+};

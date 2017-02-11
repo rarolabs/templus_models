@@ -1,28 +1,22 @@
 "pt-BR":
   mensagem_confirm: "Deseja apagar %{model}?"
-  mensagem_confirm_desativar: "Deseja desativar conta da empresa?"
-  mensagem_confirm_ativar: "Deseja ativar conta da empresa?"
+  mensagem_confirm_destroy: "Você tem certeza que deseja apagar esse registro?"
+  mensagem_action: "Ação %{acao} efetuada com sucesso."
+  mensagem_erro_action: "Erro ao tentar executar a ação %{acao}."
   created: "%{model} criado(a) com sucesso."
   updated: "%{model} atualizado(a) com sucesso."
   destroyed: "%{model} apagado(a) com sucesso."
-  sucesso_lance_fixo: "Lance realizado com sucesso! Aguarde aprovação do embarcador."
-  sucesso_lance_lance: "Lance realizado com sucesso!"
-  error_lances: "Não é possível realizar o lance."
   new: "Novo(a) %{model}"
   cancel: "Cancelar"
   edit: "Editar"
   destroy: "Apagar"
-  informe_lance: "O valor do lance não pode ficar em branco e deve ser maior que zero."
-  lance_aprovado: "Lance aprovado com sucesso!"
-  lance_cancelado: "Lance cancelado com sucesso!"
-  demanda_cancelada: "Demanda cancelada com sucesso!"
-  mensagens:
-    lance_aceito: "aceitou seu pedido de frete #%{id} no valor de %{valor}."
-    lance_cancelado: "cancelou seu pedido de frete #%{id} no valor de %{valor}."
-    cancelar_lance: "Deseja realmente cancelar este lance?"
-    aprovar_lance: "Realmente deseja aprovar o lance de %{valor} feito pela empresa %{nome_empresa}?"
-    lance_aguardando: "deseja realizar o frete #%{url} com destino: %{destino}. Você aceita?"
-    cancelar_demanda_e_lances: "Deseja cancelar esta demanda?"
+  view: "Visualizar"
+  undo: "Voltar"
+  save: "Salvar"
+  home: "Home"
+  search: "Pesquisar"
+  close: "Fechar"
+  sign_out: "Sair"
   number:
     # Used in number_with_delimiter()
     # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
@@ -132,11 +126,26 @@
       prompt: "Por favor selecione"
   views:
     pagination:
+      text: "Exibindo %{inicio} - %{fim} de um total de %{total}"
       first: "Primeiro"
       last: "Último"
       previous: "Anterior"
       next: "Próximo"
       truncate: "..."
+    search:
+      choice: "Escolha..."
+      equal: "Igual"
+      different: "Diferente"
+      great: "Maior"
+      less: "Menor"
+      great_then: "Maior ou Igual"
+      less_then: "Menor ou Igual"
+      contains: "Contém"
+      not_contains: "Não Contém"
+      begins: "Começa"
+      ends: "Termina"
+    menu:
+      entitys: "Cadastros"
   true: Sim
   false: Não
   date:
@@ -344,24 +353,9 @@
       short: ! '%d/%m/%Y, %H:%M h'
       short_b: ! '%d %B %Y'
     pm: ''
-  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
     errors:
       <<: *errors
   activerecord:
-    attributes:
-      produto:
-        ws_codigo: "Código"
-        ws_descricao: "Produto"
-        ws_razao_fornecedor: "Fornecedor"
-        ws_produto_fornecedor: "Código no Fornecedor"
-        ws_referencia: "Referência"
-        ws_sigla_fornecedor: "Sigla Fornecedor"
-        ws_ncm: "NCM"
-        ws_cst: "CST"
-        ws_fator_conversao: "Fator Conversão"
-    models:
-      produto: "Produto"
-      veiculo: "Veículo"
     errors:
       <<: *errors

@@ -6,9 +6,11 @@ class RaroCrud
   @@form_group                = {}
   @@form_scripts              = {}
   @@view_fields               = {}
+  @@listing_fields            = {}
+  @@printing_fields           = {}
   @@search_fields             = {}
   @@test_fields               = {}
-  @@top_links                 = {} 
+  @@top_links                 = {}
   @@title                     = {}
   @@subtitle_index            = {}
   @@description_index         = {}
@@ -20,11 +22,23 @@ class RaroCrud
   @@condition_destroy_action  = {}
   @@view_action               = {}
   @@condition_view_action     = {}
+  @@condition_listing_action  = {}
+  @@condition_listing_excel   = {}
+  @@condition_listing_pdf     = {}
+  @@condition_printing_action  = {}
   @@options_link              = {}
   @@scopes                    = {}
   @@menus                     = []
   @@layout                    = {}
   @@index_path                = nil
+
+  def modelo
+    self.to_s.gsub("Crud", "").constantize
+  end
+
+  def self.title
+    I18n.t("rarocrud.#{self.modelo.underscore}.title")
+  end
 
   def self.edit_action
     if @@edit_action[self.to_s.to_sym] == false
@@ -33,20 +47,20 @@ class RaroCrud
       return true
     end
   end
-  
+
   def self.layout
     (@@layout[self.to_s.to_sym]) ? @@layout[self.to_s.to_sym] : []
   end
-  
+
   def self.set_layout(desc,proc = nil)
     @@layout[self.to_s.to_sym] = [] unless @@layout[self.to_s.to_sym]
     @@layout[self.to_s.to_sym] = [desc,proc]
   end
-  
+
   def self.condition_edit_action
     (@@condition_edit_action[self.to_s.to_sym]) ? @@condition_edit_action[self.to_s.to_sym] : nil
   end
-  
+
   def self.destroy_action
     if @@destroy_action[self.to_s.to_sym] == false
       return false
@@ -54,7 +68,7 @@ class RaroCrud
       return true
     end
   end
-  
+
   def self.condition_destroy_action
     (@@condition_destroy_action[self.to_s.to_sym]) ? @@condition_destroy_action[self.to_s.to_sym] : nil
   end
@@ -66,25 +80,37 @@ class RaroCrud
       return true
     end
   end
-  
+
   def self.condition_view_action
     (@@condition_view_action[self.to_s.to_sym]) ? @@condition_view_action[self.to_s.to_sym] : nil
   end
 
+  def self.condition_listing_action
+    (@@condition_listing_action[self.to_s.to_sym]) ? @@condition_listing_action[self.to_s.to_sym] : nil
+  end
+
+  def self.condition_listing_excel
+    (@@condition_listing_excel[self.to_s.to_sym]) ? @@condition_listing_excel[self.to_s.to_sym] : nil
+  end
+
+  def self.condition_listing_pdf
+    (@@condition_listing_pdf[self.to_s.to_sym]) ? @@condition_listing_pdf[self.to_s.to_sym] : nil
+  end
+
+  def self.condition_printing_action
+    (@@condition_printing_action[self.to_s.to_sym]) ? @@condition_printing_action[self.to_s.to_sym] : nil
+  end
+
   def self.root_path
-    "/crud/#{self.to_s.gsub('Crud', '').underscore}"
+    self.to_s.gsub('Crud', '').underscore
   end
 
   def self.index_path str
     @@index_path = str
   end
-  
+
   def self.get_index_path
     @@index_path
-  end
-
-  def self.title
-    @@title[self.to_s.to_sym]
   end
 
   def self.subtitle(type)
@@ -101,7 +127,7 @@ class RaroCrud
     end
   end
 
-  def self.top_links 
+  def self.top_links
     (@@top_links[self.to_s.to_sym]) ? @@top_links[self.to_s.to_sym] : []
   end
 
@@ -112,7 +138,7 @@ class RaroCrud
   def self.order_field
     (@@order_field[self.to_s.to_sym]).present? ? @@order_field[self.to_s.to_sym] : "id"
   end
-  
+
   def self.per_page
     @@per_page[self.to_s.to_sym]
   end
@@ -145,6 +171,14 @@ class RaroCrud
     (@@view_fields[self.to_s.to_sym]) ? @@view_fields[self.to_s.to_sym]  : []
   end
 
+  def self.listing_fields
+    (@@listing_fields[self.to_s.to_sym]) ? @@listing_fields[self.to_s.to_sym]  : []
+  end
+
+  def self.printing_fields
+    (@@printing_fields[self.to_s.to_sym]) ? @@printing_fields[self.to_s.to_sym]  : []
+  end
+
   def self.search_fields
     (@@search_fields[self.to_s.to_sym]) ? @@search_fields[self.to_s.to_sym]  : []
   end
@@ -152,7 +186,7 @@ class RaroCrud
   def self.test_fields
     (@@test_fields[self.to_s.to_sym]) ? @@test_fields[self.to_s.to_sym]  : []
   end
-  
+
   def self.scopes
     (@@scopes[self.to_s.to_sym]) ? @@scopes[self.to_s.to_sym]  : []
   end
@@ -164,14 +198,14 @@ class RaroCrud
   def self.menus
     @@menus
   end
-  
-  
+
+
   private
-  
+
   def self.modelo
     self.to_s.underscore.gsub("_crud", "")
   end
-  
+
   def self.titulo str
     @@title[self.to_s.to_sym] = str
   end
@@ -190,11 +224,12 @@ class RaroCrud
     end
   end
 
-  def self.link_superior nome, opts
+  def self.link_superior opts={}
       @@top_links[self.to_s.to_sym] = [] unless @@top_links[self.to_s.to_sym]
       @@top_links[self.to_s.to_sym].push(
           {
-            text: nome,
+            text: opts[:nome],
+            modelo: self.modelo,
             id:   opts[:id],
             data: {push: 'partial', target: '#form'},
             icon: "fa fa-#{opts[:icon]}",
@@ -205,9 +240,9 @@ class RaroCrud
             partial: opts[:partial]
           }
     )
-  end 
-  
-  def self.campo_tabela nome, opts
+  end
+
+  def self.campo_tabela nome, opts={}
     @@index_fields[self.to_s.to_sym] = [] unless @@index_fields[self.to_s.to_sym]
     @@index_fields[self.to_s.to_sym].push(
       {
@@ -215,30 +250,30 @@ class RaroCrud
       }.merge(opts)
     )
   end
-  
+
   def self.ordenar_por nome
     @@order_field[self.to_s.to_sym] = nome
   end
-  
+
   def self.itens_por_pagina qtd
     @@per_page[self.to_s.to_sym] = qtd
   end
-  
-  def self.campo_teste nome, opts
+
+  def self.campo_teste nome, opts = {}
     @@test_fields[self.to_s.to_sym] = [] unless @@test_fields[self.to_s.to_sym]
     @@test_fields[self.to_s.to_sym].push(
       {
         attribute: nome
       }.merge({sf: opts})
     )
-  end   
-  
-  def self.campo_formulario nome, opts
+  end
+
+  def self.campo_formulario nome, opts={}
     @@form_fields[self.to_s.to_sym] = [] unless @@form_fields[self.to_s.to_sym]
     if opts.present? && opts[:autocomplete].present?
       opts[:as] = :autocomplete
       label_method = opts[:autocomplete][:label_method] || opts[:autocomplete][:campo]
-      opts[:url] = "/crud/#{opts[:autocomplete][:classe]}/autocomplete?campo=#{opts[:autocomplete][:campo]}&tipo=start&label=#{label_method}"
+      opts[:url] = Rails.application.routes.url_helpers.autocomplete_crud_path(model: opts[:autocomplete][:classe], campo: opts[:autocomplete][:campo], tipo: "start", label: label_method)
       name = "#{opts[:autocomplete][:campo]}_#{opts[:autocomplete][:classe]}"
       opts[:input_html] = {name: name, id: name}
       opts[:id_element] = "##{self.modelo}_#{nome}_id"
@@ -262,8 +297,8 @@ class RaroCrud
       campo_formulario(nome, {as: :hidden})
     end
   end
-  
-  private 
+
+  private
   def self.add_group_formulario(field)
     field[:fields] = []
     field[:grupo].each do |f|
@@ -276,28 +311,46 @@ class RaroCrud
   end
 
   public
-  def self.campo_visualizacao nome, opts = nil
+  def self.campo_visualizacao nome, opts = {}
     @@view_fields[self.to_s.to_sym] = [] unless @@view_fields[self.to_s.to_sym]
     @@view_fields[self.to_s.to_sym].push(
       {
         attribute: nome
       }.merge({sf: opts})
     )
-  end    
+  end
 
-  def self.campo_busca nome, opts = nil
+  def self.campo_busca nome, opts = {}
     @@search_fields[self.to_s.to_sym] = [] unless @@search_fields[self.to_s.to_sym]
     @@search_fields[self.to_s.to_sym].push(
       {
         attribute: nome
       }.merge({sf: opts})
     )
-  end    
-  
+  end
+
+  def self.campo_listagem nome, opts = {}
+    @@listing_fields[self.to_s.to_sym] = [] unless @@listing_fields[self.to_s.to_sym]
+    @@listing_fields[self.to_s.to_sym].push(
+      {
+        attribute: nome
+      }.merge({sf: opts})
+    )
+  end
+
+  def self.campo_impressao nome, opts = {}
+    @@printing_fields[self.to_s.to_sym] = [] unless @@printing_fields[self.to_s.to_sym]
+    @@printing_fields[self.to_s.to_sym].push(
+      {
+        attribute: nome
+      }.merge({sf: opts})
+    )
+  end
+
   def self.sem_visualizacao
     @@view_action[self.to_s.to_sym] = false
   end
-  
+
   def self.visualizacao(condicao)
     @@condition_view_action[self.to_s.to_sym] = condicao
   end
@@ -305,7 +358,7 @@ class RaroCrud
   def self.sem_edicao
     @@edit_action[self.to_s.to_sym] = false
   end
-  
+
   def self.edicao(condicao)
     @@condition_edit_action[self.to_s.to_sym] = condicao
   end
@@ -313,37 +366,53 @@ class RaroCrud
   def self.sem_exclusao
     @@destroy_action[self.to_s.to_sym] = false
   end
-  
+
   def self.exclusao(condicao)
     @@condition_destroy_action[self.to_s.to_sym] = condicao
   end
-  
+
+  def self.listagem(condicao)
+    @@condition_listing_action[self.to_s.to_sym] = condicao
+  end
+
+  def self.listagem_excel(condicao = nil)
+    @@condition_listing_excel[self.to_s.to_sym] = condicao
+  end
+
+  def self.listagem_pdf(condicao = nil)
+    @@condition_listing_pdf[self.to_s.to_sym] = condicao
+  end
+
+  def self.impressao(condicao)
+    @@condition_printing_action[self.to_s.to_sym] = condicao
+  end
+
   def self.acoes(method,desc,proc = nil)
     @@actions[self.to_s.to_sym] = [] unless @@actions[self.to_s.to_sym]
     @@actions[self.to_s.to_sym].push([method,desc,proc])
   end
-  
+
   def self.links(name,options)
     @@links[self.to_s.to_sym] = [] unless @@links[self.to_s.to_sym]
     @@links[self.to_s.to_sym].push([name,options])
   end
-  
+
   def self.opcoes(link,desc,proc = nil)
     @@options_link[self.to_s.to_sym] = [] unless @@options_link[self.to_s.to_sym]
     @@options_link[self.to_s.to_sym].push([link,desc,proc])
   end
-  
+
   def self.escopos(scopes)
     @@scopes[self.to_s.to_sym] = scopes
   end
-  
+
   def self.grupo_formulario(attribute,name,fields=nil)
     if fields.nil?
       fields = name
       name = attribute.to_s.singularize.titleize
     end
     @@form_group[self.to_s.to_sym] ||= {}
-    @@form_group[self.to_s.to_sym][attribute] = {label: name, fields: []}
+    @@form_group[self.to_s.to_sym][attribute] = {fields: []}
     fields.each do |field|
       value = {}
       field.each do |atr|
@@ -357,19 +426,19 @@ class RaroCrud
       @@form_group[self.to_s.to_sym][attribute][:fields].push({attribute: value[:attribute],sf: value[:sf]})
     end
   end
-  
+
   def self.adicionar_endereco
     @@form_fields[self.to_s.to_sym] = [] unless @@form_fields[self.to_s.to_sym]
     opts = {}
     opts[:fields] = []
     [
-     {campo: :cep,  label: "CEP"},
-     {campo: :logradouro,  label: "Endereço"},
-     {campo: :numero,  label: "Número"},
-     {campo: :complemento,  label: "Complemento"},
-     {campo: :bairro,  label: "Bairro"},
-     {campo: :estado,  label: "Estado", collection: Estado.order(:sigla).pluck(:sigla)},
-     {campo: :cidade_id,  label: "Cidade", collection_if: Proc.new{|f| f.try(:object).try(:estado).try(:present?) ? (f.try(:object).try(:estado).try(:cidades) || []) : []}}
+     {campo: :cep, input_html: {class: "mask-cep"}},
+     {campo: :logradouro},
+     {campo: :numero},
+     {campo: :complemento},
+     {campo: :bairro},
+     {campo: :estado, collection: Estado.order(:sigla).pluck(:sigla)},
+     {campo: :cidade_id, collection_if: Proc.new{|f| f.try(:object).try(:estado).try(:present?) ? (f.try(:object).try(:estado).try(:cidades) || []) : []}}
     ].each do |field|
       attribute = field[:campo]
       field.delete(:campo)
@@ -384,7 +453,7 @@ class RaroCrud
     @@form_scripts[self.to_s.to_sym] ||= []
     @@form_scripts[self.to_s.to_sym] << "cidade_estado"
   end
-  
+
   def self.script_formulario(script)
     @@form_scripts[self.to_s.to_sym] ||= []
     @@form_scripts[self.to_s.to_sym] << script.to_s

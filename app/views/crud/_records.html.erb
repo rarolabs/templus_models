@@ -1,8 +1,8 @@
 <% if @crud_helper.layout[1].present? and @crud_helper.layout[1].call() and @crud_helper.layout[0] == "escopo_lateral" %>
 	<% if @crud_helper.scopes.present? %>
 		<div class="col-lg-3" style="padding-right:0;">
-    	<div class="ibox float-e-margins" style="padding-top:40px">
-      	<div class="ibox-content">
+			<div class="ibox float-e-margins" style="padding-top:40px">
+				<div class="ibox-content">
 					<div class="file-manager">
 						<%= render '/crud/scopes' %>
 					</div>
@@ -11,7 +11,7 @@
 		</div>
 	<% end %>
 <% end %>
-<div class="col-lg-<%= @crud_helper.layout[1].present? and @crud_helper.layout[1].call() and @crud_helper.layout[0] == "escopo_lateral" and @crud_helper.scopes.present? ? 9 : 12 %>" style="padding-left:0;">
+<div class="col-lg-<%= @crud_helper.layout[1].present? && @crud_helper.layout[1].call() && @crud_helper.layout[0] == "escopo_lateral" && @crud_helper.scopes.present? ? 9 : 12 %>" style="padding-left:0;">
 	<%= render_crud do %>
 		<div>
 			<%= render "/crud/links" %>
@@ -21,21 +21,21 @@
 				<thead>
 					<tr>
 						<%@crud_helper.index_fields.each do |att|  %>
-						<% if !att[:visible_if].nil?%>
-							<% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
-								<% next %>
+							<% if !att[:visible_if].nil?%>
+								<% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
+									<% next %>
+								<% end %>
 							<% end %>
-						<% end %>
-						<th>
-							<% if att[:sort_field].present? %>
-								<%= sort_link @q, att[:sort_field], att[:label], {},data: {push: 'partial', target: "#form"}%>
-							<% else %>
-								<%= sort_link @q, att[:attribute], att[:label], {},data: {push: 'partial', target: "#form"}%>
-							<% end %>
-						</th>
+							<th>
+								<% if att[:sort_field].present? %>
+									<%= sort_link @q, att[:sort_field], I18n.t("simple_form.labels.#{@model.name.underscore}.#{att[:attribute]}"), {},data: {push: 'partial', target: "#form"}%>
+								<% else %>
+									<%= sort_link @q, att[:attribute], I18n.t("simple_form.labels.#{@model.name.underscore}.#{att[:attribute]}"), {},data: {push: 'partial', target: "#form"}%>
+								<% end %>
+							</th>
 						<%end%>
 						<%if @crud_helper.view_action || @crud_helper.edit_action || @crud_helper.destroy_action || @crud_helper.actions.present?%>
-							<td>Opções</td>
+							<td><%= I18n.t("simple_form.index.options") %></td>
 						<% end %>
 					</tr>
 				</thead>
@@ -49,3 +49,22 @@
 		</div>
 	<% end %>
 </div>
+<script type="text/javascript">
+	var theadtxt = [];
+	var headers = document.querySelectorAll("thead");
+	var tablebody = document.querySelectorAll("tbody");
+	for (var x = 0; x < headers.length; x++) {
+		theadtxt[x]=[];
+		for (var j = 0, headrow; headrow = headers[x].rows[0].cells[j]; j++) {
+		  var current = headrow;
+		  theadtxt[x].push(current.innerHTML);
+		}
+	} 
+	for (var v = 0, tbody; tbody = tablebody[v]; v++) {
+		for (var x = 0, row; row = tbody.rows[x]; x++) {
+		  for (var j = 0, col; col = row.cells[j]; j++) {
+            col.insertAdjacentHTML('afterbegin', '<div class="col-xs-3 no-padding">' + theadtxt[v][j] + '</div>');
+		  } 
+		}
+	}
+</script>

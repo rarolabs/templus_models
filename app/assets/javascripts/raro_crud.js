@@ -8,8 +8,7 @@ function new_record(id,name,model_name){
 
 	var model_target = "#modal_new_record." + model_name;
 	
-	
-	var url = "/crud/" + class_name + "/new.js?render=modal&attribute="+ model_name;
+	var url = link_to("/crud/" + class_name + "/new.js", {"render": "modal", "attribute": model_name});
 	var jqxhr = $.ajax(url)
 	.done(function(result) {
 		$(model_target).attr('data-source',id);

@@ -89,8 +89,8 @@
 					<% end %>
 				<% end %>
 			<% end %>
-			<% if @crud_helper.view_action && should_view?(@crud_helper, record)%>
-				<% link_text = TemplusModels.configure.usar_icones ? "<i class='fa fa-eye'></i>".html_safe : I18n.t("view") %>
+			<% if @crud_helper.view_action && should_view?(@crud_helper, record) %>
+				<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-eye'></i>".html_safe : I18n.t("view") %>
 				<% if @crud_associacao.present? %>
 					<%= link_to link_text, crud_associacao_model_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
 				<% else %>
@@ -98,15 +98,15 @@
 				<% end %>
 			<% end %>
 			<% if @crud_helper.edit_action && should_edit?(@crud_helper, record) %>
-				<% link_text = TemplusModels.configure.usar_icones ? "<i class='fa fa-edit'></i>".html_safe : I18n.t("edit") %>
+				<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-edit'></i>".html_safe : I18n.t("edit") %>
 				<% if @crud_associacao.present? %>
 					<%= link_to link_text, edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
 				<% else %>
 					<%= link_to link_text, edit_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
 				<% end %>
 			<% end %>
-			<% if @crud_helper.destroy_action && should_destroy?(@crud_helper, record)%>
-				<% link_text = TemplusModels.configure.usar_icones ? "<i class='fa fa-trash'></i>".html_safe : I18n.t("destroy") %>
+			<% if @crud_helper.destroy_action && should_destroy?(@crud_helper, record) %>
+				<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-trash'></i>".html_safe : I18n.t("destroy") %>
 				<% if @crud_associacao.present? %>
 					<%= link_to link_text, destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
 				<% else %>

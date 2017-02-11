@@ -18,6 +18,10 @@ module TemplusModels
         Configuration.instance
       end
     end
+
+    def configuration
+      Configuration.instance
+    end
   end
 
   module Routes

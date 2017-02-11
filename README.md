@@ -60,7 +60,7 @@ end
 campo_visualizacao :tipo, label: "Tipo", label_method: :descricao_do_tipo
 ```
 
-## Atributo especia de endereço
+## Atributo especial de endereço
 Para vincular um formulário de cadastro de endereço utilize o método *adicionar_endereco* no arquivo:
 
 ```ruby
@@ -109,8 +109,8 @@ Para vincular o *iCheck* no campo do tipo boolena
 campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {class: "i-checks"}
 ```
 
-## Aplicando mascara
-Para aplicar uma mascara em um campo
+## Aplicando máscara
+Para aplicar uma máscara em um campo
 
 ```rb
 campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {"data-mask" => "(99) 9999-9999"}
@@ -131,7 +131,7 @@ Para aplicar uma dica em um campo
 campo_formulario :cpf, label: "CPF", hint: "Somente números"
 ```
 
-## Adicionando javascrit
+## Adicionando javascript
 Para adicionar um *javascript* em um formulário do RaroCrud, basta criar um arquivo *.js* dentro da seguinte pasta
 
 ```
@@ -296,7 +296,19 @@ Caso deseja um label diferente para os botões Adicionar e Remover do grupo, bas
                            {campo: :observacao, label: "Instruções bancárias"}]
 ```
 
+# Configuração
 
+Para configurar o RaroCrud crie um initializer com o seguinte código:
+
+```
+TemplusModels.configure do |config|
+
+  # Se for true, os links de visualizar, editar, e excluir na index
+  # serão mostrados com ícones, ao invés de texto.
+  # default: false
+  config.usar_icones = false
+end
+```
 
 
 

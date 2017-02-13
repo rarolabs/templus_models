@@ -20,7 +20,7 @@
       				<% if att[:sf].present? && att[:sf][:label].present? %>
       					<th><%= att[:sf][:label].to_s.mb_chars.upcase.to_s %></th>
       				<% else %>
-      					<th><%= I18n.t("simple_form.labels.#{@model.name.underscore}.#{att[:attribute]}") %></th>
+      					<th><%= I18n.t(att[:sf][:label]) %></th>
       				<% end %>
       			<% end %>
           </tr>
@@ -40,7 +40,7 @@
     							<td><%= record.send(att[:attribute]).map{|rec| rec.to_s}.join(",") %></td>
     						<% else %>
     							<% if record.send(att[:attribute]).to_s == "false" or record.send(att[:attribute]).to_s == "true" %>
-    								<td><%= record.send(att[:attribute]) ? "Sim" : "Não" %></td>
+    								<td><%= I18n.t(record.send(att[:attribute]) ? "shared.sim" : "shared.nao") %></td>
     							<% elsif att[:sf][:label_method].present? %>
     								<td><%= record.send(att[:attribute]).send(att[:sf][:label_method]).to_s %></td>
     							<% else %>

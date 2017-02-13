@@ -38,7 +38,7 @@
 				<% if record.send(att[:attribute]).to_s == "false" or record.send(att[:attribute]).to_s == "true" %>
 					<td class="row">
 						<div class="col-xs-9">
-							<%=  record.send(att[:attribute]) ? "Sim" : "Não" %>
+							<%= I18n.t(record.send(att[:attribute]) ? "shared.sim" : "shared.nao") %>
 						</div>
 					</td>
 				<% else %>

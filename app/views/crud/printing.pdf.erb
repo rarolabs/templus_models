@@ -65,7 +65,7 @@
                   <%= render_field_file(@record.send(field[:attribute])) %>
                 </td>
               <% elsif ["false","true"].include? @record.send(field[:attribute]).to_s %>
-                <td><%=  @record.send(field[:attribute]) ? "Sim" : "Não" %></td>
+                <td><%= I18n.t(@record.send(field[:attribute]) ? "shared.sim" : "shared.nao") %></td>
               <% else %>
                 <td>
                   <% if field[:sf].present? && field[:sf][:label_method].present? && @record.send(field[:attribute]).present?%>

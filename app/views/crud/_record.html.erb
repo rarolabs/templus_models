@@ -10,7 +10,7 @@
 				<td class="row">
 					<div class="col-xs-9">
 						<% if att[:date_format].present?%>
-							<%= I18n.l(record.send(att[:attribute]), format: att[:date_format])) %>
+							<%= I18n.l(record.send(att[:attribute]), format: att[:date_format]) %>
 						<% else %>
 							<%= I18n.l(record.send(att[:attribute])) %>
 						<% end %>

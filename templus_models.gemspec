@@ -7,8 +7,8 @@ require "templus_models/version"
 Gem::Specification.new do |s|
   s.name        = "templus_models"
   s.version     = TemplusModels::VERSION
-  s.authors     = ["Rodrigo Sol", "Leonardo Herbert"]
-  s.email       = ["rodrigo@rarolabs.com.br","leonardo@rarolabs.com.br"]
+  s.authors     = ["Rodrigo Sol", "Leonardo Herbert", "Diego Lima"]
+  s.email       = ["rodrigo@rarolabs.com.br","leonardo@rarolabs.com.br", "lima@rarolabs.com.br"]
   s.homepage    = "http://github.com/rarolabs/templus_models"
   s.summary     = "Easy CRUD generator for Rails Projects"
   s.description = "Easy CRUD generator for Rails Projects"
@@ -18,12 +18,13 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", ">= 5.0.1"
-  s.add_dependency "cancancan", ">= 1.15"
+  s.add_dependency "cancancan", ">= 1.16"
   s.add_dependency "ransack", ">= 1.8"
   s.add_dependency "kaminari", "~> 0.16"
   s.add_dependency "simple_form", ">= 3.4"
   s.add_dependency "nested_form"
   s.add_dependency "rails-jquery-autocomplete"
+  s.add_dependency "wicked_pdf", "~> 1.1"
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "sqlite3", "~> 1.3"
 end

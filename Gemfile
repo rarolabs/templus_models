@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
-  'https://github.com/#{repo_name}.git'
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
 end
+
+ruby '2.4.0'
 
 gem 'rails', '~> 5.0.1'
 
@@ -50,7 +52,7 @@ gem 'summernote-rails'
 #permission
 gem 'cancancan'
 gem 'devise'
-gem 'rails-observers'
+gem 'rails-observers', github: "rails/rails-observers", branch: "master"
 
 #worker
 # gem 'sidekiq'
@@ -68,4 +70,4 @@ gem 'capistrano'
 gem 'rvm-capistrano',  require: false
 
 #pdf
-# gem 'wicked_pdf'
+gem 'wicked_pdf'

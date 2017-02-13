@@ -6,20 +6,16 @@
 			<% end %>
 		<% end %>
 		<% if record.send(att[:attribute]).present? or record.send(att[:attribute]).to_s == "false"%>
-			<% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
-					<% if att[:date_format].present?%>
-						<td class="row">
-							<div class="col-xs-9">
-								<%= record.send(att[:attribute]).strftime(I18n.t("date.formats.#{att[:date_format]}")) %>									
-							</div>
-						</td>
-					<% else %>
-						<td class="row">
-							<div class="col-xs-9">
-								<%= record.send(att[:attribute]).strftime(I18n.t("date.formats.default")) %>								
-							</div>
-						</td>
-					<% end %>
+			<% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :time, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
+				<td class="row">
+					<div class="col-xs-9">
+						<% if att[:date_format].present?%>
+							<%= I18n.l(record.send(att[:attribute]), format: att[:date_format]) %>
+						<% else %>
+							<%= I18n.l(record.send(att[:attribute])) %>
+						<% end %>
+					</div>
+				</td>
 			<% elsif @model.reflect_on_association(att[:attribute]) && @model.reflect_on_association(att[:attribute]).macro != :belongs_to && @model.reflect_on_association(att[:attribute]).macro != :has_one%>
 				<td class="row">
 					<% record.send(att[:attribute]).each do |rec| %>
@@ -42,15 +38,15 @@
 				<% if record.send(att[:attribute]).to_s == "false" or record.send(att[:attribute]).to_s == "true" %>
 					<td class="row">
 						<div class="col-xs-9">
-							<%=  record.send(att[:attribute]) ? "Sim" : "Não" %>							
+							<%=  record.send(att[:attribute]) ? "Sim" : "Não" %>
 						</div>
-					</td>					
+					</td>
 				<% else %>
 					<td class="row">
 						<div class="col-xs-9">
-							<%=  record.send(att[:attribute]).to_s %>							
+							<%=  record.send(att[:attribute]).to_s %>
 						</div>
-					</td>	
+					</td>
 				<% end %>
 			<% end %>
 		<% else %>
@@ -89,25 +85,28 @@
 					<% end %>
 				<% end %>
 			<% end %>
-			<%if @crud_helper.view_action && should_view?(@crud_helper, record)%>
+			<% if @crud_helper.view_action && should_view?(@crud_helper, record) %>
+				<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-eye'></i>".html_safe : I18n.t("view") %>
 				<% if @crud_associacao.present? %>
-					<%= link_to I18n.t("view"), crud_associacao_model_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+					<%= link_to link_text, crud_associacao_model_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
 				<% else %>
-					<%= link_to I18n.t("view"), crud_model_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+					<%= link_to link_text, crud_model_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
 				<% end %>
 			<% end %>
-			<%if @crud_helper.edit_action && should_edit?(@crud_helper, record) %>
+			<% if @crud_helper.edit_action && should_edit?(@crud_helper, record) %>
+				<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-edit'></i>".html_safe : I18n.t("edit") %>
 				<% if @crud_associacao.present? %>
-					<%= link_to I18n.t("edit"), edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+					<%= link_to link_text, edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
 				<% else %>
-					<%= link_to I18n.t("edit"), edit_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+					<%= link_to link_text, edit_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
 				<% end %>
 			<% end %>
-			<%if @crud_helper.destroy_action && should_destroy?(@crud_helper, record)%>
+			<% if @crud_helper.destroy_action && should_destroy?(@crud_helper, record) %>
+				<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-trash'></i>".html_safe : I18n.t("destroy") %>
 				<% if @crud_associacao.present? %>
-					<%= link_to I18n.t("destroy"), destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
+					<%= link_to link_text, destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
 				<% else %>
-					<%= link_to I18n.t("destroy"), destroy_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
+					<%= link_to link_text, destroy_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
 				<% end %>
 			<% end %>
 		</div>

@@ -50,7 +50,7 @@ class EmpresaCrud < RaroCrud
 
   #Campos mostrados no relatório
   campo_listagem :nome, label: "Nome"
-  campo_listagem :contato, label: "Contato"
+  campo_listagem :contato, label: "Contato", visible_if: Proc.new { Usuario.current.root? }
   campo_listagem :telefone, label: "Telefone"
   campo_listagem :endereco, label: "Endereco"
 
@@ -240,6 +240,11 @@ Para remover um *action* de acordo com uma condição
 edicao Proc.new {|obj| !obj.root? }
 exclusao Proc.new {|obj| !obj.root? }
 visualizacao Proc.new {|obj| obj.root? }
+```
+
+Para remover a opção de *Exportar Relatório* de acordo com uma condição
+```rb
+listagem Proc.new { |model| Usuario.current.root? }
 ```
 
 ## Manipulando links superiores

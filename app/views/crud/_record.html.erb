@@ -6,20 +6,16 @@
 			<% end %>
 		<% end %>
 		<% if record.send(att[:attribute]).present? or record.send(att[:attribute]).to_s == "false"%>
-			<% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
-					<% if att[:date_format].present?%>
-						<td class="row">
-							<div class="col-xs-9">
-								<%= record.send(att[:attribute]).strftime(I18n.t("date.formats.#{att[:date_format]}")) %>
-							</div>
-						</td>
-					<% else %>
-						<td class="row">
-							<div class="col-xs-9">
-								<%= record.send(att[:attribute]).strftime(I18n.t("date.formats.default")) %>
-							</div>
-						</td>
-					<% end %>
+			<% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :time, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
+				<td class="row">
+					<div class="col-xs-9">
+						<% if att[:date_format].present?%>
+							<%= I18n.l(record.send(att[:attribute]), format: att[:date_format])) %>
+						<% else %>
+							<%= I18n.l(record.send(att[:attribute])) %>
+						<% end %>
+					</div>
+				</td>
 			<% elsif @model.reflect_on_association(att[:attribute]) && @model.reflect_on_association(att[:attribute]).macro != :belongs_to && @model.reflect_on_association(att[:attribute]).macro != :has_one%>
 				<td class="row">
 					<% record.send(att[:attribute]).each do |rec| %>

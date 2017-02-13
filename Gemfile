@@ -42,3 +42,6 @@ gem 'capistrano-unicorn'
 #Capistrano
 gem 'capistrano'
 gem 'rvm-capistrano',  require: false
+
+#pdf
+gem 'wicked_pdf'

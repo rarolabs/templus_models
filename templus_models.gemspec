@@ -7,8 +7,8 @@ require "templus_models/version"
 Gem::Specification.new do |s|
   s.name        = "templus_models"
   s.version     = TemplusModels::VERSION
-  s.authors     = ["Rodrigo Sol", "Leonardo Herbert"]
-  s.email       = ["rodrigo@rarolabs.com.br","leonardo@rarolabs.com.br"]
+  s.authors     = ["Rodrigo Sol", "Leonardo Herbert", "Diego Lima"]
+  s.email       = ["rodrigo@rarolabs.com.br","leonardo@rarolabs.com.br","lima@rarolabs.com.br"]
   s.homepage    = "http://github.com/rarolabs/templus_models"
   s.summary     = "Easy CRUD generator for Rails Projects"
   s.description = "Easy CRUD generator for Rails Projects"

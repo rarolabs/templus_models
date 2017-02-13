@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <div class="profile-element">
   <div class="header">
     <h1>Listagem de <%= @crud_helper.title %></h1>
@@ -6,7 +7,12 @@
 <div class="widget-box" id="relatorio">
   <div class="widget-body">
     <div class="widget-main">
-      <table class="table table-bordered table-striped" style="border: 1px solid black;">
+      <div class="profile-element">
+        <div class="header">
+          <h1><%= @crud_helper.title %></h1>
+        </div>
+      </div>
+      <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <% @crud_helper.listing_fields.each do |att|%>
@@ -57,18 +63,18 @@
   </div>
 </div>
 <style>
-  table, tr, td, th, tbody, thead, tfoot {
-    page-break-inside: avoid !important;
-  }
-  table, th, td {
-    border-collapse: collapse;
-    border: 1px solid black;
-  }
   #relatorio {
-    padding-top: 40px;
     clear: both;
+    page-break-inside: avoid;
   }
   .header {
     float: left;
   }
+  table {
+    font-size: 0.75em;
+  }
+  thead { display: table-header-group }
+  tfoot { display: table-row-group }
+  tr { page-break-inside: avoid }
+  h1 { padding-bottom: 20px; }
 </style>

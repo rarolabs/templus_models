@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<div class="widget-box" id="relatorio">
+  <div class="widget-body">
+    <div class="widget-main">
+      <div class="profile-element">
+        <div class="header">
+          <h1>
+            <small><%= @crud_helper.title %></small><br />
+            <%= @record.to_s %>
+          </h1>
+        </div>
+      </div>
+      <table class="table table-bordered table-striped">
+        <tbody>
+          <% @crud_helper.view_fields.each do |field|%>
+            <tr>
+              <% if field[:sf].present? && !field[:sf][:visible_if].nil?%>
+                <% if ((field[:sf][:visible_if].class == Proc && !field[:sf][:visible_if].call(@record)) || (field[:sf][:visible_if].class != Proc && !field[:sf][:visible_if])) %>
+                  <% next %>
+                <% end %>
+              <% end %>
+              <% if field[:sf].present? && field[:sf][:label].present? %>
+                <th><%= field[:sf][:label].to_s.mb_chars.upcase.to_s %></th>
+              <% else %>
+                <th><%= I18n.t("simple_form.labels.#{@model.name.underscore}.#{field[:attribute]}") %></th>
+              <% end %>
+
+              <% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type)%>
+                <% if field[:date_format].present?%>
+                  <td><%= l @record.send(field[:attribute]).strftime(field[:date_format]) if @record.send(field[:attribute]).present?%></td>
+                <% else %>
+                  <td><%= l @record.send(field[:attribute]) if @record.send(field[:attribute]).present?%></td>
+                <% end %>
+              <% elsif @model.reflect_on_association(field[:attribute]) &&  @model.reflect_on_association(field[:attribute]).macro != :belongs_to && @model.reflect_on_association(field[:attribute]).macro != :has_one%>
+                <td>
+                  <% @record.send(field[:attribute]).each do |rec| %>
+                  <li>
+                    <% if field[:sf].present? && field[:sf][:label_method].present? %>
+                      <% if rec.send(field[:sf][:label_method]).respond_to?(:url) %>
+                        <%= render_field_file(rec.send(field[:sf][:label_method])) %>
+                      <% else %>
+                        <%= rec.send(field[:sf][:label_method]) %>
+                      <% end %>
+                    <% else %>
+                      <% if rec.to_s.respond_to?(:url) %>
+                        <%= render_field_file(rec.to_s) %>
+                      <% else %>
+                        <%= rec.to_s %>
+                      <% end %>
+                    <% end %>
+                  </li>
+                  <% end %>
+                </td>
+              <% elsif @record.send(field[:attribute]).class == Array %>
+                <td>
+                  <% @record.send(field[:attribute]).each do |rec| %>
+                    <li>
+                      <%= rec.to_s %>
+                    </li>
+                  <% end %>
+                </td>
+              <% elsif @record.send(field[:attribute]).respond_to?(:url) %>
+                <td>
+                  <%= render_field_file(@record.send(field[:attribute])) %>
+                </td>
+              <% elsif ["false","true"].include? @record.send(field[:attribute]).to_s %>
+                <td><%=  @record.send(field[:attribute]) ? "Sim" : "Não" %></td>
+              <% else %>
+                <td>
+                  <% if field[:sf].present? && field[:sf][:label_method].present? && @record.send(field[:attribute]).present?%>
+                    <%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
+                  <% else %>
+                    <%= @record.send(field[:attribute]) %>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<style>
+  #relatorio {
+    clear: both;
+    page-break-inside: avoid;
+  }
+  .header {
+    float: left;
+  }
+  table {
+    font-size: 0.75em;
+  }
+  thead { display: table-header-group }
+  tfoot { display: table-row-group }
+  tr { page-break-inside: avoid }
+  h1 { padding-bottom: 20px; }
+</style>

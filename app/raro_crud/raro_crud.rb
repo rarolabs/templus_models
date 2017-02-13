@@ -7,6 +7,7 @@ class RaroCrud
   @@form_scripts              = {}
   @@view_fields               = {}
   @@listing_fields            = {}
+  @@printing_fields           = {}
   @@search_fields             = {}
   @@test_fields               = {}
   @@top_links                 = {}
@@ -22,6 +23,9 @@ class RaroCrud
   @@view_action               = {}
   @@condition_view_action     = {}
   @@condition_listing_action  = {}
+  @@condition_listing_excel   = {}
+  @@condition_listing_pdf     = {}
+  @@condition_printing_action  = {}
   @@options_link              = {}
   @@scopes                    = {}
   @@menus                     = []
@@ -83,6 +87,18 @@ class RaroCrud
 
   def self.index_path str
     @@index_path = str
+  end
+
+  def self.condition_listing_excel
+    (@@condition_listing_excel[self.to_s.to_sym]) ? @@condition_listing_excel[self.to_s.to_sym] : nil
+  end
+
+  def self.condition_listing_pdf
+    (@@condition_listing_pdf[self.to_s.to_sym]) ? @@condition_listing_pdf[self.to_s.to_sym] : nil
+  end
+
+  def self.condition_printing_action
+    (@@condition_printing_action[self.to_s.to_sym]) ? @@condition_printing_action[self.to_s.to_sym] : nil
   end
 
   def self.get_index_path
@@ -153,6 +169,10 @@ class RaroCrud
 
   def self.listing_fields
     (@@listing_fields[self.to_s.to_sym]) ? @@listing_fields[self.to_s.to_sym]  : []
+  end
+
+  def self.printing_fields
+    (@@printing_fields[self.to_s.to_sym]) ? @@printing_fields[self.to_s.to_sym]  : []
   end
 
   def self.search_fields
@@ -304,9 +324,18 @@ class RaroCrud
     )
   end
 
-  def self.campo_listagem nome, opts = nil
+  def self.campo_listagem nome, opts = {}
     @@listing_fields[self.to_s.to_sym] = [] unless @@listing_fields[self.to_s.to_sym]
     @@listing_fields[self.to_s.to_sym].push(
+      {
+        attribute: nome
+      }.merge({sf: opts})
+    )
+  end
+
+  def self.campo_impressao nome, opts = {}
+    @@printing_fields[self.to_s.to_sym] = [] unless @@printing_fields[self.to_s.to_sym]
+    @@printing_fields[self.to_s.to_sym].push(
       {
         attribute: nome
       }.merge({sf: opts})
@@ -344,6 +373,18 @@ class RaroCrud
   def self.acoes(method,desc,proc = nil)
     @@actions[self.to_s.to_sym] = [] unless @@actions[self.to_s.to_sym]
     @@actions[self.to_s.to_sym].push([method,desc,proc])
+  end
+
+  def self.listagem_excel(condicao = nil)
+    @@condition_listing_excel[self.to_s.to_sym] = condicao
+  end
+
+  def self.listagem_pdf(condicao = nil)
+    @@condition_listing_pdf[self.to_s.to_sym] = condicao
+  end
+
+  def self.impressao(condicao)
+    @@condition_printing_action[self.to_s.to_sym] = condicao
   end
 
   def self.links(name,options)

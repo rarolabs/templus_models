@@ -195,6 +195,25 @@ class CrudController < ApplicationController
     end
   end
 
+  def printing
+    @record = @model.find(@id)
+    authorize! :read, @record if respond_to?(:current_usuario)
+    report_name = "#{@record}_#{DateTime.now.strftime('%Y%m%d')}"
+    respond_to do |format|
+      format.pdf do
+        pdf = WickedPdf.new.pdf_from_string(
+        render_to_string('crud/printing.pdf.erb'),
+        encoding: 'UTF-8',
+        page_size: 'A4',
+        show_as_html: params[:debug],
+        margin: { top: 20, bottom: 20 }
+        )
+        send_data(pdf, filename: "#{report_name}.pdf", type: "application/pdf", disposition: "inline")
+      end
+      format.html
+    end
+  end
+
   private
   def params_permitt
     params.require(@model.name.underscore.to_sym).permit(fields_model)

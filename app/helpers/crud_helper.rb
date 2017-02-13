@@ -171,7 +171,11 @@ module CrudHelper
 
   def render_field_file(field)
 		if imagem?(field) && field.url(:thumb)
-			image_tag(field.url(:thumb))
+      if is_active_action("printing")
+        wicked_pdf_image_tag(field.url(:thumb))
+      else
+        image_tag(field.url(:thumb))
+      end
 		elsif video?(field)
 			link_to field, field.url, target: "_blank"
 		else
@@ -210,5 +214,23 @@ module CrudHelper
     return false unless can?(:read, model)
     return true if crud_helper.condition_listing_action.nil?
     crud_helper.condition_listing_action.call(model)
+  end
+
+  def should_listing_excel?(crud_helper,model)
+    return false unless can?(:read, model)
+    return true if crud_helper.condition_listing_excel.nil?
+    crud_helper.condition_listing_excel.call(model)
+  end
+  
+  def should_listing_pdf?(crud_helper,model)
+    return false unless can?(:read, model)
+    return true if crud_helper.condition_listing_pdf.nil?
+    crud_helper.condition_listing_pdf.call(model)
+  end
+
+  def should_printing?(crud_helper,record)
+    return false unless can?(:read, record)
+    return true if crud_helper.condition_printing_action.nil?
+    crud_helper.condition_printing_action.call(record)
   end
 end

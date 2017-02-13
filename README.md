@@ -48,11 +48,24 @@ class EmpresaCrud < RaroCrud
   campo_busca :telefone,  label: "Telefone"
   campo_busca :endereco,  label: "Endereco"
 
+  #Condição para relatórios
+  listagem Proc.new {|obj| !obj.root? }
+  listagem_pdf Proc.new {|obj| !obj.root? }
+  listagem_excel Proc.new {|obj| !obj.root? }
+
   #Campos mostrados no relatório
   campo_listagem :nome, label: "Nome"
   campo_listagem :contato, label: "Contato", visible_if: Proc.new { Usuario.current.root? }
   campo_listagem :telefone, label: "Telefone"
   campo_listagem :endereco, label: "Endereco"
+
+  #Condição para impressão
+  impressao Proc.new {|obj| !obj.root? }
+
+  #Condição para relatórios
+  listagem Proc.new {|obj| !obj.root? }
+  listagem_pdf Proc.new {|obj| !obj.root? }
+  listagem_excel Proc.new {|obj| !obj.root? }
 
 end
 ```

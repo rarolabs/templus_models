@@ -31,4 +31,7 @@ class UsuarioCrud < RaroCrud
   campo_busca :email, label: "email"
   campo_busca :papel_id,  label: "Papel", visible_if: Proc.new {Usuario.current.root? }
 
+  campo_listagem :nome, label: "nome"
+  campo_listagem :email, label: "email"
+
 end

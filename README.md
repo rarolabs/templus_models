@@ -109,6 +109,13 @@ Para vincular o *iCheck* no campo do tipo boolena
 campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {class: "i-checks"}
 ```
 
+## Busca por intervalo
+Para buscas de valores em um intervalo
+
+```rb
+campo_busca :salario, label: "Salário", as: :range
+```
+
 ## Aplicando mascara
 Para aplicar uma mascara em um campo
 

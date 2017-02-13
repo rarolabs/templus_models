@@ -68,6 +68,8 @@ module SearchHelper
           return raro_date_range(name)
         when :boolean
           return raro_radio(name, opts)
+        when :monthyear
+          return raro_monthyear(name, opts)
         else
           return raro_text_field(name, opts)
       end
@@ -76,13 +78,16 @@ module SearchHelper
     def raro_input_as(name,type,opts)
       case opts[:as]
       when :select
+        if opts[:collection_if] and opts[:collection_if].class == Proc
+          opts[:collection] = ActionView::Helpers::FormBuilder.instance_eval &opts[:collection_if]
+        end
         raro_select(name,opts,opts[:collection])
       when :hidden
         return raro_hidden_field(name,opts[:value],opts)
       when :string
         raro_text_field(name, opts)
-      when :monthyear
-        raro_monthyear(name, opts)
+      when :range
+        raro_range(name)
       end
     end
 
@@ -136,8 +141,8 @@ module SearchHelper
 
     def raro_monthyear(name, opts)
       buffer = ""
-      buffer += "<div class='col-sm-12'>"
-      buffer += "<input id='q_#{name}' type='text' name='q[#{name}_monthyear_eq]' class='form-control monthyearpicker #{opts[:class]}'/>"
+      buffer += "<div class='col-sm-8'>"
+      buffer += "<input id='q_#{name}' type='text' name='q[#{name}_cont]' class='form-control #{opts[:class]}'/>"
       buffer += "</div>"
       buffer
     end
@@ -166,9 +171,9 @@ module SearchHelper
       if opts[:collection].present?
         opts[:collection].each do |opt|
           buff<<"<label>"
-					buff<<"<div class='checkbox'>"
-					buff<<"<input id='q_#{name}' type='radio' name='q[#{name}_eq]' value='#{opt[0]}' class='i-checks'/>"
-					buff<<"</div>"
+          buff<<"<div class='checkbox'>"
+          buff<<"<input id='q_#{name}' type='radio' name='q[#{name}_eq]' value='#{opt[0]}' class='i-checks'/>"
+          buff<<"</div>"
           buff<<"<span class='lbl'> #{opt[1]}</span>"
           buff<<"</label>"
         end
@@ -199,6 +204,16 @@ module SearchHelper
       <input type='hidden' value='' id='q_#{name}_start' name='q[#{name}_gteq]'>
       <input type='hidden' value='' id='q_#{name}_end' name='q[#{name}_lteq]'>
       </div></div>"
+    end
+
+    def raro_range(name)
+      buffer = "<div class='col-sm-4'>"
+      buffer += "<input type='text' name='q[#{name}_gteq]' class='form-control'/>"
+      buffer += "</div>"
+      buffer += "<div class='col-sm-4 range-separator'>"
+      buffer += "<input type='text' name='q[#{name}_lteq]' class='form-control'/>"
+      buffer += "</div>"
+      buffer
     end
 
     def raro_before_form(model,partial,var,url,sort)
@@ -245,6 +260,6 @@ module SearchHelper
     end
 
     def raro_group(text)
-      @buffer << "<div class=\"col-sm-12 label label-primary\" style=\"margin-bottom:10px; font-size:14px;\"><b>#{text}</b></div>"
+      @buffer << "<div class=\"col-sm-12 label label-primary\" style=\"margin-bottom:10px; font-size:14px;display: inline-block;\"><b>#{text}</b></div>"
     end
 end

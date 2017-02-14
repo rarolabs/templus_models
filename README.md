@@ -108,10 +108,10 @@ Para vincular o *datepicker* no campo do tipo Date
 campo_formulario :data_nascimento, as: :string, input_html: {class: "datepicker"}
 ```
 
-Para formatar a data na tabela, utilize o *date_format*
+Para formatar a data na tabela, utilize o *date_format*, com a chave de tradução.
 
 ```rb
-campo_tabela :created_at, date_format: "%d/%m/%Y"
+campo_tabela :created_at, date_format: "shared.data.default"
 ```
 
 Para ordernar a tabela por outro campo
@@ -238,13 +238,13 @@ links "acoes", partial: "/atendimentos/acoes"
 ## Retirando a opção de adicionar novo registro em relações *belongs_to*
 
 ```rb
-campo_formulario :papel, label: "Papel", label_method: :descricao, add_registro: false
+campo_formulario :papel, label_method: :descricao, add_registro: false
 ```
 
 ## Adicionar condição para mostrar um campo no formulário
 
 ```rb
-  campo_formulario :perfil, label: "Perfil", if: proc {|obj| Usuario.current.root? }
+  campo_formulario :perfil, if: proc {|obj| Usuario.current.root? }
 ```
 
 ## Manipulando *actions* padrão do RaroCrud
@@ -313,13 +313,13 @@ Não se esqueça de permitir os campos dos filhos no modelo do pai com _accepts_
   accepts_nested_attributes_for :subtopicos, :allow_destroy => true
 ```
 
-Caso deseja um label diferente para os botões Adicionar e Remover do grupo, basta adicionar o campo *sublabel*
+Caso deseja um label diferente para os botões Adicionar e Remover do grupo, basta adicionar o atributo *sublabel* com a chave da tradução
 
 ```rb
-  campo_formulario :dado_boleto, sublabel: "Boleto"
+  campo_formulario :dado_boleto, sublabel: "shared.boleto"
                    grupo: [{ campo: :banco, add_registro: false },
                            { campo: :conta },
-                           { campo: :observacao, label: "Instruções bancárias" }]
+                           { campo: :observacao }]
 ```
 
 # Configuração
@@ -336,6 +336,6 @@ TemplusModels.configure do |config|
 
   # Se for false, as rotas do rarocrud não serão adicionadas
   # default: true
-  config.add_routes = false
+  config.adicionar_rotas = false
 end
 ```

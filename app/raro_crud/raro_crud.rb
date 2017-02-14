@@ -244,6 +244,7 @@ class RaroCrud
 
   def self.campo_tabela nome, opts={}
     @@index_fields[self.to_s.to_sym] = [] unless @@index_fields[self.to_s.to_sym]
+    opts = set_default_label nome, opts
     @@index_fields[self.to_s.to_sym].push(
       {
         attribute: nome
@@ -270,6 +271,7 @@ class RaroCrud
 
   def self.campo_formulario nome, opts={}
     @@form_fields[self.to_s.to_sym] = [] unless @@form_fields[self.to_s.to_sym]
+    opts = set_default_label nome, opts
     if opts.present? && opts[:autocomplete].present?
       opts[:as] = :autocomplete
       label_method = opts[:autocomplete][:label_method] || opts[:autocomplete][:campo]
@@ -309,10 +311,18 @@ class RaroCrud
     end
     field[:grupo] = true
   end
+  
+  def set_default_label nome, opts
+    unless opts.has_key? :label
+      opts[:label] = "simple_form.labels.#{self.modelo.underscore}.#{nome}"
+    end
+    otps
+  end
 
   public
   def self.campo_visualizacao nome, opts = {}
     @@view_fields[self.to_s.to_sym] = [] unless @@view_fields[self.to_s.to_sym]
+    opts = set_default_label nome, opts
     @@view_fields[self.to_s.to_sym].push(
       {
         attribute: nome
@@ -322,6 +332,7 @@ class RaroCrud
 
   def self.campo_busca nome, opts = {}
     @@search_fields[self.to_s.to_sym] = [] unless @@search_fields[self.to_s.to_sym]
+    opts = set_default_label nome, opts
     @@search_fields[self.to_s.to_sym].push(
       {
         attribute: nome
@@ -331,6 +342,7 @@ class RaroCrud
 
   def self.campo_listagem nome, opts = {}
     @@listing_fields[self.to_s.to_sym] = [] unless @@listing_fields[self.to_s.to_sym]
+    opts = set_default_label nome, opts
     @@listing_fields[self.to_s.to_sym].push(
       {
         attribute: nome
@@ -340,6 +352,7 @@ class RaroCrud
 
   def self.campo_impressao nome, opts = {}
     @@printing_fields[self.to_s.to_sym] = [] unless @@printing_fields[self.to_s.to_sym]
+    opts = set_default_label nome, opts
     @@printing_fields[self.to_s.to_sym].push(
       {
         attribute: nome

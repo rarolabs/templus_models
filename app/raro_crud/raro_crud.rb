@@ -316,11 +316,11 @@ class RaroCrud
     field[:grupo] = true
   end
   
-  def set_default_label nome, opts
+  def self.set_default_label nome, opts
     unless opts.has_key? :label
       opts[:label] = "simple_form.labels.#{self.modelo.underscore}.#{nome}"
     end
-    otps
+    opts
   end
 
   public

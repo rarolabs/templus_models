@@ -339,3 +339,16 @@ TemplusModels.configure do |config|
   config.adicionar_rotas = false
 end
 ```
+
+## Agrupar campos do formulário
+Para agrupar campos de um formulário utilize o método _agrupar_campos_:
+
+```rb
+  agrupar_campos :documento do
+    campo_formulario :cpf_cnpj, label: I18n.t('simple_form.shared.nome')
+    campo_formulario :rg
+  end
+```
+
+## Separar campos do formulário
+Caso deseja inserir um *HR* entre campos do formulário utilize o método _separar_formulario_.

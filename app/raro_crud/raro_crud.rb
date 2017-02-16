@@ -1,4 +1,5 @@
 class RaroCrud
+  @agrupamento                = nil
   @@order_field               = {}
   @@per_page                  = {}
   @@index_fields              = {}
@@ -290,6 +291,9 @@ class RaroCrud
       end
       opts[:grupo] = true if opts[:grupo].present?
     end
+    if @agrupamento.present?
+      opts[:agrupamento] = @agrupamento
+    end
     @@form_fields[self.to_s.to_sym].push(
       {
         attribute: nome
@@ -417,6 +421,20 @@ class RaroCrud
 
   def self.escopos(scopes)
     @@scopes[self.to_s.to_sym] = scopes
+  end
+
+  def self.agrupar_campos(attribute, opts = {}, &block)
+    if opts[:label]
+      @agrupamento = opts[:label]
+    else
+      @agrupamento = "simple_form.labels.#{self.modelo.underscore}.#{attribute}"
+    end
+    block.call
+    @agrupamento = nil
+  end
+
+  def self.separar_formulario
+    @@form_fields[self.to_s.to_sym].last[:sf][:separador] = true
   end
 
   def self.grupo_formulario(attribute,name,fields=nil)

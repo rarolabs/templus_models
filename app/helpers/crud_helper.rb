@@ -212,7 +212,7 @@ module CrudHelper
     return true if crud_helper.condition_destroy_action.nil?
     crud_helper.condition_destroy_action.call(record)
   end
-  
+
   def should_listing?(crud_helper,model)
     return false unless can?(:read, model)
     return true if crud_helper.condition_listing_action.nil?

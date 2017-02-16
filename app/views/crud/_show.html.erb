@@ -11,11 +11,7 @@
 									<% next %>
 								<% end %>
 							<% end %>
-							<% if field[:sf].present? && field[:sf][:label].present? %>
-								<th><%= field[:sf][:label].to_s.mb_chars.upcase.to_s %></th>
-							<% else %>
-								<th><%= I18n.t("simple_form.labels.#{@model.name.underscore}.#{field[:attribute]}") %></th>
-							<% end %>
+							<th><%= I18n.t(field[:sf][:label]) %></th>
 
 							<% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type)%>
 								<% if field[:date_format].present?%>
@@ -56,7 +52,7 @@
 									<%= render_field_file(@record.send(field[:attribute])) %>
 								</td>
 							<% elsif ["false","true"].include? @record.send(field[:attribute]).to_s %>
-								<td><%=  @record.send(field[:attribute]) ? "Sim" : "Não" %></td>
+								<td><%= I18n.t(@record.send(field[:attribute]) ? "shared.sim" : "shared.nao") %></td>
 							<% else %>
 								<td>
 									<% if field[:sf].present? && field[:sf][:label_method].present? && @record.send(field[:attribute]).present?%>

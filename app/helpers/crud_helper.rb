@@ -120,6 +120,7 @@ module CrudHelper
     if field[:sf].present? && field[:sf][:if].present?
       return unless field[:sf][:if].call(f.object)
     end
+    field[:sf][:label] = I18n.t(field[:sf][:label])
     field[:sf][:hint] = false if field[:sf].present? && !field[:sf][:hint].present?
     if field[:sf].present? && field[:sf][:date_format].present? && f.object.send(field[:attribute]).present? && Date <= modelo.columns_hash[field[:attribute].to_s].type.to_s.camelcase.constantize
       field[:sf][:input_html] ||= {}
@@ -142,10 +143,10 @@ module CrudHelper
     else
       if field[:sf][:value] and field[:sf][:value].class == Proc
          field[:sf][:input_html] ||= {}
-         field[:sf][:input_html][:value] = f.instance_eval &field[:sf][:value]
+         field[:sf][:input_html][:value] = f.instance_eval(&field[:sf][:value])
       end
       if field[:sf][:collection_if] and field[:sf][:collection_if].class == Proc
-         field[:sf][:collection] = f.instance_eval &field[:sf][:collection_if]
+         field[:sf][:collection] = f.instance_eval(&field[:sf][:collection_if])
       end
       unless modelo.reflect_on_association(field[:attribute])
         if modelo.new.send(field[:attribute]).class.to_s =~ /Uploader/ and f.object.send(field[:attribute]).present?

@@ -1,3 +1,3 @@
 module TemplusModels
-  VERSION = "1.6.4"
+  VERSION = "3.0.0"
 end

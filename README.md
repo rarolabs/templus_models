@@ -66,7 +66,7 @@ class EmpresaCrud < RaroCrud
   campo_impressao :nome, label: "Nome"
   campo_impressao :contato, label: "Contato"
   campo_impressao :telefone, label: "Telefone"
-  campo_impressao :endereco, label: "Endereco"  
+  campo_impressao :endereco, label: "Endereco"
 
 end
 ```
@@ -312,3 +312,16 @@ Caso deseja um label diferente para os botões Adicionar e Remover do grupo, bas
                            {campo: :conta, label: "Conta"},
                            {campo: :observacao, label: "Instruções bancárias"}]
 ```
+
+## Agrupar campos do formulário
+Para agrupar campos de um formulário utilize o método _agrupar_campos_:
+
+```rb
+  agrupar_campos :documento do
+    campo_formulario :cpf_cnpj, label: I18n.t('simple_form.shared.nome')
+    campo_formulario :rg
+  end
+```
+
+## Separar campos do formulário
+Caso deseja inserir um *HR* entre campos do formulário utilize o método _separar_formulario_.

@@ -317,7 +317,7 @@ class RaroCrud
   end
   
   def self.set_default_label nome, opts
-    unless opts.has_key? :label
+    unless opts[:label].present?
       opts[:label] = "simple_form.labels.#{self.modelo.underscore}.#{nome}"
     end
     opts
@@ -473,9 +473,11 @@ class RaroCrud
     ].each do |field|
       attribute = field[:campo]
       field.delete(:campo)
+      field[:label] ||= "shared.#{attribute}"
       opts[:fields].push({attribute: attribute,sf: field})
     end
     opts[:grupo] = true
+    opts[:label] ||= "shared.adicionar_endereco"
     @@form_fields[self.to_s.to_sym].push(
       {
         attribute: :endereco

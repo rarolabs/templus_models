@@ -8,7 +8,7 @@
 <% end %>
 <%= f.simple_fields_for key do |g| %>
 	<div class="col-sm-12">
-		<h3><%= groups[:sublabel] || groups[:label] || I18n.t("simple_form.labels.#{modelo.name.underscore}.#{key}") %></h3>
+		<h3><%= I18n.t(groups[:label]) %></h3>
 	</div>
 	<% groups[:fields].each do |field| %>
 		<% if field[:sf].present? && field[:sf][:grupo].present? %>
@@ -24,7 +24,7 @@
 	<% if [:has_many,:has_and_belongs_to_many].include?(f.object.class.reflect_on_association(key).macro) %>
 		<div class="form-group">
 			<div class="col-sm-10 col-sm-offset-2">
-				<%= g.link_to_remove "Remover #{groups[:sublabel] || groups[:label].try(:downcase) || I18n.t("simple_form.labels.#{modelo.name.underscore}.#{key}")}" %>
+				<%= g.link_to_remove "Remover #{I18n.t(groups[:sublabel] || groups[:label])}" %>
 			</div>
 		</div>
 	<% end %>
@@ -32,7 +32,7 @@
 <% if [:has_many,:has_and_belongs_to_many].include?(f.object.class.reflect_on_association(key).macro) %>
 	<div class="form-group">
 		<div class="col-sm-12">
-			<%= f.link_to_add "Adicionar #{groups[:sublabel] || groups[:label].try(:downcase) || I18n.t("simple_form.labels.#{modelo.name.underscore}.#{key}")}", key %>
+			<%= f.link_to_add "Adicionar #{I18n.t(groups[:sublabel] || groups[:label])}", key %>
 		</div>
 	</div>
 <% end %>

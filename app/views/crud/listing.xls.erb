@@ -13,11 +13,7 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
 						<% next %>
 					<% end %>
 				<% end %>
-				<% if att[:sf].present? && att[:sf][:label].present? %>
-					<Cell><Data ss:Type="String"><%= att[:sf][:label].to_s.mb_chars.upcase.to_s %></Data></Cell>
-				<% else %>
-					<Cell><Data ss:Type="String"><%= I18n.t("simple_form.labels.#{@model.name.underscore}.#{att[:attribute]}") %></Data></Cell>
-				<% end %>
+				<Cell><Data ss:Type="String"><%= I18n.t(att[:sf][:label]) %></Data></Cell>
 			<% end %>
 		</Row>
 		<% @records.each do |record| %>
@@ -34,7 +30,7 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
 							<Cell><Data ss:Type="String"><%= record.send(att[:attribute]).map{|rec| rec.to_s}.join(",") %></Data></Cell>
 						<% else %>
 							<% if record.send(att[:attribute]).to_s == "false" or record.send(att[:attribute]).to_s == "true" %>
-								<Cell><Data ss:Type="String"><%=  record.send(att[:attribute]) ? "Sim" : "Não" %></Data></Cell>
+								<Cell><Data ss:Type="String"><%=  I18n.t(record.send(att[:attribute]) ? "shared.sim" : "shared.nao") %></Data></Cell>
 							<% elsif att[:sf][:label_method].present? %>
 								<Cell><Data ss:Type="String"><%=  record.send(att[:attribute]).send(att[:sf][:label_method]).to_s %></Data></Cell>
 							<% else %>

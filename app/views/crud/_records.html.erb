@@ -14,9 +14,9 @@
 						<% end %>
 						<th>
 							<% if att[:sort_field].present? %>
-								<%= sort_link @q, att[:sort_field], I18n.t("simple_form.labels.#{@model.name.underscore}.#{att[:attribute]}"), {},data: {push: 'partial', target: "#form"}%>
+								<%= sort_link @q, att[:sort_field], I18n.t(att[:label]), {},data: {push: 'partial', target: "#form"}%>
 							<% else %>
-								<%= sort_link @q, att[:attribute], I18n.t("simple_form.labels.#{@model.name.underscore}.#{att[:attribute]}"), {},data: {push: 'partial', target: "#form"}%>
+								<%= sort_link @q, att[:attribute], I18n.t(att[:label]), {},data: {push: 'partial', target: "#form"}%>
 							<% end %>
 						</th>
 					<%end%>

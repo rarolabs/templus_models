@@ -338,5 +338,9 @@ TemplusModels.configure do |config|
   # serão mostrados com ícones, ao invés de texto.
   # default: false
   config.usar_icones = true
+  
+  # Se for false, as rotas do rarocrud não serão adicionadas
+  # default: true
+  config.adicionar_rotas = false
 end
 ```

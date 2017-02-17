@@ -24,15 +24,4 @@ module TemplusModels
     end
   end
 
-  module Routes
-    @@registrar = true
-
-    def self.registrar
-      @@registrar
-    end
-
-    def self.registrar=(value)
-      @@registrar = value
-    end
-  end
 end

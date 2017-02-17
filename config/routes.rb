@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  if TemplusModels::Routes.registrar
+  if TemplusModels.configuration.registrar_rotas
     scope "(:locale)" do
       # Routes for RaroCrud
       get '/crud/:model' => "crud#index", as: :crud_models

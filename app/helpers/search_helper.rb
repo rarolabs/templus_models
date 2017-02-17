@@ -16,7 +16,7 @@ module SearchHelper
       "<div><input type='submit' class='btn btn-primary pull-right' value='#{name}' id='submit_raro_search'></div><br><br>"
     end
 
-    def raro_field (name, opts = {})
+    def raro_field(name, opts = {})
       modelo = opts[:model] || @model
       unless opts[:model]
         prototype = @model.columns_hash[name.to_s]
@@ -26,7 +26,7 @@ module SearchHelper
         modelo = Module.const_get(opts[:model])
         name = opts[:full_name]
       end
-      label = I18n.t("simple_form.labels.#{modelo.name.underscore}.#{name}")
+      label = "simple_form.labels.#{modelo.name.underscore}.#{name}"
       label = opts[:label] if opts[:label]
 
       @buffer << "<div class=\"form-group\">"
@@ -81,7 +81,7 @@ module SearchHelper
       case opts[:as]
       when :select
         if opts[:collection_if] and opts[:collection_if].class == Proc
-          opts[:collection] = ActionView::Helpers::FormBuilder.instance_eval &opts[:collection_if]
+          opts[:collection] = ActionView::Helpers::FormBuilder.instance_eval(&opts[:collection_if])
         end
         raro_select(name,opts,opts[:collection])
       when :hidden
@@ -115,7 +115,7 @@ module SearchHelper
       else
         buf << "<select name=#{name} class='form-control'>"
       end
-      buf <<"<option value ='' selected>#{I18n.t('search')}</option>"
+      buf << "<option value ='' selected>#{I18n.t('search')}</option>"
       collection.each do |e|
         buf << "<option value=#{e[0]}>#{e[1]}</option>"
       end
@@ -128,7 +128,7 @@ module SearchHelper
       if opts[:as] and opts[:as] == :hidden
         ""
       else
-      "<label class='col-sm-2 control-label'>#{name}</label>"
+      "<label class='col-sm-2 control-label'>#{I18n.t(name)}</label>"
       end
     end
 
@@ -227,9 +227,9 @@ module SearchHelper
       "<input type='hidden' name='partial' value='#{partial}'>" +
       "<input type='hidden' name='var' value='#{var}'>"
       if sort
-         buffer << "<input type='hidden' name='q[s]' value='#{sort}'>"
-       end
-       buffer
+        buffer << "<input type='hidden' name='q[s]' value='#{sort}'>"
+      end
+      buffer
     end
 
     def raro_after_form

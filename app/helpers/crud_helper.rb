@@ -110,12 +110,12 @@ module CrudHelper
     permissions.uniq.flatten
   end
 
-  def render_plus_button(field,f,modelo,record)
-    field[:sf][:wrapper] = :with_button
-    render_field(field,f,modelo,record)
+  def render_plus_button(field, f, modelo, record, options = {})
+    field[:sf][:wrapper] = options[:wrapper] || :with_button
+    render_field(field, f, modelo, record)
   end
 
-  def render_field(field,f,modelo,record)
+  def render_field(field, f, modelo, record)
     field[:sf][:wrapper] ||= :default
     if field[:sf].present? && field[:sf][:if].present?
       return unless field[:sf][:if].call(f.object)
@@ -211,7 +211,7 @@ module CrudHelper
     return true if crud_helper.condition_destroy_action.nil?
     crud_helper.condition_destroy_action.call(record)
   end
-  
+
   def should_listing?(crud_helper,model)
     return false unless can?(:read, model)
     return true if crud_helper.condition_listing_action.nil?

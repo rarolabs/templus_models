@@ -27,7 +27,7 @@ module SearchHelper
         name = opts[:full_name]
       end
       label = I18n.t("simple_form.labels.#{modelo.name.underscore}.#{name}")
-      label = opts[:label] if opts[:label]
+      label = I18n.t(opts[:label]) if opts[:label]
 
       @buffer << "<div class=\"form-group\">"
       @buffer << raro_label(label,opts)

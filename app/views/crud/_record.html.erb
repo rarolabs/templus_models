@@ -57,7 +57,11 @@
 		<div class="col-xs-9">
 			<%@crud_helper.actions.each do |a|%>
 				<% if ((a[2].present? && a[2].call(record)) || !a[2].present?) %>
-					<%= link_to I18n.t(a[1]), action_crud_path(model: @model.name.underscore, id: record.id, acao: a[0]), class: "btn btn-primary btn-xs", data: {push: "partial", target: "#form"}%>
+					<% if a[3] && a[3][:wiselink].present? && a[3][:wiselink] %>
+						<%= link_to I18n.t(a[1]), action_crud_path(model: @model.name.underscore, id: record.id, acao: a[0]), class: "btn btn-primary btn-xs", data: {push: "partial", target: "#form"} %>
+					<% else %>
+						<%= link_to I18n.t(a[1]), action_crud_path(model: @model.name.underscore, id: record.id, acao: a[0]), class: "btn btn-primary btn-xs" %>
+					<% end %>
 				<% end %>
 			<% end %>
 			<%@crud_helper.actions_links.each do |name, options|%>
@@ -71,15 +75,19 @@
 						<% end %>
 						<% if options[:wiselink].present? && options[:wiselink] %>
 							<a href="<%= url %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
-								<%=I18n.t(name)%>
+								<%= I18n.t(name)%>
 							</a>
 						<% else %>
 							<a href="<%= url %>" class="btn btn-success btn-xs">
-								<%=I18n.t(name)%>
+								<%= I18n.t(name)%>
 							</a>
 						<% end %>
 					<% elsif options[:associacao].present? %>
-						<%= link_to name, crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: "partial", target: "#form"} %>
+						<% if options[:wiselink].present? && options[:wiselink] %>
+							<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: "partial", target: "#form"} %>
+						<% else %>
+							<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs" %>
+						<% end %>
 					<% elsif options[:partial].present? %>
 						<%= render options[:partial], record: record %>
 					<% end %>

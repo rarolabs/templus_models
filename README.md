@@ -214,6 +214,13 @@ papeis/_associar.html.erb
 ```
 OBS: Caso você não necessite do template do RaroCrud, adicione somente o Conteudo HTML
 
+Se desejar que a requisição da ação seja *wiselinks*
+```rb
+class PapelCrud < RaroCrud
+acoes :associar, "Definir permissões", proc {|p| Usuario.current.ability.can?(:create,p)}, wiselink: true
+end
+```
+
 ## Adicionando links para cada registro
 
 ```rb

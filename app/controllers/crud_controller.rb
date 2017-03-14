@@ -1,5 +1,5 @@
 class CrudController < ApplicationController
-  before_filter :setup, except: :autocomplete
+  before_action :setup, except: :autocomplete
 
   private
   def setup

@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_filter :authenticate_usuario!, :unless => :devise_controller?
-  around_filter :set_current_usuario
-  
+  before_action :authenticate_usuario!, :unless => :devise_controller?
+  around_action :set_current_usuario
+
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
       format.html {
@@ -19,18 +19,18 @@ class ApplicationController < ActionController::Base
       }
     end
   end
-  
+
   def current_ability
     @current_ability ||= Ability.new(current_usuario)
   end
 
   def set_current_usuario
     Usuario.current = current_usuario
-    yield 
+    yield
   ensure
     Usuario.current = nil
   end
-  
+
   def query
     @resource = Module.const_get(params[:model].classify)
     @q = @resource.search(params[:q])
@@ -47,5 +47,5 @@ class ApplicationController < ActionController::Base
       render :partial => params[:partial]
     end
   end
-  
+
 end

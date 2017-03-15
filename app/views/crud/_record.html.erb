@@ -55,16 +55,15 @@
 	<%end%>
 	<td class="row">
 		<div class="col-xs-9">
-			<%@crud_helper.actions.each do |a|%>
-				<% if ((a[2].present? && a[2].call(record)) || !a[2].present?) %>
-					<% if a[3] && a[3][:wiselink].present? && a[3][:wiselink] %>
-						<%= link_to I18n.t(a[1]), action_crud_path(model: @model.name.underscore, id: record.id, acao: a[0]), class: "btn btn-primary btn-xs", data: {push: "partial", target: "#form"} %>
-					<% else %>
-						<%= link_to I18n.t(a[1]), action_crud_path(model: @model.name.underscore, id: record.id, acao: a[0]), class: "btn btn-primary btn-xs" %>
+			<% @crud_helper.actions.each do |action| %>
+				<% if ((action[:proc].present? && action[:proc].call(record)) || !action[:proc].present?) %>
+					<% if action[:options].present? && action[:options][:wiselink].present? && action[:options][:wiselink] %>
+						<% data = {push: "partial", target: "#form"} %>
 					<% end %>
+					<%= link_to I18n.t(action[:desc]), action_crud_path(model: @model.name.underscore, id: record.id, acao: action[:method]), class: "btn btn-primary btn-xs", data: data || {} %>
 				<% end %>
 			<% end %>
-			<%@crud_helper.actions_links.each do |name, options|%>
+			<% @crud_helper.actions_links.each do |name, options| %>
 				<% unless (options[:can].present? && !record.instance_eval(&options[:can])) %>
 					<% if options[:url].present? %>
 						<% url = options[:url] %>
@@ -75,11 +74,11 @@
 						<% end %>
 						<% if options[:wiselink].present? && options[:wiselink] %>
 							<a href="<%= url %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
-								<%= I18n.t(name)%>
+								<%= I18n.t(name) %>
 							</a>
 						<% else %>
 							<a href="<%= url %>" class="btn btn-success btn-xs">
-								<%= I18n.t(name)%>
+								<%= I18n.t(name) %>
 							</a>
 						<% end %>
 					<% elsif options[:associacao].present? %>

@@ -53,9 +53,9 @@ class RaroCrud
     (@@layout[self.to_s.to_sym]) ? @@layout[self.to_s.to_sym] : []
   end
 
-  def self.set_layout(desc,proc = nil)
+  def self.set_layout(desc, proc = nil)
     @@layout[self.to_s.to_sym] = [] unless @@layout[self.to_s.to_sym]
-    @@layout[self.to_s.to_sym] = [desc,proc]
+    @@layout[self.to_s.to_sym] = [desc, proc]
   end
 
   def self.condition_edit_action
@@ -404,19 +404,19 @@ class RaroCrud
     @@condition_printing_action[self.to_s.to_sym] = condicao
   end
 
-  def self.acoes(method,desc,proc = nil,options={})
+  def self.acoes(method, desc, proc = nil, options={})
     @@actions[self.to_s.to_sym] = [] unless @@actions[self.to_s.to_sym]
-    @@actions[self.to_s.to_sym].push([method,desc,proc,options])
+    @@actions[self.to_s.to_sym].push({method: method, desc: desc, proc: proc, options: options})
   end
 
-  def self.links(name,options)
+  def self.links(name, options)
     @@links[self.to_s.to_sym] = [] unless @@links[self.to_s.to_sym]
-    @@links[self.to_s.to_sym].push([name,options])
+    @@links[self.to_s.to_sym].push([name, options])
   end
 
-  def self.opcoes(link,desc,proc = nil)
+  def self.opcoes(link, desc, proc = nil)
     @@options_link[self.to_s.to_sym] = [] unless @@options_link[self.to_s.to_sym]
-    @@options_link[self.to_s.to_sym].push([link,desc,proc])
+    @@options_link[self.to_s.to_sym].push([link, desc, proc])
   end
 
   def self.escopos(scopes)
@@ -437,7 +437,7 @@ class RaroCrud
     @@form_fields[self.to_s.to_sym].last[:sf][:separador] = true
   end
 
-  def self.grupo_formulario(attribute,name,fields=nil)
+  def self.grupo_formulario(attribute, name, fields=nil)
     if fields.nil?
       fields = name
       name = attribute.to_s.singularize.titleize
@@ -454,7 +454,7 @@ class RaroCrud
           value[:sf][atr[0]] = atr[1]
         end
       end
-      @@form_group[self.to_s.to_sym][attribute][:fields].push({attribute: value[:attribute],sf: value[:sf]})
+      @@form_group[self.to_s.to_sym][attribute][:fields].push({attribute: value[:attribute], sf: value[:sf]})
     end
   end
 

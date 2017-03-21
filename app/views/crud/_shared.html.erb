@@ -59,6 +59,32 @@
 							<% end %>
 						</div>
 					<% elsif is_action_show? %>
+						<% @crud_helper.actions_links.each do |name, options| %>
+							<% unless (options[:can].present? && !@record.instance_eval(&options[:can])) %>
+								<% if options[:url].present? %>
+									<% url = options[:url] %>
+									<% if options[:id] %>
+										<% url += options[:url].include?("?") ? "&id=#{@record.id}" : "?id=#{@record.id}" %>
+									<% else url.include?(":id") %>
+										<% url = url.gsub(":id", "#{@record.id}") %>
+									<% end %>
+									<% if options[:wiselink].present? && options[:wiselink] %>
+										<a href="<%= url %>" class="btn btn-success btn-xs pull-right m-l-xs" data-push="partial" data-target="#form">
+											<%= I18n.t(name) %>
+										</a>
+									<% else %>
+										<a href="<%= url %>" class="btn btn-success btn-xs pull-right m-l-xs">
+											<%= I18n.t(name) %>
+										</a>
+									<% end %>
+								<% elsif options[:partial].present? %>
+									<div class="pull-right m-l-xs">
+										<%= render options[:partial], record: @record, action: :show %>
+									</div>
+								<% end %>
+							<% end %>
+						<% end %>
+
 						<% if (@crud_helper.present? && @crud_helper.destroy_action) && should_destroy?(@crud_helper, @record) %>
 							<% if @crud_associacao.present? %>
 								<%= link_to I18n.t("destroy"), destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: @record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs pull-right m-l-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
@@ -82,7 +108,7 @@
 								<%= link_to printing_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q], format: :pdf), class: "btn btn-success btn-xs pull-right m-l-xs", target: "_blank" do %>
 									<%= I18n.t("devise.printing").html_safe %>
 								<% end %>
-							<% end %>	
+							<% end %>
 						<% end %>
 					<% end %>
 				</div>

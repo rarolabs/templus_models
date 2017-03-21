@@ -56,9 +56,21 @@
 							<% else %>
 								<td>
 									<% if field[:sf].present? && field[:sf][:label_method].present? && @record.send(field[:attribute]).present?%>
-										<%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
+										<% if @model.reflect_on_association(field[:attribute]) && field[:sf][:link_associacao] %>
+											<%= link_to crud_model_path(model: @model.reflect_on_association(field[:attribute]).class_name.to_s.underscore, id: @record.send(field[:attribute]).id) do %>
+												<%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
+											<% end %>
+										<% else %>
+											<%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
+										<% end %>
 									<% else %>
-										<%= @record.send(field[:attribute]) %>
+										<% if @model.reflect_on_association(field[:attribute]) && field[:sf][:link_associacao] %>
+											<%= link_to crud_model_path(model: @model.reflect_on_association(field[:attribute]).class_name.to_s.underscore, id: @record.send(field[:attribute]).id) do %>
+												<%= @record.send(field[:attribute]).to_s %>
+											<% end %>
+										<% else %>
+											<%= @record.send(field[:attribute]).to_s %>
+										<% end %>
 									<% end %>
 								</td>
 							<% end %>

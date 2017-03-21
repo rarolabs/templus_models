@@ -178,7 +178,9 @@ module CrudHelper
       if is_active_action("printing")
         wicked_pdf_image_tag(field.url(:thumb))
       else
-        image_tag(field.url(:thumb))
+        link_to field.url, target: "_blank" do
+          image_tag(field.url(:thumb))
+        end
       end
 		elsif video?(field)
 			link_to field, field.url, target: "_blank"

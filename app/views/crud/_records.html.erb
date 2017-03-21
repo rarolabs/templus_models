@@ -14,7 +14,11 @@
 						<% end %>
 						<th>
 							<% if att[:sort_field].present? %>
-								<%= sort_link @q, att[:sort_field], I18n.t(att[:label]), {},data: {push: 'partial', target: "#form"}%>
+								<% if att[:sort_field] == :false %>
+									<%= I18n.t(att[:label]) %>
+								<% else %>
+									<%= sort_link @q, att[:sort_field], I18n.t(att[:label]), {},data: {push: 'partial', target: "#form"}%>
+								<% end %>
 							<% else %>
 								<%= sort_link @q, att[:attribute], I18n.t(att[:label]), {},data: {push: 'partial', target: "#form"}%>
 							<% end %>
@@ -44,12 +48,12 @@
 		  var current = headrow;
 		  theadtxt[x].push(current.innerHTML);
 		}
-	} 
+	}
 	for (var v = 0, tbody; tbody = tablebody[v]; v++) {
 		for (var x = 0, row; row = tbody.rows[x]; x++) {
 		  for (var j = 0, col; col = row.cells[j]; j++) {
             col.insertAdjacentHTML('afterbegin', '<div class="col-xs-3 no-padding">' + theadtxt[v][j] + '</div>');
-		  } 
+		  }
 		}
 	}
 </script>

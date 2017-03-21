@@ -20,7 +20,13 @@
 				<td class="row">
 					<% record.send(att[:attribute]).each do |rec| %>
 						<li>
-							<%= rec.to_s %>
+							<% if att[:link_associacao] %>
+								<%= link_to crud_model_path(model: rec.class_name.to_s.underscore, id: rec.id) do %>
+									<%= rec.to_s %>
+								<% end %>
+							<% else %>
+								<%= rec.to_s %>
+							<% end %>
 						</li>
 					<% end %>
 				</td>
@@ -33,7 +39,11 @@
 					<% end %>
 				</td>
 			<% elsif record.send(att[:attribute]).respond_to?(:url) and record.send(att[:attribute]).url(:thumb) %>
-				<td class="row"><%=  image_tag(record.send(att[:attribute]).url(:thumb)) %></td>
+				<td class="row">
+					<%= link_to record.send(att[:attribute]).url, target: "_blank" do %>
+						<%= image_tag(record.send(att[:attribute]).url(:thumb)) %>
+					<% end %>
+				</td>
 			<% else %>
 				<% if record.send(att[:attribute]).to_s == "false" or record.send(att[:attribute]).to_s == "true" %>
 					<td class="row">
@@ -44,7 +54,23 @@
 				<% else %>
 					<td class="row">
 						<div class="col-xs-9">
-							<%=  record.send(att[:attribute]).to_s %>
+							<% if att[:label_method].present? && record.send(att[:attribute]).present?%>
+								<% if @model.reflect_on_association(att[:attribute]) && att[:link_associacao] %>
+									<%= link_to crud_model_path(model: @model.reflect_on_association(att[:attribute]).class_name.to_s.underscore, id: record.send(att[:attribute]).id) do %>
+										<%= record.send(att[:attribute]).send(att[:label_method]) %>
+									<% end %>
+								<% else %>
+									<%= record.send(att[:attribute]).send(att[:label_method]) %>
+								<% end %>
+							<% else %>
+								<% if @model.reflect_on_association(att[:attribute]) && att[:link_associacao] %>
+									<%= link_to crud_model_path(model: @model.reflect_on_association(att[:attribute]).class_name.to_s.underscore, id: record.send(att[:attribute]).id) do %>
+										<%= record.send(att[:attribute]).to_s %>
+									<% end %>
+								<% else %>
+									<%= record.send(att[:attribute]).to_s %>
+								<% end %>
+							<% end %>
 						</div>
 					</td>
 				<% end %>
@@ -88,7 +114,7 @@
 							<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs" %>
 						<% end %>
 					<% elsif options[:partial].present? %>
-						<%= render options[:partial], record: record %>
+						<%= render options[:partial], record: record, action: :index %>
 					<% end %>
 				<% end %>
 			<% end %>

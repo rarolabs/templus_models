@@ -344,11 +344,6 @@ class RaroCrud
     )
   end
 
-  def self.campo_listagem(nome, opts = {})
-    warn "[DEPRECATION] o método `campo_listagem` será removido em uma versão futura. Utilize o método `relatorio_listagem`."
-    relatorio_listagem(nome, opts)
-  end
-
   def self.relatorio_listagem(nome, opts = {})
     @@listing_fields[self.to_s.to_sym] ||= []
     opts = set_default_label nome, opts
@@ -357,11 +352,6 @@ class RaroCrud
         attribute: nome
       }.merge({sf: opts})
     )
-  end
-
-  def self.campo_impressao(nome, opts = {})
-    warn "[DEPRECATION] o método `campo_impressao` será removido em uma versão futura. Utilize o método `relatorio_impressao`."
-    relatorio_impressao(nome, opts)
   end
 
   def self.relatorio_impressao(nome, opts = {})

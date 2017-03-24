@@ -72,13 +72,9 @@
                     <% url = url.gsub(":id", "#{@record.id}") %>
                   <% end %>
                   <% if options[:wiselink].present? && options[:wiselink] %>
-                    <a href="<%= url %>" class="btn btn-success btn-xs pull-right m-l-xs" data-push="partial" data-target="#form">
-                      <%= I18n.t(name) %>
-                    </a>
+                    <%= link_to t('name'), url, class: 'btn btn-success btn-xs pull-right m-l-xs', data: { push: 'partial', target: '#form' } %>
                   <% else %>
-                    <a href="<%= url %>" class="btn btn-success btn-xs pull-right m-l-xs">
-                      <%= I18n.t(name) %>
-                    </a>
+                    <%= link_to t(name), url, class: 'btn btn-success btn-xs pull-right m-l-xs' %>
                   <% end %>
                 <% elsif options[:partial].present? %>
                   <div class="pull-right m-l-xs">

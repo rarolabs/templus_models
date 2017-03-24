@@ -359,3 +359,24 @@ Para agrupar campos de um formulário utilize o método _agrupar_campos_:
 
 ## Separar campos do formulário
 Caso deseja inserir um *HR* entre campos do formulário utilize o método _separar_formulario_.
+
+## Impressão de PDF
+
+É possível gerar um PDF com os dados de um registro. Para gerar o PDF utilize o método `relatorio_impressao`:
+
+```
+relatorio_impressao :nome
+relatorio_impressao :email
+```
+O link para gerar o PDF fica na view `show`, ao lado dos links de editar e excluir o registro.
+
+
+## Listagem em Excel
+
+É possível gerar um arquivo excel a partir da `index` de um rarocrud. Utilize o método `relatorio_listagem` para isso:
+
+```
+relatorio_listagem :nome
+relatorio_listagem :email
+```
+O link para gerar o PDF fica na view `index`.

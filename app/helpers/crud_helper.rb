@@ -196,43 +196,43 @@ module CrudHelper
   end
 
   #Permissions
-  def should_view?(crud_helper,record)
+  def should_view?(crud_helper, record)
     return false unless can?(:read, record)
     return true if crud_helper.condition_view_action.nil?
     crud_helper.condition_view_action.call(record)
   end
 
-  def should_edit?(crud_helper,record)
+  def should_edit?(crud_helper, record)
     return false unless can?(:update, record)
     return true if crud_helper.condition_edit_action.nil?
     crud_helper.condition_edit_action.call(record)
   end
 
-  def should_destroy?(crud_helper,record)
+  def should_destroy?(crud_helper, record)
     return false unless can?(:destroy, record)
     return true if crud_helper.condition_destroy_action.nil?
     crud_helper.condition_destroy_action.call(record)
   end
 
-  def should_listing?(crud_helper,model)
+  def should_listing?(crud_helper, model)
     return false unless can?(:read, model)
     return true if crud_helper.condition_listing_action.nil?
     crud_helper.condition_listing_action.call(model)
   end
 
-  def should_listing_excel?(crud_helper,model)
+  def should_listing_excel?(crud_helper, model)
     return false unless can?(:read, model)
     return true if crud_helper.condition_listing_excel.nil?
     crud_helper.condition_listing_excel.call(model)
   end
 
-  def should_listing_pdf?(crud_helper,model)
+  def should_listing_pdf?(crud_helper, model)
     return false unless can?(:read, model)
     return true if crud_helper.condition_listing_pdf.nil?
     crud_helper.condition_listing_pdf.call(model)
   end
 
-  def should_printing?(crud_helper,record)
+  def can_print_pdf?(crud_helper, record)
     return false unless can?(:read, record)
     return true if crud_helper.condition_printing_action.nil?
     crud_helper.condition_printing_action.call(record)

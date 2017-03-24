@@ -13,7 +13,7 @@
       </div>
       <table class="table table-bordered table-striped">
         <tbody>
-          <% @crud_helper.view_fields.each do |field|%>
+          <% @crud_helper.printing_fields.each do |field| %>
             <tr>
               <% if field[:sf].present? && !field[:sf][:visible_if].nil?%>
                 <% if ((field[:sf][:visible_if].class == Proc && !field[:sf][:visible_if].call(@record)) || (field[:sf][:visible_if].class != Proc && !field[:sf][:visible_if])) %>

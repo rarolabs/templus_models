@@ -265,7 +265,7 @@ DEPENDENCIES
   cancancan
   capistrano
   capistrano-unicorn
-  carrierwave (~> 1.0)
+  carrierwave
   coffee-rails (~> 4.2)
   database_cleaner (~> 1.5.3)
   devise

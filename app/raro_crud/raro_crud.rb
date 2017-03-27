@@ -9,6 +9,8 @@ class RaroCrud
   @@view_fields               = {}
   @@listing_fields            = {}
   @@printing_fields           = {}
+  @@logo_printing_field       = {}
+  @@titulo_printing_field     = {}
   @@search_fields             = {}
   @@test_fields               = {}
   @@top_links                 = {}
@@ -180,6 +182,14 @@ class RaroCrud
     @@printing_fields[self.to_s.to_sym] || []
   end
 
+  def self.logo_printing_field
+    @@logo_printing_field[self.to_s.to_sym]
+  end
+
+  def self.titulo_printing_field
+    @@titulo_printing_field[self.to_s.to_sym]
+  end
+
   def self.search_fields
     @@search_fields[self.to_s.to_sym] || []
   end
@@ -236,6 +246,41 @@ class RaroCrud
       attribute: nome,
       sf: opts
     })
+  end
+
+  def self.relatorio_impressao_logo(field_or_url = nil, options = {})
+    url = nil
+    field = nil
+    if field_or_url.blank?
+      url = Templus.logo
+    elsif field_or_url.is_a?(String)
+      url = field_or_url
+    else
+      field = field_or_url
+    end
+
+    @@logo_printing_field[self.to_s.to_sym] = {
+      url: url,
+      field: field,
+      sf: options
+    }
+  end
+
+  def self.relatorio_impressao_titulo(field_or_string = nil)
+    field = nil
+    titulo = nil
+    if field_or_string.blank?
+      titulo = Templus.nome_aplicacao
+    elsif field_or_string.is_a?(String)
+      titulo = field_or_string
+    else
+      field = field_or_string
+    end
+
+    @@titulo_printing_field[self.to_s.to_sym] = {
+      field: field,
+      titulo: titulo
+    }
   end
 
   def self.sem_visualizacao

@@ -15,13 +15,13 @@
         <% end %>
         <%= raro_search_form(@model, 'records','records', url) do %>
           <% raro_group "#{@crud_helper.title}" %>
-          <%@crud_helper.search_fields.each do |att| %>
+          <% @crud_helper.search_fields.each do |att| %>
             <% if att[:sf].present? && !att[:sf][:visible_if].nil? %>
               <% if ((att[:sf][:visible_if].class == Proc && !att[:sf][:visible_if].call(att)) || (att[:sf][:visible_if].class != Proc && !att[:sf][:visible_if])) %>
                 <% next %>
               <% end %>
             <% end %>
-            <%raro_field att[:attribute], att[:sf]%>
+            <% raro_field att[:attribute], att[:sf] %>
           <%end%>
         <%end%>
       </div>

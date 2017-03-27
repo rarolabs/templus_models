@@ -360,7 +360,8 @@ Para agrupar campos de um formulário utilize o método _agrupar_campos_:
 ## Separar campos do formulário
 Caso deseja inserir um *HR* entre campos do formulário utilize o método _separar_formulario_.
 
-## Impressão de registro em PDF
+
+## Impressão de PDF
 
 É possível gerar um PDF com os dados de um registro. Para gerar o PDF utilize o método `relatorio_impressao`:
 
@@ -370,15 +371,51 @@ relatorio_impressao :email
 ```
 O link para gerar o PDF fica na view `show`, ao lado dos links de editar e excluir o registro.
 
+Para atributos que são imagens (CarrierWave), o RaroCrud irá colocar um link para a imagem. É possível renderizar a
+imagem passando a opção `render: true`:
 
-## Listagem dos registros em Excel
+```
+relatorio_impressao :logo, render: true
+```
 
-É possível gerar uma listagem dos registros de um CRUD em Excel. Utilize o método `relatorio_listagem` para isso:
+### Adicionar imagem no cabeçalho
+
+Para adicionar uma imagem no cabeçalho do relatório em PDF deve ser utilizado o método `relatorio_impressao_logo`, que possui 3 assinaturas:
+
+* quando chamado sem nenhum argumento, irá renderizar a imagem `Templus.logo`.
+* quando chamado com uma string, a imagem será renderizada através do helper `image_tag`, e vai buscar a imagem no asset pipeline.
+* quando chamado com um símbolo, esse símbolo será interpretado como um atributo do model que representa uma imagem (CarrierWave).
+
+Exemplos:
+
+```
+relatorio_impressao_logo
+relatorio_impressao_logo :logotipo
+relatorio_impressao_logo 'imagem.png'
+```
+
+### Adicionar título ao cabeçalho
+
+Para adicionar um título no cabeçalho do relatório em PDF deve ser utilizado o método `relatorio_impressao_titulo`, que possui 3 assinaturas:
+
+* quando chamado sem nenhum argumento, irá utilizar o valor `Templus.nome_aplicacao`.
+* quando chamado com uma string, essa string será utilizada com título.
+* quando chamado com um símbolo, esse símbolo será interpretado como um atributo ou método do model, e o valor retornado pelo atributo ou método será utilizado no título.
+
+Exemplos:
+
+```
+relatorio_impressao_titulo
+relatorio_impressao_titulo :descricao
+relatorio_impressao_titulo 'Título do PDF'
+```
+
+## Listagem em Excel
+
+É possível gerar um arquivo excel a partir da `index` de um rarocrud. Utilize o método `relatorio_listagem` para isso:
 
 ```
 relatorio_listagem :nome
 relatorio_listagem :email
-relatorio_listagem :telefone
 ```
-
-Os links para gerar as listagens ficam na view `index`.
+O link para gerar o Excel fica na view `index`.

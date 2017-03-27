@@ -269,11 +269,9 @@ class RaroCrud
   def self.relatorio_impressao_titulo(field_or_string = nil)
     field = nil
     titulo = nil
-    if field_or_string.blank?
-      titulo = Templus.nome_aplicacao
-    elsif field_or_string.is_a?(String)
+    if field_or_string.is_a?(String)
       titulo = field_or_string
-    else
+    elsif field_or_string.present?
       field = field_or_string
     end
 

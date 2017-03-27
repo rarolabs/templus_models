@@ -20,9 +20,11 @@
               <div class="col-xs-9">
                 <h1>
                   <% if @crud_helper.titulo_printing_field[:titulo].present? %>
-                    <%= @crud_helper.titulo_printing_field[:titulo] %>
-                  <% else %>
+                    <%= t(@crud_helper.titulo_printing_field[:titulo]) %>
+                  <% elsif @crud_helper.titulo_printing_field[:field].present? %>
                     <%= @record.send(@crud_helper.titulo_printing_field[:field]) %>
+                  <% else %>
+                    <%= Templus.nome_aplicacao %>
                   <% end %>
                 </h1>
               </div>
@@ -82,10 +84,12 @@
                     <li><%= rec.to_s %></li>
                   <% end %>
                 </td>
-              <% elsif possui_url?(@record, field[:attribute]) && deve_renderizar_imagem?(field[:sf]) %>
-                <td>
-                  <%= render_field_file(@record.send(field[:attribute])) %>
-                </td>
+              <% elsif possui_url?(@record, field[:attribute]) %>
+                <% if deve_renderizar_imagem?(field[:sf]) %>
+                  <td><%= render_field_file(@record.send(field[:attribute])) %></td>
+                <% else %>
+                  <td><%= @record.send(field[:attribute]).url %></td>
+                <% end %>
               <% elsif boolean?(@record, field[:attribute]) %>
                 <td><%= I18n.t(@record.send(field[:attribute]) ? "shared.sim" : "shared.nao") %></td>
               <% else %>

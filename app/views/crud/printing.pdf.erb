@@ -66,8 +66,12 @@
                   <% @record.send(field[:attribute]).each do |rec| %>
                   <li>
                     <% if field[:sf].present? && field[:sf][:label_method].present? %>
-                      <% if possui_url?(rec, field[:sf][:label_method]) && deve_renderizar_imagem?(field[:sf]) %>
-                        <%= render_field_file(rec.send(field[:sf][:label_method])) %>
+                      <% if possui_url?(rec, field[:sf][:label_method]) %>
+                        <% if deve_renderizar_imagem?(field[:sf]) %>
+                          <%= render_field_file(rec.send(field[:sf][:label_method])) %>
+                        <% else %>
+                          <%= rec.send(field[:sf][:label_method]).url %>
+                        <% end %>
                       <% else %>
                         <%= rec.send(field[:sf][:label_method]) %>
                       <% end %>

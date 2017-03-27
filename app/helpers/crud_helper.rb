@@ -174,7 +174,7 @@ module CrudHelper
   end
 
   def render_field_file(field)
-		if imagem?(field) && field.url(:thumb)
+		if imagem?(field) && field.respond_to?(:thumb)
       if is_active_action("printing")
         pdf_image_tag(field)
       else

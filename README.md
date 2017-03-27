@@ -77,7 +77,7 @@ Caso deseja customizar pode ser adicionar um label
 ```rb
 campo_formulario :nome, label: "shared.nome"
 ```
- 
+
 OBS: Isso serve para *campo_tabela*, *campo_formulario*, *campo_visualizacao*, *campo_busca*, *campo_listagem* e *campo_impressão*
 
 
@@ -338,9 +338,30 @@ TemplusModels.configure do |config|
   # serão mostrados com ícones, ao invés de texto.
   # default: false
   config.usar_icones = true
-  
+
   # Se for false, as rotas do rarocrud não serão adicionadas
   # default: true
   config.adicionar_rotas = false
 end
 ```
+
+## Impressão de PDF
+
+É possível gerar um PDF com os dados de um registro. Para gerar o PDF utilize o método `relatorio_impressao`:
+
+```
+relatorio_impressao :nome
+relatorio_impressao :email
+```
+O link para gerar o PDF fica na view `show`, ao lado dos links de editar e excluir o registro.
+
+
+## Listagem em Excel
+
+É possível gerar um arquivo excel a partir da `index` de um rarocrud. Utilize o método `relatorio_listagem` para isso:
+
+```
+relatorio_listagem :nome
+relatorio_listagem :email
+```
+O link para gerar o PDF fica na view `index`.

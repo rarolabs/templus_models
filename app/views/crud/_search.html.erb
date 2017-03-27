@@ -1,30 +1,30 @@
 <div class="modal inmodal" id="modal_search" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content animated bounceInRight">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><%= I18n.t("close") %></span></button>
-				<i class="fa fa-search modal-icon"></i>
-				<h4 class="modal-title"><%= I18n.t("search") %></h4>
-				<small class="font-bold"></small>
-			</div>
-			<div class="modal-body">
-				<% if @crud_associacao.present? %>
-					<% url = query_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao]) %>
-				<% else %>
-					<% url = query_crud_path(model: @model.name.underscore) %>
-				<% end %>
-				<%=raro_search_form(@model, 'records','records', url) do%>
-					<%raro_group "#{@crud_helper.title}"%>
-					<%@crud_helper.search_fields.each do |att| %>
-						<% if att[:sf].present? && !att[:sf][:visible_if].nil?%>
-							<% if ((att[:sf][:visible_if].class == Proc && !att[:sf][:visible_if].call(att)) || (att[:sf][:visible_if].class != Proc && !att[:sf][:visible_if])) %>
-								<% next %>
-							<% end %>
-						<% end %>
-						<%raro_field att[:attribute], att[:sf]%>
-					<%end%>
-				<%end%>
-			</div>
-		</div>
-	</div>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content animated bounceInRight">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><%= I18n.t("close") %></span></button>
+        <i class="fa fa-search modal-icon"></i>
+        <h4 class="modal-title"><%= I18n.t("search") %></h4>
+        <small class="font-bold"></small>
+      </div>
+      <div class="modal-body">
+        <% if @crud_associacao.present? %>
+          <% url = query_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao]) %>
+        <% else %>
+          <% url = query_crud_path(model: @model.name.underscore) %>
+        <% end %>
+        <%=raro_search_form(@model, 'records','records', url) do%>
+          <%raro_group "#{@crud_helper.title}"%>
+          <%@crud_helper.search_fields.each do |att| %>
+            <% if att[:sf].present? && !att[:sf][:visible_if].nil?%>
+              <% if ((att[:sf][:visible_if].class == Proc && !att[:sf][:visible_if].call(att)) || (att[:sf][:visible_if].class != Proc && !att[:sf][:visible_if])) %>
+                <% next %>
+              <% end %>
+            <% end %>
+            <%raro_field att[:attribute], att[:sf]%>
+          <%end%>
+        <%end%>
+      </div>
+    </div>
+  </div>
 </div>

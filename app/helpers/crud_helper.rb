@@ -1,11 +1,11 @@
 module CrudHelper
 
   def is_active_controller(controller_name)
-      params[:controller] == controller_name ? "active" : nil
+    params[:controller] == controller_name ? "active" : nil
   end
 
   def is_active_action(action_name)
-      params[:action] == action_name ? "active" : nil
+    params[:action] == action_name ? "active" : nil
   end
 
   def is_raro_crud(classe)
@@ -224,12 +224,6 @@ module CrudHelper
     return false unless can?(:read, model)
     return true if crud_helper.condition_listing_excel.nil?
     crud_helper.condition_listing_excel.call(model)
-  end
-
-  def should_listing_pdf?(crud_helper, model)
-    return false unless can?(:read, model)
-    return true if crud_helper.condition_listing_pdf.nil?
-    crud_helper.condition_listing_pdf.call(model)
   end
 
   def can_print_pdf?(crud_helper, record)

@@ -8,8 +8,6 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
 	<Table>
 		<Row>
 			<% @crud_helper.listing_fields.each do |att| %>
-        <% next if att[:sf][:only] == :pdf %>
-
 				<% if !att[:visible_if].nil?%>
 					<% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
 						<% next %>
@@ -21,8 +19,6 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
 		<% @records.each do |record| %>
 			<Row>
 				<% @crud_helper.listing_fields.each do |att| %>
-          <% next if att[:sf][:only] == :pdf %>
-
 					<% if record.send(att[:attribute]).present? or record.send(att[:attribute]).to_s == "false"%>
 						<% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
 								<% if att[:date_format].present?%>

@@ -176,7 +176,7 @@ module CrudHelper
   def render_field_file(field)
 		if imagem?(field) && field.url(:thumb)
       if is_active_action("printing")
-        wicked_pdf_image_tag(field.url(:thumb))
+        pdf_image_tag(field)
       else
         image_tag(field.url(:thumb))
       end
@@ -230,5 +230,31 @@ module CrudHelper
     return false unless can?(:read, record)
     return true if crud_helper.condition_printing_action.nil?
     crud_helper.condition_printing_action.call(record)
+  end
+
+
+  private
+
+  def pdf_image_tag(field, options = {})
+    if Rails.env.development? || Rails.env.test?
+      # Unless running a web server that can process 2 requests at the same
+      # time, trying to insert an image in a PDF creates a deadlock: the server
+      # can't finish processing the PDF request until it gets the image, but it
+      # can't start processing the image request until it has finished
+      # processing the PDF request.
+      # This will not be a problem in production, but in dev, a workaround is
+      # to base64 the image and insert its contents into the HTML
+      if field.respond_to?(:thumb)
+        image_data = File.read(field.thumb.path)
+      else
+        image_data = Rails.application.assets[field].to_s
+      end
+      image_tag("data:image/png;base64,#{::Base64.encode64(image_data)}", options)
+    else
+      if field.respond_to?(:thumb)
+        field = field.thumb.url
+      end
+      wicked_pdf_image_tag(field, options)
+    end
   end
 end

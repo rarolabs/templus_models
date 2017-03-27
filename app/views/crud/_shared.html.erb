@@ -26,32 +26,26 @@
           <% end %>
 
 
-          <% if (@crud_helper.present? && (is_action_index? || is_action_query?))%>
+          <% if @crud_helper.present? && (is_action_index? || is_action_query?) %>
             <div class="pull-right actions">
               <% @crud_helper.top_links.each do |link| %>
                 <% if link[:can].present? %>
-                  <%=render_link(link,@clean_url) if self.instance_eval &link[:can]%>
+                  <%= render_link(link,@clean_url) if self.instance_eval &link[:can] %>
                 <% else %>
-                  <%=render_link(link,@clean_url)%>
+                  <%= render_link(link,@clean_url) %>
                 <% end %>
-              <%end%>
+              <% end %>
               <% if params[:associacao] %>
-                <% if @crud_helper.listing_fields.present? && should_listing?(@crud_helper, @model_permission) %>
+                <% if @crud_helper.listing_fields.present? && should_listing?(@crud_helper, @model_permission) && should_listing_excel?(@crud_helper, @model_permission) %>
                   <%= link_to listing_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], q: params[:q], format: :xls), class: "btn btn-success btn-rounded" do %>
                     <%= I18n.t("devise.reports.excel").html_safe %>
-                  <% end if should_listing_excel?(@crud_helper, @model_permission) %>
-                          <%= link_to listing_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], q: params[:q], format: :pdf), class: "btn btn-success btn-rounded", target: '_blank' do %>
-                    <%= I18n.t("devise.reports.pdf").html_safe %>
-                  <% end if should_listing_pdf?(@crud_helper, @model_permission) %>
+                  <% end %>
                 <% end %>
               <% else %>
-                <% if @crud_helper.listing_fields.present? && should_listing?(@crud_helper, @model) %>
+                <% if @crud_helper.listing_fields.present? && should_listing?(@crud_helper, @model) && should_listing_excel?(@crud_helper, @model) %>
                   <%= link_to listing_crud_path(model: @model.name.underscore, q: params[:q], format: :xls), class: "btn btn-success btn-rounded" do %>
                     <%= I18n.t("devise.reports.excel").html_safe %>
-                  <% end if should_listing_excel?(@crud_helper, @model) %>
-                          <%= link_to listing_crud_path(model: @model.name.underscore, q: params[:q], target: '_blank', format: :pdf), class: "btn btn-success btn-rounded", target: '_blank' do %>
-                    <%= I18n.t("devise.reports.pdf").html_safe %>
-                  <% end if should_listing_pdf?(@crud_helper, @model) %>
+                  <% end %>
                 <% end %>
               <% end %>
               <% if @crud_helper.search_fields.present? %>

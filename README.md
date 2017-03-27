@@ -372,7 +372,7 @@ relatorio_impressao :email
 O link para gerar o PDF fica na view `show`, ao lado dos links de editar e excluir o registro.
 
 Para atributos que são imagens (CarrierWave), o RaroCrud irá colocar um link para a imagem. É possível renderizar a
-imagem passando a opção `render: true`:
+imagem passando a opção `render: true`. OBS: para a imagem ser renderizada, é necessário que ela tenha uma versão `thumb`.
 
 ```
 relatorio_impressao :logo, render: true

@@ -399,7 +399,7 @@ relatorio_impressao_logo 'imagem.png'
 Para adicionar um título no cabeçalho do relatório em PDF deve ser utilizado o método `relatorio_impressao_titulo`, que possui 3 assinaturas:
 
 * quando chamado sem nenhum argumento, irá utilizar o valor `Templus.nome_aplicacao`.
-* quando chamado com uma string, essa string será utilizada com título.
+* quando chamado com uma string, essa string será a chave de tradução para o título. Essa chave deverá ser criada nos arquivos de tradução.
 * quando chamado com um símbolo, esse símbolo será interpretado como um atributo ou método do model, e o valor retornado pelo atributo ou método será utilizado no título.
 
 Exemplos:
@@ -407,7 +407,7 @@ Exemplos:
 ```
 relatorio_impressao_titulo
 relatorio_impressao_titulo :descricao
-relatorio_impressao_titulo 'Título do PDF'
+relatorio_impressao_titulo 'views.pdf.titulo'
 ```
 
 ## Listagem em Excel

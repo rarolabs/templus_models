@@ -5,44 +5,44 @@ xmlns:x="urn:schemas-microsoft-com:office:excel"
 xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
 xmlns:html="http://www.w3.org/TR/REC-html40">
 <Worksheet ss:Name="<%= @crud_helper.title %>">
-	<Table>
-		<Row>
-			<% @crud_helper.listing_fields.each do |att| %>
-				<% if !att[:visible_if].nil?%>
-					<% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
-						<% next %>
-					<% end %>
-				<% end %>
-				<Cell><Data ss:Type="String"><%= I18n.t(att[:sf][:label]) %></Data></Cell>
-			<% end %>
-		</Row>
-		<% @records.each do |record| %>
-			<Row>
-				<% @crud_helper.listing_fields.each do |att| %>
-					<% if record.send(att[:attribute]).present? or record.send(att[:attribute]).to_s == "false"%>
-						<% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
-								<% if att[:date_format].present?%>
-									<Cell><Data ss:Type="String"><%=  record.send(att[:attribute]).strftime(att[:date_format]) %></Data></Cell>
-								<% else %>
-									<Cell><Data ss:Type="String"><%= l record.send(att[:attribute]) %></Data></Cell>
-								<% end %>
-						<% elsif ((@model.reflect_on_association(att[:attribute]) && @model.reflect_on_association(att[:attribute]).macro != :belongs_to && @model.reflect_on_association(att[:attribute]).macro != :has_one) || record.send(att[:attribute]).class == Array)%>
-							<Cell><Data ss:Type="String"><%= record.send(att[:attribute]).map{|rec| rec.to_s}.join(",") %></Data></Cell>
-						<% else %>
-							<% if record.send(att[:attribute]).to_s == "false" or record.send(att[:attribute]).to_s == "true" %>
-								<Cell><Data ss:Type="String"><%= I18n.t(record.send(att[:attribute]) ? "shared.sim" : "shared.nao") %></Data></Cell>
-							<% elsif att[:sf][:label_method].present? %>
-								<Cell><Data ss:Type="String"><%=  record.send(att[:attribute]).send(att[:sf][:label_method]).to_s %></Data></Cell>
-							<% else %>
-								<Cell><Data ss:Type="String"><%=  record.send(att[:attribute]).to_s %></Data></Cell>
-							<% end %>
-						<% end %>
-					<% else %>
-						<Cell><Data ss:Type="String"></Data></Cell>
-					<% end %>
-				<% end %>
-			</Row>
-		<% end %>
-	</Table>
+  <Table>
+    <Row>
+      <% @crud_helper.listing_fields.each do |att| %>
+        <% if !att[:visible_if].nil? %>
+          <% if (att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if]) %>
+            <% next %>
+          <% end %>
+        <% end %>
+        <Cell><Data ss:Type="String"><%= I18n.t(att[:sf][:label]) %></Data></Cell>
+      <% end %>
+    </Row>
+    <% @records.each do |record| %>
+      <Row>
+        <% @crud_helper.listing_fields.each do |att| %>
+          <% if record.send(att[:attribute]).present? or record.send(att[:attribute]).to_s == "false" %>
+            <% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
+                <% if att[:date_format].present?%>
+                  <Cell><Data ss:Type="String"><%=  record.send(att[:attribute]).strftime(att[:date_format]) %></Data></Cell>
+                <% else %>
+                  <Cell><Data ss:Type="String"><%= l record.send(att[:attribute]) %></Data></Cell>
+                <% end %>
+            <% elsif array?(record, att[:attribute]) || (association?(@model, att[:attribute]) && !belongs_to_association?(@model, att[:attribute]) && !has_one_association?(@model, att[:attribute])) %>
+              <Cell><Data ss:Type="String"><%= record.send(att[:attribute]).map{|rec| rec.to_s}.join(",") %></Data></Cell>
+            <% elsif boolean?(record, att[:attribute]) %>
+              <Cell><Data ss:Type="String"><%= I18n.t(record.send(att[:attribute]) ? "shared.sim" : "shared.nao") %></Data></Cell>
+            <% elsif possui_url?(record, att[:attribute]) %>
+              <Cell><Data ss:Type="String"><%= record.send(att[:attribute]).url %></Data></Cell>
+            <% elsif att[:sf][:label_method].present? %>
+              <Cell><Data ss:Type="String"><%=  record.send(att[:attribute]).send(att[:sf][:label_method]).to_s %></Data></Cell>
+            <% else %>
+              <Cell><Data ss:Type="String"><%=  record.send(att[:attribute]).to_s %></Data></Cell>
+            <% end %>
+          <% else %>
+            <Cell><Data ss:Type="String"></Data></Cell>
+          <% end %>
+        <% end %>
+      </Row>
+    <% end %>
+  </Table>
 </Worksheet>
 </Workbook>

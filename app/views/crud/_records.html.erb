@@ -7,8 +7,8 @@
       <thead>
         <tr>
           <% @crud_helper.index_fields.each do |att| %>
-            <% if !att[:visible_if].nil?%>
-              <% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
+            <% if !att[:visible_if].nil? %>
+              <% if (att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if]) %>
                 <% next %>
               <% end %>
             <% end %>

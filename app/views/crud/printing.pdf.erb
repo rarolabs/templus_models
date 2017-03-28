@@ -4,47 +4,80 @@
   <div class="widget-body">
     <div class="widget-main">
       <div class="profile-element">
-        <div class="header">
-          <h1>
-            <small><%= @crud_helper.title %></small><br />
-            <%= @record.to_s %>
-          </h1>
+        <div>
+          <div class="row">
+            <% if @crud_helper.logo_printing_field.present? %>
+              <div class="col-xs-3">
+                <% if @crud_helper.logo_printing_field[:field].present? %>
+                  <%= render_field_file(@record.send(@crud_helper.logo_printing_field[:field])) %>
+                <% elsif @crud_helper.logo_printing_field[:url].present? %>
+                  <%= pdf_image_tag(@crud_helper.logo_printing_field[:url], width: '100px') %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <% if @crud_helper.titulo_printing_field.present? %>
+              <div class="col-xs-9">
+                <h1>
+                  <% if @crud_helper.titulo_printing_field[:titulo].present? %>
+                    <%= t(@crud_helper.titulo_printing_field[:titulo]) %>
+                  <% elsif @crud_helper.titulo_printing_field[:field].present? %>
+                    <%= @record.send(@crud_helper.titulo_printing_field[:field]) %>
+                  <% else %>
+                    <%= Templus.nome_aplicacao %>
+                  <% end %>
+                </h1>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
+
+      <div style="clear: both;"></div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>
+            <small><%= @crud_helper.title %></small><br />
+            <%= @record.to_s %>
+          </h2>
+        </div>
+      </div>
+
       <table class="table table-bordered table-striped">
         <tbody>
           <% @crud_helper.printing_fields.each do |field| %>
+            <% next if field[:sf].present? && !field[:sf][:visible_if].nil? && ((field[:sf][:visible_if].class == Proc && !field[:sf][:visible_if].call(@record)) || (field[:sf][:visible_if].class != Proc && !field[:sf][:visible_if])) %>
             <tr>
-              <% if field[:sf].present? && !field[:sf][:visible_if].nil?%>
-                <% if ((field[:sf][:visible_if].class == Proc && !field[:sf][:visible_if].call(@record)) || (field[:sf][:visible_if].class != Proc && !field[:sf][:visible_if])) %>
-                  <% next %>
-                <% end %>
-              <% end %>
               <% if field[:sf].present? && field[:sf][:label].present? %>
                 <th><%= field[:sf][:label].to_s.mb_chars.upcase.to_s %></th>
               <% else %>
                 <th><%= I18n.t("simple_form.labels.#{@model.name.underscore}.#{field[:attribute]}") %></th>
               <% end %>
 
-              <% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type)%>
+              <% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type) %>
                 <% if field[:date_format].present?%>
-                  <td><%= l @record.send(field[:attribute]).strftime(field[:date_format]) if @record.send(field[:attribute]).present?%></td>
+                  <td><%= l @record.send(field[:attribute]).strftime(field[:date_format]) if @record.send(field[:attribute]).present? %></td>
                 <% else %>
-                  <td><%= l @record.send(field[:attribute]) if @record.send(field[:attribute]).present?%></td>
+                  <td><%= l @record.send(field[:attribute]) if @record.send(field[:attribute]).present? %></td>
                 <% end %>
-              <% elsif @model.reflect_on_association(field[:attribute]) &&  @model.reflect_on_association(field[:attribute]).macro != :belongs_to && @model.reflect_on_association(field[:attribute]).macro != :has_one%>
+              <% elsif association?(@model, field[:attribute]) && !belongs_to_association?(@model, field[:attribute]) && !has_one_association?(@model, field[:attribute]) %>
                 <td>
                   <% @record.send(field[:attribute]).each do |rec| %>
                   <li>
                     <% if field[:sf].present? && field[:sf][:label_method].present? %>
-                      <% if rec.send(field[:sf][:label_method]).respond_to?(:url) %>
-                        <%= render_field_file(rec.send(field[:sf][:label_method])) %>
+                      <% if possui_url?(rec, field[:sf][:label_method]) %>
+                        <% if deve_renderizar_imagem?(field[:sf]) %>
+                          <%= render_field_file(rec.send(field[:sf][:label_method])) %>
+                        <% else %>
+                          <%= rec.send(field[:sf][:label_method]).url %>
+                        <% end %>
                       <% else %>
                         <%= rec.send(field[:sf][:label_method]) %>
                       <% end %>
                     <% else %>
-                      <% if rec.to_s.respond_to?(:url) %>
-                        <%= render_field_file(rec.to_s) %>
+                      <% if possui_url?(rec, :itself) && deve_renderizar_imagem?(field[:sf]) %>
+                        <%= render_field_file(rec) %>
                       <% else %>
                         <%= rec.to_s %>
                       <% end %>
@@ -52,19 +85,19 @@
                   </li>
                   <% end %>
                 </td>
-              <% elsif @record.send(field[:attribute]).class == Array %>
+              <% elsif array?(@record, field[:attribute]) %>
                 <td>
                   <% @record.send(field[:attribute]).each do |rec| %>
-                    <li>
-                      <%= rec.to_s %>
-                    </li>
+                    <li><%= rec.to_s %></li>
                   <% end %>
                 </td>
-              <% elsif @record.send(field[:attribute]).respond_to?(:url) %>
-                <td>
-                  <%= render_field_file(@record.send(field[:attribute])) %>
-                </td>
-              <% elsif ["false","true"].include? @record.send(field[:attribute]).to_s %>
+              <% elsif possui_url?(@record, field[:attribute]) %>
+                <% if deve_renderizar_imagem?(field[:sf]) %>
+                  <td><%= render_field_file(@record.send(field[:attribute])) %></td>
+                <% else %>
+                  <td><%= @record.send(field[:attribute]).url %></td>
+                <% end %>
+              <% elsif boolean?(@record, field[:attribute]) %>
                 <td><%= I18n.t(@record.send(field[:attribute]) ? "shared.sim" : "shared.nao") %></td>
               <% else %>
                 <td>

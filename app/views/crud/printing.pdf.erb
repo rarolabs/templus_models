@@ -9,7 +9,11 @@
             <% if @crud_helper.logo_printing_field.present? %>
               <div class="col-xs-3">
                 <% if @crud_helper.logo_printing_field[:field].present? %>
-                  <%= render_field_file(@record.send(@crud_helper.logo_printing_field[:field])) %>
+                  <% if @record.send(@crud_helper.logo_printing_field[:field]).present? %>
+                    <%= render_field_file(@record.send(@crud_helper.logo_printing_field[:field])) %>
+                  <% else %>
+                    <%= pdf_image_tag(Templus.logo, width: '100px') %>
+                  <% end %>
                 <% elsif @crud_helper.logo_printing_field[:url].present? %>
                   <%= pdf_image_tag(@crud_helper.logo_printing_field[:url], width: '100px') %>
                 <% end %>

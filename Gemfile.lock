@@ -1,14 +1,14 @@
 PATH
   remote: .
   specs:
-    templus_models (2.0.0)
+    templus_models (2.0.1)
       cancancan (~> 1.10)
       kaminari (~> 0.16)
       nested_form (~> 0.3)
       rails (~> 4.1)
       rails-jquery-autocomplete (~> 1.0)
       ransack (~> 1.6)
-      simple_form (~> 3.1.0)
+      simple_form (~> 3.1)
       wicked_pdf (~> 1.0)
 
 GEM
@@ -185,9 +185,9 @@ GEM
       json
       redis (>= 3.0.6)
       redis-namespace (>= 1.3.1)
-    simple_form (3.1.1)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
+    simple_form (3.4.0)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     sprockets (3.3.5)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
@@ -250,4 +250,4 @@ DEPENDENCIES
   wiselinks
 
 BUNDLED WITH
-   1.13.7
+   1.14.3

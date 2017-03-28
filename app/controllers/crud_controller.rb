@@ -1,28 +1,7 @@
 class CrudController < ApplicationController
   before_filter :setup, except: :autocomplete
 
-  private
-  def setup
-    if params[:associacao]
-      @crud_associacao = Module.const_get("#{params[:model].to_s.singularize}_crud".camelize)
-      @model = Module.const_get(params[:model].camelize).find(params[:id]).send(params[:associacao])
-      c_helper = Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao]).class_name
-      @crud_helper = Module.const_get("#{c_helper}Crud") unless params[:render] == "modal" and params[:action] == "new"
-      @url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao], page: params[:page], q: params[:q])
-      @clean_url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao])
-      @model_permission = c_helper.constantize
-      @id = params[:associacao_id] if params[:associacao_id]
-    else
-      @model = Module.const_get(params[:model].camelize)
-      @model_permission = @model
-      @crud_helper = Module.const_get("#{params[:model]}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
-      @url = crud_models_path(model: params[:model], page: params[:page], q: params[:q])
-      @clean_url = crud_models_path(model: params[:model])
-      @id = params[:id] if params[:id]
-    end
-  end
 
-  public
   def index
     authorize! :read, @model_permission if respond_to?(:current_usuario)
     if params[:scope].present?
@@ -180,18 +159,7 @@ class CrudController < ApplicationController
     end
     report_name = "#{@crud_helper.title}_#{DateTime.now.strftime('%Y%m%d')}"
     respond_to do |format|
-      format.xls {headers["Content-Disposition"] = "attachment; filename=#{report_name}.xls"}
-      format.pdf do
-        pdf = WickedPdf.new.pdf_from_string(
-          render_to_string('crud/listing.pdf.erb'),
-          encoding: 'UTF-8',
-          page_size: 'A4',
-          show_as_html: params[:debug],
-          margin: { top: 20, bottom: 20 }
-        )
-        send_data(pdf, filename: "#{report_name}.pdf", type: "application/pdf", disposition: "inline")
-      end
-      format.html
+      format.xls { headers["Content-Disposition"] = "attachment; filename=#{report_name}.xls" }
     end
   end
 
@@ -214,7 +182,29 @@ class CrudController < ApplicationController
     end
   end
 
+
   private
+
+  def setup
+    if params[:associacao]
+      @crud_associacao = Module.const_get("#{params[:model].to_s.singularize}_crud".camelize)
+      @model = Module.const_get(params[:model].camelize).find(params[:id]).send(params[:associacao])
+      c_helper = Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao]).class_name
+      @crud_helper = Module.const_get("#{c_helper}Crud") unless params[:render] == "modal" and params[:action] == "new"
+      @url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao], page: params[:page], q: params[:q])
+      @clean_url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao])
+      @model_permission = c_helper.constantize
+      @id = params[:associacao_id] if params[:associacao_id]
+    else
+      @model = Module.const_get(params[:model].camelize)
+      @model_permission = @model
+      @crud_helper = Module.const_get("#{params[:model]}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
+      @url = crud_models_path(model: params[:model], page: params[:page], q: params[:q])
+      @clean_url = crud_models_path(model: params[:model])
+      @id = params[:id] if params[:id]
+    end
+  end
+
   def params_permitt
     params.require(@model.name.underscore.to_sym).permit(fields_model)
   end

@@ -77,7 +77,7 @@ Caso deseja customizar pode ser adicionar um label
 ```rb
 campo_formulario :nome, label: "shared.nome"
 ```
- 
+
 OBS: Isso serve para *campo_tabela*, *campo_formulario*, *campo_visualizacao*, *campo_busca*, *campo_listagem* e *campo_impressão*
 
 
@@ -338,9 +338,68 @@ TemplusModels.configure do |config|
   # serão mostrados com ícones, ao invés de texto.
   # default: false
   config.usar_icones = true
-  
+
   # Se for false, as rotas do rarocrud não serão adicionadas
   # default: true
   config.adicionar_rotas = false
 end
 ```
+
+## Impressão de PDF
+
+É possível gerar um PDF com os dados de um registro. Para gerar o PDF utilize o método `relatorio_impressao`:
+
+```
+relatorio_impressao :nome
+relatorio_impressao :email
+```
+O link para gerar o PDF fica na view `show`, ao lado dos links de editar e excluir o registro.
+
+Para atributos que são imagens (CarrierWave), o RaroCrud irá colocar um link para a imagem. É possível renderizar a
+imagem passando a opção `render: true`. OBS: para a imagem ser renderizada, é necessário que ela tenha uma versão `thumb`.
+
+```
+relatorio_impressao :logo, render: true
+```
+
+### Adicionar imagem no cabeçalho
+
+Para adicionar uma imagem no cabeçalho do relatório em PDF deve ser utilizado o método `relatorio_impressao_logo`, que possui 3 assinaturas:
+
+* quando chamado sem nenhum argumento, irá renderizar a imagem `Templus.logo`.
+* quando chamado com uma string, a imagem será renderizada através do helper `image_tag`, e vai buscar a imagem no asset pipeline.
+* quando chamado com um símbolo, esse símbolo será interpretado como um atributo do model que representa uma imagem (CarrierWave).
+
+Exemplos:
+
+```
+relatorio_impressao_logo
+relatorio_impressao_logo :logotipo
+relatorio_impressao_logo 'imagem.png'
+```
+
+### Adicionar título ao cabeçalho
+
+Para adicionar um título no cabeçalho do relatório em PDF deve ser utilizado o método `relatorio_impressao_titulo`, que possui 3 assinaturas:
+
+* quando chamado sem nenhum argumento, irá utilizar o valor `Templus.nome_aplicacao`.
+* quando chamado com uma string, essa string será a chave de tradução para o título. Essa chave deverá ser criada nos arquivos de tradução.
+* quando chamado com um símbolo, esse símbolo será interpretado como um atributo ou método do model, e o valor retornado pelo atributo ou método será utilizado no título.
+
+Exemplos:
+
+```
+relatorio_impressao_titulo
+relatorio_impressao_titulo :descricao
+relatorio_impressao_titulo 'views.pdf.titulo'
+```
+
+## Listagem em Excel
+
+É possível gerar um arquivo excel a partir da `index` de um rarocrud. Utilize o método `relatorio_listagem` para isso:
+
+```
+relatorio_listagem :nome
+relatorio_listagem :email
+```
+O link para gerar o Excel fica na view `index`.

@@ -8,6 +8,8 @@ class RaroCrud
   @@view_fields               = {}
   @@listing_fields            = {}
   @@printing_fields           = {}
+  @@logo_printing_field       = {}
+  @@titulo_printing_field     = {}
   @@search_fields             = {}
   @@test_fields               = {}
   @@top_links                 = {}
@@ -128,11 +130,11 @@ class RaroCrud
   end
 
   def self.top_links
-    (@@top_links[self.to_s.to_sym]) ? @@top_links[self.to_s.to_sym] : []
+    @@top_links[self.to_s.to_sym] || []
   end
 
   def self.index_fields
-    (@@index_fields[self.to_s.to_sym]) ? @@index_fields[self.to_s.to_sym] : []
+    @@index_fields[self.to_s.to_sym] || []
   end
 
   def self.order_field
@@ -144,51 +146,59 @@ class RaroCrud
   end
 
   def self.actions
-    (@@actions[self.to_s.to_sym]) ? @@actions[self.to_s.to_sym] : []
+    @@actions[self.to_s.to_sym] || []
   end
 
   def self.actions_links
-    (@@links[self.to_s.to_sym]) ? @@links[self.to_s.to_sym] : []
+    @@links[self.to_s.to_sym] || []
   end
 
   def self.options_link
-    (@@options_link[self.to_s.to_sym]) ? @@options_link[self.to_s.to_sym] : []
+    @@options_link[self.to_s.to_sym] || []
   end
 
   def self.form_fields
-    (@@form_fields[self.to_s.to_sym]) ? @@form_fields[self.to_s.to_sym]  : []
+    @@form_fields[self.to_s.to_sym] || []
   end
 
   def self.form_groups
-    (@@form_group[self.to_s.to_sym]) ? @@form_group[self.to_s.to_sym]  : []
+    @@form_group[self.to_s.to_sym] || []
   end
 
   def self.form_scripts
-    (@@form_scripts[self.to_s.to_sym]) ? @@form_scripts[self.to_s.to_sym]  : []
+    @@form_scripts[self.to_s.to_sym] || []
   end
 
   def self.view_fields
-    (@@view_fields[self.to_s.to_sym]) ? @@view_fields[self.to_s.to_sym]  : []
+    @@view_fields[self.to_s.to_sym] || []
   end
 
   def self.listing_fields
-    (@@listing_fields[self.to_s.to_sym]) ? @@listing_fields[self.to_s.to_sym]  : []
+    @@listing_fields[self.to_s.to_sym] || []
   end
 
   def self.printing_fields
-    (@@printing_fields[self.to_s.to_sym]) ? @@printing_fields[self.to_s.to_sym]  : []
+    @@printing_fields[self.to_s.to_sym] || []
+  end
+
+  def self.logo_printing_field
+    @@logo_printing_field[self.to_s.to_sym]
+  end
+
+  def self.titulo_printing_field
+    @@titulo_printing_field[self.to_s.to_sym]
   end
 
   def self.search_fields
-    (@@search_fields[self.to_s.to_sym]) ? @@search_fields[self.to_s.to_sym]  : []
+    @@search_fields[self.to_s.to_sym] || []
   end
 
   def self.test_fields
-    (@@test_fields[self.to_s.to_sym]) ? @@test_fields[self.to_s.to_sym]  : []
+    @@test_fields[self.to_s.to_sym] || []
   end
 
   def self.scopes
-    (@@scopes[self.to_s.to_sym]) ? @@scopes[self.to_s.to_sym]  : []
+    @@scopes[self.to_s.to_sym] || []
   end
 
   def self.add_menus(menu)
@@ -198,6 +208,7 @@ class RaroCrud
   def self.menus
     @@menus
   end
+
 
 
   private
@@ -300,7 +311,6 @@ class RaroCrud
     end
   end
 
-  private
   def self.add_group_formulario(field)
     field[:fields] = []
     field[:grupo].each do |f|
@@ -311,7 +321,7 @@ class RaroCrud
     end
     field[:grupo] = true
   end
-  
+
   def self.set_default_label nome, opts
     unless opts[:label].present?
       opts[:label] = "simple_form.labels.#{self.modelo.underscore}.#{nome}"
@@ -319,9 +329,13 @@ class RaroCrud
     opts
   end
 
+
+
+
   public
-  def self.campo_visualizacao nome, opts = {}
-    @@view_fields[self.to_s.to_sym] = [] unless @@view_fields[self.to_s.to_sym]
+
+  def self.campo_visualizacao(nome, opts = {})
+    @@view_fields[self.to_s.to_sym] ||= []
     opts = set_default_label nome, opts
     @@view_fields[self.to_s.to_sym].push(
       {
@@ -330,8 +344,8 @@ class RaroCrud
     )
   end
 
-  def self.campo_busca nome, opts = {}
-    @@search_fields[self.to_s.to_sym] = [] unless @@search_fields[self.to_s.to_sym]
+  def self.campo_busca(nome, opts = {})
+    @@search_fields[self.to_s.to_sym] ||= []
     opts = set_default_label nome, opts
     @@search_fields[self.to_s.to_sym].push(
       {
@@ -340,8 +354,8 @@ class RaroCrud
     )
   end
 
-  def self.campo_listagem nome, opts = {}
-    @@listing_fields[self.to_s.to_sym] = [] unless @@listing_fields[self.to_s.to_sym]
+  def self.relatorio_listagem(nome, opts = {})
+    @@listing_fields[self.to_s.to_sym] ||= []
     opts = set_default_label nome, opts
     @@listing_fields[self.to_s.to_sym].push(
       {
@@ -350,14 +364,46 @@ class RaroCrud
     )
   end
 
-  def self.campo_impressao nome, opts = {}
-    @@printing_fields[self.to_s.to_sym] = [] unless @@printing_fields[self.to_s.to_sym]
+  def self.relatorio_impressao(nome, opts = {})
+    @@printing_fields[self.to_s.to_sym] ||= []
     opts = set_default_label nome, opts
-    @@printing_fields[self.to_s.to_sym].push(
-      {
-        attribute: nome
-      }.merge({sf: opts})
-    )
+    @@printing_fields[self.to_s.to_sym].push({
+      attribute: nome,
+      sf: opts
+    })
+  end
+
+  def self.relatorio_impressao_logo(field_or_url = nil, options = {})
+    url = nil
+    field = nil
+    if field_or_url.blank?
+      url = Templus.logo
+    elsif field_or_url.is_a?(String)
+      url = field_or_url
+    else
+      field = field_or_url
+    end
+
+    @@logo_printing_field[self.to_s.to_sym] = {
+      url: url,
+      field: field,
+      sf: options
+    }
+  end
+
+  def self.relatorio_impressao_titulo(field_or_string = nil)
+    field = nil
+    titulo = nil
+    if field_or_string.is_a?(String)
+      titulo = I18n.t(field_or_string)
+    elsif field_or_string.present?
+      field = field_or_string
+    end
+
+    @@titulo_printing_field[self.to_s.to_sym] = {
+      field: field,
+      titulo: titulo
+    }
   end
 
   def self.sem_visualizacao

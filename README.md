@@ -384,7 +384,7 @@ Para adicionar uma imagem no cabeçalho do relatório em PDF deve ser utilizado 
 
 * quando chamado sem nenhum argumento, irá renderizar a imagem `Templus.logo`.
 * quando chamado com uma string, a imagem será renderizada através do helper `image_tag`, e vai buscar a imagem no asset pipeline.
-* quando chamado com um símbolo, esse símbolo será interpretado como um atributo do model que representa uma imagem (CarrierWave).
+* quando chamado com um símbolo, esse símbolo será interpretado como um atributo/método do model que representa uma imagem (CarrierWave). Caso o atributo/método não possua uma imagem associada, será utilizada o valor de `Templus.logo`.
 
 Exemplos:
 

@@ -162,7 +162,6 @@ class CrudController < ApplicationController
       format.xls { headers["Content-Disposition"] = "attachment; filename=#{report_name}.xls" }
       format.pdf do
         html = render_to_string('crud/listing.pdf.erb')
-        File.write('/Users/pedropires/Desktop/test.html', html)
         options = {
           encoding: 'UTF-8',
           page_size: 'A4',

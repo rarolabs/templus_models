@@ -1,0 +1,118 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<div class="widget-box" id="relatorio">
+  <div class="widget-body">
+    <div class="widget-main">
+      <div class="profile-element">
+
+        <div>
+          <div class="row">
+            <% if @crud_helper.logo_listing_field.present? %>
+              <div class="col-xs-3">
+                <% if @crud_helper.logo_listing_field[:logo_proc].present? %>
+                  <%= render_field_file(@crud_helper.logo_listing_field[:logo_proc].call(@records)) %>
+                <% elsif @crud_helper.logo_listing_field[:url].present? %>
+                  <%= pdf_image_tag(@crud_helper.logo_listing_field[:url], width: '100px') %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <% if @crud_helper.titulo_listing_field.present? %>
+              <div class="col-xs-9">
+                <h1>
+                  <% if @crud_helper.titulo_listing_field[:titulo].present? %>
+                    <%= t(@crud_helper.titulo_listing_field[:titulo]) %>
+                  <% elsif @crud_helper.titulo_listing_field[:titulo_proc].present? %>
+                    <%= @crud_helper.titulo_listing_field[:titulo_proc].call(@records) %>
+                  <% else %>
+                    <%= Templus.nome_aplicacao %>
+                  <% end %>
+                </h1>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div style="clear: both;"></div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>
+            <small><%= @crud_helper.title %></small><br />
+          </h2>
+        </div>
+      </div>
+
+
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <% @crud_helper.listing_fields.each do |att| %>
+              <% next if att[:sf][:only] == :excel %>
+
+             <% if !att[:visible_if].nil? %>
+               <% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
+                 <% next %>
+               <% end %>
+             <% end %>
+             <th><%= I18n.t(att[:sf][:label]) %></th>
+           <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @records.each do |record| %>
+            <tr>
+              <% @crud_helper.listing_fields.each do |att| %>
+                <% next if att[:sf][:only] == :excel %>
+
+                <% if record.send(att[:attribute]).present? || record.send(att[:attribute]).to_s == "false" %>
+                  <% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
+                    <% if att[:date_format].present?%>
+                      <td><%= record.send(att[:attribute]).strftime(att[:date_format]) %></td>
+                    <% else %>
+                      <td><%= l record.send(att[:attribute]) %></td>
+                    <% end %>
+                  <% elsif array?(record, att[:attribute]) || (association?(@model, att[:attribute]) && !belongs_to_association?(@model, att[:attribute]) && !has_one_association?(@model, att[:attribute])) %>
+                    <td><%= record.send(att[:attribute]).map{|rec| rec.to_s}.join(",") %></td>
+                  <% elsif boolean?(record, att[:attribute]) %>
+                    <td><%= I18n.t(record.send(att[:attribute]) ? "shared.sim" : "shared.nao") %></td>
+                  <% elsif possui_url?(record, att[:attribute]) %>
+                    <% if deve_renderizar_imagem?(att[:sf]) %>
+                      <td><%= render_field_file(record.send(att[:attribute])) %></td>
+                    <% else %>
+                      <td><%= record.send(att[:attribute]).url %></td>
+                    <% end %>
+                  <% elsif att[:sf][:label_method].present? %>
+                    <td><%= record.send(att[:attribute]).send(att[:sf][:label_method]).to_s %></td>
+                  <% else %>
+                    <td><%= record.send(att[:attribute]).to_s %></td>
+                  <% end %>
+                <% else %>
+                  <td></td>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<style>
+  #relatorio {
+    clear: both;
+    page-break-inside: avoid;
+  }
+  .header {
+    float: left;
+  }
+  table {
+    font-size: 0.75em;
+  }
+  thead { display: table-header-group }
+  tfoot { display: table-row-group }
+  tr { page-break-inside: avoid }
+  h1 { padding-bottom: 20px; }
+</style>

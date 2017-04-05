@@ -7,6 +7,8 @@ class RaroCrud
   @@form_scripts              = {}
   @@view_fields               = {}
   @@listing_fields            = {}
+  @@logo_listing_field        = {}
+  @@titulo_listing_field      = {}
   @@printing_fields           = {}
   @@logo_printing_field       = {}
   @@titulo_printing_field     = {}
@@ -27,7 +29,7 @@ class RaroCrud
   @@condition_listing_action  = {}
   @@condition_listing_excel   = {}
   @@condition_listing_pdf     = {}
-  @@condition_printing_action  = {}
+  @@condition_printing_action = {}
   @@options_link              = {}
   @@scopes                    = {}
   @@menus                     = []
@@ -177,6 +179,14 @@ class RaroCrud
     @@listing_fields[self.to_s.to_sym] || []
   end
 
+  def self.logo_listing_field
+    @@logo_listing_field[self.to_s.to_sym]
+  end
+
+  def self.titulo_listing_field
+    @@titulo_listing_field[self.to_s.to_sym]
+  end
+
   def self.printing_fields
     @@printing_fields[self.to_s.to_sym] || []
   end
@@ -211,157 +221,64 @@ class RaroCrud
 
 
 
-  private
-
-  def self.modelo
-    self.to_s.underscore.gsub("_crud", "")
-  end
-
-  def self.titulo str
-    @@title[self.to_s.to_sym] = str
-  end
-
-  def self.subtitulo(str,type)
-    case type
-    when :index
-      @@subtitle_index[self.to_s.to_sym] = str
-    end
-  end
-
-  def self.descricao(str,type)
-    case type
-    when :index
-      @@description_index[self.to_s.to_sym] = str
-    end
-  end
-
-  def self.link_superior opts={}
-      @@top_links[self.to_s.to_sym] = [] unless @@top_links[self.to_s.to_sym]
-      @@top_links[self.to_s.to_sym].push(
-          {
-            text: opts[:nome],
-            modelo: self.modelo,
-            id:   opts[:id],
-            data: {push: 'partial', target: '#form'},
-            icon: "fa fa-#{opts[:icon]}",
-            class: 'btn btn-small btn-primary btn-rounded',
-            link: opts[:link],
-            url: opts[:url],
-            can: opts[:can],
-            partial: opts[:partial]
-          }
-    )
-  end
-
-  def self.campo_tabela nome, opts={}
-    @@index_fields[self.to_s.to_sym] = [] unless @@index_fields[self.to_s.to_sym]
-    opts = set_default_label nome, opts
-    @@index_fields[self.to_s.to_sym].push(
-      {
-        attribute: nome
-      }.merge(opts)
-    )
-  end
-
-  def self.ordenar_por nome
-    @@order_field[self.to_s.to_sym] = nome
-  end
-
-  def self.itens_por_pagina qtd
-    @@per_page[self.to_s.to_sym] = qtd
-  end
-
-  def self.campo_teste nome, opts = {}
-    @@test_fields[self.to_s.to_sym] = [] unless @@test_fields[self.to_s.to_sym]
-    @@test_fields[self.to_s.to_sym].push(
-      {
-        attribute: nome
-      }.merge({sf: opts})
-    )
-  end
-
-  def self.campo_formulario nome, opts={}
-    @@form_fields[self.to_s.to_sym] = [] unless @@form_fields[self.to_s.to_sym]
-    opts = set_default_label nome, opts
-    if opts.present? && opts[:autocomplete].present?
-      opts[:as] = :autocomplete
-      label_method = opts[:autocomplete][:label_method] || opts[:autocomplete][:campo]
-      opts[:url] = Rails.application.routes.url_helpers.autocomplete_crud_path(model: opts[:autocomplete][:classe], campo: opts[:autocomplete][:campo], tipo: "start", label: label_method)
-      name = "#{opts[:autocomplete][:campo]}_#{opts[:autocomplete][:classe]}"
-      opts[:input_html] = {name: name, id: name}
-      opts[:id_element] = "##{self.modelo}_#{nome}_id"
-    end
-    if opts.present? && opts[:grupo].present?
-      opts[:fields] = []
-      opts[:grupo].each do |field|
-        attribute = field[:campo]
-        field.delete(:campo)
-        add_group_formulario(field) if field[:grupo].present?
-        opts[:fields].push({attribute: attribute,sf: field})
-      end
-      opts[:grupo] = true if opts[:grupo].present?
-    end
-    @@form_fields[self.to_s.to_sym].push(
-      {
-        attribute: nome
-      }.merge({sf: opts})
-    )
-    if opts.present? && opts[:autocomplete].present?
-      campo_formulario(nome, {as: :hidden})
-    end
-  end
-
-  def self.add_group_formulario(field)
-    field[:fields] = []
-    field[:grupo].each do |f|
-      attribute = f[:campo]
-      f.delete(:campo)
-      add_group_formulario(f) if f[:grupo].present?
-      field[:fields].push({attribute: attribute, sf: f})
-    end
-    field[:grupo] = true
-  end
-
-  def self.set_default_label nome, opts
-    unless opts[:label].present?
-      opts[:label] = "simple_form.labels.#{self.modelo.underscore}.#{nome}"
-    end
-    opts
-  end
-
-
-
-
-  public
 
   def self.campo_visualizacao(nome, opts = {})
     @@view_fields[self.to_s.to_sym] ||= []
     opts = set_default_label nome, opts
-    @@view_fields[self.to_s.to_sym].push(
-      {
-        attribute: nome
-      }.merge({sf: opts})
-    )
+    @@view_fields[self.to_s.to_sym].push({
+      attribute: nome,
+      sf: opts
+    })
   end
 
   def self.campo_busca(nome, opts = {})
     @@search_fields[self.to_s.to_sym] ||= []
     opts = set_default_label nome, opts
-    @@search_fields[self.to_s.to_sym].push(
-      {
-        attribute: nome
-      }.merge({sf: opts})
-    )
+    @@search_fields[self.to_s.to_sym].push({
+      attribute: nome,
+      sf: opts
+    })
   end
 
   def self.relatorio_listagem(nome, opts = {})
     @@listing_fields[self.to_s.to_sym] ||= []
     opts = set_default_label nome, opts
-    @@listing_fields[self.to_s.to_sym].push(
-      {
-        attribute: nome
-      }.merge({sf: opts})
-    )
+    @@listing_fields[self.to_s.to_sym].push({
+      attribute: nome,
+      sf: opts
+    })
+  end
+
+  def self.relatorio_listagem_logo(proc = nil, options = {})
+    url = nil
+    logo_proc = nil
+    if proc.respond_to?(:call)
+      logo_proc = proc
+    else
+      url = Templus.logo
+    end
+
+    @@logo_listing_field[self.to_s.to_sym] = {
+      url: url,
+      logo_proc: logo_proc,
+      sf: options
+    }
+  end
+
+  def self.relatorio_listagem_titulo(string_or_proc)
+    titulo_proc = nil
+    titulo = nil
+
+    if string_or_proc.respond_to?(:call)
+      titulo_proc = string_or_proc
+    elsif string_or_proc.is_a?(String)
+      titulo = string_or_proc
+    end
+
+    @@titulo_listing_field[self.to_s.to_sym] = {
+      titulo_proc: titulo_proc,
+      titulo: titulo
+    }
   end
 
   def self.relatorio_impressao(nome, opts = {})
@@ -520,4 +437,123 @@ class RaroCrud
     @@form_scripts[self.to_s.to_sym] << script.to_s
   end
 
+
+
+  private
+
+  def self.modelo
+    self.to_s.underscore.gsub("_crud", "")
+  end
+
+  def self.titulo str
+    @@title[self.to_s.to_sym] = str
+  end
+
+  def self.subtitulo(str,type)
+    case type
+    when :index
+      @@subtitle_index[self.to_s.to_sym] = str
+    end
+  end
+
+  def self.descricao(str,type)
+    case type
+    when :index
+      @@description_index[self.to_s.to_sym] = str
+    end
+  end
+
+  def self.link_superior opts={}
+      @@top_links[self.to_s.to_sym] = [] unless @@top_links[self.to_s.to_sym]
+      @@top_links[self.to_s.to_sym].push(
+          {
+            text: opts[:nome],
+            modelo: self.modelo,
+            id:   opts[:id],
+            data: {push: 'partial', target: '#form'},
+            icon: "fa fa-#{opts[:icon]}",
+            class: 'btn btn-small btn-primary btn-rounded',
+            link: opts[:link],
+            url: opts[:url],
+            can: opts[:can],
+            partial: opts[:partial]
+          }
+    )
+  end
+
+  def self.campo_tabela nome, opts={}
+    @@index_fields[self.to_s.to_sym] = [] unless @@index_fields[self.to_s.to_sym]
+    opts = set_default_label nome, opts
+    @@index_fields[self.to_s.to_sym].push(
+      {
+        attribute: nome
+      }.merge(opts)
+    )
+  end
+
+  def self.ordenar_por nome
+    @@order_field[self.to_s.to_sym] = nome
+  end
+
+  def self.itens_por_pagina qtd
+    @@per_page[self.to_s.to_sym] = qtd
+  end
+
+  def self.campo_teste nome, opts = {}
+    @@test_fields[self.to_s.to_sym] = [] unless @@test_fields[self.to_s.to_sym]
+    @@test_fields[self.to_s.to_sym].push(
+      {
+        attribute: nome
+      }.merge({sf: opts})
+    )
+  end
+
+  def self.campo_formulario nome, opts={}
+    @@form_fields[self.to_s.to_sym] = [] unless @@form_fields[self.to_s.to_sym]
+    opts = set_default_label nome, opts
+    if opts.present? && opts[:autocomplete].present?
+      opts[:as] = :autocomplete
+      label_method = opts[:autocomplete][:label_method] || opts[:autocomplete][:campo]
+      opts[:url] = Rails.application.routes.url_helpers.autocomplete_crud_path(model: opts[:autocomplete][:classe], campo: opts[:autocomplete][:campo], tipo: "start", label: label_method)
+      name = "#{opts[:autocomplete][:campo]}_#{opts[:autocomplete][:classe]}"
+      opts[:input_html] = {name: name, id: name}
+      opts[:id_element] = "##{self.modelo}_#{nome}_id"
+    end
+    if opts.present? && opts[:grupo].present?
+      opts[:fields] = []
+      opts[:grupo].each do |field|
+        attribute = field[:campo]
+        field.delete(:campo)
+        add_group_formulario(field) if field[:grupo].present?
+        opts[:fields].push({attribute: attribute,sf: field})
+      end
+      opts[:grupo] = true if opts[:grupo].present?
+    end
+    @@form_fields[self.to_s.to_sym].push(
+      {
+        attribute: nome
+      }.merge({sf: opts})
+    )
+    if opts.present? && opts[:autocomplete].present?
+      campo_formulario(nome, {as: :hidden})
+    end
+  end
+
+  def self.add_group_formulario(field)
+    field[:fields] = []
+    field[:grupo].each do |f|
+      attribute = f[:campo]
+      f.delete(:campo)
+      add_group_formulario(f) if f[:grupo].present?
+      field[:fields].push({attribute: attribute, sf: f})
+    end
+    field[:grupo] = true
+  end
+
+  def self.set_default_label nome, opts
+    unless opts[:label].present?
+      opts[:label] = "simple_form.labels.#{self.modelo.underscore}.#{nome}"
+    end
+    opts
+  end
 end

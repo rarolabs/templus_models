@@ -60,24 +60,29 @@
 					<%= link_to I18n.t(a[1]), action_crud_path(model: @model.name.underscore, id: record.id, acao: a[0]), class: "btn btn-primary btn-xs", data: {push: "partial", target: "#form"}%>
 				<% end %>
 			<% end %>
-			<%@crud_helper.actions_links.each do |name, options|%>
-				<% unless (options[:can].present? && !record.instance_eval(&options[:can])) %>
+			<% @crud_helper.actions_links.each do |name, options| %>
+				<% unless options[:can].present? && !record.instance_eval(&options[:can]) %>
 					<% if options[:url].present? %>
 						<% url = options[:url] %>
+
 						<% if options[:id] %>
 							<% url += options[:url].include?("?") ? "&id=#{record.id}" : "?id=#{record.id}" %>
 						<% else url.include?(":id") %>
 							<% url = url.gsub(":id", "#{record.id}") %>
 						<% end %>
-						<% if options[:wiselink].present? && options[:wiselink] %>
-							<a href="<%= url %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
-								<%=I18n.t(name)%>
-							</a>
+
+						<% if options[:class] %>
+							<% link_class = 'btn btn-xs ' + options[:class] %>
 						<% else %>
-							<a href="<%= url %>" class="btn btn-success btn-xs">
-								<%=I18n.t(name)%>
-							</a>
+							<% link_class = 'btn btn-success btn-xs' %>
 						<% end %>
+
+						<% if options[:wiselink].present? && options[:wiselink] %>
+							<%= link_to t(name), url, class: link_class, data: { push: 'partial', target: '#form' } %>
+						<% else %>
+							<%= link_to t(name), url, class: link_class %>
+						<% end %>
+
 					<% elsif options[:associacao].present? %>
 						<%= link_to name, crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: "partial", target: "#form"} %>
 					<% elsif options[:partial].present? %>

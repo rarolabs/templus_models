@@ -175,7 +175,7 @@ module CrudHelper
 
   def render_field_file(field)
 		if imagem?(field) && field.respond_to?(:thumb)
-      if is_active_action("printing")
+      if is_active_action("printing") || is_active_action("listing")
         pdf_image_tag(field, width: '100px')
       else
         image_tag(field.url(:thumb), width: '100px')
@@ -229,7 +229,7 @@ module CrudHelper
   def should_listing_pdf?(crud_helper, model)
     return false unless can?(:read, model)
     return true if crud_helper.condition_listing_pdf.nil?
-    crud_helper.condition_listing_excel.call(model)
+    crud_helper.condition_listing_pdf.call(model)
   end
 
   def can_print_pdf?(crud_helper, record)

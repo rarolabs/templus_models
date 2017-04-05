@@ -7,6 +7,8 @@ class RaroCrud
   @@form_scripts              = {}
   @@view_fields               = {}
   @@listing_fields            = {}
+  @@logo_listing_field        = {}
+  @@titulo_listing_field      = {}
   @@printing_fields           = {}
   @@logo_printing_field       = {}
   @@titulo_printing_field     = {}
@@ -27,7 +29,7 @@ class RaroCrud
   @@condition_listing_action  = {}
   @@condition_listing_excel   = {}
   @@condition_listing_pdf     = {}
-  @@condition_printing_action  = {}
+  @@condition_printing_action = {}
   @@options_link              = {}
   @@scopes                    = {}
   @@menus                     = []
@@ -177,6 +179,14 @@ class RaroCrud
     @@listing_fields[self.to_s.to_sym] || []
   end
 
+  def self.logo_listing_field
+    @@logo_listing_field[self.to_s.to_sym]
+  end
+
+  def self.titulo_listing_field
+    @@titulo_listing_field[self.to_s.to_sym]
+  end
+
   def self.printing_fields
     @@printing_fields[self.to_s.to_sym] || []
   end
@@ -237,6 +247,38 @@ class RaroCrud
       attribute: nome,
       sf: opts
     })
+  end
+
+  def self.relatorio_listagem_logo(proc = nil, options = {})
+    url = nil
+    logo_proc = nil
+    if proc.respond_to?(:call)
+      logo_proc = proc
+    else
+      url = Templus.logo
+    end
+
+    @@logo_listing_field[self.to_s.to_sym] = {
+      url: url,
+      logo_proc: logo_proc,
+      sf: options
+    }
+  end
+
+  def self.relatorio_listagem_titulo(string_or_proc)
+    titulo_proc = nil
+    titulo = nil
+
+    if string_or_proc.respond_to?(:call)
+      titulo_proc = string_or_proc
+    elsif string_or_proc.is_a?(String)
+      titulo = string_or_proc
+    end
+
+    @@titulo_listing_field[self.to_s.to_sym] = {
+      titulo_proc: titulo_proc,
+      titulo: titulo
+    }
   end
 
   def self.relatorio_impressao(nome, opts = {})

@@ -4,10 +4,47 @@
   <div class="widget-body">
     <div class="widget-main">
       <div class="profile-element">
-        <div class="header">
-          <h1><%= @crud_helper.title %></h1>
+
+        <div>
+          <div class="row">
+            <% if @crud_helper.logo_listing_field.present? %>
+              <div class="col-xs-3">
+                <% if @crud_helper.logo_listing_field[:logo_proc].present? %>
+                  <%= render_field_file(@crud_helper.logo_listing_field[:logo_proc].call(@records)) %>
+                <% elsif @crud_helper.logo_listing_field[:url].present? %>
+                  <%= pdf_image_tag(@crud_helper.logo_listing_field[:url], width: '100px') %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <% if @crud_helper.titulo_listing_field.present? %>
+              <div class="col-xs-9">
+                <h1>
+                  <% if @crud_helper.titulo_listing_field[:titulo].present? %>
+                    <%= t(@crud_helper.titulo_listing_field[:titulo]) %>
+                  <% elsif @crud_helper.titulo_listing_field[:titulo_proc].present? %>
+                    <%= @crud_helper.titulo_listing_field[:titulo_proc].call(@records) %>
+                  <% else %>
+                    <%= Templus.nome_aplicacao %>
+                  <% end %>
+                </h1>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
+
+      <div style="clear: both;"></div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>
+            <small><%= @crud_helper.title %></small><br />
+          </h2>
+        </div>
+      </div>
+
+
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -36,16 +73,20 @@
                     <% else %>
                       <td><%= l record.send(att[:attribute]) %></td>
                     <% end %>
-                  <% elsif ((@model.reflect_on_association(att[:attribute]) && @model.reflect_on_association(att[:attribute]).macro != :belongs_to && @model.reflect_on_association(att[:attribute]).macro != :has_one) || record.send(att[:attribute]).class == Array)%>
+                  <% elsif array?(record, att[:attribute]) || (association?(@model, att[:attribute]) && !belongs_to_association?(@model, att[:attribute]) && !has_one_association?(@model, att[:attribute])) %>
                     <td><%= record.send(att[:attribute]).map{|rec| rec.to_s}.join(",") %></td>
-                  <% else %>
-                    <% if record.send(att[:attribute]).to_s == "false" or record.send(att[:attribute]).to_s == "true" %>
-                      <td><%= I18n.t(record.send(att[:attribute]) ? "shared.sim" : "shared.nao") %></td>
-                    <% elsif att[:sf][:label_method].present? %>
-                      <td><%= record.send(att[:attribute]).send(att[:sf][:label_method]).to_s %></td>
+                  <% elsif boolean?(record, att[:attribute]) %>
+                    <td><%= I18n.t(record.send(att[:attribute]) ? "shared.sim" : "shared.nao") %></td>
+                  <% elsif possui_url?(record, att[:attribute]) %>
+                    <% if deve_renderizar_imagem?(att[:sf]) %>
+                      <td><%= render_field_file(record.send(att[:attribute])) %></td>
                     <% else %>
-                      <td><%= record.send(att[:attribute]).to_s %></td>
+                      <td><%= record.send(att[:attribute]).url %></td>
                     <% end %>
+                  <% elsif att[:sf][:label_method].present? %>
+                    <td><%= record.send(att[:attribute]).send(att[:sf][:label_method]).to_s %></td>
+                  <% else %>
+                    <td><%= record.send(att[:attribute]).to_s %></td>
                   <% end %>
                 <% else %>
                   <td></td>

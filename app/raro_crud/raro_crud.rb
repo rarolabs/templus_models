@@ -363,9 +363,9 @@ class RaroCrud
     @@condition_printing_action[self.to_s.to_sym] = condicao
   end
 
-  def self.acoes(method,desc,proc = nil)
+  def self.acoes(method, desc, proc = nil, options = {})
     @@actions[self.to_s.to_sym] = [] unless @@actions[self.to_s.to_sym]
-    @@actions[self.to_s.to_sym].push([method,desc,proc])
+    @@actions[self.to_s.to_sym].push([method, desc, proc, options])
   end
 
   def self.links(name,options)

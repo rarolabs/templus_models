@@ -160,6 +160,16 @@ class CrudController < ApplicationController
     report_name = "#{@crud_helper.title}_#{DateTime.now.strftime('%Y%m%d')}"
     respond_to do |format|
       format.xls { headers["Content-Disposition"] = "attachment; filename=#{report_name}.xls" }
+      format.pdf do
+        pdf = WickedPdf.new.pdf_from_string(
+          render_to_string('crud/listing.pdf.erb'),
+          encoding: 'UTF-8',
+          page_size: 'A4',
+          show_as_html: params[:debug],
+          margin: { top: 20, bottom: 20 }
+        )
+        send_data(pdf, filename: "#{report_name}.pdf", type: "application/pdf", disposition: "inline")
+      end
     end
   end
 

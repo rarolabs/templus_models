@@ -394,12 +394,15 @@ relatorio_impressao_titulo :descricao
 relatorio_impressao_titulo 'views.pdf.titulo'
 ```
 
-## Listagem em Excel
+## Listagem em Excel e PDF
 
-É possível gerar um arquivo excel a partir da `index` de um rarocrud. Utilize o método `relatorio_listagem` para isso:
+É possível gerar uma listagem dos registros de um CRUD em Excel ou PDF. Utilize o método `relatorio_listagem` para isso:
 
 ```
-relatorio_listagem :nome
-relatorio_listagem :email
+relatorio_listagem :nome, only :excel
+relatorio_listagem :email, only: :pdf
+relatorio_listagem :telefone
 ```
-O link para gerar o Excel fica na view `index`.
+É possível limitar quais campos são mostrados no excel ou no pdf, basta passar a chave `:only` com `:excel` ou `:pdf`, para indicar que o campo só deve ser mostrado no excel ou no PDF, respectivamente.
+
+Os links para gerar as listagens ficam na view `index`.

@@ -226,6 +226,12 @@ module CrudHelper
     crud_helper.condition_listing_excel.call(model)
   end
 
+  def should_listing_pdf?(crud_helper, model)
+    return false unless can?(:read, model)
+    return true if crud_helper.condition_listing_pdf.nil?
+    crud_helper.condition_listing_excel.call(model)
+  end
+
   def can_print_pdf?(crud_helper, record)
     return false unless can?(:read, record)
     return true if crud_helper.condition_printing_action.nil?

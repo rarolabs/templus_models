@@ -10,7 +10,12 @@
             <% if @crud_helper.logo_listing_field.present? %>
               <div class="col-xs-3">
                 <% if @crud_helper.logo_listing_field[:logo_proc].present? %>
-                  <%= render_field_file(@crud_helper.logo_listing_field[:logo_proc].call(@records)) %>
+                  <% proc_result = @crud_helper.logo_listing_field[:logo_proc].call(@records) %>
+                  <% if proc_result.is_a?(String) %>
+                    <%= pdf_image_tag(proc_result, width: '100px') %>
+                  <% else %>
+                    <%= render_field_file(proc_result) %>
+                  <% end %>
                 <% elsif @crud_helper.logo_listing_field[:url].present? %>
                   <%= pdf_image_tag(@crud_helper.logo_listing_field[:url], width: '100px') %>
                 <% end %>

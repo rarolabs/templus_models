@@ -1,31 +1,9 @@
 class CrudController < ApplicationController
   before_filter :setup, except: :autocomplete
 
-  private
-  def setup
-    if params[:associacao]
-      @crud_associacao = Module.const_get("#{params[:model].to_s.singularize}_crud".camelize)
-      @model = Module.const_get(params[:model].camelize).find(params[:id]).send(params[:associacao])
-      c_helper = Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao]).class_name
-      @crud_helper = Module.const_get("#{c_helper}Crud") unless params[:render] == "modal" and params[:action] == "new"
-      @url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao], page: params[:page], q: params[:q])
-      @clean_url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao])
-      @model_permission = c_helper.constantize
-      @id = params[:associacao_id] if params[:associacao_id]
-    else
-      @model = Module.const_get(params[:model].camelize)
-      @model_permission = @model
-      @crud_helper = Module.const_get("#{params[:model]}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
-      @url = crud_models_path(model: params[:model], page: params[:page], q: params[:q])
-      @clean_url = crud_models_path(model: params[:model])
-      @id = params[:id] if params[:id]
-    end
-  end
-
-  public
   def index
     authorize! :read, @model_permission if respond_to?(:current_usuario)
-    if params[:scope].present?
+    if params[:scope].present? && valid_method?(params[:scope])
       @q = @model.send(params[:scope]).search(params[:q])
     else
       @q = @model.search(params[:q])
@@ -75,7 +53,7 @@ class CrudController < ApplicationController
   def action
     @record = @model.find(@id)
     authorize! :create_or_update, @record if respond_to?(:current_usuario)
-    if @model.method_defined?(params[:acao])
+    if valid_instance_method?(params[:acao])
       if @record.send(params[:acao])
         flash.now[:success] = "Ação #{params[:acao]} efetuada com sucesso."
       else
@@ -166,7 +144,11 @@ class CrudController < ApplicationController
     else
       results = @q.result.page(params[:page])
     end
-    method_label = params[:label]
+    if valid_instance_method?(params[:label])
+      method_label = params[:label]
+    else
+      raise "Ação inválida"
+    end
     render json: results.map {|result| {id: result.id, label: result.send(method_label), value: result.send(method_label)} }
   end
 
@@ -196,6 +178,30 @@ class CrudController < ApplicationController
   end
 
   private
+  def setup
+    if params[:associacao]
+      @crud_associacao = Module.const_get("#{params[:model].to_s.singularize}_crud".camelize)
+      if Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao])
+        @model = Module.const_get(params[:model].camelize).find(params[:id]).send(params[:associacao])
+      else
+        raise "Ação inválida"
+      end
+      c_helper = Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao]).class_name
+      @crud_helper = Module.const_get("#{c_helper}Crud") unless params[:render] == "modal" and params[:action] == "new"
+      @url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao], page: params[:page], q: params[:q])
+      @clean_url = crud_associacao_models_path(model: params[:model], id: params[:id], associacao: params[:associacao])
+      @model_permission = c_helper.constantize
+      @id = params[:associacao_id] if params[:associacao_id]
+    else
+      @model = Module.const_get(params[:model].camelize)
+      @model_permission = @model
+      @crud_helper = Module.const_get("#{params[:model]}_crud".camelize) unless params[:render] == "modal" and params[:action] == "new"
+      @url = crud_models_path(model: params[:model], page: params[:page], q: params[:q])
+      @clean_url = crud_models_path(model: params[:model])
+      @id = params[:id] if params[:id]
+    end
+  end
+
   def params_permitt
     params.require(@model.name.underscore.to_sym).permit(fields_model)
   end
@@ -250,5 +256,23 @@ class CrudController < ApplicationController
       end
     end
     group
+  end
+  
+  def valid_method?(method)
+    list_methods = []
+    @model.ancestors.each do |m|
+      list_methods << m.methods(false).reject{ |m| /^_/ =~ m.to_s }
+      break if m.superclass.to_s == "ActiveRecord::Base"
+    end
+    list_methods.flatten.include? method.to_sym
+  end
+  
+  def valid_instance_method?(method)
+    list_methods = []
+    @model.ancestors.each do |m|
+      list_methods << m.instance_methods(false).reject{ |m| /^_/ =~ m.to_s }
+      break if m.superclass.to_s == "ActiveRecord::Base"
+    end
+    list_methods.flatten.include? method.to_sym
   end
 end

@@ -34,3 +34,22 @@
 		<%= paginate @records, target: '#form', theme: 'templus'%>
 	</div>
 <% end %>
+<script type="text/javascript">
+	var theadtxt = [];
+	var headers = document.querySelectorAll("thead");
+	var tablebody = document.querySelectorAll("tbody");
+	for (var x = 0; x < headers.length; x++) {
+		theadtxt[x]=[];
+		for (var j = 0, headrow; headrow = headers[x].rows[0].cells[j]; j++) {
+		  var current = headrow;
+		  theadtxt[x].push(current.innerHTML);
+		}
+	} 
+	for (var v = 0, tbody; tbody = tablebody[v]; v++) {
+		for (var x = 0, row; row = tbody.rows[x]; x++) {
+		  for (var j = 0, col; col = row.cells[j]; j++) {
+            col.insertAdjacentHTML('afterbegin', '<div class="col-xs-3 no-padding">' + theadtxt[v][j] + '</div>');
+		  } 
+		}
+	}
+</script>

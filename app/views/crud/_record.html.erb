@@ -8,12 +8,20 @@
 		<% if record.send(att[:attribute]).present? or record.send(att[:attribute]).to_s == "false"%>
 			<% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
 					<% if att[:date_format].present?%>
-						<td><%=  record.send(att[:attribute]).strftime(att[:date_format]) %></td>
+						<td class="row">
+							<div class="col-xs-9">
+								<%=  record.send(att[:attribute]).strftime(att[:date_format]) %>
+							</div>
+						</td>
 					<% else %>
-						<td><%= l record.send(att[:attribute]) %></td>
+						<td class="row">
+							<div class="col-xs-9">
+								<%= l record.send(att[:attribute]) %>
+							</div>
+						</td>
 					<% end %>
 			<% elsif @model.reflect_on_association(att[:attribute]) && @model.reflect_on_association(att[:attribute]).macro != :belongs_to && @model.reflect_on_association(att[:attribute]).macro != :has_one%>
-				<td>
+				<td class="row">
 					<% record.send(att[:attribute]).each do |rec| %>
 						<li>
 							<%= rec.to_s %>
@@ -21,7 +29,7 @@
 					<% end %>
 				</td>
 			<% elsif record.send(att[:attribute]).class == Array %>
-				<td>
+				<td class="row">
 					<% record.send(att[:attribute]).each do |rec| %>
 						<li>
 							<%= rec.to_s %>
@@ -29,65 +37,75 @@
 					<% end %>
 				</td>
 			<% elsif record.send(att[:attribute]).respond_to?(:url) and record.send(att[:attribute]).url(:thumb) %>
-				<td><%=  image_tag(record.send(att[:attribute]).url(:thumb)) %></td>
+				<td class="row"><%=  image_tag(record.send(att[:attribute]).url(:thumb)) %></td>
 			<% else %>
 				<% if record.send(att[:attribute]).to_s == "false" or record.send(att[:attribute]).to_s == "true" %>
-					<td><%=  record.send(att[:attribute]) ? "Sim" : "Não" %></td>
+					<td class="row">
+						<div class="col-xs-9">
+							<%= record.send(att[:attribute]) ? "Sim" : "Não" %>
+						</div>
+					</td>
 				<% else %>
-					<td><%=  record.send(att[:attribute]).to_s %></td>
+					<td class="row">
+						<div class="col-xs-9">
+							<%= record.send(att[:attribute]).to_s %>
+						</div>
+					</td>
 				<% end %>
 			<% end %>
 		<% else %>
-			<td></td>
+			<td class="row"></td>
 		<% end %>
 	<%end%>
-	<td>
-		<%@crud_helper.actions.each do |a|%>
-			<% if ((a[2].present? && a[2].call(record)) || !a[2].present?) %>
-				<%= link_to a[1], action_crud_path(model: @model.name.underscore, id: record.id, acao: a[0], page: params[:page], q: params[:q]), class: "btn btn-primary btn-xs", data: {push: "partial", target: "#form"}%>
-			<% end %>
-		<% end %>
-		<%@crud_helper.actions_links.each do |name, options|%>
-			<% if options[:url].present? %>
-				<% url = options[:url] %>
-				<% if options[:id] %>
-					<% url += options[:url].include?("?") ? "&id=#{record.id}" : "?id=#{record.id}" %>
+	<td class="row">
+		<div class="col-xs-9">
+			<%@crud_helper.actions.each do |a|%>
+				<% if ((a[2].present? && a[2].call(record)) || !a[2].present?) %>
+					<%= link_to a[1], action_crud_path(model: @model.name.underscore, id: record.id, acao: a[0], page: params[:page], q: params[:q]), class: "btn btn-primary btn-xs", data: {push: "partial", target: "#form"}%>
 				<% end %>
-				<% if options[:wiselink].present? && options[:wiselink] %>
-					<a href="<%= url %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
-						<%=name%>
-					</a>
+			<% end %>
+			<%@crud_helper.actions_links.each do |name, options|%>
+				<% if options[:url].present? %>
+					<% url = options[:url] %>
+					<% if options[:id] %>
+						<% url += options[:url].include?("?") ? "&id=#{record.id}" : "?id=#{record.id}" %>
+					<% end %>
+					<% if options[:wiselink].present? && options[:wiselink] %>
+						<a href="<%= url %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
+							<%=name%>
+						</a>
+					<% else %>
+						<a href="<%= url %>" class="btn btn-success btn-xs">
+							<%=name%>
+						</a>
+					<% end %>
+				<% elsif options[:associacao].present? %>
+					<%= link_to name, crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: "partial", target: "#form"} %>
+				<% elsif options[:partial].present? %>
+					<%= render options[:partial], record: record %>
+				<% end %>
+			<% end %>
+			<%if @crud_helper.view_action && should_view?(@crud_helper, record)%>
+				<% if @crud_associacao.present? %>
+					<%= link_to "Visualizar", crud_associacao_model_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
 				<% else %>
-					<a href="<%= url %>" class="btn btn-success btn-xs">
-						<%=name%>
-					</a>
+					<%= link_to "Visualizar", crud_model_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
 				<% end %>
-			<% elsif options[:associacao].present? %>
-				<%= link_to name, crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: "partial", target: "#form"} %>
-			<% elsif options[:partial].present? %>
-				<%= render options[:partial], record: record %>
 			<% end %>
-		<% end %>
-		<%if @crud_helper.view_action && should_view?(@crud_helper, record)%>
-			<% if @crud_associacao.present? %>
-				<%= link_to "Visualizar", crud_associacao_model_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
-			<% else %>
-				<%= link_to "Visualizar", crud_model_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+			<%if @crud_helper.edit_action && should_edit?(@crud_helper, record) %>
+				<% if @crud_associacao.present? %>
+					<%= link_to "Editar", edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+				<% else %>
+					<%= link_to "Editar", edit_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+				<% end %>
 			<% end %>
-		<% end %>
-		<%if @crud_helper.edit_action && should_edit?(@crud_helper, record) %>
-			<% if @crud_associacao.present? %>
-				<%= link_to "Editar", edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
-			<% else %>
-				<%= link_to "Editar", edit_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+			<%if @crud_helper.destroy_action && should_destroy?(@crud_helper, record)%>
+				<% if @crud_associacao.present? %>
+					<%= link_to "Excluir", destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: 'Você tem certeza?'} %>
+				<% else %>
+					<%= link_to "Excluir", destroy_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: 'Você tem certeza?'} %>
+				<% end %>
 			<% end %>
-		<% end %>
-		<%if @crud_helper.destroy_action && should_destroy?(@crud_helper, record)%>
-			<% if @crud_associacao.present? %>
-				<%= link_to "Excluir", destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: 'Você tem certeza?'} %>
-			<% else %>
-				<%= link_to "Excluir", destroy_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: 'Você tem certeza?'} %>
-			<% end %>
-		<% end %>
+		</div>
 	</td>
 <% end %>

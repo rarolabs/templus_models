@@ -11,7 +11,7 @@
 									<% next %>
 								<% end %>
 							<% end %>
-							<th><%= I18n.t(field[:sf][:label]) %></th>
+							<th><%= I18n.t(field[:sf][:label], default: I18n.t("shared.#{field[:attribute]}")) %></th>
 
 							<% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type)%>
 								<% if field[:date_format].present?%>

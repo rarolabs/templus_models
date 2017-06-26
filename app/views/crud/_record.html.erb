@@ -84,14 +84,18 @@
 							<% link_class = 'btn btn-success btn-xs' %>
 						<% end %>
 
-						<% if options[:wiselink].present? && options[:wiselink] %>
+						<% if options[:wiselink] %>
 							<%= link_to t(name), url, class: link_class, data: { push: 'partial', target: '#form' } %>
 						<% else %>
 							<%= link_to t(name), url, class: link_class %>
 						<% end %>
 
 					<% elsif options[:associacao].present? %>
-						<%= link_to name, crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: "partial", target: "#form"} %>
+						<% if options[:wiselink] %>
+							<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: "partial", target: "#form"} %>
+						<% else %>
+							<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs" %>
+						<% end %>
 					<% elsif options[:partial].present? %>
 						<%= render options[:partial], record: record %>
 					<% end %>

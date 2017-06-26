@@ -129,7 +129,7 @@ module CrudHelper
       if !field[:sf][:edit].nil? && !field[:sf][:edit] && !record.new_record?
       elsif !field[:sf][:create].nil? && !field[:sf][:create] && record.new_record?
       else
-        opts = field[:sf].merge(label: I18n.t(field[:sf][:label]))
+        opts = field[:sf].merge(label: I18n.t(field[:sf][:label], default: I18n.t("shared.#{field[:attribute]}")))
         unless modelo.reflect_on_association(field[:attribute])
           if modelo.new.send(field[:attribute]).class.to_s =~ /Uploader/ and f.object.send(field[:attribute]).present?
             f.input field[:attribute], opts.merge(hint: "Arquivo Atual: #{f.object.send(field[:attribute]).file.filename}")
@@ -148,7 +148,7 @@ module CrudHelper
       if field[:sf][:collection_if] and field[:sf][:collection_if].class == Proc
          field[:sf][:collection] = f.instance_eval(&field[:sf][:collection_if])
       end
-      opts = field[:sf].merge(label: I18n.t(field[:sf][:label]))
+      opts = field[:sf].merge(label: I18n.t(field[:sf][:label], default: I18n.t("shared.#{field[:attribute]}")))
       unless modelo.reflect_on_association(field[:attribute])
         if modelo.new.send(field[:attribute]).class.to_s =~ /Uploader/ and f.object.send(field[:attribute]).present?
           f.input field[:attribute], opts.merge(hint: "Arquivo Atual: #{f.object.send(field[:attribute]).file.filename}")

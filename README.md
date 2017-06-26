@@ -419,3 +419,17 @@ relatorio_listagem :nome
 relatorio_listagem :email
 ```
 O link para gerar o Excel fica na view `index`.
+
+## I18n
+
+O Templus Models já está todo em I18n, os arquivos de tradução de formulários devem estar no caminho do `simple_form` sendo:
+
+```
+simple_form.labels.#{model}.#{field}
+```
+
+Caso não exista tradução nesse caminho, o Templus irá buscar no caminho `default` que é:
+
+```
+shared.#{field}
+```

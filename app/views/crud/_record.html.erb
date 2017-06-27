@@ -92,7 +92,7 @@
 
 					<% elsif options[:associacao].present? %>
 						<% if options[:wiselink] %>
-							<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: "partial", target: "#form"} %>
+							<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: true, crumb: "wielka"} %>
 						<% else %>
 							<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs" %>
 						<% end %>

@@ -214,7 +214,7 @@ class CrudController < ApplicationController
   end
 
   def params_permitt
-    params.require(@model.name.underscore.to_sym).permit(fields_model)
+    params.require(@model.name.underscore.gsub('/','_').to_sym).permit(fields_model)
   end
 
   def fields_model
@@ -268,7 +268,7 @@ class CrudController < ApplicationController
     end
     group
   end
-  
+
   def valid_method?(method)
     list_methods = []
     @model.ancestors.each do |m|
@@ -277,7 +277,7 @@ class CrudController < ApplicationController
     end
     list_methods.flatten.include? method.to_sym
   end
-  
+
   def valid_instance_method?(method)
     list_methods = []
     @model.ancestors.each do |m|

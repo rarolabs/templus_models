@@ -127,8 +127,19 @@ Para vincular o *iCheck* no campo do tipo boolena
 campo_formulario :data_nascimento, input_html: {class: "i-checks"}
 ```
 
-## Aplicando máscara
-Para aplicar uma máscara em um campo
+## Campos do tipo check_boxes
+Os campos checkbox podem ser campo_formulario e/ou campo_busca
+
+```rb
+campo_formulario :competencias, label: "competencias", as: :check_boxes input_html: {class: "i-checks"}
+```
+
+```rb
+campo_busca :competencias, label: "competencias", as: :check_boxes input_html: {class: "i-checks"}
+```
+
+## Busca por intervalo
+Para buscas de valores em um intervalo
 
 ```rb
 campo_formulario :data_nascimento, input_html: {"data-mask" => "(99) 9999-9999"}

@@ -78,11 +78,11 @@ module SearchHelper
     end
 
     def raro_input_as(name,type,opts)
+      if opts[:collection_if] and opts[:collection_if].class == Proc
+        opts[:collection] = ActionView::Helpers::FormBuilder.instance_eval(&opts[:collection_if])
+      end
       case opts[:as]
       when :select
-        if opts[:collection_if] and opts[:collection_if].class == Proc
-          opts[:collection] = ActionView::Helpers::FormBuilder.instance_eval(&opts[:collection_if])
-        end
         raro_select(name,opts,opts[:collection])
       when :hidden
         return raro_hidden_field(name,opts[:value],opts)
@@ -93,12 +93,7 @@ module SearchHelper
       when :monthyear
         raro_monthyear(name, opts)
       when :check_boxes
-        if opts.key?(:collection)
-          collection = opts[:collection]
-        else
-          collection = opts[:collection_if].call
-        end
-        return raro_check_boxes(name, opts, collection)
+        raro_check_boxes(name, opts, opts[:collection])
       end
     end
 

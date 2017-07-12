@@ -129,7 +129,25 @@ campo_tabela :tipo_veiculo, sort_field: :tipo_veiculo_descricao
 Para vincular o *iCheck* no campo do tipo boolena
 
 ```rb
-campo_formulario :data_nascimento, input_html: {class: "i-checks"}
+campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {class: "i-checks"}
+```
+
+## Campos do tipo check_boxes
+Os campos checkbox podem ser campo_formulario e/ou campo_busca
+
+```rb
+campo_formulario :competencias, label: "competencias", as: :check_boxes input_html: {class: "i-checks"}
+```
+
+```rb
+campo_busca :competencias, label: "competencias", as: :check_boxes input_html: {class: "i-checks"}
+```
+
+## Busca por intervalo
+Para buscas de valores em um intervalo
+
+```rb
+campo_busca :salario, label: "Salário", as: :range
 ```
 
 ## Aplicando máscara

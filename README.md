@@ -136,12 +136,23 @@ campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {cla
 Os campos checkbox podem ser campo_formulario e/ou campo_busca
 
 ```rb
-campo_formulario :competencias, label: "competencias", as: :check_boxes input_html: {class: "i-checks"}
+campo_formulario :competencias,
+                 label: 'simple_form.labels.perfil.perfis_perfil',
+                 as: :check_boxes,
+                 input_html: {class: "i-checks"},
+                 collection_if: { value_do_campo: "nome do campo" }
 ```
 
 ```rb
-campo_busca :competencias, label: "competencias", as: :check_boxes input_html: {class: "i-checks"}
+campo_busca :competencias,
+            as: :check_boxes,
+            input_html: {class: "i-checks"}
+            collection: { value_do_campo: "nome do campo" }
 ```
+
+* Obs: No campo Label deve ser passado o path para a tradução ou não informar o label. Assim ele irá automaticamente buscar de um path predefinido.
+
+
 
 ## Busca por intervalo
 Para buscas de valores em um intervalo

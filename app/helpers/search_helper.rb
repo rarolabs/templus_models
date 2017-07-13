@@ -115,7 +115,7 @@ module SearchHelper
       input_class = opts[:input_html].try(:[], :class)
       collection.each do |e|
         buf << "<span class='checkbox' style='display: inline;'>"
-        buf << "<label for='vaga_filtro_vaga_attributes_perfil_executor' class='control-label'>"
+        buf << "<label class='control-label'>"
         buf << "<input class='form-control check_boxes optional #{input_class}' type='checkbox' value='#{e[0]}' name='#{name}' style=''> #{e[1]}"
         buf << '</label>'
         buf << '</span>'

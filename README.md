@@ -140,14 +140,14 @@ campo_formulario :competencias,
                  label: 'simple_form.labels.perfil.perfis_perfil',
                  as: :check_boxes,
                  input_html: {class: "i-checks"},
-                 collection_if: { value_do_campo: "nome do campo" }
+                 collection_if: [1, 2, 3]
 ```
 
 ```rb
 campo_busca :competencias,
             as: :check_boxes,
             input_html: {class: "i-checks"}
-            collection: { value_do_campo: "nome do campo" }
+            collection: [1, 2, 3]
 ```
 
 * Obs: No campo Label deve ser passado o path para a tradução ou não informar o label. Assim ele irá automaticamente buscar de um path predefinido.
@@ -158,7 +158,7 @@ campo_busca :competencias,
 Para buscas de valores em um intervalo
 
 ```rb
-campo_busca :salario, label: "Salário", as: :range
+campo_busca :salario, label: "simple_form.labels.perfil.perfis_perfil", as: :range
 ```
 
 ## Aplicando máscara
@@ -474,4 +474,3 @@ Exemplos:
 relatorio_listagem_titulo 'Título do Relatório'
 relatorio_listagem_titulo proc { |registros| registros.first.nome }
 ```
-

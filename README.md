@@ -131,15 +131,29 @@ campo_formulario :data_nascimento, input_html: {class: "i-checks"}
 Os campos checkbox podem ser campo_formulario e/ou campo_busca
 
 ```rb
-campo_formulario :competencias, label: "competencias", as: :check_boxes input_html: {class: "i-checks"}
+campo_formulario :competencias,
+                 label: 'simple_form.labels.perfil.perfis_perfil',
+                 as: :check_boxes,
+                 input_html: {class: "i-checks"},
+                 collection_if: [1, 2, 3]
 ```
 
 ```rb
-campo_busca :competencias, label: "competencias", as: :check_boxes input_html: {class: "i-checks"}
+campo_busca :competencias,
+            as: :check_boxes,
+            input_html: {class: "i-checks"}
+            collection: [1, 2, 3]
 ```
 
 ## Busca por intervalo
 Para buscas de valores em um intervalo
+
+```rb
+campo_busca :salario, label: "simple_form.labels.perfil.perfis_perfil", as: :range
+```
+
+## Aplicando máscara
+Para aplicar uma máscara em um campo
 
 ```rb
 campo_formulario :data_nascimento, input_html: {"data-mask" => "(99) 9999-9999"}

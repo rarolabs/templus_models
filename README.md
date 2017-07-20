@@ -129,7 +129,7 @@ campo_tabela :tipo_veiculo, sort_field: :tipo_veiculo_descricao
 Para vincular o *iCheck* no campo do tipo boolena
 
 ```rb
-campo_formulario :data_nascimento, label: "Data de nascimento", input_html: {class: "i-checks"}
+campo_formulario :data_nascimento, input_html: {class: "i-checks"}
 ```
 
 ## Campos do tipo check_boxes

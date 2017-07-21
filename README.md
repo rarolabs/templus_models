@@ -131,18 +131,18 @@ campo_formulario :data_nascimento, input_html: {class: "i-checks"}
 Os campos checkbox podem ser campo_formulario e/ou campo_busca
 
 ```rb
-campo_formulario :competencias,
+campo_formulario :sexo,
                  label: 'simple_form.labels.perfil.perfis_perfil',
                  as: :check_boxes,
                  input_html: {class: "i-checks"},
-                 collection_if: [1, 2, 3]
+                 collection_if: Proc.new { User.sexos.map{|s| [s, s]} }
 ```
 
 ```rb
-campo_busca :competencias,
+campo_busca :sexo,
             as: :check_boxes,
             input_html: {class: "i-checks"}
-            collection: [1, 2, 3]
+            collection: Proc.new { User.sexos.map{|s| [s, s]} }
 ```
 
 ## Busca por intervalo

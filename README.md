@@ -132,6 +132,35 @@ Para vincular o *iCheck* no campo do tipo boolena
 campo_formulario :data_nascimento, input_html: {class: "i-checks"}
 ```
 
+## Campos do tipo check_boxes
+Os campos checkbox podem ser campo_formulario e/ou campo_busca
+
+```rb
+campo_formulario :sexo,
+                 label: 'simple_form.labels.perfil.perfis_perfil',
+                 as: :check_boxes,
+                 input_html: {class: "i-checks"},
+                 collection_if: Proc.new { User.sexos.map{|s| [s, s]} }
+```
+
+```rb
+campo_busca :sexo,
+            as: :check_boxes,
+            input_html: {class: "i-checks"}
+            collection: Proc.new { User.sexos.map{|s| [s, s]} }
+```
+
+* Obs: No campo Label deve ser passado o path para a tradução ou não informar o label. Assim ele irá automaticamente buscar de um path predefinido.
+
+
+
+## Busca por intervalo
+Para buscas de valores em um intervalo
+
+```rb
+campo_busca :salario, label: "simple_form.labels.perfil.perfis_perfil", as: :range
+```
+
 ## Aplicando máscara
 Para aplicar uma máscara em um campo
 
@@ -445,4 +474,3 @@ Exemplos:
 relatorio_listagem_titulo 'Título do Relatório'
 relatorio_listagem_titulo proc { |registros| registros.first.nome }
 ```
-

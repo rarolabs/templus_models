@@ -7,6 +7,8 @@ class RaroCrud
   @@form_scripts              = {}
   @@view_fields               = {}
   @@listing_fields            = {}
+  @@setup_report_listing      = {}
+  @@setup_report_printing     = {}
   @@logo_listing_field        = {}
   @@titulo_listing_field      = {}
   @@printing_fields           = {}
@@ -178,6 +180,14 @@ class RaroCrud
   def self.listing_fields
     @@listing_fields[self.to_s.to_sym] || []
   end
+  
+  def self.setup_report_listing
+    @@setup_report_listing[self.to_s.to_sym] || {}
+  end
+  
+  def self.setup_report_printing
+    @@setup_report_printing[self.to_s.to_sym] || {}
+  end
 
   def self.logo_listing_field
     @@logo_listing_field[self.to_s.to_sym]
@@ -247,6 +257,26 @@ class RaroCrud
       attribute: nome,
       sf: opts
     })
+  end
+
+  def self.setup_relatorio_listagem(options = {})
+    @@setup_report_listing[self.to_s.to_sym] = {
+      top: options[:top] || 20,
+      bottom: options[:bottom] || 20,
+      orientation: options[:orientation] || 'Portrait',
+      header: options[:header],
+      footer: options[:footer]
+    }
+  end
+
+  def self.setup_relatorio_impressao(options = {})
+    @@setup_report_printing[self.to_s.to_sym] = {
+      top: options[:top] || 20,
+      bottom: options[:bottom] || 20,
+      orientation: options[:orientation] || 'Portrait',
+      header: options[:header],
+      footer: options[:footer]
+    }
   end
 
   def self.relatorio_listagem_logo(proc = nil, options = {})

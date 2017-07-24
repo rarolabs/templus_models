@@ -43,7 +43,9 @@
       <div class="row">
         <div class="col-lg-12">
           <h2>
-            <small><%= @crud_helper.title %></small><br />
+            <% unless @crud_helper.setup_report_printing[:header].present? %>
+              <small><%= @crud_helper.title %></small><br />
+            <% end %>
             <%= @record.to_s %>
           </h2>
         </div>

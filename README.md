@@ -69,12 +69,12 @@ end
 
 ##Customizar label
 Por padrão o RaroCrud irá buscar a tradução com a chave
-```rb
+```
 simple_form.labels.modelo.atributo
 Ex: simple_form.labels.usuario.nome
 ```
 Caso deseja customizar pode ser adicionar um label
-```rb
+```ruby
 campo_formulario :nome, label: "shared.nome"
 ```
 
@@ -83,7 +83,7 @@ OBS: Isso serve para *campo_tabela*, *campo_formulario*, *campo_visualizacao*, *
 
 ##Alterar forma de visualização do campo
 
-```rb
+```ruby
 campo_visualizacao :tipo, label_method: :descricao_do_tipo
 ```
 
@@ -93,49 +93,49 @@ Para vincular um formulário de cadastro de endereço utilize o método *adicion
 ```ruby
 class EmpresaCrud < RaroCrud
 
-  ...
+  #...
   campo_formulario ....
   adicionar_endereco
-  ...
+  #...
 end
 ```
 
 Depois adicione no seu modelo o método
 
-```rb
+```ruby
 accepts_nested_attributes_for :endereco, :allow_destroy => true
 ```
 
 ## Campos do tipo data
 Para vincular o *datepicker* no campo do tipo Date
 
-```rb
+```ruby
 campo_formulario :data_nascimento, as: :string, input_html: {class: "datepicker"}
 ```
 
 Para formatar a data na tabela, utilize o *date_format*, com a chave de tradução.
 
-```rb
+```ruby
 campo_tabela :created_at, date_format: "shared.data.default"
 ```
 
 Para ordernar a tabela por outro campo
 
-```rb
+```ruby
 campo_tabela :tipo_veiculo, sort_field: :tipo_veiculo_descricao
 ```
 
 ## Campos do tipo boolean
 Para vincular o *iCheck* no campo do tipo boolena
 
-```rb
+```ruby
 campo_formulario :data_nascimento, input_html: {class: "i-checks"}
 ```
 
 ## Campos do tipo check_boxes
 Os campos checkbox podem ser campo_formulario e/ou campo_busca
 
-```rb
+```ruby
 campo_formulario :sexo,
                  label: 'simple_form.labels.perfil.perfis_perfil',
                  as: :check_boxes,
@@ -143,7 +143,7 @@ campo_formulario :sexo,
                  collection_if: Proc.new { User.sexos.map{|s| [s, s]} }
 ```
 
-```rb
+```ruby
 campo_busca :sexo,
             as: :check_boxes,
             input_html: {class: "i-checks"}
@@ -157,21 +157,21 @@ campo_busca :sexo,
 ## Busca por intervalo
 Para buscas de valores em um intervalo
 
-```rb
+```ruby
 campo_busca :salario, label: "simple_form.labels.perfil.perfis_perfil", as: :range
 ```
 
 ## Aplicando máscara
 Para aplicar uma máscara em um campo
 
-```rb
+```ruby
 campo_formulario :data_nascimento, input_html: {"data-mask" => "(99) 9999-9999"}
 ```
 
 Para mascara de telefone com 8 e 9 digitos (com e sem DDD)
-```rb
+```ruby
 campo_formulario :data_nascimento, input_html: {class: "mask-telefone"}
-ou
+#ou
 campo_formulario :data_nascimento, input_html: {class: "mask-telefone-ddd"}
 ```
 
@@ -179,7 +179,7 @@ campo_formulario :data_nascimento, input_html: {class: "mask-telefone-ddd"}
 ## Aplicando Dica
 Para aplicar uma dica em um campo
 
-```rb
+```ruby
 campo_formulario :cpf, hint: "Somente números"
 ```
 
@@ -192,14 +192,14 @@ assets/javascripts/crud/
 
 Depois adicione em seu arquivo ModelCrud o javascript
 
-```rb
+```ruby
 script_formulario :cidade_estado
 ```
 
 ## Adicionando escopos
 Para adicionar um *scope* a uma index do RaroCrud, deve ser passada uma chave de tradução.
 
-```rb
+```ruby
 escopos [
   [:nao_iniciado, "rarocrud.candidato.states.nao_iniciado"],
   [:iniciado, "rarocrud.candidato.states.iniciado"],
@@ -213,26 +213,26 @@ escopos [
 
 Para adicionar um *partial* para o *scope* em uma index do RaroCrud
 
-```rb
+```ruby
 escopos "/cancelamentos/escopos"
 ```
 
 ## Adicionando ações
 Para adicionar uma nova ação
 
-```rb
+```ruby
 acoes :pagar!, "Pagar"
-````
+```
 
 Caso deseja inserir uma condição, basta adicionar um *proc* ao comando
 
-```rb
+```ruby
 acoes :pagar!, "Pagar", proc {|p| Usuario.current.ability.can?(:create, p)}
-````
+```
 
 Caso necessite de um ação que redireciona para uma view, basta adicionar uma *partial*
 
-```rb
+```ruby
 class PapelCrud < RaroCrud
 acoes :associar, "Definir permissões", proc {|p| Usuario.current.ability.can?(:create,p)}
 end
@@ -250,34 +250,34 @@ OBS: Caso você não necessite do template do RaroCrud, adicione somente o Conte
 
 ## Adicionando links para cada registro
 
-```rb
+```ruby
 links "Permissão", url: "/crud/papel"
 ```
 
 Link com wiselink
-```rb
+```ruby
 links "Permissão Wiselink", url: "/crud/papel", wiselink: true
 ```
 
 Link para associações
-```rb
+```ruby
 links "Testes1", associacao: :teste1
 ```
 
 Link com partial
-```rb
+```ruby
 links "acoes", partial: "/atendimentos/acoes"
 ```
 
 ## Retirando a opção de adicionar novo registro em relações *belongs_to*
 
-```rb
+```ruby
 campo_formulario :papel, label_method: :descricao, add_registro: false
 ```
 
 ## Adicionar condição para mostrar um campo no formulário
 
-```rb
+```ruby
   campo_formulario :perfil, if: proc {|obj| Usuario.current.root? }
 ```
 
@@ -285,15 +285,15 @@ campo_formulario :papel, label_method: :descricao, add_registro: false
 
 Para remover um *action* da tabela do RaroCrud
 
-```rb
+```ruby
 sem_visualizacao
 sem_edicao
 sem_exclusao
-````
+```
 
 Para remover um *action* de acordo com uma condição
 
-```rb
+```ruby
 edicao proc {|obj| !obj.root? }
 exclusao proc {|obj| !obj.root? }
 visualizacao proc {|obj| obj.root? }
@@ -302,30 +302,30 @@ visualizacao proc {|obj| obj.root? }
 ## Manipulando links superiores
 
 Adicionando um link
-```rb
+```ruby
 link_superior "Novo Teste", id: "novo-button", icon: "plus", link: "new"
 ```
 Esse link será */crud/teste/new*
 
 Adicionando uma url
-```rb
+```ruby
 link_superior "Inicio", id: "novo-button", icon: "", url: :busca_api_cidades
-ou
+#ou
 link_superior "Inicio", id: "novo-button", icon: "", url: "/api/busca/cidades"
 ```
 Nesse caso será um redirecionamento
 
 Adicionando uma partial
-```rb
+```ruby
 link_superior "Novo", partial: "/usuarios/actions"
 ```
 
 Aplicando permissão ao link
-```rb
+```ruby
 link_superior nome: "new", id: "novo-button", icon: "plus", link: "new", can: proc {|obj| Usuario.current.ability.can?(:create, Teste)}
 ```
 
-## Adicionando aucomplete
+## Adicionando autocomplete
 Para adicionar *autocomplete* em um campo de formulário
 
 campo_formulario :cidade, autocomplete: {classe: :cidade, campo: :nome, label_method: :cidade_estado}
@@ -334,7 +334,7 @@ campo_formulario :cidade, autocomplete: {classe: :cidade, campo: :nome, label_me
 ## Formulário Alinhado
 Para adicionar formulários alinhados utilize o método _grupo_formulario_:
 
-```rb
+```ruby
   campo_formulario :dado_boleto, label: "shared.boleto",
                    grupo: [{campo: :banco, add_registro: false},
                            {campo: :conta},
@@ -343,13 +343,13 @@ Para adicionar formulários alinhados utilize o método _grupo_formulario_:
 
 Não se esqueça de permitir os campos dos filhos no modelo do pai com _accepts_nested_attributes_for_
 
-```rb
+```ruby
   accepts_nested_attributes_for :subtopicos, :allow_destroy => true
 ```
 
 Caso deseja um label diferente para os botões Adicionar e Remover do grupo, basta adicionar o atributo *sublabel* com a chave da tradução
 
-```rb
+```ruby
   campo_formulario :dado_boleto, label: "shared.boleto", sublabel: "shared.sub_boleto",
                    grupo: [{campo: :banco, add_registro: false},
                            {campo: :conta},
@@ -360,7 +360,7 @@ Caso deseja um label diferente para os botões Adicionar e Remover do grupo, bas
 
 Para configurar o RaroCrud crie um initializer com o seguinte código:
 
-```
+```ruby
 TemplusModels.configure do |config|
 
   # Se for true, os links de visualizar, editar, e excluir na index
@@ -381,7 +381,7 @@ end
 
 É possível gerar um PDF com os dados de um registro. Para gerar o PDF utilize o método `relatorio_impressao`:
 
-```
+```ruby
 relatorio_impressao :nome
 relatorio_impressao :email
 ```
@@ -390,7 +390,7 @@ O link para gerar o PDF fica na view `show`, ao lado dos links de editar e exclu
 Para atributos que são imagens (CarrierWave), o RaroCrud irá colocar um link para a imagem. É possível renderizar a
 imagem passando a opção `render: true`. OBS: para a imagem ser renderizada, é necessário que ela tenha uma versão `thumb`.
 
-```
+```ruby
 relatorio_impressao :logo, render: true
 ```
 
@@ -407,3 +407,25 @@ relatorio_listagem :logotipo, render: true
 É possível limitar quais campos são mostrados no excel ou no pdf, basta passar a chave `:only` com `:excel` ou `:pdf`, para indicar que o campo só deve ser mostrado no excel ou no PDF, respectivamente.
 
 Os links para gerar as listagens ficam na view `index`.
+
+
+
+### Configuração do PDF
+
+É possível configurar o PDF gerado utilizando os métodos `setup_relatorio_listagem` e `setup_relatorio_impressao`:
+
+Segue abaixo possíveis opções (todas são opcionais)
+
+```ruby
+setup_relatorio_listagem orientation: 'Portrait', top: 40, bottom: 20, header: 'report/header.pdf.erb', footer: 'report/footer.pdf.erb'
+setup_relatorio_impressao orientation: 'Landscape', top: 30, bottom: 10, header: 'report/header.pdf.erb', footer: 'report/footer.pdf.erb'
+```
+
+As opções abaixo têm os seguintes valores por `default`:
+
+```ruby
+orientation: 'Portrait'
+top: 20
+bottom: 20
+```
+As opções acima são baseadas na gem [wicked_pdf](https://github.com/mileszs/wicked_pdf)

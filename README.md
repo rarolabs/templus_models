@@ -394,43 +394,6 @@ imagem passando a opção `render: true`. OBS: para a imagem ser renderizada, é
 relatorio_impressao :logo, render: true
 ```
 
-
-### Adicionar imagem no cabeçalho
-
-Para adicionar uma imagem no cabeçalho do relatório em PDF deve ser utilizado o método `relatorio_impressao_logo`, que possui 3 assinaturas:
-
-* quando chamado sem nenhum argumento, irá renderizar a imagem `Templus.logo`.
-* quando chamado com uma string, a imagem será renderizada através do helper `image_tag`, e vai buscar a imagem no asset pipeline.
-* quando chamado com um símbolo, esse símbolo será interpretado como um atributo/método do model que representa uma imagem (CarrierWave). Caso o atributo/método não possua uma imagem associada, será utilizada o valor de `Templus.logo`.
-
-Exemplos:
-
-```
-relatorio_impressao_logo
-relatorio_impressao_logo :logotipo
-relatorio_impressao_logo 'imagem.png'
-```
-
-
-### Adicionar título ao cabeçalho
-
-Para adicionar um título no cabeçalho do relatório em PDF deve ser utilizado o método `relatorio_impressao_titulo`, que possui 3 assinaturas:
-
-* quando chamado sem nenhum argumento, irá utilizar o valor `Templus.nome_aplicacao`.
-* quando chamado com uma string, essa string será a chave de tradução para o título. Essa chave deverá ser criada nos arquivos de tradução.
-* quando chamado com um símbolo, esse símbolo será interpretado como um atributo ou método do model, e o valor retornado pelo atributo ou método será utilizado no título.
-
-Exemplos:
-
-```
-relatorio_impressao_titulo
-relatorio_impressao_titulo :descricao
-relatorio_impressao_titulo 'views.pdf.titulo'
-```
-
-
-
-
 ## Listagem em Excel e PDF
 
 É possível gerar uma listagem dos registros de um CRUD em Excel ou PDF. Utilize o método `relatorio_listagem` para isso:
@@ -444,33 +407,3 @@ relatorio_listagem :logotipo, render: true
 É possível limitar quais campos são mostrados no excel ou no pdf, basta passar a chave `:only` com `:excel` ou `:pdf`, para indicar que o campo só deve ser mostrado no excel ou no PDF, respectivamente.
 
 Os links para gerar as listagens ficam na view `index`.
-
-
-### Adicionar imagem no cabeçalho (somente listagem em PDF)
-
-Para adicionar uma imagem no cabeçalho do relatório em PDF deve ser utilizado o método `relatorio_listagem_logo`, que possui 2 assinaturas:
-
-* quando chamado sem nenhum argumento, irá renderizar a imagem `Templus.logo`.
-* quando chamado com uma `proc`, a `proc` será executada recebendo como argumento a listagem dos registros do relatório. Ela deve retornar um campo de algum model que contenha uma imagem (CarrierWave).
-
-Exemplos:
-
-```
-relatorio_listagem_logo
-relatorio_listagem_logo proc { |registros| registros.first.logotipo }
-```
-
-
-### Adicionar título ao cabeçalho (somente listagem em PDF)
-
-Para adicionar um título no cabeçalho do relatório em PDF deve ser utilizado o método `relatorio_listagem_titulo`, que recebe como argumento uma `String` ou uma `proc`.
-
-* quando chamado com um string, a string será utilizada como título.
-* quando chamado com uma `proc`, a `proc` será executada recebendo como argumento a listagem dos registros do relatório. Ela deve retornar o título a ser utilizado.
-
-Exemplos:
-
-```
-relatorio_listagem_titulo 'Título do Relatório'
-relatorio_listagem_titulo proc { |registros| registros.first.nome }
-```

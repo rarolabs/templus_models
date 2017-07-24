@@ -3,43 +3,6 @@
 <div class="widget-box" id="relatorio">
   <div class="widget-body">
     <div class="widget-main">
-      <div class="profile-element">
-
-        <div>
-          <div class="row">
-            <% if @crud_helper.logo_listing_field.present? %>
-              <div class="col-xs-3">
-                <% if @crud_helper.logo_listing_field[:logo_proc].present? %>
-                  <% proc_result = @crud_helper.logo_listing_field[:logo_proc].call(@records) %>
-                  <% if proc_result.is_a?(String) %>
-                    <%= pdf_image_tag(proc_result, width: '100px') %>
-                  <% else %>
-                    <%= render_field_file(proc_result) %>
-                  <% end %>
-                <% elsif @crud_helper.logo_listing_field[:url].present? %>
-                  <%= pdf_image_tag(@crud_helper.logo_listing_field[:url], width: '100px') %>
-                <% end %>
-              </div>
-            <% end %>
-
-            <% if @crud_helper.titulo_listing_field.present? %>
-              <div class="col-xs-9">
-                <h1>
-                  <% if @crud_helper.titulo_listing_field[:titulo].present? %>
-                    <%= t(@crud_helper.titulo_listing_field[:titulo]) %>
-                  <% elsif @crud_helper.titulo_listing_field[:titulo_proc].present? %>
-                    <%= @crud_helper.titulo_listing_field[:titulo_proc].call(@records) %>
-                  <% else %>
-                    <%= Templus.nome_aplicacao %>
-                  <% end %>
-                </h1>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <div style="clear: both;"></div>
 
       <% unless @crud_helper.setup_report_listing[:header].present? %>
         <div class="row">

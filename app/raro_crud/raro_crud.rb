@@ -9,11 +9,7 @@ class RaroCrud
   @@listing_fields            = {}
   @@setup_report_listing      = {}
   @@setup_report_printing     = {}
-  @@logo_listing_field        = {}
-  @@titulo_listing_field      = {}
   @@printing_fields           = {}
-  @@logo_printing_field       = {}
-  @@titulo_printing_field     = {}
   @@search_fields             = {}
   @@test_fields               = {}
   @@top_links                 = {}
@@ -189,24 +185,8 @@ class RaroCrud
     @@setup_report_printing[self.to_s.to_sym] || {}
   end
 
-  def self.logo_listing_field
-    @@logo_listing_field[self.to_s.to_sym]
-  end
-
-  def self.titulo_listing_field
-    @@titulo_listing_field[self.to_s.to_sym]
-  end
-
   def self.printing_fields
     @@printing_fields[self.to_s.to_sym] || []
-  end
-
-  def self.logo_printing_field
-    @@logo_printing_field[self.to_s.to_sym]
-  end
-
-  def self.titulo_printing_field
-    @@titulo_printing_field[self.to_s.to_sym]
   end
 
   def self.search_fields
@@ -279,38 +259,6 @@ class RaroCrud
     }
   end
 
-  def self.relatorio_listagem_logo(proc = nil, options = {})
-    url = nil
-    logo_proc = nil
-    if proc.respond_to?(:call)
-      logo_proc = proc
-    else
-      url = Templus.logo
-    end
-
-    @@logo_listing_field[self.to_s.to_sym] = {
-      url: url,
-      logo_proc: logo_proc,
-      sf: options
-    }
-  end
-
-  def self.relatorio_listagem_titulo(string_or_proc)
-    titulo_proc = nil
-    titulo = nil
-
-    if string_or_proc.respond_to?(:call)
-      titulo_proc = string_or_proc
-    elsif string_or_proc.is_a?(String)
-      titulo = string_or_proc
-    end
-
-    @@titulo_listing_field[self.to_s.to_sym] = {
-      titulo_proc: titulo_proc,
-      titulo: titulo
-    }
-  end
-
   def self.relatorio_impressao(nome, opts = {})
     @@printing_fields[self.to_s.to_sym] ||= []
     opts = set_default_label nome, opts
@@ -318,39 +266,6 @@ class RaroCrud
       attribute: nome,
       sf: opts
     })
-  end
-
-  def self.relatorio_impressao_logo(field_or_url = nil, options = {})
-    url = nil
-    field = nil
-    if field_or_url.blank?
-      url = Templus.logo
-    elsif field_or_url.is_a?(String)
-      url = field_or_url
-    else
-      field = field_or_url
-    end
-
-    @@logo_printing_field[self.to_s.to_sym] = {
-      url: url,
-      field: field,
-      sf: options
-    }
-  end
-
-  def self.relatorio_impressao_titulo(field_or_string = nil)
-    field = nil
-    titulo = nil
-    if field_or_string.is_a?(String)
-      titulo = I18n.t(field_or_string)
-    elsif field_or_string.present?
-      field = field_or_string
-    end
-
-    @@titulo_printing_field[self.to_s.to_sym] = {
-      field: field,
-      titulo: titulo
-    }
   end
 
   def self.sem_visualizacao

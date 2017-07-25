@@ -3,47 +3,13 @@
 <div class="widget-box" id="relatorio">
   <div class="widget-body">
     <div class="widget-main">
-      <div class="profile-element">
-
-        <div>
-          <div class="row">
-            <% if @crud_helper.logo_printing_field.present? %>
-              <div class="col-xs-3">
-                <% if @crud_helper.logo_printing_field[:field].present? %>
-                  <% if @record.send(@crud_helper.logo_printing_field[:field]).present? %>
-                    <%= render_field_file(@record.send(@crud_helper.logo_printing_field[:field])) %>
-                  <% else %>
-                    <%= pdf_image_tag(Templus.logo, width: '100px') %>
-                  <% end %>
-                <% elsif @crud_helper.logo_printing_field[:url].present? %>
-                  <%= pdf_image_tag(@crud_helper.logo_printing_field[:url], width: '100px') %>
-                <% end %>
-              </div>
-            <% end %>
-
-            <% if @crud_helper.titulo_printing_field.present? %>
-              <div class="col-xs-9">
-                <h1>
-                  <% if @crud_helper.titulo_printing_field[:titulo].present? %>
-                    <%= t(@crud_helper.titulo_printing_field[:titulo]) %>
-                  <% elsif @crud_helper.titulo_printing_field[:field].present? %>
-                    <%= @record.send(@crud_helper.titulo_printing_field[:field]) %>
-                  <% else %>
-                    <%= Templus.nome_aplicacao %>
-                  <% end %>
-                </h1>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <div style="clear: both;"></div>
 
       <div class="row">
         <div class="col-lg-12">
           <h2>
-            <small><%= @crud_helper.title %></small><br />
+            <% unless @crud_helper.setup_report_printing[:header].present? %>
+              <small><%= @crud_helper.title %></small><br />
+            <% end %>
             <%= @record.to_s %>
           </h2>
         </div>

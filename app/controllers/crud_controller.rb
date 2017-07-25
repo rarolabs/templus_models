@@ -165,14 +165,7 @@ class CrudController < ApplicationController
     respond_to do |format|
       format.xls { headers["Content-Disposition"] = "attachment; filename=#{report_name}.xls" }
       format.pdf do
-        html = render_to_string('crud/listing.pdf.erb')
-        options = {
-          encoding: 'UTF-8',
-          page_size: 'A4',
-          show_as_html: params[:debug],
-          margin: { top: 20, bottom: 20 }
-        }
-        pdf = WickedPdf.new.pdf_from_string(html, options)
+        pdf = generate_pdf_report(@crud_helper.setup_report_listing, 'crud/listing.pdf.erb')
         send_data(pdf, filename: "#{report_name}.pdf", type: "application/pdf", disposition: "inline")
       end
     end
@@ -184,13 +177,7 @@ class CrudController < ApplicationController
     report_name = "#{@record}_#{DateTime.now.strftime('%Y%m%d')}"
     respond_to do |format|
       format.pdf do
-        pdf = WickedPdf.new.pdf_from_string(
-          render_to_string('crud/printing.pdf.erb'),
-          encoding: 'UTF-8',
-          page_size: 'A4',
-          show_as_html: params[:debug],
-          margin: { top: 20, bottom: 20 }
-        )
+        pdf = generate_pdf_report(@crud_helper.setup_report_printing, 'crud/printing.pdf.erb')
         send_data(pdf, filename: "#{report_name}.pdf", type: "application/pdf", disposition: "inline")
       end
       format.html
@@ -199,6 +186,24 @@ class CrudController < ApplicationController
 
 
   private
+  
+  def generate_pdf_report(opts, layout)
+    html = render_to_string(layout)
+    options = {
+      encoding: 'UTF-8',
+      orientation: opts[:orientation],
+      page_size: 'A4',
+      show_as_html: params[:debug],
+      margin: { top: opts[:top], bottom: opts[:bottom] }
+    }
+    if opts[:header].present?
+      options[:header] = {content: render_to_string(template: opts[:header], locals: {title: @crud_helper.title})}
+    end
+    if opts[:footer].present?
+      options[:footer] = {content: render_to_string(template: opts[:footer])}
+    end
+    WickedPdf.new.pdf_from_string(html, options)
+  end
 
   def setup
     if params[:associacao]

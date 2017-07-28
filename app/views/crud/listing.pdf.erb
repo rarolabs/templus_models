@@ -20,11 +20,7 @@
           <tr>
             <% @crud_helper.listing_fields.each do |att| %>
               <% next if att[:sf][:only] == :excel %>
-              <% if !att[:visible_if].nil? %>
-                <% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
-                  <% next %>
-                <% end %>
-              <% end %>
+              <% next if !att[:sf][:visible_if].nil? && ((att[:sf][:visible_if].class == Proc && !att[:sf][:visible_if].call(att)) || (att[:sf][:visible_if].class != Proc && !att[:sf][:visible_if])) %>
               <th><%= I18n.t(att[:sf][:label]) %></th>
             <% end %>
           </tr>
@@ -34,7 +30,7 @@
             <tr>
               <% @crud_helper.listing_fields.each do |att| %>
                 <% next if att[:sf][:only] == :excel %>
-
+                <% next if !att[:sf][:visible_if].nil? && ((att[:sf][:visible_if].class == Proc && !att[:sf][:visible_if].call(att)) || (att[:sf][:visible_if].class != Proc && !att[:sf][:visible_if])) %>
                 <td width="<%= att[:sf][:width] if att[:sf][:width].present? %>" height="<%= att[:sf][:height] if att[:sf][:height].present? %>">
                 <% if record.send(att[:attribute]).present? || record.send(att[:attribute]).to_s == "false" %>                  
                   <% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>

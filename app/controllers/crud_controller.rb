@@ -246,7 +246,7 @@ class CrudController < ApplicationController
             fields << {"#{field[:attribute].to_s.singularize}_ids".to_sym => []}
           end
         elsif @model.columns_hash[field[:attribute].to_s]
-          if @modelo.columns_hash[field[:attribute].to_s].cast_type.class == ActiveRecord::Type::Serialized
+          if @model.columns_hash[field[:attribute].to_s].cast_type.class == ActiveRecord::Type::Serialized
             fields << {field[:attribute] => []}
           else
             fields << field[:attribute]

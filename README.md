@@ -392,19 +392,22 @@ imagem passando a opção `render: true`. OBS: para a imagem ser renderizada, é
 
 ```ruby
 relatorio_impressao :logo, render: true
+relatorio_impressao :nome, width: "25px", height: "100px"
 ```
+Duas outras opções podem ser definidas: `width` e `height`. Estes atribuitos são opcionais e alteram, respectivamente, a largura e altura de uma célula da tabela.
 
 ## Listagem em Excel e PDF
 
 É possível gerar uma listagem dos registros de um CRUD em Excel ou PDF. Utilize o método `relatorio_listagem` para isso:
 
 ```
-relatorio_listagem :nome, only :excel
+relatorio_listagem :nome, only :excel, width: "25px", height: "100px"
 relatorio_listagem :email, only: :pdf
-relatorio_listagem :telefone
+relatorio_listagem :telefone, height: "100px"
 relatorio_listagem :logotipo, render: true
 ```
 É possível limitar quais campos são mostrados no excel ou no pdf, basta passar a chave `:only` com `:excel` ou `:pdf`, para indicar que o campo só deve ser mostrado no excel ou no PDF, respectivamente.
+Duas outras opções podem ser definidas: `width` e `height`. Estes atribuitos são opcionais e alteram, respectivamente, a largura e altura de uma célula da tabela.
 
 Os links para gerar as listagens ficam na view `index`.
 

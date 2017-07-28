@@ -15,22 +15,20 @@
         </div>
       </div>
 
-
       <table class="table table-bordered table-striped">
         <tbody>
           <% @crud_helper.printing_fields.each do |field| %>
             <% next if field[:sf].present? && !field[:sf][:visible_if].nil? && ((field[:sf][:visible_if].class == Proc && !field[:sf][:visible_if].call(@record)) || (field[:sf][:visible_if].class != Proc && !field[:sf][:visible_if])) %>
             <tr>
               <th><%= I18n.t(field[:sf][:label]) %></th>
-
-              <% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type) %>
-                <% if field[:date_format].present?%>
-                  <td><%= l @record.send(field[:attribute]).strftime(field[:date_format]) if @record.send(field[:attribute]).present? %></td>
-                <% else %>
-                  <td><%= l @record.send(field[:attribute]) if @record.send(field[:attribute]).present? %></td>
-                <% end %>
-              <% elsif association?(@model, field[:attribute]) && !belongs_to_association?(@model, field[:attribute]) && !has_one_association?(@model, field[:attribute]) %>
-                <td>
+              <td width="<%= field[:sf][:width] if field[:sf][:width].present? %>" height="<%= field[:sf][:height] if field[:sf][:height].present? %>">
+                <% if @model.columns_hash[field[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[field[:attribute].to_s].type) %>
+                  <% if field[:date_format].present?%>
+                    <%= l @record.send(field[:attribute]).strftime(field[:date_format]) if @record.send(field[:attribute]).present? %>
+                  <% else %>
+                    <%= l @record.send(field[:attribute]) if @record.send(field[:attribute]).present? %>
+                  <% end %>
+                <% elsif association?(@model, field[:attribute]) && !belongs_to_association?(@model, field[:attribute]) && !has_one_association?(@model, field[:attribute]) %>
                   <% @record.send(field[:attribute]).each do |rec| %>
                     <li>
                       <% if field[:sf].present? && field[:sf][:label_method].present? %>
@@ -52,30 +50,26 @@
                       <% end %>
                     </li>
                   <% end %>
-                </td>
-              <% elsif array?(@record, field[:attribute]) %>
-                <td>
+                <% elsif array?(@record, field[:attribute]) %>
                   <% @record.send(field[:attribute]).each do |rec| %>
                     <li><%= rec.to_s %></li>
                   <% end %>
-                </td>
-              <% elsif possui_url?(@record, field[:attribute]) %>
-                <% if deve_renderizar_imagem?(field[:sf]) %>
-                  <td><%= render_field_file(@record.send(field[:attribute])) %></td>
+                <% elsif possui_url?(@record, field[:attribute]) %>
+                  <% if deve_renderizar_imagem?(field[:sf]) %>
+                    <%= render_field_file(@record.send(field[:attribute])) %>
+                  <% else %>
+                    <%= @record.send(field[:attribute]).url %>
+                  <% end %>
+                <% elsif boolean?(@record, field[:attribute]) %>
+                  <%= I18n.t(@record.send(field[:attribute]) ? "shared.sim" : "shared.nao") %>
                 <% else %>
-                  <td><%= @record.send(field[:attribute]).url %></td>
-                <% end %>
-              <% elsif boolean?(@record, field[:attribute]) %>
-                <td><%= I18n.t(@record.send(field[:attribute]) ? "shared.sim" : "shared.nao") %></td>
-              <% else %>
-                <td>
                   <% if field[:sf].present? && field[:sf][:label_method].present? && @record.send(field[:attribute]).present?%>
                     <%= @record.send(field[:attribute]).send(field[:sf][:label_method]) %>
                   <% else %>
                     <%= @record.send(field[:attribute]) %>
                   <% end %>
-                </td>
-              <% end %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

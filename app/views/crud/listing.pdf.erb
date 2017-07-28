@@ -20,14 +20,13 @@
           <tr>
             <% @crud_helper.listing_fields.each do |att| %>
               <% next if att[:sf][:only] == :excel %>
-
-             <% if !att[:visible_if].nil? %>
-               <% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
-                 <% next %>
-               <% end %>
-             <% end %>
-             <th><%= I18n.t(att[:sf][:label]) %></th>
-           <% end %>
+              <% if !att[:visible_if].nil? %>
+                <% if ((att[:visible_if].class == Proc && !att[:visible_if].call(att)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
+                  <% next %>
+                <% end %>
+              <% end %>
+              <th><%= I18n.t(att[:sf][:label]) %></th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
@@ -36,31 +35,31 @@
               <% @crud_helper.listing_fields.each do |att| %>
                 <% next if att[:sf][:only] == :excel %>
 
-                <% if record.send(att[:attribute]).present? || record.send(att[:attribute]).to_s == "false" %>
+                <td width="<%= att[:sf][:width] if att[:sf][:width].present? %>" height="<%= att[:sf][:height] if att[:sf][:height].present? %>">
+                <% if record.send(att[:attribute]).present? || record.send(att[:attribute]).to_s == "false" %>                  
                   <% if @model.columns_hash[att[:attribute].to_s].present? && [:date, :datetime].include?(@model.columns_hash[att[:attribute].to_s].type)%>
                     <% if att[:date_format].present?%>
-                      <td><%= record.send(att[:attribute]).strftime(att[:date_format]) %></td>
+                      <%= record.send(att[:attribute]).strftime(att[:date_format]) %>
                     <% else %>
-                      <td><%= l record.send(att[:attribute]) %></td>
+                      <%= l record.send(att[:attribute]) %>
                     <% end %>
                   <% elsif array?(record, att[:attribute]) || (association?(@model, att[:attribute]) && !belongs_to_association?(@model, att[:attribute]) && !has_one_association?(@model, att[:attribute])) %>
-                    <td><%= record.send(att[:attribute]).map{|rec| rec.to_s}.join(",") %></td>
+                    <%= record.send(att[:attribute]).map{|rec| rec.to_s}.join(",") %>
                   <% elsif boolean?(record, att[:attribute]) %>
-                    <td><%= I18n.t(record.send(att[:attribute]) ? "shared.sim" : "shared.nao") %></td>
+                    <%= I18n.t(record.send(att[:attribute]) ? "shared.sim" : "shared.nao") %>
                   <% elsif possui_url?(record, att[:attribute]) %>
                     <% if deve_renderizar_imagem?(att[:sf]) %>
-                      <td><%= render_field_file(record.send(att[:attribute])) %></td>
+                      <%= render_field_file(record.send(att[:attribute])) %>
                     <% else %>
-                      <td><%= record.send(att[:attribute]).url %></td>
+                      <%= record.send(att[:attribute]).url %>
                     <% end %>
                   <% elsif att[:sf][:label_method].present? %>
-                    <td><%= record.send(att[:attribute]).send(att[:sf][:label_method]).to_s %></td>
+                    <%= record.send(att[:attribute]).send(att[:sf][:label_method]).to_s %>
                   <% else %>
-                    <td><%= record.send(att[:attribute]).to_s %></td>
+                    <%= record.send(att[:attribute]).to_s %>
                   <% end %>
-                <% else %>
-                  <td></td>
                 <% end %>
+                </td>
               <% end %>
             </tr>
           <% end %>

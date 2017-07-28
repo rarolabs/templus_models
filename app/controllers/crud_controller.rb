@@ -60,7 +60,7 @@ class CrudController < ApplicationController
       else
         flash.now[:error] = I18n.t("mensagem_erro_action", acao: params[:acao])
       end
-      redirect_to "#{@url}?page=#{params[:page]}"
+      redirect_to @url
     else
       @titulo = @record.to_s
       @texto = params[:acao]
@@ -83,7 +83,7 @@ class CrudController < ApplicationController
     respond_to do |format|
       if @saved
         flash[:success] = params[:id].present? ? I18n.t("updated", model: I18n.t("model.#{@model.name.underscore}")) : I18n.t("created", model: I18n.t("model.#{@model.name.underscore}"))
-        format.html { redirect_to "#{@url}?page=#{params[:page]}" }
+        format.html { redirect_to @url }
         unless params[:render] == 'modal'
           format.js { render action: :index}
         else
@@ -186,7 +186,7 @@ class CrudController < ApplicationController
 
 
   private
-  
+
   def generate_pdf_report(opts, layout)
     html = render_to_string(layout)
     options = {
@@ -246,12 +246,16 @@ class CrudController < ApplicationController
             fields << {"#{field[:attribute].to_s.singularize}_ids".to_sym => []}
           end
         elsif @model.columns_hash[field[:attribute].to_s]
-          fields << field[:attribute]
+          if @modelo.columns_hash[field[:attribute].to_s].cast_type.class == ActiveRecord::Type::Serialized
+            fields << {field[:attribute] => []}
+          else
+            fields << field[:attribute]
+          end
         end
       end
     end
     #TODO - Deprecated
-  	@crud_helper.form_groups.each do |key, groups|
+    @crud_helper.form_groups.each do |key, groups|
       fields << permitt_group(fields, key, groups[:fields],@model)
     end
     #Fim - Deprecated
@@ -278,7 +282,11 @@ class CrudController < ApplicationController
             group[chave] << {"#{field[:attribute].to_s.singularize}_ids".to_sym => []}
           end
         elsif (modelo.columns_hash[field[:attribute].to_s] || (modelo.respond_to?(:params_permitt) && modelo.params_permitt.include?(field[:attribute].to_sym)))
-          group[chave] << field[:attribute]
+          if modelo.columns_hash[field[:attribute].to_s].cast_type.class == ActiveRecord::Type::Serialized
+            group[chave] << {field[:attribute] => []}
+          else
+            group[chave] << field[:attribute]
+          end
         end
       end
     end

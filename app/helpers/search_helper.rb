@@ -78,11 +78,11 @@ module SearchHelper
     end
 
     def raro_input_as(name,type,opts)
+      if opts[:collection_if] and opts[:collection_if].class == Proc
+        opts[:collection] = ActionView::Helpers::FormBuilder.instance_eval(&opts[:collection_if])
+      end
       case opts[:as]
       when :select
-        if opts[:collection_if] and opts[:collection_if].class == Proc
-          opts[:collection] = ActionView::Helpers::FormBuilder.instance_eval &opts[:collection_if]
-        end
         raro_select(name,opts,opts[:collection])
       when :hidden
         return raro_hidden_field(name,opts[:value],opts)
@@ -92,6 +92,8 @@ module SearchHelper
         raro_range(name)
       when :monthyear
         raro_monthyear(name, opts)
+      when :check_boxes
+        raro_check_boxes(name, opts, opts[:collection])
       end
     end
 
@@ -103,6 +105,23 @@ module SearchHelper
         collection.push([e.id,val])
       end
       return raro_select("q[#{model_name}_id_eq]",opts,collection)
+    end
+
+    def raro_check_boxes(name, opts, collection)
+      unless opts[:model]
+        name = "q[#{name}_eq]"
+      end
+      buf = "<div class='col-sm-12'>"
+      input_class = opts[:input_html].try(:[], :class)
+      collection.each do |e|
+        buf << "<span class='checkbox' style='display: inline;'>"
+        buf << "<label for='vaga_filtro_vaga_attributes_perfil_executor' class='control-label'>"
+        buf << "<input class='form-control check_boxes optional #{input_class}' type='checkbox' value='#{e[0]}' name='#{name}' style=''> #{e[1]}"
+        buf << '</label>'
+        buf << '</span>'
+      end
+      buf << '</div>'
+      return buf
     end
 
     def raro_select(name,opts,collection)

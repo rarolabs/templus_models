@@ -33,6 +33,7 @@ class RaroCrud
   @@scopes                    = {}
   @@menus                     = []
   @@layout                    = {}
+  @@includes                  = {}
   @@index_path                = nil
 
   def modelo
@@ -208,6 +209,10 @@ class RaroCrud
 
   def self.menus
     @@menus
+  end
+
+  def self.includes
+    @@includes[self.to_s.to_sym] || []
   end
 
   def self.campo_visualizacao(nome, opts = {})
@@ -409,6 +414,9 @@ class RaroCrud
     @@form_scripts[self.to_s.to_sym] << script.to_s
   end
 
+  def self.add_includes(includes)
+    @@includes[self.to_s.to_sym] = includes
+  end
 
   private
 

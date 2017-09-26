@@ -83,7 +83,7 @@
 		<td class="row">
 			<div class="col-xs-9">
 				<% @crud_helper.actions.each do |action| %>
-					<% if ((action[:proc].present? && action[:proc].call(record)) || !action[:proc].present?) %>
+					<% if (action[:proc].present? && action[:proc].call(record)) || !action[:proc].present? %>
 						<% if action[:options].present? && action[:options][:wiselink].present? && action[:options][:wiselink] %>
 							<% data = {push: "partial", target: "#form"} %>
 						<% end %>

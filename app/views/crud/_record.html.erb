@@ -79,69 +79,71 @@
 			<td class="row"></td>
 		<% end %>
 	<%end%>
-	<td class="row">
-		<div class="col-xs-9">
-			<% @crud_helper.actions.each do |action| %>
-				<% if ((action[:proc].present? && action[:proc].call(record)) || !action[:proc].present?) %>
-					<% if action[:options].present? && action[:options][:wiselink].present? && action[:options][:wiselink] %>
-						<% data = {push: "partial", target: "#form"} %>
-					<% end %>
-					<%= link_to I18n.t(action[:desc]), action_crud_path(model: @model.name.underscore, id: record.id, acao: action[:method]), class: "btn btn-primary btn-xs", data: data || {} %>
-				<% end %>
-			<% end %>
-			<% @crud_helper.actions_links.each do |name, options| %>
-				<% unless (options[:can].present? && !record.instance_eval(&options[:can])) %>
-					<% if options[:url].present? %>
-						<% url = options[:url] %>
-						<% if options[:id] %>
-							<% url += options[:url].include?("?") ? "&id=#{record.id}" : "?id=#{record.id}" %>
-						<% else url.include?(":id") %>
-							<% url = url.gsub(":id", "#{record.id}") %>
+	<% if @crud_helper.view_action || @crud_helper.edit_action || @crud_helper.destroy_action || @crud_helper.actions.present? || @crud_helper.actions_links.present? %>
+		<td class="row">
+			<div class="col-xs-9">
+				<% @crud_helper.actions.each do |action| %>
+					<% if (action[:proc].present? && action[:proc].call(record)) || !action[:proc].present? %>
+						<% if action[:options].present? && action[:options][:wiselink].present? && action[:options][:wiselink] %>
+							<% data = {push: "partial", target: "#form"} %>
 						<% end %>
-						<% if options[:wiselink].present? && options[:wiselink] %>
-							<a href="<%= url %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
-								<%= I18n.t(name) %>
-							</a>
-						<% else %>
-							<a href="<%= url %>" class="btn btn-success btn-xs">
-								<%= I18n.t(name) %>
-							</a>
-						<% end %>
-					<% elsif options[:associacao].present? %>
-						<% if options[:wiselink].present? && options[:wiselink] %>
-							<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: true, crumb: "wielka"} %>
-						<% else %>
-							<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs" %>
-						<% end %>
-					<% elsif options[:partial].present? %>
-						<%= render options[:partial], record: record, action: :index %>
+						<%= link_to I18n.t(action[:desc]), action_crud_path(model: @model.name.underscore, id: record.id, acao: action[:method]), class: "btn btn-primary btn-xs", data: data || {} %>
 					<% end %>
 				<% end %>
-			<% end %>
-			<% if @crud_helper.view_action && should_view?(@crud_helper, record) %>
-				<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-eye'></i>".html_safe : I18n.t("view") %>
-				<% if @crud_associacao.present? %>
-					<%= link_to link_text, crud_associacao_model_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
-				<% else %>
-					<%= link_to link_text, crud_model_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+				<% @crud_helper.actions_links.each do |name, options| %>
+					<% unless (options[:can].present? && !record.instance_eval(&options[:can])) %>
+						<% if options[:url].present? %>
+							<% url = options[:url] %>
+							<% if options[:id] %>
+								<% url += options[:url].include?("?") ? "&id=#{record.id}" : "?id=#{record.id}" %>
+							<% else url.include?(":id") %>
+								<% url = url.gsub(":id", "#{record.id}") %>
+							<% end %>
+							<% if options[:wiselink].present? && options[:wiselink] %>
+								<a href="<%= url %>" class="btn btn-success btn-xs" data-push="partial" data-target="#form">
+									<%= I18n.t(name) %>
+								</a>
+							<% else %>
+								<a href="<%= url %>" class="btn btn-success btn-xs">
+									<%= I18n.t(name) %>
+								</a>
+							<% end %>
+						<% elsif options[:associacao].present? %>
+							<% if options[:wiselink].present? && options[:wiselink] %>
+								<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: true, crumb: "wielka"} %>
+							<% else %>
+								<%= link_to I18n.t(name), crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs" %>
+							<% end %>
+						<% elsif options[:partial].present? %>
+							<%= render options[:partial], record: record, action: :index %>
+						<% end %>
+					<% end %>
 				<% end %>
-			<% end %>
-			<% if @crud_helper.edit_action && should_edit?(@crud_helper, record) %>
-				<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-edit'></i>".html_safe : I18n.t("edit") %>
-				<% if @crud_associacao.present? %>
-					<%= link_to link_text, edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
-				<% else %>
-					<%= link_to link_text, edit_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+				<% if @crud_helper.view_action && should_view?(@crud_helper, record) %>
+					<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-eye'></i>".html_safe : I18n.t("view") %>
+					<% if @crud_associacao.present? %>
+						<%= link_to link_text, crud_associacao_model_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+					<% else %>
+						<%= link_to link_text, crud_model_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+					<% end %>
 				<% end %>
-			<% end %>
-			<% if @crud_helper.destroy_action && should_destroy?(@crud_helper, record) %>
-				<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-trash'></i>".html_safe : I18n.t("destroy") %>
-				<% if @crud_associacao.present? %>
-					<%= link_to link_text, destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
-				<% else %>
-					<%= link_to link_text, destroy_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
+				<% if @crud_helper.edit_action && should_edit?(@crud_helper, record) %>
+					<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-edit'></i>".html_safe : I18n.t("edit") %>
+					<% if @crud_associacao.present? %>
+						<%= link_to link_text, edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+					<% else %>
+						<%= link_to link_text, edit_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs', data: {push: 'partial', target: '#form'} %>
+					<% end %>
 				<% end %>
-			<% end %>
-		</div>
-	</td>
+				<% if @crud_helper.destroy_action && should_destroy?(@crud_helper, record) %>
+					<% link_text = TemplusModels.configuration.usar_icones ? "<i class='fa fa-trash'></i>".html_safe : I18n.t("destroy") %>
+					<% if @crud_associacao.present? %>
+						<%= link_to link_text, destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
+					<% else %>
+						<%= link_to link_text, destroy_crud_path(model: @model.name.underscore, id: record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
+					<% end %>
+				<% end %>
+			</div>
+		</td>
+	<% end %>
 <% end %>

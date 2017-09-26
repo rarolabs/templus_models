@@ -17,9 +17,9 @@ class CrudController < ApplicationController
       end
     end
     if respond_to?(:current_usuario)
-      @records = @q.result.accessible_by(current_ability, :read).page(params[:page]).per(@crud_helper.per_page)
+      @records = @q.result(distinct: true).includes(@crud_helper.includes).accessible_by(current_ability, :read).page(params[:page]).per(@crud_helper.per_page)
     else
-      @records = @q.result.page(params[:page]).per(@crud_helper.per_page)
+      @records = @q.result(distinct: true).includes(@crud_helper.includes).page(params[:page]).per(@crud_helper.per_page)
     end
     @titulo = @model.name.pluralize
     render partial: 'records' if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?

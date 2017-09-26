@@ -24,7 +24,7 @@
               <% end %>
             </th>
           <% end %>
-          <% if @crud_helper.view_action || @crud_helper.edit_action || @crud_helper.destroy_action || @crud_helper.actions.present? %>
+          <% if @crud_helper.view_action || @crud_helper.edit_action || @crud_helper.destroy_action || @crud_helper.actions.present? || @crud_helper.actions_links.present? %>
             <td><%= I18n.t("simple_form.index.options", default: I18n.t("options")) %></td>
           <% end %>
         </tr>

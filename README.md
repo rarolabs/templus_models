@@ -458,3 +458,12 @@ Caso não exista tradução nesse caminho, o Templus irá buscar no caminho `def
 ```
 shared.#{field}
 ```
+
+
+## Eager Loading
+
+Caso deseja adicionar um `includes` nas consultas de index do sistema, basta adicionar a tag `add_includes` no `Crud`, exemplo:
+
+```
+add_includes [:client, :dish, :payment]
+```

@@ -80,7 +80,7 @@
 						</a>
 					<% end %>
 				<% elsif options[:associacao].present? %>
-					<%= link_to name, crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: "partial", target: "#form"} %>
+					<%= link_to name, crud_associacao_models_path(model: @model.name.underscore, id: record.id, associacao: options[:associacao].to_s), class: "btn btn-success btn-xs", data: {push: true, crumb: "wielka"} %>
 				<% elsif options[:partial].present? %>
 					<%= render options[:partial], record: record %>
 				<% end %>

@@ -295,7 +295,6 @@ class CrudController < ApplicationController
         result = element.split("?")[0].split("=")
         hash[result[0]] = result[1]
       end
-      byebug
       params = ActionController::Parameters.new(hash)
     end
     params

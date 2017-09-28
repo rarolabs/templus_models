@@ -234,6 +234,12 @@ module CrudHelper
     crud_helper.condition_printing_action.call(record)
   end
 
+  def add_params_page(url, page)
+    if page.present? && !url.include?("&")
+      url = url.include?("?") ? "#{url}&page=#{page}" : "#{url}?page=#{page}"
+    end
+    url
+  end
 
   private
 

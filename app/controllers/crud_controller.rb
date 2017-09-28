@@ -190,6 +190,7 @@ class CrudController < ApplicationController
   private
 
   def setup
+    params[:q] = convert_params(params[:q])
     if params[:associacao]
       @crud_associacao = Module.const_get("#{params[:model].to_s.singularize}_crud".camelize)
       if Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao])
@@ -285,5 +286,17 @@ class CrudController < ApplicationController
       break if ["ApplicationRecord", "ActiveRecord::Base"].include? m.superclass.to_s
     end
     list_methods.flatten.include? method.to_sym
+  end
+
+  def convert_params(params)
+    if params.present? && params.class == String
+      hash = {}
+      params.split("&").each do |element|
+        result = element.split("?")[0].split("=")
+        hash[result[0]] = result[1]
+      end
+      params = ActionController::Parameters.new(hash)
+    end
+    params
   end
 end

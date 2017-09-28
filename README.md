@@ -1,5 +1,23 @@
 # Templus Models
-##Gerando um CRUD
+
+## Instalação
+Rails 4
+```ruby
+gem 'templus_models', '~> 1.0'
+```
+
+Rails 4 I18n
+```ruby
+gem 'templus_models', '~> 2.0'
+```
+
+Rails 5 I18n
+```ruby
+gem 'templus_models', '~> 3.0'
+```
+
+
+## Gerando um CRUD
 Utilize o generator CRUD para criar um novo crud
 ```ruby
 rails g crud empresa
@@ -57,7 +75,7 @@ class EmpresaCrud < RaroCrud
 end
 ```
 
-##Alterar forma de visualização do campo
+## Alterar forma de visualização do campo
 
 ```rb
 campo_visualizacao :tipo, label: "Tipo", label_method: :descricao_do_tipo

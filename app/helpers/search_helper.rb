@@ -1,7 +1,7 @@
 module SearchHelper
 
-  def raro_search_form(model,partial,collection_name,url,sort = nil)
-      @buffer = raro_before_form(model,partial,collection_name,url,sort)
+  def raro_search_form(model, partial, collection_name, url, scope = nil, sort = nil)
+      @buffer = raro_before_form(model, partial, collection_name, url, scope, sort)
       @model = model
       yield
       @buffer << raro_submit(I18n.t('search'))
@@ -240,14 +240,13 @@ module SearchHelper
       buffer
     end
 
-    def raro_before_form(model,partial,var,url,sort)
+    def raro_before_form(model, partial, var, url, scope, sort)
       buffer = "<div id='search_box'>"+
       "<form method='get' class=form-horizontal action='#{url}' data-push='partial' data-target='#form'>" +
       "<input type='hidden' name='partial' value='#{partial}'>" +
       "<input type='hidden' name='var' value='#{var}'>"
-      if sort
-        buffer << "<input type='hidden' name='q[s]' value='#{sort}'>"
-      end
+      buffer << "<input type='hidden' name='q[s]' value='#{sort}'>" if sort.present?
+      buffer << "<input type='hidden' name='scope' value='#{scope}'>" if scope.present?
       buffer
     end
 

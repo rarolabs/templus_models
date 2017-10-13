@@ -13,7 +13,7 @@
         <% else %>
           <% url = query_crud_path(model: @model.name.underscore) %>
         <% end %>
-        <%= raro_search_form(@model, 'records','records', url) do %>
+        <%= raro_search_form(@model, 'records','records', url, params[:scope]) do %>
           <% raro_group "#{@crud_helper.title}" %>
           <% @crud_helper.search_fields.each do |att| %>
             <% if att[:sf].present? && !att[:sf][:visible_if].nil? %>

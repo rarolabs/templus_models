@@ -118,7 +118,11 @@ class CrudController < ApplicationController
   def query
     authorize! :read, @model_permission if respond_to?(:current_usuario)
     @resource = @model
-    @q = @resource.search(params[:q])
+    if params[:scope].present? && valid_method?(params[:scope])
+      @q = @model.send(params[:scope]).search(params[:q])
+    else
+      @q = @model.search(params[:q])
+    end
     @q.sorts = 'updated_at desc' if @q.sorts.empty?
     if respond_to?(:current_usuario)
       results = @q.result.accessible_by(current_ability).page(params[:page])

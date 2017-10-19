@@ -1,7 +1,6 @@
 class CrudController < ApplicationController
   before_filter :setup, except: :autocomplete
 
-
   def index
     authorize! :read, @model_permission if respond_to?(:current_usuario)
     if params[:scope].present? && valid_method?(params[:scope])
@@ -163,6 +162,14 @@ class CrudController < ApplicationController
       @q = @model.send(params[:scope]).search(params[:q])
     else
       @q = @model.search(params[:q])
+    end
+
+    if @q.sorts.empty?
+      if "#{@crud_helper.order_field}".include?("desc") or "#{@crud_helper.order_field}".include?("asc")
+        @q.sorts = "#{@crud_helper.order_field}"
+      else
+        @q.sorts = "#{@crud_helper.order_field} asc"
+      end
     end
 
     if respond_to?(:current_usuario)

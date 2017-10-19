@@ -9,8 +9,8 @@ class CrudController < ApplicationController
       @q = @model.search(params[:q])
     end
     if @q.sorts.empty?
-      if "#{@crud_helper.order_field}".include?("desc") or "#{@crud_helper.order_field}".include?("asc")
-        @q.sorts = "#{@crud_helper.order_field}"
+      if @crud_helper.order_field.to_s.include?("desc") || @crud_helper.order_field.to_s.include?("asc")
+        @q.sorts = @crud_helper.order_field.to_s
       else
         @q.sorts = "#{@crud_helper.order_field} asc"
       end
@@ -163,15 +163,13 @@ class CrudController < ApplicationController
     else
       @q = @model.search(params[:q])
     end
-
     if @q.sorts.empty?
-      if "#{@crud_helper.order_field}".include?("desc") or "#{@crud_helper.order_field}".include?("asc")
-        @q.sorts = "#{@crud_helper.order_field}"
+      if @crud_helper.order_field.to_s.include?("desc") || @crud_helper.order_field.to_s.include?("asc")
+        @q.sorts = @crud_helper.order_field.to_s
       else
         @q.sorts = "#{@crud_helper.order_field} asc"
       end
     end
-
     if respond_to?(:current_usuario)
       @records = @q.result.accessible_by(current_ability)
     else
@@ -200,9 +198,7 @@ class CrudController < ApplicationController
     end
   end
 
-
   private
-
   def generate_pdf_report(opts, layout)
     html = render_to_string(layout)
     options = {

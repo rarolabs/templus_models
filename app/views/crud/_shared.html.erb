@@ -38,11 +38,11 @@
               <% if params[:associacao] %>
                 <% if @crud_helper.listing_fields.present? && should_listing?(@crud_helper, @model_permission) %>
 
-                  <%= link_to listing_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], q: params[:q], format: :xls), class: "btn btn-success btn-rounded" do %>
+                  <%= link_to listing_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], scope: params[:scope], q: params[:q], format: :xls), class: "btn btn-success btn-rounded" do %>
                     <%= I18n.t("devise.reports.excel").html_safe %>
                   <% end if should_listing_excel?(@crud_helper, @model_permission) %>
 
-                  <%= link_to listing_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], q: params[:q], format: :pdf), class: "btn btn-success btn-rounded", target: '_blank' do %>
+                  <%= link_to listing_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], q: params[:q], scope: params[:scope], format: :pdf), class: "btn btn-success btn-rounded", target: '_blank' do %>
                     <%= I18n.t("devise.reports.pdf").html_safe %>
                   <% end if should_listing_pdf?(@crud_helper, @model_permission) %>
 
@@ -50,11 +50,11 @@
               <% else %>
                 <% if @crud_helper.listing_fields.present? && should_listing?(@crud_helper, @model) %>
 
-                  <%= link_to listing_crud_path(model: @model.name.underscore, q: params[:q], format: :xls), class: "btn btn-success btn-rounded" do %>
+                  <%= link_to listing_crud_path(model: @model.name.underscore, q: params[:q], scope: params[:scope], format: :xls), class: "btn btn-success btn-rounded" do %>
                     <%= I18n.t("devise.reports.excel").html_safe %>
                   <% end if should_listing_excel?(@crud_helper, @model) %>
 
-                  <%= link_to listing_crud_path(model: @model.name.underscore, q: params[:q], target: '_blank', format: :pdf), class: "btn btn-success btn-rounded", target: '_blank' do %>
+                  <%= link_to listing_crud_path(model: @model.name.underscore, q: params[:q], scope: params[:scope], target: '_blank', format: :pdf), class: "btn btn-success btn-rounded", target: '_blank' do %>
                     <%= I18n.t("devise.reports.pdf").html_safe %>
                   <% end if should_listing_pdf?(@crud_helper, @model) %>
 

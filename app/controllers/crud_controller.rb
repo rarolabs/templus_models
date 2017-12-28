@@ -10,8 +10,8 @@ class CrudController < ApplicationController
       @q = @model.search(params[:q])
     end
     if @q.sorts.empty?
-      if "#{@crud_helper.order_field}".include?("desc") or "#{@crud_helper.order_field}".include?("asc")
-        @q.sorts = "#{@crud_helper.order_field}"
+      if @crud_helper.order_field.to_s.include?("desc") || @crud_helper.order_field.to_s.include?("asc")
+        @q.sorts = @crud_helper.order_field.to_s
       else
         @q.sorts = "#{@crud_helper.order_field} asc"
       end
@@ -159,7 +159,18 @@ class CrudController < ApplicationController
 
   def listing
     authorize! :read, @model_permission if respond_to?(:current_usuario)
-    @q = @model.search(params[:q])
+    if params[:scope].present? && valid_method?(params[:scope])
+      @q = @model.send(params[:scope]).search(params[:q])
+    else
+      @q = @model.search(params[:q])
+    end
+    if @q.sorts.empty?
+      if @crud_helper.order_field.to_s.include?("desc") || @crud_helper.order_field.to_s.include?("asc")
+        @q.sorts = @crud_helper.order_field.to_s
+      else
+        @q.sorts = "#{@crud_helper.order_field} asc"
+      end
+    end
     if respond_to?(:current_usuario)
       @records = @q.result.accessible_by(current_ability)
     else
@@ -168,6 +179,16 @@ class CrudController < ApplicationController
     report_name = "#{@crud_helper.title}_#{DateTime.now.strftime('%Y%m%d')}"
     respond_to do |format|
       format.xls { headers["Content-Disposition"] = "attachment; filename=#{report_name}.xls" }
+      format.pdf do
+        pdf = WickedPdf.new.pdf_from_string(
+          render_to_string('crud/listing.pdf.erb'),
+          encoding: 'UTF-8',
+          page_size: 'A4',
+          show_as_html: params[:debug],
+          margin: { top: 20, bottom: 20 }
+        )
+        send_data(pdf, filename: "#{report_name}.pdf", type: "application/pdf", disposition: "inline")
+      end
     end
   end
 

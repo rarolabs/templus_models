@@ -153,6 +153,35 @@ campo_busca :sexo,
 * Obs: No campo Label deve ser passado o path para a tradução ou não informar o label. Assim ele irá automaticamente buscar de um path predefinido.
 
 
+## Campos do tipo select
+Para os campos select no campo_busca, é possível incluir a opção *include_blank*. 
+Caso essa opção não seja definida, por padrão o *include_blank* terá valor *true*. 
+Caso contrário, serão aceitos os valores *true* ou *false* para, respectivamente, a inclusão ou não dessa propriedade.
+
+Para os dois exemplos abaixo, será incluída essa propriedade.
+```ruby
+campo_busca :sexo,
+            label: 'simple_form.labels.perfil.perfis_perfil',
+            as: :select,
+            collection_if: Proc.new { User.sexos.map{|s| [s, s]} }
+```
+
+```ruby
+campo_busca :sexo,
+            label: 'simple_form.labels.perfil.perfis_perfil',
+            as: :select,
+            collection_if: Proc.new { User.sexos.map{|s| [s, s]} },
+            include_blank: true
+```
+
+Para o exemplo abaixo, não será incluída essa propriedade.
+```ruby
+campo_busca :sexo,
+            label: 'simple_form.labels.perfil.perfis_perfil',
+            as: :select,
+            collection_if: Proc.new { User.sexos.map{|s| [s, s]} },
+            include_blank: false
+```
 
 ## Busca por intervalo
 Para buscas de valores em um intervalo

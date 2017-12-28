@@ -209,9 +209,6 @@ class RaroCrud
     @@menus
   end
 
-
-
-
   def self.campo_visualizacao(nome, opts = {})
     @@view_fields[self.to_s.to_sym] ||= []
     opts = set_default_label nome, opts
@@ -381,8 +378,6 @@ class RaroCrud
     @@form_scripts[self.to_s.to_sym] ||= []
     @@form_scripts[self.to_s.to_sym] << script.to_s
   end
-
-
 
   private
 

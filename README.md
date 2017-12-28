@@ -160,30 +160,27 @@ Caso contrário, serão aceitos os valores *true* ou *false* para, respectivamen
 
 Para os dois exemplos abaixo, será incluída essa propriedade.
 ```ruby
-campo_formulario :sexo,
-                 label: 'simple_form.labels.perfil.perfis_perfil',
-                 as: :select,
-                 input_html: {class: "i-checks"},
-                 collection_if: Proc.new { User.sexos.map{|s| [s, s]} }
+campo_busca :sexo,
+            label: 'simple_form.labels.perfil.perfis_perfil',
+            as: :select,
+            collection_if: Proc.new { User.sexos.map{|s| [s, s]} }
 ```
 
 ```ruby
-campo_formulario :sexo,
-                 label: 'simple_form.labels.perfil.perfis_perfil',
-                 as: :select,
-                 input_html: {class: "i-checks"},
-                 collection_if: Proc.new { User.sexos.map{|s| [s, s]} },
-                 include_blank: true
+campo_busca :sexo,
+            label: 'simple_form.labels.perfil.perfis_perfil',
+            as: :select,
+            collection_if: Proc.new { User.sexos.map{|s| [s, s]} },
+            include_blank: true
 ```
 
 Para o exemplo abaixo, não será incluída essa propriedade.
 ```ruby
-campo_formulario :sexo,
-                 label: 'simple_form.labels.perfil.perfis_perfil',
-                 as: :select,
-                 input_html: {class: "i-checks"},
-                 collection_if: Proc.new { User.sexos.map{|s| [s, s]} },
-                 include_blank: false
+campo_busca :sexo,
+            label: 'simple_form.labels.perfil.perfis_perfil',
+            as: :select,
+            collection_if: Proc.new { User.sexos.map{|s| [s, s]} },
+            include_blank: false
 ```
 
 ## Busca por intervalo

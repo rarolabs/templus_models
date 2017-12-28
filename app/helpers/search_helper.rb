@@ -134,7 +134,9 @@ module SearchHelper
       else
         buf << "<select name=#{name} class='form-control'>"
       end
-      buf <<"<option value ='' selected>#{I18n.t('search')}</option>"
+      if opts[:include_blank].nil? || (!opts[:include_blank].nil? && ActiveRecord::Type::Boolean.new.type_cast_from_user(opts[:include_blank]))
+        buf << "<option value='' selected>#{I18n.t('search')}</option>"
+      end
       collection.each do |e|
         buf << "<option value=#{e[0]}>#{e[1]}</option>"
       end

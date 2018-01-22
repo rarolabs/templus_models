@@ -16,9 +16,9 @@ class CrudController < ApplicationController
       end
     end
     if respond_to?(:current_usuario)
-      @records = @q.result.accessible_by(current_ability, :read).page(params[:page]).per(@crud_helper.per_page)
+      @records = @q.result.accessible_by(current_ability, :read).uniq.page(params[:page]).per(@crud_helper.per_page)
     else
-      @records = @q.result.page(params[:page]).per(@crud_helper.per_page)
+      @records = @q.result.uniq.page(params[:page]).per(@crud_helper.per_page)
     end
     @titulo = @model.name.pluralize
     render partial: 'records' if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
@@ -124,9 +124,9 @@ class CrudController < ApplicationController
     end
     @q.sorts = 'updated_at desc' if @q.sorts.empty?
     if respond_to?(:current_usuario)
-      results = @q.result.accessible_by(current_ability).page(params[:page])
+      results = @q.result.accessible_by(current_ability).uniq.page(params[:page])
     else
-      results = @q.result.page(params[:page])
+      results = @q.result.uniq.page(params[:page])
     end
     instance_variable_set("@#{params[:var]}", results)
     if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
@@ -144,9 +144,9 @@ class CrudController < ApplicationController
     @q = @model.search(parametros)
     @q.sorts = 'updated_at desc' if @q.sorts.empty?
     if respond_to?(:current_usuario)
-      results = @q.result.accessible_by(current_ability).page(params[:page])
+      results = @q.result.accessible_by(current_ability).uniq.page(params[:page])
     else
-      results = @q.result.page(params[:page])
+      results = @q.result.uniq.page(params[:page])
     end
     if valid_instance_method?(params[:label])
       method_label = params[:label]
@@ -171,9 +171,9 @@ class CrudController < ApplicationController
       end
     end
     if respond_to?(:current_usuario)
-      @records = @q.result.accessible_by(current_ability)
+      @records = @q.result.uniq.accessible_by(current_ability)
     else
-      @records = @q.result
+      @records = @q.result.uniq
     end
     report_name = "#{@crud_helper.title}_#{DateTime.now.strftime('%Y%m%d')}"
     respond_to do |format|

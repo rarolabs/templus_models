@@ -8,6 +8,7 @@ class CrudController < ApplicationController
     else
       @q = @model.search(params[:q])
     end
+
     if @q.sorts.empty?
       if @crud_helper.order_field.to_s.include?("desc") || @crud_helper.order_field.to_s.include?("asc")
         @q.sorts = @crud_helper.order_field.to_s
@@ -15,6 +16,7 @@ class CrudController < ApplicationController
         @q.sorts = "#{@crud_helper.order_field} asc"
       end
     end
+
     if respond_to?(:current_usuario)
       @records = @q.result.accessible_by(current_ability, :read).uniq.page(params[:page]).per(@crud_helper.per_page)
     else
@@ -123,11 +125,13 @@ class CrudController < ApplicationController
       @q = @model.search(params[:q])
     end
     @q.sorts = 'updated_at desc' if @q.sorts.empty?
+
     if respond_to?(:current_usuario)
       results = @q.result.accessible_by(current_ability).uniq.page(params[:page])
     else
       results = @q.result.uniq.page(params[:page])
     end
+
     instance_variable_set("@#{params[:var]}", results)
     if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
       render :partial => params[:partial]
@@ -163,6 +167,7 @@ class CrudController < ApplicationController
     else
       @q = @model.search(params[:q])
     end
+
     if @q.sorts.empty?
       if @crud_helper.order_field.to_s.include?("desc") || @crud_helper.order_field.to_s.include?("asc")
         @q.sorts = @crud_helper.order_field.to_s
@@ -170,6 +175,7 @@ class CrudController < ApplicationController
         @q.sorts = "#{@crud_helper.order_field} asc"
       end
     end
+    
     if respond_to?(:current_usuario)
       @records = @q.result.uniq.accessible_by(current_ability)
     else

@@ -89,7 +89,7 @@ module SearchHelper
       when :string
         raro_text_field(name, opts)
       when :range
-        raro_range(name)
+        raro_range(name, opts)
       when :monthyear
         raro_monthyear(name, opts)
       when :check_boxes
@@ -231,13 +231,21 @@ module SearchHelper
       </div></div>"
     end
 
-    def raro_range(name)
+    def raro_range(name, opts={})
+      attrs_gteq, attrs_lteq = "", ""
+
+      if opts[:placeholders]
+        placeholders = opts[:placeholders]
+        attrs_gteq << "placeholder='#{placeholders.first}' "
+        attrs_lteq << "placeholder='#{placeholders.last}' "
+      end
+
       buffer = ""
       buffer += "<div class='col-sm-4'>"
-      buffer += "<input type='text' name='q[#{name}_gteq]' class='form-control'/>"
+      buffer += "<input type='text' name='q[#{name}_gteq]' class='form-control' #{attrs_gteq}/>"
       buffer += "</div>"
       buffer += "<div class='col-sm-4 range-separator'>"
-      buffer += "<input type='text' name='q[#{name}_lteq]' class='form-control'/>"
+      buffer += "<input type='text' name='q[#{name}_lteq]' class='form-control' #{attrs_lteq}/>"
       buffer += "</div>"
       buffer
     end

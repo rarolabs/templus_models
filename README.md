@@ -190,6 +190,12 @@ Para buscas de valores em um intervalo
 campo_busca :salario, label: "simple_form.labels.perfil.perfis_perfil", as: :range
 ```
 
+Para adicionar placeholders nos campos de busca em intervalo
+
+```rb
+campo_busca :salario, label: "Salário", as: :range, placeholders: ["Salário inicial", "Salário final"]
+```
+
 ## Aplicando máscara
 Para aplicar uma máscara em um campo
 

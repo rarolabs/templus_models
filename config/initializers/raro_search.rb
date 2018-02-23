@@ -15,7 +15,7 @@ Ransack.configure do |config|
 
   config.add_predicate 'has_any_term',
     arel_predicate: 'matches_any',
-    formatter: proc { |v| v.scan(/\"(.*?)\"|(\w+)/).flatten.compact.map{|t| "%#{t}%"} },
+    formatter: proc { |v| ["% #{v} %", "% #{v}", "#{v} %", "#{v}"] },
     validator: proc { |v| v.present? },
     compounds: true,
     type: :string

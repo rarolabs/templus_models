@@ -144,6 +144,7 @@
       not_contains: "Não Contém"
       begins: "Começa"
       ends: "Termina"
+      word: "Palavra"
     menu:
       entitys: "Cadastros"
   true: Sim
@@ -158,7 +159,7 @@
     - Sex
     - Sáb
     abbr_month_names:
-    - 
+    -
     - Jan
     - Fev
     - Mar
@@ -184,7 +185,7 @@
       long: ! '%d de %B de %Y'
       short: ! '%d de %B'
     month_names:
-    - 
+    -
     - Janeiro
     - Fevereiro
     - Março

@@ -289,6 +289,7 @@ module SearchHelper
       <option value=not_cont>#{I18n.t('not_contains')}</option>
       <option value=start>#{I18n.t('begins')}</option>
       <option value=end>#{I18n.t('ends')}</option>
+      <option value=has_any_term>#{I18n.t('word')}</option>
       </select>"
     end
 

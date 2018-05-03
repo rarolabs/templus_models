@@ -17,11 +17,11 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 5.0"
+  s.add_dependency "rails", "~> 5.2.0"
   s.add_dependency "cancancan", "~> 1.16"
   s.add_dependency "ransack", "~> 1.8"
   s.add_dependency "kaminari", "~> 0.16"
-  s.add_dependency "simple_form", "~> 3.4"
+  s.add_dependency "simple_form", "~> 4.0.0"
   s.add_dependency "nested_form", "~> 0.3"
   s.add_dependency "rails-jquery-autocomplete", "~> 1.0"
   s.add_dependency "wicked_pdf", "~> 1.1"

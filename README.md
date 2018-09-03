@@ -391,6 +391,12 @@ Caso deseja um label diferente para os botões Adicionar e Remover do grupo, bas
                            {campo: :observacao}]
 ```
 
+## Adicionando eager loading no index
+Caso um dos `campo_tabela` especificados seja uma relação do modelo, use a diretiva abaixo para incluí-las e evitar [N+1 queries](https://stackoverflow.com/questions/97197/what-is-the-n1-select-query-issue)
+```ruby
+campo_tabela_includes :relacao
+```
+
 # Configuração
 
 Para configurar o RaroCrud crie um initializer com o seguinte código:

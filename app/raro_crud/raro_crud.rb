@@ -2,6 +2,7 @@ class RaroCrud
   @@order_field               = {}
   @@per_page                  = {}
   @@index_fields              = {}
+  @@index_includes            = {}
   @@form_fields               = {}
   @@form_group                = {}
   @@form_scripts              = {}
@@ -429,6 +430,14 @@ class RaroCrud
         attribute: nome
       }.merge(opts)
     )
+  end
+
+  def self.campo_tabela_includes(*relations)
+    @@index_includes[self.to_s.to_sym] = relations.map(&:to_sym)
+  end
+
+  def self.index_includes
+    @@index_includes[self.to_s.to_sym]
   end
 
   def self.ordenar_por nome

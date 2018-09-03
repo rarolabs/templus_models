@@ -22,6 +22,11 @@ class CrudController < ApplicationController
     else
       @records = @q.result.uniq.page(params[:page]).per(@crud_helper.per_page)
     end
+
+    if (relations = @crud_helper.index_includes).present?
+      @records = @records.includes(*relations)
+    end
+
     @titulo = @model.name.pluralize
     render partial: 'records' if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
   end
@@ -132,6 +137,10 @@ class CrudController < ApplicationController
       results = @q.result.uniq.page(params[:page])
     end
 
+    if (relations = @crud_helper.index_includes).present?
+      results = results.includes(*relations)
+    end
+
     instance_variable_set("@#{params[:var]}", results)
     if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
       render :partial => params[:partial]
@@ -175,7 +184,7 @@ class CrudController < ApplicationController
         @q.sorts = "#{@crud_helper.order_field} asc"
       end
     end
-    
+
     if respond_to?(:current_usuario)
       @records = @q.result.uniq.accessible_by(current_ability)
     else

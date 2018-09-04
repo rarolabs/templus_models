@@ -12,14 +12,14 @@ module MensagensHelper
       render "/crud/mensagens/avisos", tipo: tipo, mensagem:  message
     end
   end
-  
+
   def flash_messages_for
     message, tipo = extrair_mensagem
     if message.present? && tipo.present?
-      javascript_tag "mensagem_#{tipo}('#{message}')"
+      javascript_tag "mensagem_#{tipo}('#{j message}')"
     end
   end
-  
+
   private
   def extrair_mensagem
     case
@@ -38,7 +38,7 @@ module MensagensHelper
       when flash[:info]
         message = flash.discard(:info)
         tipo = 'info'
-      end  
+      end
     flash.clear
     return message, tipo
   end

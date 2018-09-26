@@ -60,7 +60,7 @@ class CrudController < ApplicationController
       else
         flash.now[:error] = I18n.t("mensagem_erro_action", acao: params[:acao])
       end
-      redirect_to "#{@url}?page=#{params[:page]}"
+      redirect_to @url
     else
       @titulo = @record.to_s
       @texto = params[:acao]
@@ -83,7 +83,7 @@ class CrudController < ApplicationController
     respond_to do |format|
       if @saved
         flash[:success] = params[:id].present? ? I18n.t("updated", model: I18n.t("model.#{@model.name.underscore}")) : I18n.t("created", model: I18n.t("model.#{@model.name.underscore}"))
-        format.html { redirect_to "#{@url}?page=#{params[:page]}" }
+        format.html { redirect_to @url }
         unless params[:render] == 'modal'
           format.js { render action: :index}
         else

@@ -211,9 +211,7 @@ class CrudController < ApplicationController
     end
   end
 
-
   private
-
   def setup
     params[:q] = convert_params(params[:q])
     if params[:associacao]
@@ -299,7 +297,7 @@ class CrudController < ApplicationController
     list_methods = []
     @model.ancestors.each do |m|
       list_methods << m.methods(false).reject{ |m| /^_/ =~ m.to_s }
-      break if ["ApplicationRecord", "ActiveRecord::Base"].include? m.superclass.to_s
+      break if ["ApplicationRecord", "ActiveRecord::Base"].include? m.try(:superclass).to_s
     end
     list_methods.flatten.include? method.to_sym
   end
@@ -308,7 +306,7 @@ class CrudController < ApplicationController
     list_methods = []
     @model.ancestors.each do |m|
       list_methods << m.instance_methods(false).reject{ |m| /^_/ =~ m.to_s }
-      break if ["ApplicationRecord", "ActiveRecord::Base"].include? m.superclass.to_s
+      break if ["ApplicationRecord", "ActiveRecord::Base"].include? m.try(:superclass).to_s
     end
     list_methods.flatten.include? method.to_sym
   end

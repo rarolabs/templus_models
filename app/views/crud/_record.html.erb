@@ -87,7 +87,7 @@
 						<% if action[:options].present? && action[:options][:wiselink].present? && action[:options][:wiselink] %>
 							<% data = {push: "partial", target: "#form"} %>
 						<% end %>
-						<%= link_to I18n.t(action[:desc]), action_crud_path(model: @model.name.underscore, id: record.id, acao: action[:method]), class: "btn btn-primary btn-xs", data: data || {} %>
+						<%= link_to I18n.t(action[:desc]), action_crud_path(model: @model.name.underscore, id: record.id, acao: action[:method], page: params[:page], q: params[:q]), class: "btn btn-primary btn-xs", data: data || {} %>
 					<% end %>
 				<% end %>
 				<% @crud_helper.actions_links.each do |name, options| %>

@@ -7,9 +7,9 @@ end
 
 ruby '2.4.0'
 
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.2'
 
-gem 'rack-attack', '~> 5.0.1'
+gem 'rack-attack', '~> 5'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -44,10 +44,16 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'therubyracer', platforms: :ruby
 gem 'bootstrap-sass', '3.3.7'
-gem 'font-awesome-rails', '4.7.0'
+gem 'font-awesome-rails', '~> 4'
 
 gem 'toastr-rails'
 gem 'summernote-rails'
+
+gem 'ransack'
+gem 'kaminari'
+gem 'simple_form'
+gem 'nested_form'
+gem 'rails-jquery-autocomplete'
 
 #permission
 gem 'cancancan'

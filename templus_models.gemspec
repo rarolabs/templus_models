@@ -18,13 +18,13 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 5.2"
-  s.add_dependency "cancancan", "~> 3.0"
+  s.add_dependency "cancancan", "~> 3"
   s.add_dependency "ransack", "~> 2.1"
   s.add_dependency "kaminari", "~> 1.1"
   s.add_dependency "simple_form", "~> 4.1"
   s.add_dependency "nested_form", "~> 0.3"
   s.add_dependency "rails-jquery-autocomplete", "~> 1.0"
-  s.add_dependency "wicked_pdf", "~> 1.2"
+  s.add_dependency "wicked_pdf", "~> 1"
 
   s.add_development_dependency "sqlite3", "~> 1.3"
 end

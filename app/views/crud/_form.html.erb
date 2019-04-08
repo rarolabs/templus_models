@@ -13,15 +13,15 @@
 	<%unless params[:render] == 'modal'%>
 		<% if @record.new_record? %>
 			<% if @crud_associacao.present? %>
-				<% url = create_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], page: params[:page], q: params[:q]) %>
+				<% url = create_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], page: params[:page], q: params[:q].try(:to_unsafe_h)) %>
 			<% else %>
-				<% url = create_crud_path(model: @model.name.underscore, page: params[:page], q: params[:q]) %>
+				<% url = create_crud_path(model: @model.name.underscore, page: params[:page], q: params[:q].try(:to_unsafe_h)) %>
 			<% end %>
 		<% else %>
 			<% if @crud_associacao.present? %>
-				<% url = update_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: @record.id, page: params[:page], q: params[:q]) %>
+				<% url = update_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: @record.id, page: params[:page], q: params[:q].try(:to_unsafe_h)) %>
 			<% else %>
-				<% url = update_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q]) %>
+				<% url = update_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q].try(:to_unsafe_h)) %>
 			<% end %>
 		<% end %>
 		<% remote_form = false%>

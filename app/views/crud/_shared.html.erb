@@ -37,13 +37,13 @@
               <% end %>
               <% if params[:associacao] %>
                 <% if @crud_helper.listing_fields.present? && should_listing?(@crud_helper, @model_permission) && should_listing_excel?(@crud_helper, @model_permission) %>
-                  <%= link_to listing_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], q: params[:q], format: :xls), class: "btn btn-success btn-rounded" do %>
+                  <%= link_to listing_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], q: params[:q].try(:to_unsafe_h), format: :xls), class: "btn btn-success btn-rounded" do %>
                     <%= I18n.t("devise.reports.excel").html_safe %>
                   <% end %>
                 <% end %>
               <% else %>
                 <% if @crud_helper.listing_fields.present? && should_listing?(@crud_helper, @model) && should_listing_excel?(@crud_helper, @model) %>
-                  <%= link_to listing_crud_path(model: @model.name.underscore, q: params[:q], format: :xls), class: "btn btn-success btn-rounded" do %>
+                  <%= link_to listing_crud_path(model: @model.name.underscore, q: params[:q].try(:to_unsafe_h), format: :xls), class: "btn btn-success btn-rounded" do %>
                     <%= I18n.t("devise.reports.excel").html_safe %>
                   <% end %>
                 <% end %>
@@ -80,27 +80,27 @@
 
             <% if (@crud_helper.present? && @crud_helper.destroy_action) && should_destroy?(@crud_helper, @record) %>
               <% if @crud_associacao.present? %>
-                <%= link_to I18n.t("destroy"), destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: @record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs pull-right m-l-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
+                <%= link_to I18n.t("destroy"), destroy_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: @record.id, page: params[:page], q: params[:q].try(:to_unsafe_h)), class: 'btn btn-danger btn-xs pull-right m-l-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
               <% else %>
-                <%= link_to I18n.t("destroy"), destroy_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q]), class: 'btn btn-danger btn-xs pull-right m-l-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
+                <%= link_to I18n.t("destroy"), destroy_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q].try(:to_unsafe_h)), class: 'btn btn-danger btn-xs pull-right m-l-xs', data: {method: 'delete', confirm: I18n.t('mensagem_confirm_destroy')} %>
               <% end %>
             <% end %>
 
             <% if (@crud_helper.present? && @crud_helper.edit_action) && should_edit?(@crud_helper, @record) %>
               <% if @crud_associacao.present? %>
-                <%= link_to I18n.t("edit"), edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: @record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs pull-right m-l-xs', data: {push: 'partial', target: '#form'} %>
+                <%= link_to I18n.t("edit"), edit_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: @record.id, page: params[:page], q: params[:q].try(:to_unsafe_h)), class: 'btn btn-primary btn-xs pull-right m-l-xs', data: {push: 'partial', target: '#form'} %>
               <% else %>
-                <%= link_to I18n.t("edit"), edit_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q]), class: 'btn btn-primary btn-xs pull-right m-l-xs', data: {push: 'partial', target: '#form'} %>
+                <%= link_to I18n.t("edit"), edit_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q].try(:to_unsafe_h)), class: 'btn btn-primary btn-xs pull-right m-l-xs', data: {push: 'partial', target: '#form'} %>
               <% end %>
             <% end %>
 
             <% if @crud_helper.printing_fields.present? && can_print_pdf?(@crud_helper, @record) %>
               <% if @crud_associacao.present? %>
-                <%= link_to printing_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: @record.id, page: params[:page], q: params[:q], format: :pdf), class: "btn btn-success btn-xs pull-right m-l-xs", target: "_blank" do %>
+                <%= link_to printing_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: @record.id, page: params[:page], q: params[:q].try(:to_unsafe_h), format: :pdf), class: "btn btn-success btn-xs pull-right m-l-xs", target: "_blank" do %>
                   <%= I18n.t("devise.printing").html_safe %>
                 <% end %>
               <% else %>
-                <%= link_to printing_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q], format: :pdf), class: "btn btn-success btn-xs pull-right m-l-xs", target: "_blank" do %>
+                <%= link_to printing_crud_path(model: @model.name.underscore, id: @record.id, page: params[:page], q: params[:q].try(:to_unsafe_h), format: :pdf), class: "btn btn-success btn-xs pull-right m-l-xs", target: "_blank" do %>
                   <%= I18n.t("devise.printing").html_safe %>
                 <% end %>
               <% end %>

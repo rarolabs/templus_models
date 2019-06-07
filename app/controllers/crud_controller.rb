@@ -5,9 +5,9 @@ class CrudController < ApplicationController
   def index
     authorize! :read, @model_permission if respond_to?(:current_usuario)
     if params[:scope].present? && valid_method?(params[:scope])
-      @q = @model.send(params[:scope]).search(params[:q])
+      @q = @model.send(params[:scope]).ransack(params[:q])
     else
-      @q = @model.search(params[:q])
+      @q = @model.ransack(params[:q])
     end
     if @q.sorts.empty?
       if @crud_helper.order_field.to_s.include?("desc") || @crud_helper.order_field.to_s.include?("asc")
@@ -119,9 +119,9 @@ class CrudController < ApplicationController
     authorize! :read, @model_permission if respond_to?(:current_usuario)
     @resource = @model
     if params[:scope].present? && valid_method?(params[:scope])
-      @q = @model.send(params[:scope]).search(params[:q])
+      @q = @model.send(params[:scope]).ransack(params[:q])
     else
-      @q = @model.search(params[:q])
+      @q = @model.ransack(params[:q])
     end
     @q.sorts = 'updated_at desc' if @q.sorts.empty?
     if respond_to?(:current_usuario)
@@ -142,7 +142,7 @@ class CrudController < ApplicationController
     authorize! :read, @model if respond_to?(:current_usuario)
     parametros = {}
     parametros["#{params[:campo]}_#{params[:tipo]}"] = params[:term]
-    @q = @model.search(parametros)
+    @q = @model.ransack(parametros)
     @q.sorts = 'updated_at desc' if @q.sorts.empty?
     if respond_to?(:current_usuario)
       results = @q.result.accessible_by(current_ability).page(params[:page])
@@ -160,9 +160,9 @@ class CrudController < ApplicationController
   def listing
     authorize! :read, @model_permission if respond_to?(:current_usuario)
     if params[:scope].present? && valid_method?(params[:scope])
-      @q = @model.send(params[:scope]).search(params[:q])
+      @q = @model.send(params[:scope]).ransack(params[:q])
     else
-      @q = @model.search(params[:q])
+      @q = @model.ransack(params[:q])
     end
     if @q.sorts.empty?
       if @crud_helper.order_field.to_s.include?("desc") || @crud_helper.order_field.to_s.include?("asc")

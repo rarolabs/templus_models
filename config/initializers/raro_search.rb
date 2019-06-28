@@ -15,10 +15,15 @@ Ransack.configure do |config|
 end
 
 module Kaminari
-  module ActionViewExtension
-    def paginate(scope, options = {}, &block)
-      paginator = Kaminari::Helpers::Paginator.new self, options.reverse_merge(:current_page => scope.current_page, :total_pages => scope.total_pages, :per_page => scope.limit_value, :total_count => scope.total_count, :remote => false)
-      paginator.to_s
+  module Helpers
+    module HelperMethods
+      def paginate(scope, paginator_class: Kaminari::Helpers::Paginator, template: nil, **options)
+        options[:total_pages] ||= scope.total_pages
+        options.reverse_merge! current_page: scope.current_page, per_page: scope.limit_value, total_pages: scope.total_pages, total_count: scope.total_count, remote: false
+
+        paginator = paginator_class.new (template || self), options
+        paginator.to_s
+      end
     end
   end
 end

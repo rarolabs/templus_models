@@ -1,4 +1,4 @@
-<%unless params[:render] == 'modal'%>
+<% unless params[:render] == 'modal' %>
 	<% content_for :breadcumb do %>
 		<% if @crud_associacao.present? %>
 			<li class=""><%= link_to @crud_associacao.title, crud_models_path(model: @crud_associacao.root_path) %></li>
@@ -7,7 +7,7 @@
 			<li class=""><%= link_to @crud_helper.title, crud_models_path(model: @crud_helper.root_path) %></li>
 		<% end %>
 	<% end %>
-		
+
 
 	<% content_for :header do %>
 		<%=@crud_helper.title%>
@@ -19,10 +19,9 @@
 
 	<% content_for :modal do %>
 		<% if @crud_helper.search_fields.present? %>
-			<%= render "/crud/search" %>
+			<%= render '/crud/search' %>
 		<% end %>
 	<% end %>
-	
-<%end%>
+<% end%>
 
-<%= render "layouts/template_raro_crud" %>
+<%= render 'layouts/template_raro_crud' %>

@@ -1,5 +1,5 @@
 <%= content_tag :tr, id: "record-#{record.id}" do %>
-	<%@crud_helper.index_fields.each do |att| %>
+	<% @crud_helper.index_fields.each do |att| %>
 		<% if !att[:visible_if].nil?%>
 			<% if ((att[:visible_if].class == Proc && !att[:visible_if].call(record)) || (att[:visible_if].class != Proc && !att[:visible_if])) %>
 				<% next %>
@@ -86,8 +86,12 @@
 					<% if (action[:proc].present? && action[:proc].call(record)) || !action[:proc].present? %>
 						<% if action[:options].present? && action[:options][:wiselink].present? && action[:options][:wiselink] %>
 							<% data = {push: "partial", target: "#form"} %>
-						<% end %>
-						<%= link_to I18n.t(action[:desc]), action_crud_path(model: @model.name.underscore, id: record.id, acao: action[:method], page: params[:page], q: params[:q].try(:to_unsafe_h)), class: "btn btn-primary btn-xs", data: data || {} %>
+            <% end %>
+            <% if @crud_associacao.present? %>
+              <%= link_to I18n.t(action[:desc]), action_crud_associacao_path(model: params[:model], id: params[:id], associacao: params[:associacao], associacao_id: record.id, acao: action[:method], page: params[:page], q: params[:q].try(:to_unsafe_h)), class: "btn btn-primary btn-xs", data: data || {} %>
+            <% else %>
+              <%= link_to I18n.t(action[:desc]), action_crud_path(model: @model.name.underscore, id: record.id, acao: action[:method], page: params[:page], q: params[:q].try(:to_unsafe_h)), class: "btn btn-primary btn-xs", data: data || {} %>
+            <% end %>
 					<% end %>
 				<% end %>
 				<% @crud_helper.actions_links.each do |name, options| %>

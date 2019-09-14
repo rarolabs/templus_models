@@ -17,10 +17,10 @@
                 <% if att[:sort_field] == :false %>
                   <%= I18n.t(att[:label], default: I18n.t("shared.#{att[:attribute]}")) %>
                 <% else %>
-                  <%= sort_link @q, att[:sort_field], I18n.t(att[:label], default: I18n.t("shared.#{att[:attribute]}")), {},data: {push: 'partial', target: "#form"}%>
+                  <%= sort_link @q, att[:sort_field], I18n.t(att[:label], default: I18n.t("shared.#{att[:attribute]}")), {},data: { push: 'partial', target: "#form" } %>
                 <% end %>
               <% else %>
-                <%= sort_link @q, att[:attribute], I18n.t(att[:label], default: I18n.t("shared.#{att[:attribute]}")), {},data: {push: 'partial', target: "#form"}%>
+                <%= sort_link @q, att[:attribute], I18n.t(att[:label], default: I18n.t("shared.#{att[:attribute]}")), {},data: { push: 'partial', target: "#form" } %>
               <% end %>
             </th>
           <% end %>

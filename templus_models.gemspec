@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 5.2"
   s.add_dependency "cancancan", "~> 3"
-  s.add_dependency "ransack", "~> 2.3"
+  s.add_dependency "ransack", "~> 2.1"
   s.add_dependency "kaminari", "~> 1.1"
   s.add_dependency "simple_form", "~> 4.1"
   s.add_dependency "nested_form", "~> 0.3"

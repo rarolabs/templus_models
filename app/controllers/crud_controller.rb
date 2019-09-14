@@ -9,7 +9,7 @@ class CrudController < ApplicationController
       @q = @model.ransack(params[:q])
     end
     if @q.sorts.empty?
-      if @crud_helper.order_field.to_s.include?("desc") || @crud_helper.order_field.to_s.include?("asc")
+      if @crud_helper.order_field.to_s.include?('desc') || @crud_helper.order_field.to_s.include?('asc')
         @q.sorts = @crud_helper.order_field.to_s
       else
         @q.sorts = "#{@crud_helper.order_field} asc"
@@ -25,7 +25,7 @@ class CrudController < ApplicationController
   end
 
   def new
-    if params[:render] == "modal"
+    if params[:render] == 'modal'
       if @model.reflect_on_association(params[:attribute].to_s).present?
         @model = @model.reflect_on_association(params[:attribute].to_s).class_name.constantize
       else
@@ -55,9 +55,9 @@ class CrudController < ApplicationController
     authorize! :create_or_update, @record if respond_to?(:current_usuario)
     if valid_instance_method?(params[:acao])
       if @record.send(params[:acao])
-        flash.now[:success] = I18n.t("mensagem_action", acao: params[:acao])
+        flash.now[:success] = I18n.t('mensagem_action', acao: params[:acao])
       else
-        flash.now[:error] = I18n.t("mensagem_erro_action", acao: params[:acao])
+        flash.now[:error] = I18n.t('mensagem_erro_action', acao: params[:acao])
       end
       redirect_to @url
     else
@@ -81,7 +81,7 @@ class CrudController < ApplicationController
 
     respond_to do |format|
       if @saved
-        flash[:success] = params[:id].present? ? I18n.t("updated", model: I18n.t("model.#{@model.name.underscore}")) : I18n.t("created", model: I18n.t("model.#{@model.name.underscore}"))
+        flash[:success] = params[:id].present? ? I18n.t('updated', model: I18n.t("model.#{@model.name.underscore}")) : I18n.t("created", model: I18n.t("model.#{@model.name.underscore}"))
         format.html { redirect_to @url }
         unless params[:render] == 'modal'
           format.js { render action: :index }
@@ -272,7 +272,7 @@ class CrudController < ApplicationController
 
   def permitt_group(fields, key, groups,mod)
     chave = "#{key}_attributes"
-    group = {chave => [:id, :_destroy]}
+    group = { chave:  [:id, :_destroy] }
     groups.each do |field|
       if field[:sf].present? && field[:sf][:grupo].present?
         group[chave] << permitt_group(fields, field[:attribute], field[:sf][:fields], mod.reflect_on_association(key.to_s).class_name.constantize)

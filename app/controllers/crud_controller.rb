@@ -1,7 +1,6 @@
 class CrudController < ApplicationController
   before_action :setup, except: :autocomplete
 
-
   def index
     authorize! :read, @model_permission if respond_to?(:current_usuario)
     if params[:scope].present? && valid_method?(params[:scope])
@@ -10,7 +9,7 @@ class CrudController < ApplicationController
       @q = @model.ransack(params[:q])
     end
     if @q.sorts.empty?
-      if @crud_helper.order_field.to_s.include?("desc") || @crud_helper.order_field.to_s.include?("asc")
+      if @crud_helper.order_field.to_s.include?('desc') || @crud_helper.order_field.to_s.include?('asc')
         @q.sorts = @crud_helper.order_field.to_s
       else
         @q.sorts = "#{@crud_helper.order_field} asc"
@@ -26,7 +25,7 @@ class CrudController < ApplicationController
   end
 
   def new
-    if params[:render] == "modal"
+    if params[:render] == 'modal'
       if @model.reflect_on_association(params[:attribute].to_s).present?
         @model = @model.reflect_on_association(params[:attribute].to_s).class_name.constantize
       else
@@ -56,9 +55,9 @@ class CrudController < ApplicationController
     authorize! :create_or_update, @record if respond_to?(:current_usuario)
     if valid_instance_method?(params[:acao])
       if @record.send(params[:acao])
-        flash.now[:success] = I18n.t("mensagem_action", acao: params[:acao])
+        flash.now[:success] = I18n.t('mensagem_action', acao: params[:acao])
       else
-        flash.now[:error] = I18n.t("mensagem_erro_action", acao: params[:acao])
+        flash.now[:error] = I18n.t('mensagem_erro_action', acao: params[:acao])
       end
       redirect_to @url
     else
@@ -75,22 +74,22 @@ class CrudController < ApplicationController
       authorize! :update, @record if respond_to?(:current_usuario)
       @saved = @record.update(params_permitt)
     else
-      @record  =  @model.new(params_permitt)
+      @record = @model.new(params_permitt)
       authorize! :create, @model_permission if respond_to?(:current_usuario)
       @saved = @record.save
     end
 
     respond_to do |format|
       if @saved
-        flash[:success] = params[:id].present? ? I18n.t("updated", model: I18n.t("model.#{@model.name.underscore}")) : I18n.t("created", model: I18n.t("model.#{@model.name.underscore}"))
+        flash[:success] = params[:id].present? ? I18n.t('updated', model: I18n.t("model.#{@model.name.underscore}")) : I18n.t("created", model: I18n.t("model.#{@model.name.underscore}"))
         format.html { redirect_to @url }
         unless params[:render] == 'modal'
-          format.js { render action: :index}
+          format.js { render action: :index }
         else
           format.js
         end
       else
-        action = (params[:id]) ? :edit : :new
+        action = params[:id] ? :edit : :new
         format.html { render action: action }
         format.js
       end
@@ -102,13 +101,13 @@ class CrudController < ApplicationController
     authorize! :destroy, @record if respond_to?(:current_usuario)
     if @record.destroy
       respond_to do |format|
-        flash[:success] = I18n.t("destroyed", model: I18n.t("model.#{@model.name.underscore}"))
+        flash[:success] = I18n.t('destroyed', model: I18n.t("model.#{@model.name.underscore}"))
         format.html { redirect_to @url }
         format.js { render action: :index }
       end
     else
       respond_to do |format|
-        flash[:error] = @record.errors.full_messages.join(", ")
+        flash[:error] = @record.errors.full_messages.join(', ')
         format.html { redirect_to @url }
         format.js { render action: :index }
       end
@@ -131,7 +130,7 @@ class CrudController < ApplicationController
     end
     instance_variable_set("@#{params[:var]}", results)
     if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
-      render :partial => params[:partial]
+      render partial: params[:partial]
     else
       render :index, controller: request[:controller]
     end
@@ -152,9 +151,9 @@ class CrudController < ApplicationController
     if valid_instance_method?(params[:label])
       method_label = params[:label]
     else
-      raise "Ação inválida"
+      raise 'Ação inválida'
     end
-    render json: results.map {|result| {id: result.id, label: result.send(method_label), value: result.send(method_label)} }
+    render json: results.map { |result| { id: result.id, label: result.send(method_label), value: result.send(method_label) } }
   end
 
   def listing
@@ -165,7 +164,7 @@ class CrudController < ApplicationController
       @q = @model.ransack(params[:q])
     end
     if @q.sorts.empty?
-      if @crud_helper.order_field.to_s.include?("desc") || @crud_helper.order_field.to_s.include?("asc")
+      if @crud_helper.order_field.to_s.include?('desc') || @crud_helper.order_field.to_s.include?('asc')
         @q.sorts = @crud_helper.order_field.to_s
       else
         @q.sorts = "#{@crud_helper.order_field} asc"
@@ -178,7 +177,7 @@ class CrudController < ApplicationController
     end
     report_name = "#{@crud_helper.title}_#{DateTime.now.strftime('%Y%m%d')}"
     respond_to do |format|
-      format.xls { headers["Content-Disposition"] = "attachment; filename=#{report_name}.xls" }
+      format.xls { headers['Content-Disposition'] = "attachment; filename=#{report_name}.xls" }
       format.pdf do
         pdf = WickedPdf.new.pdf_from_string(
           render_to_string('crud/listing.pdf.erb'),
@@ -187,7 +186,7 @@ class CrudController < ApplicationController
           show_as_html: params[:debug],
           margin: { top: 20, bottom: 20 }
         )
-        send_data(pdf, filename: "#{report_name}.pdf", type: "application/pdf", disposition: "inline")
+        send_data(pdf, filename: "#{report_name}.pdf", type: 'application/pdf', disposition: 'inline')
       end
     end
   end
@@ -205,7 +204,7 @@ class CrudController < ApplicationController
           show_as_html: params[:debug],
           margin: { top: 20, bottom: 20 }
         )
-        send_data(pdf, filename: "#{report_name}.pdf", type: "application/pdf", disposition: "inline")
+        send_data(pdf, filename: "#{report_name}.pdf", type: 'application/pdf', disposition: 'inline')
       end
       format.html
     end
@@ -219,7 +218,7 @@ class CrudController < ApplicationController
       if Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao])
         @model = Module.const_get(params[:model].camelize).find(params[:id]).send(params[:associacao])
       else
-        raise "Ação inválida"
+        raise 'Ação inválida'
       end
       c_helper = Module.const_get(params[:model].camelize).reflect_on_association(params[:associacao]).class_name
       @crud_helper = Module.const_get("#{c_helper}Crud") unless params[:render] == "modal" and params[:action] == "new"
@@ -238,7 +237,7 @@ class CrudController < ApplicationController
   end
 
   def params_permitt
-    params.require(@model.name.underscore.gsub('/','_').to_sym).permit(fields_model)
+    params.require(@model.name.underscore.gsub('/', '_').to_sym).permit(fields_model)
   end
 
   def fields_model
@@ -273,7 +272,7 @@ class CrudController < ApplicationController
 
   def permitt_group(fields, key, groups,mod)
     chave = "#{key}_attributes"
-    group = {chave => [:id, :_destroy]}
+    group = { chave => [:id, :_destroy] }
     groups.each do |field|
       if field[:sf].present? && field[:sf][:grupo].present?
         group[chave] << permitt_group(fields, field[:attribute], field[:sf][:fields], mod.reflect_on_association(key.to_s).class_name.constantize)
@@ -283,7 +282,7 @@ class CrudController < ApplicationController
           if modelo.reflect_on_association(field[:attribute]).macro == :belongs_to
             group[chave] << "#{field[:attribute]}_id".to_sym
           else
-            group[chave] << {"#{field[:attribute].to_s.singularize}_ids".to_sym => []}
+            group[chave] << { "#{field[:attribute].to_s.singularize}_ids".to_sym => [] }
           end
         elsif (modelo.columns_hash[field[:attribute].to_s] || (modelo.respond_to?(:params_permitt) && modelo.params_permitt.include?(field[:attribute].to_sym)))
           group[chave] << field[:attribute]
@@ -297,7 +296,7 @@ class CrudController < ApplicationController
     list_methods = []
     @model.ancestors.each do |m|
       list_methods << m.methods(false).reject{ |m| /^_/ =~ m.to_s }
-      break if ["ApplicationRecord", "ActiveRecord::Base"].include? m.try(:superclass).to_s
+      break if ['ApplicationRecord', 'ActiveRecord::Base'].include? m.try(:superclass).to_s
     end
     list_methods.flatten.include? method.to_sym
   end
@@ -306,7 +305,7 @@ class CrudController < ApplicationController
     list_methods = []
     @model.ancestors.each do |m|
       list_methods << m.instance_methods(false).reject{ |m| /^_/ =~ m.to_s }
-      break if ["ApplicationRecord", "ActiveRecord::Base"].include? m.try(:superclass).to_s
+      break if ['ApplicationRecord', 'ActiveRecord::Base'].include? m.try(:superclass).to_s
     end
     list_methods.flatten.include? method.to_sym
   end
@@ -314,8 +313,8 @@ class CrudController < ApplicationController
   def convert_params(params)
     if params.present? && params.class == String
       hash = {}
-      params.split("&").each do |element|
-        result = element.split("?")[0].split("=")
+      params.split('&').each do |element|
+        result = element.split('?')[0].split('=')
         hash[result[0]] = result[1]
       end
       params = ActionController::Parameters.new(hash)

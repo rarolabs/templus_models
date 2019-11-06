@@ -15,11 +15,10 @@ class CrudController < ApplicationController
         @q.sorts = "#{@crud_helper.order_field} asc"
       end
     end
-    if respond_to?(:current_usuario)
-      @records = @q.result(distinct: true).includes(@crud_helper.includes).accessible_by(current_ability, :read).page(params[:page]).per(@crud_helper.per_page)
-    else
-      @records = @q.result(distinct: true).includes(@crud_helper.includes).page(params[:page]).per(@crud_helper.per_page)
-    end
+    @records = @q.result(distinct: true)
+    @records = @records.includes(@crud_helper.includes).references(@crud_helper.includes) if @crud_helper.includes.present?
+    @records = @records.accessible_by(current_ability, :read) if respond_to?(:current_usuario)
+    @records = @records.page(params[:page]).per(@crud_helper.per_page)
     @titulo = @model.name.pluralize
     render partial: 'records' if request.respond_to?(:wiselinks_partial?) && request.wiselinks_partial?
   end

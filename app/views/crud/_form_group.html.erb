@@ -24,7 +24,7 @@
 	<% if [:has_many,:has_and_belongs_to_many].include?(f.object.class.reflect_on_association(key).macro) %>
 		<div class="form-group">
 			<div class="col-sm-10 col-sm-offset-2">
-				<%= g.link_to_remove "Remover #{I18n.t(groups[:sublabel] || groups[:label])}" %>
+				<%= g.link_to_remove "#{I18n.t('destroy')} #{I18n.t(groups[:sublabel] || groups[:label])}" %>
 			</div>
 		</div>
 	<% end %>
@@ -32,7 +32,7 @@
 <% if [:has_many,:has_and_belongs_to_many].include?(f.object.class.reflect_on_association(key).macro) %>
 	<div class="form-group">
 		<div class="col-sm-12">
-			<%= f.link_to_add "Adicionar #{I18n.t(groups[:sublabel] || groups[:label])}", key %>
+			<%= f.link_to_add "#{I18n.t('add')} #{I18n.t(groups[:sublabel] || groups[:label])}", key %>
 		</div>
 	</div>
 <% end %>

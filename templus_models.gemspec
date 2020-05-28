@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.1"
   s.add_dependency "cancancan", "~> 1.10"
   s.add_dependency "ransack", "~> 1.6"
-  s.add_dependency "kaminari", "~> 0.16"
+  s.add_dependency "kaminari", ">= 0.16", "< 2.0"
   s.add_dependency "simple_form", "~> 3.1"
   s.add_dependency "nested_form", "~> 0"
   s.add_dependency "rails-jquery-autocomplete", "~> 1.0"
